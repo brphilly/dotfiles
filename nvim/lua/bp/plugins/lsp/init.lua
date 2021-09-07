@@ -14,32 +14,31 @@ lspconfig.util.default_config = vim.tbl_extend('force', lspconfig.util.default_c
 				end
 			end
 
-			-- TODO(brphilly): Replace these with <leader>l and gd, K etc
-			bsk("n", "<leader>dD", "<cmd>lua vim.lsp.buf.declaration()<CR>", 'declaration')
-			bsk('n', '<leader>dd', '<cmd>lua vim.lsp.buf.definition()<CR>', 'goto_definition')
-			bsk('n', '<leader>dt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', 'type_definition')
-			bsk('n', '<leader>di', '<cmd>lua vim.lsp.buf.implementation()<CR>', 'implementation')
+			bsk("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", 'declaration')
+			bsk('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', 'goto_definition')
+			bsk('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', 'type_definition')
+			bsk('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', 'implementation')
+			bsk('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', 'find_references')
 
-			bsk('n', '<leader>dk', '<cmd>lua vim.lsp.buf.hover()<CR>', 'hover')
-			bsk('n', '<leader>ds', '<cmd>lua vim.lsp.buf.signature_help()<CR>', 'signature_help')
+			bsk('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', 'hover')
+			bsk('n', '<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', 'signature_help')
 			bsk('i', '<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', 'signature_help')
 
-			bsk('n', '<leader>dwa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
-			bsk('n', '<leader>dwr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>')
-			bsk('n', '<leader>dwl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
+			bsk('n', '<leader>lwa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
+			bsk('n', '<leader>lwr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>')
+			bsk('n', '<leader>lwl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
 
-			bsk('n', '<leader>drn', '<cmd>lua vim.lsp.buf.rename()<CR>', 'rename')
-			bsk('n', '<leader>drf', '<cmd>lua vim.lsp.buf.references()<CR>', 'find_references')
-			bsk('n', '<leader>drh', '<cmd>lua require"bp.plugins.lsp".ref_hl()<cr>', 'document_highlight')
+			bsk('n', '<leader>lrn', '<cmd>lua vim.lsp.buf.rename()<CR>', 'rename')
+			bsk('n', '<leader>lca', '<cmd>lua vim.lsp.buf.code_action()<CR>', 'code_action')
+			bsk('n', '<leader>lh', '<cmd>lua require"bp.plugins.lsp".ref_hl()<cr>', 'document_highlight')
 
-			bsk('n', '<leader>dca', '<cmd>lua vim.lsp.buf.code_action()<CR>', 'code_action')
-			bsk('n', '<leader>de', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({border = "single"})<CR>')
-			bsk('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = "single"}})<CR>')
-			bsk('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = "single"}})<CR>')
-			bsk('n', '<leader>dl', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
+			bsk('n', '<leader>le', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({border = "single"})<CR>')
+			bsk('n', '[l', '<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = "single"}})<CR>')
+			bsk('n', ']l', '<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = "single"}})<CR>')
+			bsk('n', '<leader>ll', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
 
-			bsk("n", "<leader>df", "<cmd>lua vim.lsp.buf.formatting()<CR>", 'document_formatting')
-			bsk("x", "<leader>df", ":lua vim.lsp.buf.range_formatting()<CR>", 'document_range_formatting')
+			bsk("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", 'document_formatting')
+			bsk("x", "<leader>lf", ":lua vim.lsp.buf.range_formatting()<CR>", 'document_range_formatting')
 		end,
 
 		flags = {debounce_text_changes = 200},
