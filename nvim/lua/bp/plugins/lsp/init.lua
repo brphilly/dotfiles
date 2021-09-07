@@ -1,4 +1,3 @@
--- TODO(brphilly): check out codelens
 local lspconfig = require'lspconfig'
 lspconfig.util.default_config = vim.tbl_extend('force', lspconfig.util.default_config,
 	{
@@ -30,6 +29,7 @@ lspconfig.util.default_config = vim.tbl_extend('force', lspconfig.util.default_c
 
 			bsk('n', '<leader>lrn', '<cmd>lua vim.lsp.buf.rename()<CR>', 'rename')
 			bsk('n', '<leader>lca', '<cmd>lua vim.lsp.buf.code_action()<CR>', 'code_action')
+			bsk('n', '<leader>lcl', '<cmd>lua vim.lsp.codelens.run()<CR>', 'execute_command')
 			bsk('n', '<leader>lh', '<cmd>lua require"bp.plugins.lsp".ref_hl()<cr>', 'document_highlight')
 
 			bsk('n', '<leader>le', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({border = "single"})<CR>')
@@ -39,6 +39,15 @@ lspconfig.util.default_config = vim.tbl_extend('force', lspconfig.util.default_c
 
 			bsk("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", 'document_formatting')
 			bsk("x", "<leader>lf", ":lua vim.lsp.buf.range_formatting()<CR>", 'document_range_formatting')
+
+			if client.resolved_capabilities['code_lens'] then
+				vim.cmd [[
+					augroup lspcodelens
+					autocmd!
+					autocmd CursorHold,CursorHoldI,InsertLeave <buffer> lua vim.lsp.codelens.refresh()
+					augroup END
+				]]
+			end
 		end,
 
 		flags = {debounce_text_changes = 200},
