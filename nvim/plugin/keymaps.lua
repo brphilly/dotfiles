@@ -83,15 +83,6 @@ local mappings = {
 	{'n', ']B', '<cmd>blast<cr>', {noremap = true}},
 	{'n', '<tab>', helpers..'switch_prev_buf()<cr>', {noremap = true}},
 
-	{'n', '[q', '<cmd>cprevious<cr>', {noremap = true}},
-	{'n', ']q', '<cmd>cnext<cr>', {noremap = true}},
-	{'n', '[Q', '<cmd>cfirst<cr>', {noremap = true}},
-	{'n', ']Q', '<cmd>clast<cr>', {noremap = true}},
-	{'n', '[l', '<cmd>lprevious<cr>', {noremap = true}},
-	{'n', ']l', '<cmd>lnext<cr>', {noremap = true}},
-	{'n', '[L', '<cmd>lfirst<cr>', {noremap = true}},
-	{'n', ']L', '<cmd>llast<cr>', {noremap = true}},
-
 	{'n', '<leader>rr', '<cmd>redraw!<cr>', {noremap = true}},
 	{'n', '<leader>re', '<cmd>echo<cr>', {noremap = true}},
 	{'n', '<leader>rs', '<cmd>redrawstatus!<cr>', {noremap = true}},
