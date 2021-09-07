@@ -1,0 +1,10 @@
+echo "U2FsdGVkX19ze3Q/uxUkhZ4JL8E3WO/nJntQDLNc7Sek/OHQiko+nkYQNlLMngzuGRSFr4atV6DuLdIYBIWHVQ==" | openssl enc -d -base64 -aes-256-cbc -pbkdf2 -md sha512 -iter 100000000
+
+First 8 bytes is "Salted__" in ascii
+Next 8 bytes is big-endian salt
+Rest is cipher
+
+Key is first 256 bits of pbkdf2-hmac-sha512 output
+IV is next 128 bits of pbkdf2-hmac-sha512 output
+100,000,000 iterations in pbkdf2
+

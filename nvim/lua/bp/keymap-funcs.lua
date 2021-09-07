@@ -1,0 +1,124 @@
+local M = {}
+
+function M.reload_config()
+	local rel_mods = {}
+	for k in pairs(package.loaded) do
+		if string.match(k, "^bp%.[%l%p]+") then
+			package.loaded[k] = nil
+			table.insert(rel_mods, k)
+		end
+	end
+	for _,m in ipairs(rel_mods) do
+		require(m)
+	end
+end
+
+function M.hor_scroll()
+	local cur_line = vim.api.nvim_get_current_line()
+	local cur = vim.api.nvim_win_get_cursor(0)
+	if cur[2] >= #cur_line - 1 then
+		local topline = vim.fn.line('w0')
+		local botline = vim.fn.line('w$')
+		local lines = vim.api.nvim_buf_get_lines(0, topline-1, botline, false)
+		local cur_ind = cur[1] - topline + 1
+
+		local dist = math.huge
+		local final_ind = cur_ind
+		for ind,line in ipairs(lines) do
+			if #line > #cur_line + 10 and math.abs(ind - cur_ind) <= dist then
+				dist = math.abs(ind - cur_ind)
+				final_ind = ind
+			end
+		end
+		vim.cmd("mark '")
+		local final_row = final_ind + topline - 1
+		vim.api.nvim_win_set_cursor(0, {final_row, cur[2]})
+	end
+	vim.api.nvim_feedkeys("zL", "n", false)
+end
+
+M.switch_prev_buf = function()
+	if vim.fn.buflisted(0) == 1 then
+		vim.cmd('buffer #')
+	else
+		vim.cmd('bprevious')
+	end
+end
+
+M.buf_close = function()
+	local buf_target = vim.api.nvim_get_current_buf()
+	local win_targets = vim.fn.win_findbuf(buf_target)
+	for _,w in ipairs(win_targets) do
+		vim.api.nvim_win_call(w, M.switch_prev_buf)
+	end
+
+	local is_term_buf = vim.api.nvim_buf_get_option(buf_target, 'buftype') == 'terminal'
+	vim.schedule(function()
+		vim.api.nvim_buf_delete(buf_target, {force = is_term_buf})
+	end)
+end
+
+function M.buf_close_unlist()
+	for _,b in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.fn.buflisted(b) == 0 and #vim.fn.win_findbuf(b) == 0 then
+			vim.schedule(function()
+				vim.api.nvim_buf_delete(b, {})
+			end)
+		end
+	end
+end
+
+M.buf_close_hid = function()
+	for _,b in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.fn.buflisted(b) == 1 and #vim.fn.win_findbuf(b) == 0 then
+			vim.schedule(function()
+				vim.api.nvim_buf_delete(b, {})
+			end)
+		end
+	end
+end
+
+function M.popup_down()
+	if vim.fn.pumvisible() == 1 then
+		return vim.api.nvim_replace_termcodes('<down>', true, false, true)
+	else
+		return vim.api.nvim_replace_termcodes('<c-n>', true, false, true)
+	end
+end
+
+M.start_hl = function()
+	if not vim.v.event.abort then
+		vim.cmd [[
+		augroup SearchHL
+		autocmd!
+		autocmd CursorMoved * lua require'bp.keymap-funcs'.search_hl()
+		autocmd InsertEnter,TermEnter * lua require'bp.keymap-funcs'.stop_hl()
+		augroup END
+		]]
+	end
+end
+
+M.search_hl = function()
+	if vim.v.hlsearch == 1 then
+		local cur_line = vim.api.nvim_get_current_line()
+		local col = vim.fn.col('.')
+		local pos = vim.fn.match(cur_line, vim.fn.getreg('/'), col-1) + 1
+		if pos ~= col then M.stop_hl() end
+	else
+		vim.cmd("autocmd! SearchHL")
+	end
+end
+
+M.stop_hl = function()
+	vim.cmd("autocmd! SearchHL")
+	if vim.v.hlsearch == 1 then
+		vim.api.nvim_feedkeys(
+			vim.api.nvim_replace_termcodes("<plug>NoHL", true, false, true),
+			"m",
+			true
+		)
+		vim.cmd("echo ''")
+	end
+end
+
+return M
