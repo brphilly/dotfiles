@@ -111,12 +111,6 @@ local mappings = {
 	{'n', ',', '@', {noremap = true}},
 	{'n', ',,', '@@', {noremap = true}},
 
-	{'n', '<leader>lj', '<cmd>jumps<cr>', {noremap = true}},
-	{'n', '<leader>lc', '<cmd>changes<cr>', {noremap = true}},
-	{'n', '<leader>lm', '<cmd>messages<cr>', {noremap = true}},
-	{'n', '<leader>lq', '<cmd>copen<cr>', {noremap = true}},
-	{'n', '<leader>ll', '<cmd>lopen<cr>', {noremap = true}},
-
 	{'n', '*', '*'..helpers..'start_hl()<cr>', {noremap = true}},
 	{'n', '#', '#'..helpers..'start_hl()<cr>', {noremap = true}},
 	{'n', 'n', 'n'..helpers..'start_hl()<cr>', {noremap = true}},
