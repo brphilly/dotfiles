@@ -1,6 +1,7 @@
 [user]
     name = Brady Phillips
     email = brady.phillips99@gmail.com
+	signingKey = 236557E50DFDFEC7
 [core]
     excludesfile = ~/.config/git/gitignore-global
     editor = nvim
@@ -13,7 +14,10 @@
 	ff = only
 [commit]
 	verbose = true
+	gpgSign = true
 [status]
 	submoduleSummary = true
 [push]
 	recurseSubmodules = check
+[tag]
+	gpgSign = true
