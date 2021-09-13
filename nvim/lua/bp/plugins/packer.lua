@@ -26,8 +26,7 @@ require('packer').startup {
 		}
 
 		use {
-			-- 'hoob3rt/lualine.nvim',
-			'~/projects/lualine.nvim',
+			'shadmansaleh/lualine.nvim',
 			config = reload('bp.plugins.lualine'),
 			wants = 'nvim-web-devicons',
 			event = 'VimEnter', -- wants key requires lazy loading to work properly
