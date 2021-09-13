@@ -6,9 +6,18 @@ local function reload(mod)
 		require('%s')
 		]], mod, mod)
 end
+
 require('packer').startup {
 	function()
 		local use = require'packer'.use
+		local ts_ft = require'vim.treesitter.health'.list_parsers()
+		if next(ts_ft) == nil then
+			ts_ft = nil
+		else
+			for i,ft in ipairs(ts_ft) do
+				ts_ft[i] = vim.fn.fnamemodify(ft, ':t:r')
+			end
+		end
 
 		-- Not lazy loaded:
 		use {
@@ -62,7 +71,7 @@ require('packer').startup {
 		use {
 			'nvim-treesitter/nvim-treesitter',
 			config = reload('bp.plugins.nvim-treesitter'),
-			event = {'BufRead', 'BufNewFile'},
+			ft = ts_ft,
 			run = ':TSUpdate',
 			requires = {
 				{
