@@ -14,9 +14,9 @@ vim.cmd [[
 	autocmd ColorScheme nord highlight NeogitDiffContextHighlight guifg=fg
 	autocmd ColorScheme nord highlight! link NeogitHunkHeader DiffChange
 	autocmd ColorScheme nord highlight! link NeogitHunkHeaderHighlight DiffChange
-	autocmd ColorScheme nord highlight! link NeogitNotificationInfo LspDiagnosticsDefaultInformation
-	autocmd ColorScheme nord highlight! link NeogitNotificationWarning LspDiagnosticsDefaultWarning
-	autocmd ColorScheme nord highlight! link NeogitNotificationError LspDiagnosticsDefaultError
+	autocmd ColorScheme nord highlight! link NeogitNotificationInfo DiagnosticInfo
+	autocmd ColorScheme nord highlight! link NeogitNotificationWarning DiagnosticWarn
+	autocmd ColorScheme nord highlight! link NeogitNotificationError DiagnosticError
 	augroup END
 ]]
 vim.cmd(string.format([[doautocmd neogit-hl ColorScheme %s]], vim.g.colors_name))
