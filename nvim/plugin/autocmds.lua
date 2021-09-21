@@ -31,13 +31,6 @@ vim.cmd [[
 ]]
 
 vim.cmd [[
-	augroup ProjRoot
-	autocmd!
-	autocmd BufAdd * lua require'bp.utils'.proj_root(true)
-	augroup END
-]]
-
-vim.cmd [[
 	augroup DirectorySave
 	autocmd!
 	autocmd BufWritePre,FileWritePre * silent! call mkdir(expand('<afile>:p:h'), 'p')

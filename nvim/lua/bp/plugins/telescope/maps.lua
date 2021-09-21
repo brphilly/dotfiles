@@ -17,14 +17,6 @@ function M.files_dir()
 	}
 end
 
-function M.files_proj()
-	local dir = vim.b.proj_root
-	builtin.find_files {
-		prompt_title = "Find files in "..dir,
-		cwd = dir,
-	}
-end
-
 function M.files_cwd()
 	local dir = vim.fn.getcwd()
 	builtin.find_files {
@@ -47,14 +39,6 @@ function M.grep_dir()
 	builtin.live_grep {
 		prompt_title = "Grep files in "..dir,
 		cwd = dir,
-	}
-end
-
-function M.grep_proj()
-	local dir = vim.b.proj_root or ''
-	builtin.live_grep {
-		prompt_title = "Grep files in "..dir,
-		cwd = dir or nil,
 	}
 end
 
@@ -91,16 +75,6 @@ end
 local todo_str = 'TODO(brphilly):'
 function M.grep_todo_dir()
 	local dir = vim.fn.expand('%:p:h')
-	builtin.grep_string {
-		cwd = dir,
-		search = todo_str,
-		search_dirs = {dir},
-		prompt_title = "Grep todos in "..dir,
-	}
-end
-
-function M.grep_todo_proj()
-	local dir = vim.b.proj_root
 	builtin.grep_string {
 		cwd = dir,
 		search = todo_str,
@@ -154,13 +128,6 @@ end
 
 function M.browse_dir()
 	local dir = vim.fn.expand('%:p:h')
-	builtin.file_browser {
-		cwd = dir,
-	}
-end
-
-function M.browse_proj()
-	local dir = vim.b.proj_root
 	builtin.file_browser {
 		cwd = dir,
 	}
