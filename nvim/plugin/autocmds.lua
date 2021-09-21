@@ -43,3 +43,10 @@ vim.cmd [[
 	autocmd BufWritePre,FileWritePre * silent! call mkdir(expand('<afile>:p:h'), 'p')
 	augroup END
 ]]
+
+vim.cmd [[
+	augroup SpellFT
+	autocmd!
+	autocmd FileType text,markdown,conf setlocal spell
+	augroup END
+]]
