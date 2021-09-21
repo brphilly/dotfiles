@@ -3,6 +3,7 @@ require'telescope'.setup {
 	defaults = {
 		file_ignore_patterns = {'%.DS_Store', '%.git/.*'},
 		layout_strategy = 'flex',
+		path_display = {truncate = 1},
 		mappings = {
 			i = {
 				['<C-[>'] = actions.close,

@@ -153,32 +153,4 @@ function M.browse_home()
 	}
 end
 
-function M.git_commits()
-	local dir = vim.b.proj_root
-	builtin.git_commits {
-		cwd = dir,
-	}
-end
-
-function M.git_bcommits()
-	local dir = vim.b.proj_root
-	builtin.git_bcommits {
-		cwd = dir,
-	}
-end
-
-function M.git_branches()
-	local dir = vim.b.proj_root
-	builtin.git_branches {
-		cwd = dir,
-	}
-end
-
-function M.git_status()
-	local dir = vim.b.proj_root
-	builtin.git_status {
-		cwd = dir,
-	}
-end
-
 return M
