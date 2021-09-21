@@ -99,6 +99,12 @@ require('packer').startup {
 		}
 
 		use {
+			'ahmedkhalf/project.nvim',
+			config = function() require('project_nvim').setup {} end,
+			event = {'BufReadPre', 'BufNewFile'},
+		}
+
+		use {
 			'lukas-reineke/indent-blankline.nvim',
 			config = reload('bp.plugins.indent-blankline'),
 			event = {'BufReadPre', 'BufNewFile'},
