@@ -1,4 +1,5 @@
 local lspconfig = require'lspconfig'
+
 lspconfig.util.default_config = vim.tbl_extend('force', lspconfig.util.default_config,
 	{
 		on_attach = function(client, bufnr)
@@ -32,10 +33,10 @@ lspconfig.util.default_config = vim.tbl_extend('force', lspconfig.util.default_c
 			bsk('n', '<leader>lcl', '<cmd>lua vim.lsp.codelens.run()<CR>', 'execute_command')
 			bsk('n', '<leader>lh', '<cmd>lua require"bp.plugins.lsp".ref_hl()<cr>', 'document_highlight')
 
-			bsk('n', '<leader>le', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({border = "single"})<CR>')
-			bsk('n', '[l', '<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = "single"}})<CR>')
-			bsk('n', ']l', '<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = "single"}})<CR>')
-			bsk('n', '<leader>ll', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
+			bsk('n', '<leader>le', '<cmd>lua vim.diagnostic.show_line_diagnostics({border = "single"})<CR>')
+			bsk('n', '[l', '<cmd>lua vim.diagnostic.goto_prev({popup_opts = {border = "single"}})<CR>')
+			bsk('n', ']l', '<cmd>lua vim.diagnostic.goto_next({popup_opts = {border = "single"}})<CR>')
+			bsk('n', '<leader>ll', '<cmd>lua vim.diagnostic.setloclist()<CR>')
 
 			bsk("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", 'document_formatting')
 			bsk("x", "<leader>lf", ":lua vim.lsp.buf.range_formatting()<CR>", 'document_range_formatting')
@@ -59,14 +60,11 @@ lspconfig.util.default_config = vim.tbl_extend('force', lspconfig.util.default_c
 				vim.lsp.diagnostic.on_publish_diagnostics, {update_in_insert = true, signs = false, severity_sort = true}
 			),
 		},
+
+		capabilities = require'bp.plugins.cmp-nvim-lsp'
 		-- on_new_config = function(new_config, new_root_dir) -- run on new root dir, can use to change config
 	}
 )
-
-local ok,capabilities = pcall(require, 'bp.plugins.cmp-nvim-lsp')
-if ok then
-	lspconfig.util.default_config.capabilities = capabilities
-end
 
 -- Use a loop to setup defined servers
 local servers = {'sumneko_lua', 'pyright', 'clangd'} -- Remember to add these to packer lazy load and nvim-cmp
