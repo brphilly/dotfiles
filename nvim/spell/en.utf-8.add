@@ -8,3 +8,7 @@ LSP
 nop
 config
 url
+Neogit
+popup
+neogit
+neovim
