@@ -7,6 +7,13 @@ require'neogit'.setup {
 }
 
 vim.cmd [[
+	augroup NeogitCommitMessage
+	autocmd!
+	autocmd FileType NeogitCommitMessage runtime! ftplugin/gitcommit.vim
+	augroup END
+]]
+
+vim.cmd [[
 	augroup neogit-hl
 	autocmd!
 	autocmd ColorScheme nord highlight! link NeogitDiffAddHighlight DiffAdd
