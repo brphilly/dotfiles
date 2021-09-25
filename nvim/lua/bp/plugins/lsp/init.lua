@@ -1,4 +1,6 @@
 local lspconfig = require'lspconfig'
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require'cmp_nvim_lsp'.update_capabilities(capabilities)
 
 lspconfig.util.default_config = vim.tbl_extend('force', lspconfig.util.default_config,
 	{
@@ -61,7 +63,7 @@ lspconfig.util.default_config = vim.tbl_extend('force', lspconfig.util.default_c
 			),
 		},
 
-		capabilities = require'bp.plugins.cmp-nvim-lsp'
+		capabilities = capabilities,
 		-- on_new_config = function(new_config, new_root_dir) -- run on new root dir, can use to change config
 	}
 )

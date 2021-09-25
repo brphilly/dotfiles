@@ -65,6 +65,7 @@ require('packer').startup {
 			'neovim/nvim-lspconfig',
 			config = reload('bp.plugins.lsp'),
 			ft = {'lua', 'python', 'c', 'cpp'},
+			wants = 'cmp-nvim-lsp',
 		}
 
 		use {
@@ -147,7 +148,6 @@ require('packer').startup {
 				},
 				{
 					'hrsh7th/cmp-nvim-lsp',
-					wants = 'nvim-lspconfig',
 					after = 'nvim-cmp',
 					opt = true,
 				},
