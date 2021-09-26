@@ -134,15 +134,11 @@ require('packer').startup {
 				{'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp', opt = true},
 				{
 					'hrsh7th/cmp-buffer',
-					config = function()
-						_G.get_bufnrs = function() return vim.api.nvim_list_bufs() end
-					end,
 					after = 'nvim-cmp',
 					opt = true,
 				},
 				{
-					'hrsh7th/cmp-vsnip',
-					wants = 'vim-vsnip',
+					'saadparwaiz1/cmp_luasnip',
 					after = 'nvim-cmp',
 					opt = true,
 				},
@@ -154,8 +150,8 @@ require('packer').startup {
 			},
 		}
 		use {
-			'hrsh7th/vim-vsnip',
-			config = reload('bp.plugins.vim-vsnip'),
+			'L3MON4D3/LuaSnip',
+			config = reload('bp.plugins.luasnip'),
 			event = 'InsertEnter',
 		}
 
