@@ -31,10 +31,8 @@ local mappings = {
 	{'i', '!', '!<c-g>u', {noremap = true}},
 	{'i', '?', '?<c-g>u', {noremap = true}},
 
-	-- TODO(brphilly): Report below not working
-	-- {'i', '<c-n>', [[<c-r>=pumvisible() ? "\<lt>down>" : "\<lt>c-n>"<cr>]], {noremap = true}},
-	-- {'i', '<c-p>', [[<c-r>=pumvisible() ? "\<lt>up>" : "\<lt>c-p>"<cr>]], {noremap = true}},
 	{'i', '<tab>', [[pumvisible() ? "<c-y>" : "<tab>"]], {noremap = true, expr = true}},
+	{'i', '<cr>', '<c-x><c-z><cr>', {noremap = true}},
 
 	{'n', '<leader>me', '<c-w>=', {noremap = true}},
 	{'n', '<leader>mw', '<c-w>|', {noremap = true}},
