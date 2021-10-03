@@ -92,14 +92,6 @@ M.buf_close_hid = function()
 	end
 end
 
-function M.popup_down()
-	if vim.fn.pumvisible() == 1 then
-		return vim.api.nvim_replace_termcodes('<down>', true, false, true)
-	else
-		return vim.api.nvim_replace_termcodes('<c-n>', true, false, true)
-	end
-end
-
 M.start_hl = function()
 	if not vim.v.event.abort then
 		vim.cmd [[
