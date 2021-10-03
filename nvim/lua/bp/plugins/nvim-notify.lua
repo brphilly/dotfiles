@@ -1,5 +1,5 @@
 vim.notify = require'notify'
-vim.api.nvim_set_keymap('n', '<leader>$', '<cmd>lua require"bp.plugins.nvim-notify".print_history()<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>$', '<cmd>Notifications<cr>', {noremap = true})
 require'notify'.setup {
 	stages = 'slide',
 }
@@ -23,6 +23,7 @@ vim.cmd(string.format([[
 	autocmd ColorScheme nord highlight NotifyINFOTitle guifg=%s guibg=%s
 	autocmd ColorScheme nord highlight NotifyDEBUGTitle  guifg=%s guibg=%s
 	autocmd ColorScheme nord highlight NotifyTRACETitle  guifg=%s guibg=%s
+	autocmd ColorScheme nord highlight NotifyLogTitle  guifg=%s
 	autocmd ColorScheme nord highlight! link NotifyERRORBody NormalFloat
 	autocmd ColorScheme nord highlight! link NotifyWARNBody NormalFloat
 	autocmd ColorScheme nord highlight! link NotifyINFOBody NormalFloat
@@ -44,21 +45,7 @@ vim.cmd(string.format([[
 	c.warning, c.bg_float,
 	c.info, c.bg_float,
 	c.danger, c.bg_float,
-	c.purple, c.bg_float
+	c.purple, c.bg_float,
+	c.title
 ))
 vim.cmd(string.format([[doautocmd notify-hl ColorScheme %s]], vim.g.colors_name))
-
-local M = {}
-function M.print_history()
-	local notifs = require'notify'.history()
-	for i=math.max(#notifs - 9, 1), #notifs do
-		local notif = notifs[i]
-		print(string.format([[TIME: %s, LEVEL: %s]], vim.fn.strftime('%b %d %X', notif.time), notif.level))
-		print('MESSAGE: ')
-		for _,line in ipairs(notif.message) do
-			print(line)
-		end
-		print(' ')
-	end
-end
-return M
