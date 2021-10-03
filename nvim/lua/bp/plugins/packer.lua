@@ -245,8 +245,20 @@ require('packer').startup {
 		}
 
 		use {
-			'justinmk/vim-dirvish',
-			keys = {{'n', '-'}},
+			'kyazdani42/nvim-tree.lua',
+			setup = reload('bp.plugins.nvim-tree.setup'),
+			config = reload('bp.plugins.nvim-tree.config'),
+			cmd = 'NvimTreeToggle',
+			wants = 'nvim-web-devicons',
+			requires = {{
+				'kyazdani42/nvim-web-devicons',
+				opt = true,
+				config = function()
+					require'nvim-web-devicons'.setup {
+						default = true
+					}
+				end,
+			}},
 		}
 
 		use {
