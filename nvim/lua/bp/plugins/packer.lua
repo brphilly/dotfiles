@@ -1,12 +1,4 @@
 -- TODO(brphilly): Install nvim-dap
-local function reload(mod)
-	return string.format(
-		[[
-		package.loaded['%s'] = nil
-		require('%s')
-		]], mod, mod)
-end
-
 require('packer').startup {
 	function()
 		local use = require'packer'.use
@@ -22,12 +14,12 @@ require('packer').startup {
 		-- Not lazy loaded:
 		use {
 			vim.fn.stdpath('config')..'/my-plugins/nord',
-			config = reload('bp.plugins.nord'),
+			config = 'require("bp.plugins.nord")',
 		}
 
 		use {
 			'shadmansaleh/lualine.nvim',
-			config = reload('bp.plugins.lualine'),
+			config = 'require("bp.plugins.lualine")',
 			wants = 'nvim-web-devicons',
 			event = 'VimEnter', -- wants key requires lazy loading to work properly
 			requires = {{
@@ -43,17 +35,17 @@ require('packer').startup {
 
 		use {
 			'mhinz/vim-startify',
-			setup = reload('bp.plugins.vim-startify'),
+			setup = 'require("bp.plugins.vim-startify")',
 		}
 
 		use {
 			'rcarriga/nvim-notify',
-			config = reload('bp.plugins.nvim-notify'),
+			config = 'require("bp.plugins.nvim-notify")',
 		}
 
 		use {
 			'chaoren/vim-wordmotion',
-			setup = reload('bp.plugins.vim-wordmotion'),
+			setup = 'require("bp.plugins.vim-wordmotion")',
 		}
 
 		use {
@@ -63,25 +55,25 @@ require('packer').startup {
 		-- Lazy loaded:
 		use {
 			'neovim/nvim-lspconfig',
-			config = reload('bp.plugins.lsp'),
+			config = 'require("bp.plugins.lsp")',
 			ft = {'lua', 'python', 'c', 'cpp'},
 			wants = 'cmp-nvim-lsp',
 		}
 
 		use {
 			'nvim-treesitter/nvim-treesitter',
-			config = reload('bp.plugins.nvim-treesitter'),
+			config = 'require("bp.plugins.nvim-treesitter")',
 			ft = ts_ft,
 			run = ':TSUpdate',
 			requires = {
 				{
 					'nvim-treesitter/nvim-treesitter-textobjects',
-					config = reload('bp.plugins.nvim-treesitter-textobjects'),
+					config = 'require("bp.plugins.nvim-treesitter-textobjects")',
 					after = 'nvim-treesitter',
 				},
 				{
 					'nvim-treesitter/playground',
-					config = reload('bp.plugins.nvim-treesitter-playground'),
+					config = 'require("bp.plugins.nvim-treesitter-playground")',
 					cmd = 'TSPlaygroundToggle',
 					as = 'nvim-treesitter-playground',
 					wants = 'nvim-treesitter',
@@ -110,13 +102,13 @@ require('packer').startup {
 
 		use {
 			'lukas-reineke/indent-blankline.nvim',
-			config = reload('bp.plugins.indent-blankline'),
+			config = 'require("bp.plugins.indent-blankline")',
 			event = {'BufReadPre', 'BufNewFile'},
 		}
 
 		use {
 			'lewis6991/gitsigns.nvim',
-			config = reload('bp.plugins.gitsigns'),
+			config = 'require("bp.plugins.gitsigns")',
 			event = {'BufReadPre', 'BufNewFile'},
 			wants = 'plenary.nvim',
 			requires = {{'nvim-lua/plenary.nvim', opt = true}},
@@ -130,7 +122,7 @@ require('packer').startup {
 
 		use {
 			'hrsh7th/nvim-cmp',
-			config = reload('bp.plugins.nvim-cmp'),
+			config = 'require("bp.plugins.nvim-cmp")',
 			event = 'InsertEnter',
 			requires = {
 				{'hrsh7th/cmp-path', after = 'nvim-cmp', opt = true},
@@ -154,14 +146,14 @@ require('packer').startup {
 		}
 		use {
 			'L3MON4D3/LuaSnip',
-			config = reload('bp.plugins.luasnip'),
+			config = 'require("bp.plugins.luasnip")',
 			event = 'InsertEnter',
 		}
 
 		use {
 			'nvim-telescope/telescope.nvim',
-			config = reload('bp.plugins.telescope.config'),
-			setup = reload('bp.plugins.telescope.setup'),
+			config = 'require("bp.plugins.telescope.config")',
+			setup = 'require("bp.plugins.telescope.setup")',
 			module = 'telescope',
 			wants = {'nvim-web-devicons', 'plenary.nvim'},
 			requires = {
@@ -180,8 +172,8 @@ require('packer').startup {
 
 		use {
 			'TimUntersberger/neogit',
-			config = reload('bp.plugins.neogit.config'),
-			setup = reload('bp.plugins.neogit.setup'),
+			config = 'require("bp.plugins.neogit.config")',
+			setup = 'require("bp.plugins.neogit.setup")',
 			module = 'neogit',
 			cmd = 'Neogit',
 			wants = {'diffview.nvim', 'plenary.nvim'},
@@ -190,8 +182,8 @@ require('packer').startup {
 
 		use {
 			'sindrets/diffview.nvim',
-			config = reload('bp.plugins.diffview.config'),
-			setup = reload('bp.plugins.diffview.setup'),
+			config = 'require("bp.plugins.diffview.config")',
+			setup = 'require("bp.plugins.diffview.setup")',
 			cmd = 'DiffviewOpen',
 			wants = 'nvim-web-devicons',
 			requires = {{
@@ -207,8 +199,8 @@ require('packer').startup {
 
 		use {
 			'~/projects/hop.nvim',
-			config = reload('bp.plugins.hop.config'),
-			setup = reload('bp.plugins.hop.setup'),
+			config = 'require("bp.plugins.hop.config")',
+			setup = 'require("bp.plugins.hop.setup")',
 			module = 'hop',
 		}
 
@@ -223,7 +215,7 @@ require('packer').startup {
 
 		use {
 			'tpope/vim-surround',
-			setup = reload('bp.plugins.vim-surround'),
+			setup = 'require("bp.plugins.vim-surround")',
 			keys = {
 				{'n','ds'}, {'n','cs'}, {'n','cS'}, {'n','ys'}, {'n','yS'}, {'n','yss'}, {'n','ySs'}, {'n','ySS'},
 				{'x','S'}, {'x','gS'},
@@ -234,7 +226,7 @@ require('packer').startup {
 
 		use {
 			'ggandor/lightspeed.nvim',
-			config = reload('bp.plugins.lightspeed'),
+			config = 'require("bp.plugins.lightspeed")',
 			keys = {
 				{'n', 's'}, {'n', 'S'}, {'n', 'f'}, {'n', 'F'}, {'n', 't'}, {'n', 'T'},
 				{'x', 's'}, {'x', 'f'}, {'x', 'F'}, {'x', 't'}, {'x', 'T'},
@@ -246,8 +238,8 @@ require('packer').startup {
 
 		use {
 			'kyazdani42/nvim-tree.lua',
-			setup = reload('bp.plugins.nvim-tree.setup'),
-			config = reload('bp.plugins.nvim-tree.config'),
+			setup = 'require("bp.plugins.nvim-tree.setup")',
+			config = 'require("bp.plugins.nvim-tree.config")',
 			cmd = 'NvimTreeToggle',
 			wants = 'nvim-web-devicons',
 			requires = {{
@@ -263,7 +255,7 @@ require('packer').startup {
 
 		use {
 			'wbthomason/packer.nvim',
-			config = reload('bp.plugins.packer'),
+			config = 'require("bp.plugins.packer")',
 			cmd = {
 				'PackerInstall',
 				'PackerUpdate',
@@ -279,6 +271,7 @@ require('packer').startup {
 	end,
 	config = {
 		compile_path = vim.fn.stdpath('data')..'/site/plugin/packer_compiled.lua',
+		auto_reload_compiled = false,
 		display = {
 			open_fn = function()
 				return require('packer.util').float({border = 'single'})

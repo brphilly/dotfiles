@@ -1,18 +1,5 @@
 local M = {}
 
-function M.reload_config()
-	local rel_mods = {}
-	for k in pairs(package.loaded) do
-		if string.match(k, "^bp%.[%l%p]+") then
-			package.loaded[k] = nil
-			table.insert(rel_mods, k)
-		end
-	end
-	for _,m in ipairs(rel_mods) do
-		require(m)
-	end
-end
-
 function M.hor_scroll()
 	local cur_line = vim.api.nvim_get_current_line()
 	local cur = vim.api.nvim_win_get_cursor(0)

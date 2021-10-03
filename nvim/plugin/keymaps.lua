@@ -84,7 +84,6 @@ local mappings = {
 	{'n', '<leader>re', '<cmd>echo<cr>', {noremap = true}},
 	{'n', '<leader>rs', '<cmd>redrawstatus!<cr>', {noremap = true}},
 	{'n', '<leader>rt', '<cmd>redrawtabline<cr>', {noremap = true}},
-	{'n', '<leader>rc', helpers..'reload_config()<cr>', {noremap = true}},
 	{'n', '<leader>ro', '<cmd>source '..vim.fn.stdpath('config')..'/plugin/options.lua<cr>', {noremap = true}},
 
 	{'n', '<leader>`', '<cmd>terminal<cr>', {noremap = true}},
