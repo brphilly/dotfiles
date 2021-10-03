@@ -37,6 +37,33 @@ function M.hor_scroll()
 	vim.api.nvim_feedkeys("zL", "n", false)
 end
 
+function M.make_session(close)
+	local project_names = {}
+	local initial_win = vim.api.nvim_get_current_win()
+	local wins = vim.api.nvim_list_wins()
+	for _,w in ipairs(wins) do
+		vim.api.nvim_set_current_win(w)
+		if vim.api.nvim_buf_get_option(0, 'buftype') == '' and vim.api.nvim_buf_get_option(0, 'filetype') ~= 'help' then
+			local wd = vim.fn.getcwd()
+			local tail_wd = vim.fn.fnamemodify(wd, ':p:h:t')
+			project_names[tail_wd] = true
+		end
+	end
+	vim.api.nvim_set_current_win(initial_win)
+
+	local session_path = vim.fn.stdpath('data')..'/session/'
+	local session_name = {}
+	for name in pairs(project_names) do table.insert(session_name, name) end
+	table.sort(session_name)
+	session_name = table.concat(session_name, '__')
+	session_name = 'session__'..session_name..'.vim'
+
+	vim.cmd('mksession! '..session_path..session_name)
+	if close then
+		vim.cmd('qall')
+	end
+end
+
 M.switch_prev_buf = function()
 	if vim.fn.buflisted(0) == 1 then
 		vim.cmd('buffer #')

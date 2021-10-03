@@ -10,7 +10,7 @@ vim.opt.foldlevel = 99
 vim.opt.spelloptions = 'camel'
 vim.opt.spellfile = vim.fn.stdpath('config')..'/spell/en.utf-8.add'
 
-vim.opt.sessionoptions:remove('curdir'):append({'skiprtp','terminal'})
+vim.opt.sessionoptions:append({'skiprtp','terminal'})
 
 vim.opt.number = true
 vim.opt.relativenumber = true

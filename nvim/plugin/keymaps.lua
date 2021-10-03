@@ -1,5 +1,4 @@
 local helpers = "<cmd>lua require'bp.keymap-funcs'."
-local session_path = vim.fn.stdpath("data")..'/session/'
 local mappings = {
 	{'t', '<c-[>', [[<c-\><c-n>]], {noremap = true}},
 
@@ -56,7 +55,7 @@ local mappings = {
 	{'x', '>', '>gv', {noremap = true}},
 
 	{'n', '<leader>sa', '<cmd>update<cr>', {noremap = true}},
-	{'n', '<leader>ss', ':mksession! '..session_path..'.vim<left><left><left><left>', {noremap = true}},
+	{'n', '<leader>ss', helpers..'make_session(false)<cr>', {noremap = true}},
 	{'n', '<leader>so', '<cmd>source<cr>', {noremap = true}},
 	{'x', '<leader>so', ":'<,'>source<cr>", {noremap = true}},
 
@@ -68,7 +67,7 @@ local mappings = {
 	{'n', '[T', '<cmd>tabmove -1<cr>', {noremap = true}},
 	{'n', ']T', '<cmd>tabmove +1<cr>', {noremap = true}},
 
-	{'n', '<leader>cv', '<cmd>mksession! '..session_path..'Session.vim<cr><cmd>qall<cr>', {noremap = true}},
+	{'n', '<leader>cv', helpers..'make_session(true)<cr>', {noremap = true}},
 	{'n', '<leader>cb', helpers..'buf_close()<cr>', {noremap = true}},
 	{'n', '<leader>ch', helpers..'buf_close_hid()<cr>', {noremap = true}},
 	{'n', '<leader>cu', helpers..'buf_close_unlist()<cr>', {noremap = true}},
