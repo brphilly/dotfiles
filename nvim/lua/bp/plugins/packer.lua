@@ -101,7 +101,10 @@ require('packer').startup {
 
 		use {
 			'ahmedkhalf/project.nvim',
-			config = function() require('project_nvim').setup {} end,
+			config = function()
+				vim.opt.autochdir = false
+				require('project_nvim').setup {}
+			end,
 			event = {'BufReadPre', 'BufNewFile'},
 		}
 

@@ -22,6 +22,8 @@ vim.opt.ruler = false
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
+vim.opt.autochdir = true
+
 vim.opt.linebreak = true
 vim.opt.breakindent = true
 vim.opt.breakindentopt = 'min:10,shift:1'
