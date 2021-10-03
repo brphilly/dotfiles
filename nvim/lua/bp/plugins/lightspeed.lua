@@ -13,7 +13,6 @@ vim.cmd(string.format([[
 	autocmd ColorScheme nord highlight LightspeedShortcut guifg=%s guibg=NONE gui=bold
 	autocmd ColorScheme nord highlight LightspeedShortcutOverlapped guifg=%s guibg=NONE gui=bold
 	autocmd ColorScheme nord highlight LightspeedPendingOpArea guifg=%s guibg=%s
-	autocmd ColorScheme nord highlight LightspeedPendingChangeOpArea guifg=%s guibg=%s gui=strikethrough
 	augroup END
 ]],
 	c.fg_fade,
@@ -26,7 +25,6 @@ vim.cmd(string.format([[
 	c.bg, c.yellow,
 	c.green,
 	c.blues[4],
-	c.bg, c.yellow,
 	c.bg, c.yellow
 ))
 vim.cmd(string.format([[doautocmd lightspeed-hl ColorScheme %s]], vim.g.colors_name))
