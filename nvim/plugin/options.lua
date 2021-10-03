@@ -30,7 +30,7 @@ vim.opt.virtualedit = {'onemore', 'block'}
 vim.opt.scrolloff = 5
 vim.opt.sidescrolloff = 3
 vim.opt.list = true
-vim.opt.listchars = {extends = '»', precedes = '«', eol = '¬', trail = '∙', tab = '→ ', nbsp = '␣'}
+vim.opt.listchars = {extends = '»', precedes = '«', eol = '¬', trail = '∙', tab = '  ', nbsp = '␣'}
 vim.opt.fillchars = {eob = ' ', fold = ' '}
 vim.opt.showmode = false
 vim.opt.showmatch = true
