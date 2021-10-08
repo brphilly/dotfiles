@@ -39,17 +39,13 @@ cmp.setup {
 	},
 
 	formatting = {
-		format = function(entry, vim_item)
-			-- set a name for each source
-			vim_item.menu = ({
-				buffer = "[Buffer]",
-				nvim_lsp = "[LSP]",
-				luasnip = "[LuaSnip]",
-				nvim_lua = "[Lua]",
-				path = '[Path]',
-			})[entry.source.name]
-			return vim_item
-		end,
+		format = require('lspkind').cmp_format({with_text = true, menu = {
+			buffer = "[Buffer]",
+			nvim_lsp = "[LSP]",
+			luasnip = "[LuaSnip]",
+			nvim_lua = "[Lua]",
+			path = "[Path]",
+		}}),
 	},
 
 	-- You should specify your *installed* sources.

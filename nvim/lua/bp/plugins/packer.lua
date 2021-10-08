@@ -124,6 +124,7 @@ require('packer').startup {
 			'hrsh7th/nvim-cmp',
 			config = 'require("bp.plugins.nvim-cmp")',
 			event = 'InsertEnter',
+			wants = 'lspkind-nvim',
 			requires = {
 				{'hrsh7th/cmp-path', after = 'nvim-cmp', opt = true},
 				{'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp', opt = true},
@@ -140,6 +141,10 @@ require('packer').startup {
 				{
 					'hrsh7th/cmp-nvim-lsp',
 					after = 'nvim-cmp',
+					opt = true,
+				},
+				{
+					'onsails/lspkind-nvim',
 					opt = true,
 				},
 			},
