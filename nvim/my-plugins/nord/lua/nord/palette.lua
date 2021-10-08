@@ -1,3 +1,4 @@
+-- stylua: ignore
 local palette = {
 	darks = {
 		'#2e3440',

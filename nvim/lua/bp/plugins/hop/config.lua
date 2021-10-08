@@ -1,7 +1,8 @@
-require'hop'.setup {
-	quit_key = '<c-[>',
-}
-local c = require'nord.colours'
+require("hop").setup({
+	quit_key = "<c-[>",
+})
+local c = require("nord.colours")
+-- stylua: ignore
 vim.cmd(string.format([[
 	augroup hop-hl
 	autocmd!

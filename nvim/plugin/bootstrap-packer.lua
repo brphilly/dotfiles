@@ -6,11 +6,7 @@ local download_packer = function(install_path)
 	vim.fn.mkdir(install_path, "p")
 
 	print("Downloading packer.nvim...")
-	local out = vim.fn.system(string.format(
-		"git clone %s %s",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path.."/packer.nvim"
-	))
+	local out = vim.fn.system(string.format("git clone %s %s", "https://github.com/wbthomason/packer.nvim", install_path .. "/packer.nvim"))
 	print(out)
 
 	vim.cmd("packadd packer.nvim")
@@ -19,5 +15,5 @@ local download_packer = function(install_path)
 	return true
 end
 
-local install_path = vim.fn.stdpath("data").."/site/pack/packer/opt"
-return vim.fn.empty(vim.fn.glob(install_path.."/packer.nvim")) == 0 or download_packer(install_path)
+local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/opt"
+return vim.fn.empty(vim.fn.glob(install_path .. "/packer.nvim")) == 0 or download_packer(install_path)

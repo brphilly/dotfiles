@@ -1,5 +1,5 @@
-local p = require'nord.palette'
-local utils = require'nord.utils'
+local p = require("nord.palette")
+local utils = require("nord.utils")
 local colours = {}
 
 colours.darks = {
@@ -23,7 +23,7 @@ colours.red = p.red
 colours.orange = p.orange
 colours.yellow = p.yellow
 colours.green = p.green
-colours.purple = '#a093c7'
+colours.purple = "#a093c7"
 
 colours.fg = colours.lights[1]
 colours.bg = utils.darken(colours.darks[1], 0.3)

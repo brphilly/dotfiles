@@ -1,4 +1,4 @@
-vim.g.mapleader = ' '
+vim.g.mapleader = " "
 
 -- Disable builtin plugins:
 vim.g.loaded_gzip = 1

@@ -1,11 +1,11 @@
-vim.cmd [[
+vim.cmd([[
 	augroup UpdateBuf
 	autocmd!
 	autocmd BufEnter,FocusGained * checktime
 	augroup END
-]]
+]])
 
-vim.cmd [[
+vim.cmd([[
 	augroup Terminal
 	autocmd!
 	autocmd TermOpen * setlocal wrap
@@ -14,32 +14,32 @@ vim.cmd [[
 	autocmd TermOpen * startinsert
 	autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
 	augroup END
-]]
+]])
 
-vim.cmd [[
+vim.cmd([[
 	augroup HighlightYank
 	autocmd!
 	autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup = "Visual", timeout = 1000}
 	augroup END
-]]
+]])
 
-vim.cmd [[
+vim.cmd([[
 	augroup StartSearchHL
 	autocmd!
 	autocmd CmdLineLeave [/\?] lua require("bp.keymap-funcs").start_hl()
 	augroup END
-]]
+]])
 
-vim.cmd [[
+vim.cmd([[
 	augroup DirectorySave
 	autocmd!
 	autocmd BufWritePre,FileWritePre * silent! call mkdir(expand('<afile>:p:h'), 'p')
 	augroup END
-]]
+]])
 
-vim.cmd [[
+vim.cmd([[
 	augroup SpellFT
 	autocmd!
 	autocmd FileType text,markdown,conf setlocal spell
 	augroup END
-]]
+]])

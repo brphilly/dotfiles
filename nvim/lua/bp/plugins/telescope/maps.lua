@@ -1,156 +1,156 @@
 local M = {}
-local builtin = require'telescope.builtin'
+local builtin = require("telescope.builtin")
 
 function M.files_conf()
-	builtin.find_files {
-		cwd = vim.fn.fnamemodify(vim.fn.stdpath('config'), ':h:p'),
+	builtin.find_files({
+		cwd = vim.fn.fnamemodify(vim.fn.stdpath("config"), ":h:p"),
 		prompt_title = "Find files in configs",
 		hidden = true,
-	}
+	})
 end
 
 function M.files_dir()
-	local dir = vim.fn.expand('%:p:h')
-	builtin.find_files {
-		prompt_title = "Find files in "..dir,
+	local dir = vim.fn.expand("%:p:h")
+	builtin.find_files({
+		prompt_title = "Find files in " .. dir,
 		cwd = dir,
-	}
+	})
 end
 
 function M.files_cwd()
 	local dir = vim.fn.getcwd()
-	builtin.find_files {
-		prompt_title = "Find files in "..dir,
+	builtin.find_files({
+		prompt_title = "Find files in " .. dir,
 		cwd = dir,
-	}
+	})
 end
 
 function M.files_home()
 	local dir = vim.env.HOME
-	builtin.find_files {
-		prompt_title = "Find files in "..dir,
+	builtin.find_files({
+		prompt_title = "Find files in " .. dir,
 		cwd = dir,
 		hidden = true,
-	}
+	})
 end
 
 function M.grep_dir()
-	local dir = vim.fn.expand('%:p:h')
-	builtin.live_grep {
-		prompt_title = "Grep files in "..dir,
+	local dir = vim.fn.expand("%:p:h")
+	builtin.live_grep({
+		prompt_title = "Grep files in " .. dir,
 		cwd = dir,
-	}
+	})
 end
 
 function M.grep_cwd()
 	local dir = vim.fn.getcwd()
-	builtin.live_grep {
-		prompt_title = "Grep files in "..dir,
+	builtin.live_grep({
+		prompt_title = "Grep files in " .. dir,
 		cwd = dir,
-	}
+	})
 end
 
 function M.grep_conf()
-	builtin.live_grep {
+	builtin.live_grep({
 		prompt_title = "Grep config",
-		cwd = vim.fn.fnamemodify(vim.fn.stdpath('config'), ':h:p'),
-	}
+		cwd = vim.fn.fnamemodify(vim.fn.stdpath("config"), ":h:p"),
+	})
 end
 
 function M.grep_home()
 	local dir = vim.env.HOME
-	builtin.live_grep {
-		prompt_title = "Grep files in "..dir,
+	builtin.live_grep({
+		prompt_title = "Grep files in " .. dir,
 		cwd = dir,
-	}
+	})
 end
 
 function M.grep_bufs()
-	builtin.live_grep {
+	builtin.live_grep({
 		grep_open_files = true,
 		prompt_title = "Grep buffers",
-	}
+	})
 end
 
-local todo_str = 'TODO(brphilly):'
+local todo_str = "TODO(brphilly):"
 function M.grep_todo_dir()
-	local dir = vim.fn.expand('%:p:h')
-	builtin.grep_string {
+	local dir = vim.fn.expand("%:p:h")
+	builtin.grep_string({
 		cwd = dir,
 		search = todo_str,
-		search_dirs = {dir},
-		prompt_title = "Grep todos in "..dir,
-	}
+		search_dirs = { dir },
+		prompt_title = "Grep todos in " .. dir,
+	})
 end
 
 function M.grep_todo_cwd()
 	local dir = vim.fn.getcwd()
-	builtin.grep_string {
+	builtin.grep_string({
 		cwd = dir,
 		search = todo_str,
-		search_dirs = {dir},
-		prompt_title = "Grep todos in "..dir,
-	}
+		search_dirs = { dir },
+		prompt_title = "Grep todos in " .. dir,
+	})
 end
 
 function M.grep_todo_conf()
-	local dir = vim.fn.fnamemodify(vim.fn.stdpath('config'), ':h:p')
-	builtin.grep_string {
+	local dir = vim.fn.fnamemodify(vim.fn.stdpath("config"), ":h:p")
+	builtin.grep_string({
 		cwd = dir,
 		vimgrep_arguments = {
-			'rg',
-			'--color=never',
-			'--no-heading',
-			'--with-filename',
-			'--line-number',
-			'--column',
-			'--smart-case',
-			'--glob',
-			'!nvim/lua/bp/plugins/telescope/maps.lua',
-			'--glob',
-			'!nvim/snippets/**',
+			"rg",
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
+			"--glob",
+			"!nvim/lua/bp/plugins/telescope/maps.lua",
+			"--glob",
+			"!nvim/snippets/**",
 		},
 		search = todo_str,
-		search_dirs = {dir},
+		search_dirs = { dir },
 		prompt_title = "Grep todos in config",
-	}
+	})
 end
 
 function M.grep_todo_home()
 	local dir = vim.env.HOME
-	builtin.grep_string {
+	builtin.grep_string({
 		cwd = dir,
 		search = todo_str,
-		search_dirs = {dir},
-		prompt_title = "Grep todos in "..dir,
-	}
+		search_dirs = { dir },
+		prompt_title = "Grep todos in " .. dir,
+	})
 end
 
 function M.browse_dir()
-	local dir = vim.fn.expand('%:p:h')
-	builtin.file_browser {
+	local dir = vim.fn.expand("%:p:h")
+	builtin.file_browser({
 		cwd = dir,
-	}
+	})
 end
 
 function M.browse_cwd()
 	local dir = vim.fn.getcwd()
-	builtin.file_browser {
+	builtin.file_browser({
 		cwd = dir,
-	}
+	})
 end
 
 function M.browse_conf()
-	builtin.file_browser {
-		cwd = vim.fn.fnamemodify(vim.fn.stdpath('config'), ':h:p'),
-	}
+	builtin.file_browser({
+		cwd = vim.fn.fnamemodify(vim.fn.stdpath("config"), ":h:p"),
+	})
 end
 
 function M.browse_home()
 	local dir = vim.env.HOME
-	builtin.file_browser {
+	builtin.file_browser({
 		cwd = dir,
-	}
+	})
 end
 
 return M

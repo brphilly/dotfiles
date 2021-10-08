@@ -1,5 +1,5 @@
 -- TODO(brphilly): Keep an eye on updates to this, goto next node, next string etc
-require'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.configs").setup({
 	textobjects = {
 		select = {
 			enable = true,
@@ -39,10 +39,10 @@ require'nvim-treesitter.configs'.setup {
 		swap = {
 			enable = true,
 			swap_next = {
-				["<leader>]a"] = "@parameter.inner"
+				["<leader>]a"] = "@parameter.inner",
 			},
 			swap_previous = {
-				["<leader>[a"] = "@parameter.inner"
+				["<leader>[a"] = "@parameter.inner",
 			},
 		},
 		-- lsp_interop = {
@@ -53,4 +53,4 @@ require'nvim-treesitter.configs'.setup {
 		--   },
 		-- },
 	},
-}
+})

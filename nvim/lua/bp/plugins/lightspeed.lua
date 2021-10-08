@@ -1,4 +1,5 @@
-local c = require'nord.colours'
+local c = require("nord.colours")
+-- stylua: ignore
 vim.cmd(string.format([[
 	augroup lightspeed-hl
 	autocmd!

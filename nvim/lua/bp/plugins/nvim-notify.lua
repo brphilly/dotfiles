@@ -1,10 +1,11 @@
-vim.notify = require'notify'
-vim.api.nvim_set_keymap('n', '<leader>$', '<cmd>Notifications<cr>', {noremap = true})
-require'notify'.setup {
-	stages = 'slide',
-}
+vim.notify = require("notify")
+vim.api.nvim_set_keymap("n", "<leader>$", "<cmd>Notifications<cr>", { noremap = true })
+require("notify").setup({
+	stages = "slide",
+})
 
-local c = require'nord.colours'
+local c = require("nord.colours")
+-- stylua: ignore
 vim.cmd(string.format([[
 	augroup notify-hl
 	autocmd!
