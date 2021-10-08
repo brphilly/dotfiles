@@ -1,14 +1,16 @@
 local cmp = require("cmp")
 cmp.setup({
 	mapping = {
-		["<C-d>"] = cmp.mapping.scroll_docs(-4),
-		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
-		["<C-e>"] = cmp.mapping.abort(),
+		["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+		["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
 		["<Tab>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Insert,
 			select = false,
 		}),
+		["<C-e>"] = cmp.mapping.abort(),
+		["<C-b>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
 	},
 
 	completion = {
@@ -74,3 +76,25 @@ autocmd FileType python,c,cpp lua require'cmp'.setup.buffer {sources = {{name='l
 augroup END
 ]])
 vim.cmd([[doautoall nvim-cmp-ft FileType]])
+
+local c = require("nord.colours")
+-- stylua: ignore
+vim.cmd(string.format([[
+	augroup nvim-cmp-hl
+	autocmd!
+	autocmd ColorScheme nord highlight CmpItemAbbrMatch guifg=%s
+	autocmd ColorScheme nord highlight CmpItemAbbrMatchFuzzy guifg=%s
+	autocmd ColorScheme nord highlight CmpItemAbbr guifg=%s
+	autocmd ColorScheme nord highlight CmpItemAbbrDeprecated guifg=%s gui=strikethrough
+	autocmd ColorScheme nord highlight CmpItemKind guifg=%s
+	autocmd ColorScheme nord highlight CmpItemMenu guifg=%s
+	augroup END
+]],
+	c.yellow,
+	c.orange,
+	c.fg,
+	c.fg,
+	c.purple,
+	c.comment
+))
+vim.cmd(string.format([[doautocmd nvim-cmp-hl ColorScheme %s]], vim.g.colors_name))

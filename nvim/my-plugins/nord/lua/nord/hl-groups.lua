@@ -37,7 +37,7 @@ return {
 	NormalFloat = { fg = c.fg, bg = c.bg_float },
 	NormalNC = { link = "Normal" },
 	Pmenu = { fg = c.border, bg = c.bg_float },
-	PmenuSel = { fg = c.fg, bg = c.selection },
+	PmenuSel = { bg = c.selection },
 	PmenuSbar = { fg = c.border, bg = c.bg_float },
 	PmenuThumb = { fg = c.border, bg = c.border },
 	Question = { fg = c.yellow },
