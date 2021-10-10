@@ -185,6 +185,14 @@ require("packer").startup({
 					end,
 				},
 				{ "nvim-lua/plenary.nvim", opt = true },
+				{
+					"nvim-telescope/telescope-fzf-native.nvim",
+					run = "make",
+					after = "telescope.nvim",
+					config = function()
+						require("telescope").load_extension("fzf")
+					end,
+				},
 			},
 		})
 
