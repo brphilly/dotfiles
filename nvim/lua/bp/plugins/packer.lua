@@ -87,6 +87,13 @@ require("packer").startup({
 					end,
 					after = "nvim-treesitter",
 				},
+				{
+					"romgrk/nvim-treesitter-context",
+					config = function()
+						require("treesitter-context").setup({ throttle = true, max_lines = 1 })
+					end,
+					after = "nvim-treesitter",
+				},
 			},
 		})
 
