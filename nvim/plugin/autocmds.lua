@@ -1,7 +1,7 @@
 vim.cmd([[
 	augroup UpdateBuf
 	autocmd!
-	autocmd BufEnter,FocusGained * checktime
+	autocmd BufEnter,FocusGained * silent! checktime
 	augroup END
 ]])
 
@@ -41,5 +41,15 @@ vim.cmd([[
 	augroup SpellFT
 	autocmd!
 	autocmd FileType text,markdown,conf setlocal spell
+	augroup END
+]])
+
+vim.cmd([[
+	augroup CommandWin
+	autocmd!
+	autocmd CmdwinEnter * startinsert
+	autocmd CmdwinEnter * nnoremap <buffer> <c-[> <cmd>quit<cr>
+	autocmd CmdwinEnter : nnoremap <buffer> <cr> <cr>q:
+	autocmd CmdwinEnter : inoremap <buffer> <cr> <cr>q:
 	augroup END
 ]])

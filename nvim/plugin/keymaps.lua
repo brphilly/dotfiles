@@ -89,6 +89,7 @@ local mappings = {
 	{ "n", "<leader>`", "<cmd>terminal<cr>", { noremap = true } },
 	{ "n", ":", ";", { noremap = true } },
 	{ "n", ";", ":", { noremap = true } },
+	{ "n", "<leader>;", "q:", { noremap = true } },
 	{ "n", "`", "'", { noremap = true } },
 	{ "o", "`", "'", { noremap = true } },
 	{ "x", "`", "'", { noremap = true } },
