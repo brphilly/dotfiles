@@ -29,11 +29,15 @@ function M.make_session(close)
 	local initial_win = vim.api.nvim_get_current_win()
 	local wins = vim.api.nvim_list_wins()
 	for _, w in ipairs(wins) do
-		vim.api.nvim_set_current_win(w)
-		if vim.api.nvim_buf_get_option(0, "buftype") == "" and vim.api.nvim_buf_get_option(0, "filetype") ~= "help" then
-			local wd = vim.fn.getcwd()
-			local tail_wd = vim.fn.fnamemodify(wd, ":p:h:t")
-			project_names[tail_wd] = true
+		if vim.api.nvim_win_get_config(w).relative == "" then -- non floating window
+			vim.api.nvim_set_current_win(w)
+			if vim.api.nvim_buf_get_option(0, "buftype") == "" and vim.api.nvim_buf_get_option(0, "filetype") ~= "help" then
+				local wd = vim.fn.getcwd()
+				local tail_wd = vim.fn.fnamemodify(wd, ":p:h:t")
+				project_names[tail_wd] = true
+			end
+		else -- floating window
+			vim.api.nvim_win_close(w, true)
 		end
 	end
 	vim.api.nvim_set_current_win(initial_win)
