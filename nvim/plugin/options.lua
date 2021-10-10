@@ -49,7 +49,7 @@ vim.opt.mouse = "a"
 vim.opt.shortmess:append("cI")
 vim.opt.iskeyword:append("-")
 vim.opt.updatetime = 1000
-vim.opt.timeout = false
+vim.opt.timeoutlen = 3000
 vim.opt.switchbuf = "usetab"
 
 vim.opt.completeopt = { "menuone", "noinsert" }
