@@ -193,6 +193,18 @@ require("packer").startup({
 						require("telescope").load_extension("fzf")
 					end,
 				},
+				{
+					"nvim-telescope/telescope-frecency.nvim",
+					after = "telescope.nvim",
+					wants = "sqlite.lua",
+					setup = function()
+						vim.api.nvim_set_keymap("n", "<leader>ffo", "<cmd>lua require('telescope').extensions.frecency.frecency()<cr>", { noremap = true })
+					end,
+					config = function()
+						require("telescope").load_extension("frecency")
+					end,
+					requires = { { "tami5/sqlite.lua", opt = true } },
+				},
 			},
 		})
 

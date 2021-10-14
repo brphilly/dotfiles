@@ -6,7 +6,7 @@ skeymap("n", "<leader>ffd", maps .. "files_dir()<cr>", { noremap = true })
 skeymap("n", "<leader>ffw", maps .. "files_cwd()<cr>", { noremap = true })
 skeymap("n", "<leader>ffc", maps .. "files_conf()<cr>", { noremap = true })
 skeymap("n", "<leader>ffh", maps .. "files_home()<cr>", { noremap = true })
-skeymap("n", "<leader>ffo", builtin .. "oldfiles()<cr>", { noremap = true })
+-- skeymap("n", "<leader>ffo", builtin .. "oldfiles()<cr>", { noremap = true })
 
 skeymap("n", "<leader>fb", builtin .. "buffers()<cr>", { noremap = true })
 skeymap("n", "<leader>fh", builtin .. "help_tags()<cr>", { noremap = true })
