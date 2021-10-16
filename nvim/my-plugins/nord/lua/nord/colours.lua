@@ -39,6 +39,7 @@ colours.visual = colours.darks[3]
 colours.search = colours.darks[4]
 colours.selection = utils.blend(colours.blues[1], colours.bg, 0.7)
 colours.title = colours.green
+colours.status = colours.darks[1]
 
 colours.diff_add = utils.blend(colours.bg, colours.green, 0.7)
 colours.diff_change = utils.blend(colours.bg, colours.blues[1], 0.6)

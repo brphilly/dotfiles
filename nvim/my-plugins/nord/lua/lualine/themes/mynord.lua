@@ -3,7 +3,7 @@ return {
 	normal = {
 		a = { bg = colours.blues[3], fg = colours.bg, gui = "bold" },
 		b = { bg = colours.bg_float, fg = colours.fg },
-		c = { bg = colours.visual, fg = colours.fg },
+		c = { bg = colours.status, fg = colours.fg },
 	},
 	insert = { a = { bg = colours.blues[1], fg = colours.bg, gui = "bold" } },
 	replace = { a = { bg = colours.green, fg = colours.bg, gui = "bold" } },

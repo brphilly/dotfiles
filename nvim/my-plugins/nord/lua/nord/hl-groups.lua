@@ -48,7 +48,7 @@ return {
 	SpellCap = { sp = c.warning, att = "undercurl" },
 	SpellLocal = { sp = c.hint, att = "undercurl" },
 	SpellRare = { sp = c.note, att = "undercurl" },
-	StatusLine = { fg = c.fg, bg = c.visual },
+	StatusLine = { fg = c.fg, bg = c.status },
 	StatusLineNC = { fg = c.fg_fade, bg = c.bg_hl },
 	TabLine = { fg = c.fg_fade, bg = c.bg_hl },
 	TabLineFill = { fg = c.fg, bg = c.bg_hl },
