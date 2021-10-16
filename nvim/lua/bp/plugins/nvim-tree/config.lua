@@ -7,7 +7,7 @@ require("nvim-tree").setup({
 	-- hijack the cursor in the tree to put it at the start of the filename
 	hijack_cursor = true,
 	-- show lsp diagnostics in the signcolumn
-	lsp_diagnostics = true,
+	diagnostics = { enable = true },
 	view = {
 		mappings = {
 			list = {
