@@ -55,9 +55,8 @@ lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_c
 	flags = { debounce_text_changes = 200 },
 
 	handlers = {
-		["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single", silent = true }),
-		["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single", silent = true }),
-		["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { update_in_insert = true, severity_sort = true }),
+		["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
+		["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
 	},
 
 	capabilities = capabilities,

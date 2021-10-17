@@ -58,3 +58,5 @@ vim.opt.pumheight = math.ceil(vim.go.lines / 2)
 vim.opt.undofile = true
 vim.opt.backup = true
 vim.opt.backupdir = vim.env.XDG_DATA_HOME .. "/nvim/backup//"
+
+vim.diagnostic.config({ virtual_text = { source = "if_many" }, update_in_insert = true, severity_sort = true })
