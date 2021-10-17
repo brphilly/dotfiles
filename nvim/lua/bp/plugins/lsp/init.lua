@@ -8,41 +8,47 @@ lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_c
 		-- Mappings
 		local opts = { noremap = true, silent = true }
 		local function bsk(mode, key, map, cap)
-			if cap == nil or client.resolved_capabilities[cap] then
+			if client.supports_method(cap) then
 				vim.api.nvim_buf_set_keymap(bufnr, mode, key, map, opts)
 			else
-				vim.api.nvim_buf_set_keymap(bufnr, mode, key, '<cmd>echo "Not supported"<cr>', opts)
+				vim.api.nvim_buf_set_keymap(
+					bufnr,
+					mode,
+					key,
+					string.format([[<cmd>lua vim.notify('%s is not supported by %s', 'error', {title='LSP Config'})<cr>]], cap, client.name),
+					opts
+				)
 			end
 		end
 
-		bsk("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", "declaration")
-		bsk("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", "goto_definition")
-		bsk("n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", "type_definition")
-		bsk("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", "implementation")
-		bsk("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", "find_references")
+		bsk("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", "textDocument/declaration")
+		bsk("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", "textDocument/definition")
+		bsk("n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", "textDocument/typeDefinition")
+		bsk("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", "textDocument/implementation")
+		bsk("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", "textDocument/references")
 
-		bsk("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", "hover")
-		bsk("n", "<c-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", "signature_help")
-		bsk("i", "<c-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", "signature_help")
+		bsk("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", "textDocument/hover")
+		bsk("n", "<c-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", "textDocument/signatureHelp")
+		bsk("i", "<c-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", "textDocument/signatureHelp")
 
-		bsk("n", "<leader>lwa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
-		bsk("n", "<leader>lwr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
-		bsk("n", "<leader>lwl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
+		bsk("n", "<leader>lrn", "<cmd>lua vim.lsp.buf.rename()<CR>", "textDocument/rename")
+		bsk("n", "<leader>lca", "<cmd>lua vim.lsp.buf.code_action()<CR>", "textDocument/codeAction")
+		bsk("n", "<leader>lcl", "<cmd>lua vim.lsp.codelens.run()<CR>", "codeLens/resolve")
+		bsk("n", "<leader>lh", '<cmd>lua require"bp.plugins.lsp".ref_hl()<cr>', "textDocument/documentHighlight")
 
-		bsk("n", "<leader>lrn", "<cmd>lua vim.lsp.buf.rename()<CR>", "rename")
-		bsk("n", "<leader>lca", "<cmd>lua vim.lsp.buf.code_action()<CR>", "code_action")
-		bsk("n", "<leader>lcl", "<cmd>lua vim.lsp.codelens.run()<CR>", "execute_command")
-		bsk("n", "<leader>lh", '<cmd>lua require"bp.plugins.lsp".ref_hl()<cr>', "document_highlight")
+		bsk("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", "textDocument/formatting")
+		bsk("x", "<leader>lf", ":lua vim.lsp.buf.range_formatting()<CR>", "textDocument/rangeFormatting")
 
-		bsk("n", "<leader>le", '<cmd>lua vim.diagnostic.show_line_diagnostics({border = "single"})<CR>')
-		bsk("n", "[l", '<cmd>lua vim.diagnostic.goto_prev({popup_opts = {border = "single"}})<CR>')
-		bsk("n", "]l", '<cmd>lua vim.diagnostic.goto_next({popup_opts = {border = "single"}})<CR>')
-		bsk("n", "<leader>ll", "<cmd>lua vim.diagnostic.setloclist()<CR>")
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lwa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lwr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lwl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
 
-		bsk("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", "document_formatting")
-		bsk("x", "<leader>lf", ":lua vim.lsp.buf.range_formatting()<CR>", "document_range_formatting")
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>le", '<cmd>lua vim.diagnostic.show_line_diagnostics({border = "single"})<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "[l", '<cmd>lua vim.diagnostic.goto_prev({popup_opts = {border = "single"}})<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "]l", '<cmd>lua vim.diagnostic.goto_next({popup_opts = {border = "single"}})<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ll", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
-		if client.resolved_capabilities["code_lens"] then
+		if client.supports_method("textDocument/codeLens") then
 			vim.cmd([[
 					augroup lspcodelens
 					autocmd!
