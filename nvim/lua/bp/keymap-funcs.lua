@@ -25,33 +25,37 @@ function M.hor_scroll()
 end
 
 function M.make_session(close)
-	local project_names = {}
-	local initial_win = vim.api.nvim_get_current_win()
-	local wins = vim.api.nvim_list_wins()
-	for _, w in ipairs(wins) do
-		if vim.api.nvim_win_get_config(w).relative == "" then -- non floating window
-			vim.api.nvim_set_current_win(w)
-			if vim.api.nvim_buf_get_option(0, "buftype") == "" and vim.api.nvim_buf_get_option(0, "filetype") ~= "help" then
-				local wd = vim.fn.getcwd()
-				local tail_wd = vim.fn.fnamemodify(wd, ":p:h:t")
-				project_names[tail_wd] = true
-			end
-		else -- floating window
+	-- close all floating windows as they cause problems when saved in sessions
+	for _, w in ipairs(vim.api.nvim_list_wins()) do
+		if vim.api.nvim_win_get_config(w).relative ~= "" then
 			vim.api.nvim_win_close(w, true)
 		end
 	end
-	vim.api.nvim_set_current_win(initial_win)
 
-	local session_path = vim.fn.stdpath("data") .. "/session/"
+	-- loop through buffers and get cwd of those I want to save
+	local work_dirs = {} -- set of cwd tails
+	for _, b in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.api.nvim_buf_get_option(b, "buflisted") and vim.api.nvim_buf_get_option(b, "buftype") == "" then
+			vim.api.nvim_buf_call(b, function()
+				vim.cmd("doautocmd <nomodeline> BufEnter") -- make sure rooter plugin updates the cwd
+				local cwd = vim.fn.getcwd()
+				local tail = vim.fn.fnamemodify(cwd, ":p:h:t")
+				work_dirs[tail] = true
+			end)
+		end
+	end
+
+	-- concatenate set of work_dirs into one string to use as session name
 	local session_name = {}
-	for name in pairs(project_names) do
+	for name in pairs(work_dirs) do
 		table.insert(session_name, name)
 	end
 	table.sort(session_name)
 	session_name = table.concat(session_name, "__")
 	session_name = "session__" .. session_name .. ".vim"
 
-	vim.cmd("mksession! " .. session_path .. session_name)
+	-- save session and quit if close is true
+	vim.cmd(string.format("mksession! %s%s", vim.fn.stdpath("data") .. "/session/", session_name))
 	if close then
 		vim.cmd("qall")
 	end
