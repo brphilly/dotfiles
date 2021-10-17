@@ -69,12 +69,12 @@ lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_c
 	-- on_new_config = function(new_config, new_root_dir) -- run on new root dir, can use to change config
 })
 
-vim.cmd([[
-	sign define DiagnosticSignError numhl=DiagnosticSignError
-	sign define DiagnosticSignWarn numhl=DiagnosticSignWarn
-	sign define DiagnosticSignInfo numhl=DiagnosticSignInfo
-	sign define DiagnosticSignHint numhl=DiagnosticSignHint
-]])
+vim.fn.sign_define({
+	{ name = "DiagnosticSignError", numhl = "DiagnosticSignError" },
+	{ name = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn" },
+	{ name = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" },
+	{ name = "DiagnosticSignHint", numhl = "DiagnosticSignHint" },
+})
 
 -- Use a loop to setup defined servers
 local servers = { "sumneko_lua", "pyright", "clangd" } -- Remember to add these to packer lazy load and nvim-cmp
