@@ -20,7 +20,7 @@ require("packer").startup({
 		use({
 			"shadmansaleh/lualine.nvim",
 			config = 'require("bp.plugins.lualine")',
-			wants = "nvim-web-devicons",
+			wants = { "nvim-web-devicons", "lualine-lsp-progress" },
 			event = "VimEnter", -- wants key requires lazy loading to work properly
 			requires = {
 				{
@@ -32,6 +32,8 @@ require("packer").startup({
 						})
 					end,
 				},
+				-- { "arkav/lualine-lsp-progress", opt = true },
+				{ "clason/lualine-lsp-progress", branch = "adapt-shadman", opt = true },
 			},
 		})
 
