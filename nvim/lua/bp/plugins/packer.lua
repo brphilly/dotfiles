@@ -62,6 +62,11 @@ require("packer").startup({
 			config = 'require("bp.plugins.lsp")',
 			ft = { "lua", "python", "c", "cpp" },
 			wants = "cmp-nvim-lsp",
+			requires = { {
+				"kosayoda/nvim-lightbulb",
+				after = "nvim-lspconfig",
+				config = "require('bp.plugins.nvim-lightbulb')",
+			} },
 		})
 
 		use({

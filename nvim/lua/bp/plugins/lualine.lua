@@ -38,7 +38,7 @@ require("lualine").setup({
 			diff,
 			{ "diagnostics", sources = { "nvim_lsp" } },
 		},
-		lualine_c = {},
+		lualine_c = { "require('nvim-lightbulb').get_status_text()" },
 		lualine_x = { lsp_progress },
 		lualine_y = { { "filename", path = 0 }, "filetype" },
 		lualine_z = { "%v", "%l/%L" },
