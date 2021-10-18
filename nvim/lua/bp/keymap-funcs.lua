@@ -44,6 +44,7 @@ function M.make_session(close)
 			end)
 		end
 	end
+	vim.cmd("doautocmd <nomodeline> BufEnter") -- make sure rooter plugin updates the cwd
 
 	-- concatenate set of work_dirs into one string to use as session name
 	local session_name = {}
