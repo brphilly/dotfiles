@@ -17,6 +17,7 @@ vim.opt.relativenumber = true
 vim.opt.signcolumn = "auto:2"
 vim.opt.cursorlineopt = "number"
 vim.opt.cursorline = true
+vim.opt.colorcolumn = "151"
 vim.opt.ruler = false
 
 vim.opt.splitbelow = true
