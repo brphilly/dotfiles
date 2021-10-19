@@ -80,9 +80,9 @@ local mappings = {
 	{ "n", "]B", "<cmd>blast<cr>", { noremap = true } },
 	{ "n", "<tab>", helpers .. "switch_prev_buf()<cr>", { noremap = true } },
 
-	{ "n", "<leader>dk", '<cmd>lua vim.diagnostic.show_line_diagnostics({border = "single"})<CR>', { noremap = true } },
-	{ "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({popup_opts = {border = "single"}})<CR>', { noremap = true } },
-	{ "n", "]d", '<cmd>lua vim.diagnostic.goto_next({popup_opts = {border = "single"}})<CR>', { noremap = true } },
+	{ "n", "<leader>dk", '<cmd>lua vim.diagnostic.open_float(0, {scope="line"})<CR>', { noremap = true } },
+	{ "n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { noremap = true } },
+	{ "n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", { noremap = true } },
 	{ "n", "<leader>dl", "<cmd>lua vim.diagnostic.setloclist()<CR>", { noremap = true } },
 
 	{ "n", "<leader>rr", "<cmd>redraw!<cr>", { noremap = true } },
