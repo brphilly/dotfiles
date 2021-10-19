@@ -50,7 +50,7 @@ require("nvim-treesitter.configs").setup({
 			enable = true,
 			border = "single",
 			peek_definition_code = {
-				["<leader>lp"] = "@block.outer",
+				["<c-p>"] = "@block.outer",
 			},
 		},
 	},
