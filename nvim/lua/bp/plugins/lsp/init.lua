@@ -36,7 +36,6 @@ lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_c
 		bsk("n", "<c-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", "textDocument/signatureHelp")
 		bsk("i", "<c-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", "textDocument/signatureHelp")
 
-		-- TODO(brphilly): Fix rename on sumneko
 		bsk("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", "textDocument/rename")
 		bsk("n", "<leader>lh", '<cmd>lua require"bp.plugins.lsp".ref_hl()<cr>', "textDocument/documentHighlight")
 
