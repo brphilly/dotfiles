@@ -281,7 +281,9 @@ require("packer").startup({
 
 		use({
 			"kyazdani42/nvim-tree.lua",
-			setup = 'require("bp.plugins.nvim-tree.setup")',
+			setup = function()
+				vim.api.nvim_set_keymap("n", "-", "<cmd>NvimTreeToggle<cr>", { noremap = true })
+			end,
 			config = 'require("bp.plugins.nvim-tree.config")',
 			cmd = "NvimTreeToggle",
 			wants = "nvim-web-devicons",
