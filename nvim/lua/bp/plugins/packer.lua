@@ -301,6 +301,16 @@ require("packer").startup({
 		})
 
 		use({
+			"mbbill/undotree",
+			setup = function()
+				vim.api.nvim_set_keymap("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { noremap = true })
+				vim.g.undotree_WindowLayout = 2
+				vim.g.undotree_SetFocusWhenToggle = 1
+			end,
+			cmd = "UndotreeToggle",
+		})
+
+		use({
 			"wbthomason/packer.nvim",
 			config = 'require("bp.plugins.packer")',
 			cmd = {
