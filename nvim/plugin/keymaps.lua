@@ -30,8 +30,9 @@ local mappings = {
 	{ "i", "!", "!<c-g>u", { noremap = true } },
 	{ "i", "?", "?<c-g>u", { noremap = true } },
 
-	{ "i", "<tab>", [[pumvisible() ? "<c-y>" : "<tab>"]], { noremap = true, expr = true } },
-	{ "i", "<cr>", "<c-x><c-z><cr>", { noremap = true } },
+	{ "i", "<tab>", [[pumvisible() ? "<c-n>" : "<tab>"]], { noremap = true, expr = true } },
+	{ "i", "<s-tab>", [[pumvisible() ? "<c-p>" : "<tab>"]], { noremap = true, expr = true } },
+	{ "i", "<cr>", [[pumvisible() ? "<c-y>" : "<cr>"]], { noremap = true, expr = true } },
 
 	{ "n", "<leader>me", "<c-w>=", { noremap = true } },
 	{ "n", "<leader>mw", "<c-w>|", { noremap = true } },

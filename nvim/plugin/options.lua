@@ -53,7 +53,7 @@ vim.opt.updatetime = 250
 vim.opt.timeoutlen = 3000
 vim.opt.switchbuf = "usetab"
 
-vim.opt.completeopt = { "menuone", "noinsert" }
+vim.opt.completeopt = { "menuone", "noselect" }
 vim.opt.pumheight = math.ceil(vim.go.lines / 2)
 
 vim.opt.undofile = true

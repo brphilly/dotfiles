@@ -2,19 +2,26 @@ local cmp = require("cmp")
 cmp.setup({
 	mapping = {
 		["<C-Space>"] = cmp.mapping.complete(),
-		["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-		["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-		["<Tab>"] = cmp.mapping.confirm({
+		["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+		["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Insert,
 			select = false,
 		}),
 		["<C-e>"] = cmp.mapping.abort(),
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		-- remove default mappings
+		["<C-n>"] = cmp.mapping(function(fallback)
+			fallback()
+		end),
+		["<C-p>"] = cmp.mapping(function(fallback)
+			fallback()
+		end),
 	},
 
 	completion = {
-		completeopt = "menuone,noinsert",
+		completeopt = "menuone,noselect",
 	},
 
 	confirmation = {
