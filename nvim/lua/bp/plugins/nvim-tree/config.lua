@@ -13,6 +13,7 @@ require("nvim-tree").setup({
 			list = {
 				{ key = "<CR>", cb = tree_cb("preview") },
 				{ key = "<Tab>", cb = tree_cb("edit") },
+				{ key = "-", cb = tree_cb("close") },
 			},
 		},
 	},
