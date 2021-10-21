@@ -244,15 +244,16 @@ require("packer").startup({
 			module = "hop",
 		})
 
-		-- stylua: ignore
+		-- stylua: ignore start
 		use({
-			"tpope/vim-commentary",
+			"numToStr/Comment.nvim",
+			config = function() require("Comment").setup({ ignore = "^$" }) end,
 			keys = {
-				{"n", "gc"}, {"n", "gcc"}, {"n", "gcu"}, {"n", "cgc"},
-				{"x", "gc"},
-				{"o", "gc"},
+				{"n", "gc"}, {"n", "gb"},
+				{"x", "gc"}, {"x", "gb"},
 			},
 		})
+		-- stylua: ignore end
 
 		-- stylua: ignore
 		use({
