@@ -37,7 +37,15 @@ lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_c
 		bsk("i", "<c-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", "textDocument/signatureHelp")
 
 		bsk("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", "textDocument/rename")
-		bsk("n", "<leader>lh", '<cmd>lua require"bp.plugins.lsp".ref_hl()<cr>', "textDocument/documentHighlight")
+		if client.supports_method("textDocument/documentHighlight") then
+			vim.cmd([[
+					augroup lsp-hl-symbol
+					autocmd! * <buffer>
+					autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+					autocmd CursorMoved,InsertEnter <buffer> lua vim.lsp.buf.clear_references()
+					augroup END
+				]])
+		end
 
 		bsk("n", "<leader>.", "<cmd>lua vim.lsp.buf.code_action()<CR>", "textDocument/codeAction")
 		bsk("x", "<leader>.", ":lua vim.lsp.buf.range_code_action()<CR>", "textDocument/codeAction")
@@ -45,7 +53,7 @@ lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_c
 		if client.supports_method("textDocument/codeLens") then
 			vim.cmd([[
 					augroup lspcodelens
-					autocmd!
+					autocmd! * <buffer>
 					autocmd CursorHold,CursorHoldI,InsertLeave <buffer> lua vim.lsp.codelens.refresh()
 					augroup END
 				]])
@@ -78,23 +86,7 @@ vim.fn.sign_define({
 })
 
 -- Use a loop to setup defined servers
-local servers = { "sumneko_lua", "pyright", "clangd" } -- Remember to add these to packer lazy load and nvim-cmp
+local servers = { "sumneko_lua", "pyright", "clangd" } -- Remember to add these to packer lazy load
 for _, server in ipairs(servers) do
 	require("bp.plugins.lsp." .. server)
 end
-
-local M = {}
-function M.ref_hl()
-	vim.lsp.buf.document_highlight()
-	vim.cmd([[
-	augroup lsp_ref_hl
-	autocmd! * <buffer>
-	autocmd CursorMoved <buffer> lua require'bp.plugins.lsp'.clear_ref_hl()
-	augroup END
-	]])
-end
-function M.clear_ref_hl()
-	vim.cmd([[autocmd! lsp_ref_hl * <buffer>]])
-	vim.lsp.buf.clear_references()
-end
-return M
