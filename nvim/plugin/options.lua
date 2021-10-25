@@ -63,6 +63,6 @@ vim.opt.backupdir = vim.env.XDG_DATA_HOME .. "/nvim/backup//"
 vim.diagnostic.config({
 	virtual_text = { source = "always" },
 	float = { source = "always", border = "single" },
-	update_in_insert = true,
+	update_in_insert = false,
 	severity_sort = true,
 })
