@@ -47,8 +47,8 @@ require("lualine").setup({
 		lualine_a = {},
 		lualine_b = {
 			"branch",
-			diff,
-			{ "diagnostics", sources = { "nvim_lsp" } },
+			vim.tbl_extend("force", diff, { colored = false }),
+			{ "diagnostics", sources = { "nvim_lsp" }, colored = false },
 		},
 		lualine_c = {},
 		lualine_x = {},
