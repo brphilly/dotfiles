@@ -8,7 +8,6 @@ cmp.setup({
 			behavior = cmp.ConfirmBehavior.Insert,
 			select = false,
 		}),
-		["<C-e>"] = cmp.mapping.abort(),
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		-- remove default mappings
@@ -54,34 +53,33 @@ cmp.setup({
 				buffer = "[Buffer]",
 				nvim_lsp = "[LSP]",
 				luasnip = "[LuaSnip]",
-				nvim_lua = "[Lua]",
+				nvim_lua = "[Nvim-Lua]",
 				path = "[Path]",
 			},
 		}),
 	},
 
+	sorting = {
+		priority_weight = 1,
+	},
+
 	-- You should specify your *installed* sources.
-	sources = { -- this order affects priority
+	sources = {
+		-- this order affects priority
 		{ name = "luasnip" },
-		{
-			name = "buffer",
-			opts = {
-				get_bufnrs = function()
-					return vim.api.nvim_list_bufs()
-				end,
-			},
-		},
 		{ name = "path" },
+		{ name = "nvim_lsp", keyword_length = 3 },
+		{ name = "buffer", keyword_length = 3 },
 	},
 })
 
-vim.cmd([[
-augroup nvim-cmp-ft
-autocmd!
-autocmd FileType lua lua require'cmp'.setup.buffer {sources = {{name='luasnip'},{name='nvim_lsp'},{name='nvim_lua'},{name='path'}}}
-autocmd FileType python,c,cpp lua require'cmp'.setup.buffer {sources = {{name='luasnip'},{name='nvim_lsp'},{name='path'}}}
-augroup END
-]])
+vim.cmd(string.format([[
+	augroup nvim-cmp-ft
+	autocmd!
+	autocmd FileType lua lua require("cmp").setup.buffer(%s)
+	augroup END
+]],
+"{sources={{name='luasnip'},{name='path'},{name='nvim_lua',keyword_length=3},{name='nvim_lsp',keyword_length=3},{name='buffer',keyword_length=3}}}"))
 vim.cmd([[doautoall nvim-cmp-ft FileType]])
 
 local c = require("nord.colours")
