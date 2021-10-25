@@ -22,7 +22,7 @@ return {
 	Folded = { fg = c.comment, bg = c.bg_float },
 	FoldColumn = { fg = c.fg_fade },
 	SignColumn = { link = "Normal" },
-	IncSearch = { fg = c.bg, bg = c.selection },
+	IncSearch = { fg = c.bg, bg = c.blues[4] },
 	Substitute = { link = "Search" },
 	LineNr = { fg = c.fg_fade },
 	LineNrAbove = { fg = c.fg_fade },
@@ -176,9 +176,9 @@ return {
 	TSTagAttribute = { link = "TSProperty" },
 
 	-- LSP Highlights
-	LspReferenceText = { link = "Visual" },
-	LspReferenceRead = { link = "Visual" },
-	LspReferenceWrite = { link = "Visual" },
+	LspReferenceText = { bg = c.visual_fade },
+	LspReferenceRead = { bg = c.visual_fade },
+	LspReferenceWrite = { bg = c.visual_fade },
 
 	DiagnosticError = { fg = c.error },
 	DiagnosticWarn = { fg = c.warning },

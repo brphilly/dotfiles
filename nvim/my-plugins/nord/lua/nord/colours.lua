@@ -35,6 +35,7 @@ colours.bg_float = utils.darken(colours.bg, 0.3)
 colours.bg_hl = utils.darken(colours.darks[1], 0.1)
 
 colours.border = colours.lights[3]
+colours.visual_fade = colours.darks[1]
 colours.visual = colours.darks[3]
 colours.search = colours.darks[4]
 colours.selection = utils.blend(colours.blues[1], colours.bg, 0.7)
