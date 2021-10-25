@@ -85,6 +85,7 @@ local mappings = {
 	{ "n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { noremap = true } },
 	{ "n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", { noremap = true } },
 	{ "n", "<leader>dl", "<cmd>lua vim.diagnostic.setloclist()<CR>", { noremap = true } },
+	{ "n", "<leader>dq", "<cmd>lua vim.diagnostic.setqflist()<CR>", { noremap = true } },
 
 	{ "n", "<leader>rr", "<cmd>redraw!<cr>", { noremap = true } },
 	{ "n", "<leader>re", "<cmd>echo<cr>", { noremap = true } },
