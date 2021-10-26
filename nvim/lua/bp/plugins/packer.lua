@@ -2,14 +2,6 @@
 require("packer").startup({
 	function()
 		local use = require("packer").use
-		local ts_ft = require("vim.treesitter.health").list_parsers()
-		if next(ts_ft) == nil then
-			ts_ft = nil
-		else
-			for i, ft in ipairs(ts_ft) do
-				ts_ft[i] = vim.fn.fnamemodify(ft, ":t:r")
-			end
-		end
 
 		-- Not lazy loaded:
 		use({
@@ -68,10 +60,11 @@ require("packer").startup({
 			} },
 		})
 
+		local ts_exists, parsers = pcall(function() return require("nvim-treesitter.parsers").maintained_parsers() end)
 		use({
 			"nvim-treesitter/nvim-treesitter",
 			config = 'require("bp.plugins.nvim-treesitter")',
-			ft = ts_ft,
+			ft = ts_exists and parsers or nil,
 			run = ":TSUpdate",
 			requires = {
 				{
