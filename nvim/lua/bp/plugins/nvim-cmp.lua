@@ -10,13 +10,6 @@ cmp.setup({
 		}),
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		-- remove default mappings
-		["<C-n>"] = cmp.mapping(function(fallback)
-			fallback()
-		end),
-		["<C-p>"] = cmp.mapping(function(fallback)
-			fallback()
-		end),
 	},
 
 	completion = {
