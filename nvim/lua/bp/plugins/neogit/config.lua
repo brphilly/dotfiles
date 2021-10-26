@@ -14,17 +14,21 @@ vim.cmd([[
 	augroup END
 ]])
 
-vim.cmd([[
+local c = require("nord.colours")
+vim.cmd(string.format([[
 	augroup neogit-hl
 	autocmd!
 	autocmd ColorScheme nord highlight! link NeogitDiffAddHighlight DiffAdd
 	autocmd ColorScheme nord highlight! link NeogitDiffDeleteHighlight DiffDelete
-	autocmd ColorScheme nord highlight NeogitDiffContextHighlight guifg=fg
-	autocmd ColorScheme nord highlight! link NeogitHunkHeader DiffChange
 	autocmd ColorScheme nord highlight! link NeogitHunkHeaderHighlight DiffChange
 	autocmd ColorScheme nord highlight! link NeogitNotificationInfo DiagnosticInfo
 	autocmd ColorScheme nord highlight! link NeogitNotificationWarning DiagnosticWarn
 	autocmd ColorScheme nord highlight! link NeogitNotificationError DiagnosticError
+	autocmd ColorScheme nord highlight NeogitDiffContextHighlight guifg=%s
+	autocmd ColorScheme nord highlight NeogitHunkHeader guifg=%s
 	augroup END
-]])
+]],
+	c.fg,
+	c.blues[1]
+))
 vim.cmd(string.format([[doautocmd neogit-hl ColorScheme %s]], vim.g.colors_name))
