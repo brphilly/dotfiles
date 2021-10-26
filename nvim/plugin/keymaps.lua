@@ -1,7 +1,5 @@
 local helpers = "<cmd>lua require'bp.keymap-funcs'."
 local mappings = {
-	{ "t", "<c-[>", [[<c-\><c-n>]], { noremap = true } },
-
 	{ "n", "<c-left>", "<c-w>10<", { noremap = true } },
 	{ "n", "<c-right>", "<c-w>10>", { noremap = true } },
 	{ "n", "<c-down>", "<c-w>6-", { noremap = true } },
@@ -93,7 +91,6 @@ local mappings = {
 	{ "n", "<leader>rt", "<cmd>redrawtabline<cr>", { noremap = true } },
 	{ "n", "<leader>ro", "<cmd>source " .. vim.fn.stdpath("config") .. "/plugin/options.lua<cr>", { noremap = true } },
 
-	{ "n", "<leader>`", "<cmd>terminal<cr>", { noremap = true } },
 	{ "n", ":", ";", { noremap = true } },
 	{ "n", ";", ":", { noremap = true } },
 	{ "n", "<leader>;", "q:", { noremap = true } },

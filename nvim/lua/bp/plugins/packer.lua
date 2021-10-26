@@ -201,6 +201,23 @@ require("packer").startup({
 		})
 
 		use({
+			"numToStr/FTerm.nvim",
+			setup = function()
+				vim.api.nvim_set_keymap("n", "<leader>`", "<cmd>lua require('FTerm').toggle()<cr>", { noremap = true })
+			end,
+			config = function()
+				require("FTerm").setup({ hl = "NormalFloat" })
+				vim.cmd([[
+					augroup fterm-toggle
+					autocmd!
+					autocmd TermOpen * if &filetype ==# 'FTerm' | tnoremap <buffer> <c-\><c-[> <cmd>lua require("FTerm").toggle()<cr> | endif
+					augroup END
+				]])
+			end,
+			module = "FTerm",
+		})
+
+		use({
 			"TimUntersberger/neogit",
 			config = 'require("bp.plugins.neogit.config")',
 			setup = 'require("bp.plugins.neogit.setup")',
