@@ -48,8 +48,5 @@ vim.cmd([[
 	augroup CommandWin
 	autocmd!
 	autocmd CmdwinEnter * startinsert
-	autocmd CmdwinEnter * nnoremap <buffer> <c-[> <cmd>quit<cr>
-	autocmd CmdwinEnter : nnoremap <buffer> <cr> <cr>q:
-	autocmd CmdwinEnter : inoremap <buffer> <cr> <cr>q:
 	augroup END
 ]])
