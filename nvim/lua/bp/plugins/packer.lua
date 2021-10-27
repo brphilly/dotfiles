@@ -53,11 +53,18 @@ require("packer").startup({
 			config = 'require("bp.plugins.lsp")',
 			ft = { "lua", "python", "c", "cpp" },
 			wants = "cmp-nvim-lsp",
-			requires = { {
+			requires = {
+			{
 				"kosayoda/nvim-lightbulb",
 				after = "nvim-lspconfig",
 				config = "require('bp.plugins.nvim-lightbulb')",
-			} },
+			},
+			{
+				"weilbith/nvim-code-action-menu",
+				cmd = "CodeActionMenu",
+				config = "require('bp.plugins.nvim-code-action-menu')",
+			},
+			},
 		})
 
 		local ts_exists, parsers = pcall(function() return require("nvim-treesitter.parsers").maintained_parsers() end)
