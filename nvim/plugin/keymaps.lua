@@ -78,6 +78,7 @@ local mappings = {
 	{ "n", "[B", "<cmd>bfirst<cr>", { noremap = true } },
 	{ "n", "]B", "<cmd>blast<cr>", { noremap = true } },
 	{ "n", "<tab>", helpers .. "switch_prev_buf()<cr>", { noremap = true } },
+	{ "n", "<s-tab>", "<c-w>p",{ noremap = true } },
 
 	{ "n", "<leader>dk", '<cmd>lua vim.diagnostic.open_float(0, {scope="line"})<CR>', { noremap = true } },
 	{ "n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { noremap = true } },
