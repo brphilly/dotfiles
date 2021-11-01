@@ -17,6 +17,9 @@ require("nvim-tree").setup({
 			},
 		},
 	},
+	filters = {
+		custom = { ".DS_Store" },
+	},
 })
 
 vim.api.nvim_set_keymap("n", "<leader>cv", '<cmd>NvimTreeClose<cr><cmd>lua require"bp.keymap-funcs".make_session(true)<cr>', { noremap = true })
