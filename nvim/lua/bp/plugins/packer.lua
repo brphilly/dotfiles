@@ -39,6 +39,11 @@ require("packer").startup({
 		})
 
 		use({
+			"https://gitlab.com/yorickpeterse/nvim-pqf",
+			config = function() require("pqf").setup() end,
+		})
+
+		use({
 			"chaoren/vim-wordmotion",
 			setup = 'require("bp.plugins.vim-wordmotion")',
 		})
