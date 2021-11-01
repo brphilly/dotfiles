@@ -41,7 +41,7 @@ vim.cmd(string.format([[
 	augroup END
 ]],
 	c.blues[4],
-	c.purple,
+	c.directory,
 	c.blues[1],
 	c.blues[1],
 	c.danger,

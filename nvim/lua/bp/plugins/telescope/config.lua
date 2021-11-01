@@ -52,8 +52,8 @@ vim.cmd(string.format([[
 	augroup END
 ]],
 	c.selection,
-	c.yellow,
-	c.yellow,
-	c.yellow
+	c.attention,
+	c.attention,
+	c.attention
 ))
 vim.cmd(string.format([[doautocmd telescope-hl ColorScheme %s]], vim.g.colors_name))

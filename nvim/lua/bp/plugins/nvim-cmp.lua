@@ -80,11 +80,11 @@ vim.cmd(string.format([[
 	autocmd ColorScheme nord highlight CmpItemMenu guifg=%s
 	augroup END
 ]],
-	c.yellow,
-	c.orange,
+	c.attention,
+	c.attention_alt,
 	c.fg,
 	c.fg,
-	c.purple,
+	c.type,
 	c.comment
 ))
 vim.cmd(string.format([[doautocmd nvim-cmp-hl ColorScheme %s]], vim.g.colors_name))

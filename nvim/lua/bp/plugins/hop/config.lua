@@ -11,7 +11,7 @@ vim.cmd(string.format([[
 	autocmd ColorScheme nord highlight HopNextKey2 guifg=%s gui=bold,nocombine
 	augroup END
 ]],
-	c.red,
+	c.attention,
 	c.blues[3],
 	c.blues[2]
 ))

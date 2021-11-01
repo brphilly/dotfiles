@@ -36,17 +36,17 @@ vim.cmd(string.format([[
 	c.warning, c.bg_float,
 	c.info, c.bg_float,
 	c.danger, c.bg_float,
-	c.purple, c.bg_float,
+	c.comment, c.bg_float,
 	c.error, c.bg_float,
 	c.warning, c.bg_float,
 	c.info, c.bg_float,
 	c.danger, c.bg_float,
-	c.purple, c.bg_float,
+	c.comment, c.bg_float,
 	c.error, c.bg_float,
 	c.warning, c.bg_float,
 	c.info, c.bg_float,
 	c.danger, c.bg_float,
-	c.purple, c.bg_float,
+	c.comment, c.bg_float,
 	c.title
 ))
 vim.cmd(string.format([[doautocmd notify-hl ColorScheme %s]], vim.g.colors_name))

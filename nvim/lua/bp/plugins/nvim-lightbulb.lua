@@ -16,7 +16,6 @@ vim.cmd(string.format([[
 	autocmd ColorScheme nord highlight LightBulbFloatWin guibg=%s
 	augroup END
 ]],
-	c.bg,
-	c.danger
+	c.bg
 ))
 vim.cmd(string.format([[doautocmd nvim-lightbulb-hl ColorScheme %s]], vim.g.colors_name))

@@ -20,13 +20,13 @@ vim.cmd(string.format([[
 	augroup END
 ]],
 	c.comment,
-	c.green,
-	c.red,
-	c.green,
-	c.red,
-	c.green,
-	c.blues[3],
-	c.blues[1],
-	c.red
+	c.success,
+	c.error,
+	c.diff_add,
+	c.diff_delete,
+	c.diff_add,
+	c.diff_text,
+	c.diff_change,
+	c.diff_delete
 ))
 vim.cmd(string.format([[doautocmd nvim-code-action-menu-hl ColorScheme %s]], vim.g.colors_name))

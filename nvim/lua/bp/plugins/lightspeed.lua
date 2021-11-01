@@ -18,14 +18,14 @@ vim.cmd(string.format([[
 ]],
 	c.fg_fade,
 	c.comment,
-	c.yellow,
-	c.orange,
+	c.attention,
+	c.attention_alt,
 	c.blues[3],
 	c.blues[2],
-	c.green,
-	c.bg, c.yellow,
-	c.green,
+	c.success,
+	c.bg, c.attention,
+	c.success,
 	c.blues[4],
-	c.bg, c.yellow
+	c.bg, c.attention
 ))
 vim.cmd(string.format([[doautocmd lightspeed-hl ColorScheme %s]], vim.g.colors_name))

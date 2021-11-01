@@ -19,6 +19,6 @@ vim.cmd(string.format([[
 	autocmd ColorScheme nord highlight BqfSign guifg=%s
 	augroup END
 ]],
-	c.yellow
+	c.attention
 ))
 vim.cmd(string.format([[doautocmd bqf-hl ColorScheme %s]], vim.g.colors_name))

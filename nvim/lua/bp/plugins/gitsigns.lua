@@ -43,8 +43,8 @@ autocmd ColorScheme nord highlight GitSignsChange guifg=%s
 autocmd ColorScheme nord highlight GitSignsDelete guifg=%s
 augroup END
 	]],
-	c.green,
-	c.blues[1],
-	c.red
+	c.diff_add,
+	c.diff_change,
+	c.diff_delete
 ))
 vim.cmd(string.format([[doautocmd gitsigns-hl ColorScheme %s]], vim.g.colors_name))

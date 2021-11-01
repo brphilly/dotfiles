@@ -29,6 +29,6 @@ vim.cmd(string.format([[
 	augroup END
 ]],
 	c.fg,
-	c.blues[1]
+	c.diff_change
 ))
 vim.cmd(string.format([[doautocmd neogit-hl ColorScheme %s]], vim.g.colors_name))
