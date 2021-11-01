@@ -66,3 +66,5 @@ vim.diagnostic.config({
 	update_in_insert = false,
 	severity_sort = true,
 })
+
+_G.P = function(arg) print(vim.inspect(arg)) end
