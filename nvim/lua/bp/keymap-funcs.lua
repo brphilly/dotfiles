@@ -70,6 +70,26 @@ M.switch_prev_buf = function()
 	end
 end
 
+function M.toggle_qf()
+	local winid = vim.fn.getqflist({ winid = 0 }).winid
+
+	if winid ~= 0 then
+		vim.cmd("cclose")
+	elseif not vim.tbl_isempty(vim.fn.getqflist()) then
+		vim.cmd("copen")
+	end
+end
+
+function M.toggle_ll()
+	local winid = vim.fn.getloclist(0, { winid = 0 }).winid
+
+	if winid ~= 0 then
+		vim.cmd("lclose")
+	elseif not vim.tbl_isempty(vim.fn.getloclist(0)) then
+		vim.cmd("lopen")
+	end
+end
+
 M.buf_close = function()
 	local buf_target = vim.api.nvim_get_current_buf()
 	local win_targets = vim.fn.win_findbuf(buf_target)
