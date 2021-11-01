@@ -42,7 +42,7 @@ lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_c
 					augroup lsp-hl-symbol
 					autocmd! * <buffer>
 					autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-					autocmd CursorMoved,InsertEnter <buffer> lua vim.lsp.buf.clear_references()
+					autocmd CursorMoved,InsertEnter,WinLeave <buffer> lua vim.lsp.buf.clear_references()
 					augroup END
 				]])
 		end
