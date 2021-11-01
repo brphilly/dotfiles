@@ -40,7 +40,7 @@ require("lualine").setup({
 		},
 		lualine_c = { "require('nvim-lightbulb').get_status_text()" },
 		lualine_x = { lsp_progress },
-		lualine_y = { { "filename", path = 0 }, "filetype" },
+		lualine_y = { { "filename", path = 1 }, "filetype" },
 		lualine_z = { "%v", "%l/%L" },
 	},
 	inactive_sections = {
@@ -52,7 +52,7 @@ require("lualine").setup({
 		},
 		lualine_c = {},
 		lualine_x = {},
-		lualine_y = { { "filename", path = 0 }, "filetype" },
+		lualine_y = { { "filename", path = 1 }, "filetype" },
 		lualine_z = { "%v", "%l/%L" },
 	},
 	tabline = {},
