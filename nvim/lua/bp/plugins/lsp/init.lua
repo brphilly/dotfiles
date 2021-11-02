@@ -47,11 +47,11 @@ lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_c
 				]])
 		end
 
-		-- bsk("n", "<leader>.", "<cmd>lua vim.lsp.buf.code_action()<CR>", "textDocument/codeAction")
-		-- bsk("x", "<leader>.", ":lua vim.lsp.buf.range_code_action()<CR>", "textDocument/codeAction")
-		bsk("n", "<leader>.", "<cmd>CodeActionMenu<CR>", "textDocument/codeAction")
-		bsk("x", "<leader>.", ":CodeActionMenu<CR>", "textDocument/codeAction")
-		bsk("n", "<leader>lc", "<cmd>lua vim.lsp.codelens.run()<CR>", "workspace/executeCommand")
+		-- bsk("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", "textDocument/codeAction")
+		-- bsk("x", "<leader>la", ":lua vim.lsp.buf.range_code_action()<CR>", "textDocument/codeAction")
+		bsk("n", "<leader>la", "<cmd>CodeActionMenu<CR>", "textDocument/codeAction")
+		bsk("x", "<leader>la", ":CodeActionMenu<CR>", "textDocument/codeAction")
+		bsk("n", "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<CR>", "workspace/executeCommand")
 		if client.supports_method("textDocument/codeLens") then
 			vim.cmd([[
 					augroup lspcodelens
