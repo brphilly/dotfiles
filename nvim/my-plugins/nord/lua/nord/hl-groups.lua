@@ -205,8 +205,8 @@ return {
 	DiagnosticSignInfo = { link = "DiagnosticInfo" },
 	DiagnosticSignHint = { link = "DiagnosticHint" },
 
-	LspCodeLens = { fg = c.comment },
-	LspCodeLensSeparator = { fg = c.fg_fade },
+	LspCodeLens = { fg = c.comment, bg = c.bg_float },
+	LspCodeLensSeparator = { fg = c.fg, bg = c.bg_float },
 
 	LspSignatureActiveParameter = { link = "Visual" },
 }
