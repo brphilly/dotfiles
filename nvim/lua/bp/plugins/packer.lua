@@ -1,4 +1,5 @@
 -- TODO(brphilly): Install nvim-dap
+-- TODO(brphilly): Install neorg
 require("packer").startup({
 	function()
 		local use = require("packer").use
