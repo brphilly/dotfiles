@@ -85,7 +85,7 @@ local mappings = {
 	{ "n", "[Q", "<cmd>cfirst<cr>", { noremap = true } },
 	{ "n", "]Q", "<cmd>clast<cr>", { noremap = true } },
 	{ "n", "<bs>", helpers .. "toggle_qf()<cr>", { noremap = true } },
-	{ "n", "<leader>gc", [[<cmd>execute 'silent grep! -F "======="' | copen<cr>]], { noremap = true } },
+	{ "n", "<leader>gc", [[<cmd>execute 'silent grep! "^=======$"' | copen<cr>]], { noremap = true } },
 
 	{ "n", "[l", "<cmd>lprev<cr>", { noremap = true } },
 	{ "n", "]l", "<cmd>lnext<cr>", { noremap = true } },
