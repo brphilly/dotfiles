@@ -265,6 +265,7 @@ require("packer").startup({
 						})
 					end,
 				},
+				{ "nvim-lua/plenary.nvim", opt = true },
 			},
 		})
 
