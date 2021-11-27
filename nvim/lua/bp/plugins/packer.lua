@@ -270,7 +270,7 @@ require("packer").startup({
 		})
 
 		use({
-			"~/projects/hop.nvim",
+			"phaazon/hop.nvim",
 			config = 'require("bp.plugins.hop.config")',
 			setup = 'require("bp.plugins.hop.setup")',
 			module = "hop",
