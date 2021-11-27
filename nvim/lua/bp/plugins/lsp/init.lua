@@ -36,6 +36,7 @@ lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_c
 		bsk("n", "<c-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", "textDocument/signatureHelp")
 		bsk("i", "<c-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", "textDocument/signatureHelp")
 
+		-- TODO(brphilly): Change vim.ui.input to make floating rename
 		bsk("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", "textDocument/rename")
 		if client.supports_method("textDocument/documentHighlight") then
 			vim.cmd([[
