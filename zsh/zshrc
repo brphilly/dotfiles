@@ -69,7 +69,8 @@ export GPG_TTY=$TTY
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-alias lt="ls -lah"
+alias ls="exa"
+alias ll="exa -l -a"
 export LDFLAGS="-L/usr/local/opt/curl/lib"
 export CPPFLAGS="-I/usr/local/opt/curl/include"
 alias openssl="/usr/local/opt/openssl/bin/openssl"
