@@ -1,15 +1,15 @@
 [user]
-    name = Brady Phillips
-    email = brady.phillips99@gmail.com
+	name = Brady Phillips
+	email = brady.phillips99@gmail.com
 	signingKey = 236557E50DFDFEC7
 [core]
-    excludesfile = ~/.config/git/gitignore-global
-    editor = nvim
-    autocrlf = input
+	excludesfile = ~/.config/git/gitignore-global
+	editor = nvim
+	autocrlf = input
 [credential]
-    helper = cache --timeout=43200
+	helper = cache --timeout=43200
 [credential "https://github.com"]
-    username = brphilly
+	username = brphilly
 [pull]
 	ff = only
 [commit]
@@ -21,3 +21,15 @@
 	recurseSubmodules = check
 [tag]
 	gpgSign = true
+[url "git@github.com:"]
+	insteadOf = gh:
+	pushInsteadOf = gh:
+[url "git@gitlab.com:"]
+	insteadOf = gl:
+	pushInsteadOf = gl:
+[url "git@bitbucket.org:"]
+	insteadOf = bb:
+	pushInsteadOf = bb:
+[url "aur@aur.archlinux.org:"]
+	insteadOf = aur:
+	pushInsteadOf = aur:
