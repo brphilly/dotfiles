@@ -40,16 +40,19 @@ cmp.setup({
 	},
 
 	formatting = {
-		format = require("lspkind").cmp_format({
-			with_text = true,
-			menu = {
+		format = function(entry, vim_item)
+			-- Kind icons
+			vim_item.kind = string.format("%s%s", require("bp.plugins.nvim-cmp.kind-icons")[vim_item.kind], vim_item.kind)
+			-- Source
+			vim_item.menu = ({
 				buffer = "[Buffer]",
 				nvim_lsp = "[LSP]",
 				luasnip = "[LuaSnip]",
 				nvim_lua = "[Nvim-Lua]",
 				path = "[Path]",
-			},
-		}),
+			})[entry.source.name]
+			return vim_item
+		end
 	},
 
 	sorting = {
@@ -76,7 +79,7 @@ vim.cmd(string.format([[
 	autocmd ColorScheme nord highlight CmpItemAbbrMatchFuzzy guifg=%s
 	autocmd ColorScheme nord highlight CmpItemAbbr guifg=%s
 	autocmd ColorScheme nord highlight CmpItemAbbrDeprecated guifg=%s gui=strikethrough
-	autocmd ColorScheme nord highlight CmpItemKind guifg=%s
+	autocmd ColorScheme nord highlight CmpItemKindDefault guifg=%s
 	autocmd ColorScheme nord highlight CmpItemMenu guifg=%s
 	augroup END
 ]],
