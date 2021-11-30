@@ -1,16 +1,18 @@
 local M = {}
 local builtin = require("telescope.builtin")
+local function conf_path() return vim.env.HOME.."/dotfiles" end
+local function dir_path() return vim.fn.expand("%:p:h") end
 
 function M.files_conf()
 	builtin.find_files({
-		cwd = vim.fn.fnamemodify(vim.fn.stdpath("config"), ":h:p"),
+		cwd = conf_path(),
 		prompt_title = "Find files in configs",
 		hidden = true,
 	})
 end
 
 function M.files_dir()
-	local dir = vim.fn.expand("%:p:h")
+	local dir = dir_path()
 	builtin.find_files({
 		prompt_title = "Find files in " .. dir,
 		cwd = dir,
@@ -35,7 +37,7 @@ function M.files_home()
 end
 
 function M.grep_dir()
-	local dir = vim.fn.expand("%:p:h")
+	local dir = dir_path()
 	builtin.live_grep({
 		prompt_title = "Grep files in " .. dir,
 		cwd = dir,
@@ -53,7 +55,7 @@ end
 function M.grep_conf()
 	builtin.live_grep({
 		prompt_title = "Grep config",
-		cwd = vim.fn.fnamemodify(vim.fn.stdpath("config"), ":h:p"),
+		cwd = conf_path(),
 	})
 end
 
@@ -74,7 +76,7 @@ end
 
 local todo_str = "TODO(brphilly):"
 function M.grep_todo_dir()
-	local dir = vim.fn.expand("%:p:h")
+	local dir = dir_path()
 	builtin.grep_string({
 		cwd = dir,
 		search = todo_str,
@@ -94,7 +96,7 @@ function M.grep_todo_cwd()
 end
 
 function M.grep_todo_conf()
-	local dir = vim.fn.fnamemodify(vim.fn.stdpath("config"), ":h:p")
+	local dir = conf_path()
 	builtin.grep_string({
 		cwd = dir,
 		vimgrep_arguments = {
@@ -127,7 +129,7 @@ function M.grep_todo_home()
 end
 
 function M.browse_dir()
-	local dir = vim.fn.expand("%:p:h")
+	local dir = dir_path()
 	builtin.file_browser({
 		cwd = dir,
 	})
@@ -142,7 +144,7 @@ end
 
 function M.browse_conf()
 	builtin.file_browser({
-		cwd = vim.fn.fnamemodify(vim.fn.stdpath("config"), ":h:p"),
+		cwd = conf_path(),
 	})
 end
 
