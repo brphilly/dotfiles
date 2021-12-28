@@ -36,7 +36,7 @@ require("lualine").setup({
 		lualine_b = {
 			"branch",
 			diff,
-			{ "diagnostics", sources = { "nvim_lsp" } },
+			{ "diagnostics", sources = { "nvim_diagnostic" } },
 		},
 		lualine_c = { "require('nvim-lightbulb').get_status_text()" },
 		lualine_x = { lsp_progress },
@@ -48,7 +48,7 @@ require("lualine").setup({
 		lualine_b = {
 			"branch",
 			vim.tbl_extend("force", diff, { colored = false }),
-			{ "diagnostics", sources = { "nvim_lsp" }, colored = false },
+			{ "diagnostics", sources = { "nvim_diagnostic" }, colored = false },
 		},
 		lualine_c = {},
 		lualine_x = {},
