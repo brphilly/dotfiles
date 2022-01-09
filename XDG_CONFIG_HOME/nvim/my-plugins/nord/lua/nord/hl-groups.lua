@@ -28,7 +28,7 @@ return {
 	LineNrAbove = { fg = c.fg_fade },
 	LineNrBelow = { fg = c.fg_fade },
 	CursorLineNr = { fg = c.border },
-	MatchParen = { fg = c.attention, att = "bold" },
+	MatchParen = { bg = c.fg_fade },
 	ModeMsg = { link = "Normal" },
 	MsgArea = { link = "Normal" },
 	MsgSeparator = { bg = c.visual },
