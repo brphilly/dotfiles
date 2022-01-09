@@ -1,3 +1,11 @@
+switch (uname)
+	case Darwin
+		fish_add_path /usr/local/bin /usr/local/sbin /usr/local/opt/python/libexec/bin
+		set -gx XDG_DATA_HOME $HOME/.local/share
+		set -gx XDG_CONFIG_HOME $HOME/.config
+		set -gx EDITOR nvim
+end
+
 if status is-interactive
 	# Commands to run in interactive sessions can go here
 	alias ls="exa"
