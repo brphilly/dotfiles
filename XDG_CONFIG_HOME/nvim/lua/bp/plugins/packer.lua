@@ -265,13 +265,6 @@ require("packer").startup({
 		})
 
 		use({
-			"phaazon/hop.nvim",
-			config = 'require("bp.plugins.hop.config")',
-			setup = 'require("bp.plugins.hop.setup")',
-			module = "hop",
-		})
-
-		use({
 			"rlane/pounce.nvim",
 			config = "require('bp.plugins.pounce')",
 			setup = function()
