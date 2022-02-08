@@ -299,19 +299,6 @@ require("packer").startup({
 			requires = {{"tpope/vim-repeat", opt = true}},
 		})
 
-		-- stylua: ignore
-		use({
-			"ggandor/lightspeed.nvim",
-			config = "require('bp.plugins.lightspeed')",
-			keys = {
-				{"n", "s"}, {"n", "S"}, {"n", "f"}, {"n", "F"}, {"n", "t"}, {"n", "T"},
-				{"x", "s"}, {"x", "f"}, {"x", "F"}, {"x", "t"}, {"x", "T"},
-				{"o", "z"}, {"o", "Z"}, {"o", "f"}, {"o", "F"}, {"o", "t"}, {"o", "T"},
-			},
-			wants = "vim-repeat",
-			requires = {{"tpope/vim-repeat", opt = true}},
-		})
-
 		use({
 			"kyazdani42/nvim-tree.lua",
 			setup = function()
