@@ -271,6 +271,18 @@ require("packer").startup({
 			module = "hop",
 		})
 
+		use({
+			"rlane/pounce.nvim",
+			config = "require('bp.plugins.pounce')",
+			setup = function()
+				vim.api.nvim_set_keymap("n", "s", "<cmd>Pounce<cr>", { noremap = true })
+				vim.api.nvim_set_keymap("n", "S", "<cmd>PounceRepeat<cr>", { noremap = true })
+				vim.api.nvim_set_keymap("x", "s", "<cmd>Pounce<cr>", { noremap = true })
+				vim.api.nvim_set_keymap("o", "z", "<cmd>Pounce<cr>", { noremap = true })
+			end,
+			cmd = { "Pounce", "PounceRepeat" },
+		})
+
 		-- stylua: ignore start
 		use({
 			"numToStr/Comment.nvim",
