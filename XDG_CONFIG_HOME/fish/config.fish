@@ -6,16 +6,18 @@ switch (uname)
 		set -gx EDITOR nvim
 end
 
+set -gx BAT_THEME Nord
+
 if status is-interactive
 	# Commands to run in interactive sessions can go here
 	alias ls="exa"
-	alias ll="exa -la"
+	alias ll="exa -lag"
 	alias cat="bat"
+	alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 	function fish_vi_cursor; end
 	fish_vi_key_bindings insert
-	bind --mode insert \t accept-autosuggestion
-	bind --mode insert --key nul complete
+	fzf_key_bindings
 
 	function fish_greeting; end
 	function fish_mode_prompt
