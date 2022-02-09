@@ -32,9 +32,7 @@ require("lspconfig").sumneko_lua.setup({
 			},
 			workspace = {
 				-- Make the server aware of Neovim runtime files
-				-- TODO(brphilly): Investigate unlisted lsp buffers not appearing when using below. Search LSP code for vim.fn.bufadd
-				-- library = vim.api.nvim_get_runtime_file("", true),
-				library = vim.env.VIMRUNTIME, -- rename won't work using the above for some reason
+				library = vim.api.nvim_get_runtime_file("", true),
 				maxPreload = 2000,
 				preloadFileSize = 150,
 			},
