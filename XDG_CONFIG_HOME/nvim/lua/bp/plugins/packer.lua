@@ -13,7 +13,7 @@ require("packer").startup({
 		use({
 			"nvim-lualine/lualine.nvim",
 			config = 'require("bp.plugins.lualine")',
-			wants = { "nvim-web-devicons", "lualine-lsp-progress" },
+			wants = { "nvim-web-devicons" },
 			event = "VimEnter", -- wants key requires lazy loading to work properly
 			requires = {
 				{
@@ -25,7 +25,6 @@ require("packer").startup({
 						})
 					end,
 				},
-				{ "arkav/lualine-lsp-progress", opt = true },
 			},
 		})
 
@@ -60,16 +59,32 @@ require("packer").startup({
 			ft = { "lua", "python", "c", "cpp" },
 			wants = "cmp-nvim-lsp",
 			requires = {
-			{
-				"kosayoda/nvim-lightbulb",
-				after = "nvim-lspconfig",
-				config = "require('bp.plugins.nvim-lightbulb')",
-			},
-			{
-				"weilbith/nvim-code-action-menu",
-				cmd = "CodeActionMenu",
-				config = "require('bp.plugins.nvim-code-action-menu')",
-			},
+				{
+					"kosayoda/nvim-lightbulb",
+					after = "nvim-lspconfig",
+					config = "require('bp.plugins.nvim-lightbulb')",
+				},
+				{
+					"weilbith/nvim-code-action-menu",
+					cmd = "CodeActionMenu",
+					config = "require('bp.plugins.nvim-code-action-menu')",
+				},
+				{
+					"j-hui/fidget.nvim",
+					after = "nvim-lspconfig",
+					config = function()
+						require("fidget").setup({ text = { spinner = "dots_negative" }, fmt = { stack_upwards = false } })
+						local p = require("nord.colours")
+						vim.cmd(string.format([[
+							augroup my-fidget-hl
+							autocmd!
+							autocmd ColorScheme nord highlight FidgetTitle guifg=%s
+							autocmd ColorScheme nord highlight FidgetTask guifg=%s
+							augroup END
+							doautocmd my-fidget-hl ColorScheme %s
+						]], p.attention_alt, p.comment, vim.g.colors_name))
+					end,
+				},
 			},
 		})
 

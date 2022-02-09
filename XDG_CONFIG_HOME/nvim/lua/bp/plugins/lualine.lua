@@ -1,19 +1,6 @@
 -- TODO(brphilly): Investigate leaking file descriptors
 local colours = require("nord.colours")
 
-local lsp_progress = {
-	"lsp_progress",
-	spinner_symbols = { "⣾", "⣷", "⣯", "⣟", "⡿", "⢿", "⣻", "⣽" },
-	timer = { spinner = 100 },
-	colors = {
-		percentage = colours.title,
-		title = colours.title,
-		message = colours.fg,
-		spinner = colours.yellow,
-		lsp_client_name = colours.comment,
-		use = true,
-	},
-}
 local diff = {
 	"diff",
 	diff_color = {
@@ -39,7 +26,7 @@ require("lualine").setup({
 			{ "diagnostics", sources = { "nvim_diagnostic" } },
 		},
 		lualine_c = { "require('nvim-lightbulb').get_status_text()" },
-		lualine_x = { lsp_progress },
+		lualine_x = {},
 		lualine_y = { { "filename", path = 1 }, "filetype" },
 		lualine_z = { "%v", "%l/%L" },
 	},
