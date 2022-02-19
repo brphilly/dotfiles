@@ -79,7 +79,7 @@ vim.cmd(string.format([[
 	autocmd ColorScheme nord highlight CmpItemAbbrMatchFuzzy guifg=%s
 	autocmd ColorScheme nord highlight CmpItemAbbr guifg=%s
 	autocmd ColorScheme nord highlight CmpItemAbbrDeprecated guifg=%s gui=strikethrough
-	autocmd ColorScheme nord highlight CmpItemKindDefault guifg=%s
+	autocmd ColorScheme nord highlight CmpItemKind guifg=%s
 	autocmd ColorScheme nord highlight CmpItemMenu guifg=%s
 	augroup END
 ]],
