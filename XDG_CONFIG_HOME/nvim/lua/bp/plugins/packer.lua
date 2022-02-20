@@ -250,6 +250,11 @@ require("packer").startup({
 		})
 
 		use({
+			"lambdalisue/suda.vim",
+			cmd = { "SudaRead", "SudaWrite" },
+		})
+
+		use({
 			"TimUntersberger/neogit",
 			config = 'require("bp.plugins.neogit.config")',
 			setup = 'require("bp.plugins.neogit.setup")',
