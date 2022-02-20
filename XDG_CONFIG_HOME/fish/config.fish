@@ -14,6 +14,7 @@ if status is-interactive
 	alias ll="exa -lag"
 	alias cat="bat"
 	alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+	alias pacdiff='sudo DIFFPROG="env XDG_CONFIG_HOME=/home/brady/.config XDG_DATA_HOME=/home/brady/.local/share nvim -d" pacdiff'
 
 	function fish_vi_cursor; end
 	fish_vi_key_bindings insert
