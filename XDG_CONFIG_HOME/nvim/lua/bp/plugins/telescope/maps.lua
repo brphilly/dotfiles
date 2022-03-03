@@ -128,31 +128,4 @@ function M.grep_todo_home()
 	})
 end
 
-function M.browse_dir()
-	local dir = dir_path()
-	builtin.file_browser({
-		cwd = dir,
-	})
-end
-
-function M.browse_cwd()
-	local dir = vim.fn.getcwd()
-	builtin.file_browser({
-		cwd = dir,
-	})
-end
-
-function M.browse_conf()
-	builtin.file_browser({
-		cwd = conf_path(),
-	})
-end
-
-function M.browse_home()
-	local dir = vim.env.HOME
-	builtin.file_browser({
-		cwd = dir,
-	})
-end
-
 return M

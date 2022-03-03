@@ -23,10 +23,5 @@ skeymap("n", "<leader>ft<leader>", maps .. "grep_todo_cwd()<cr>", { noremap = tr
 skeymap("n", "<leader>ftc", maps .. "grep_todo_conf()<cr>", { noremap = true })
 skeymap("n", "<leader>fth", maps .. "grep_todo_home()<cr>", { noremap = true })
 
-skeymap("n", "<leader>f-d", maps .. "browse_dir()<cr>", { noremap = true })
-skeymap("n", "<leader>f-<leader>", maps .. "browse_cwd()<cr>", { noremap = true })
-skeymap("n", "<leader>f-c", maps .. "browse_conf()<cr>", { noremap = true })
-skeymap("n", "<leader>f-h", maps .. "browse_home()<cr>", { noremap = true })
-
 skeymap("n", "<leader>fgc", builtin .. "git_commits()<cr>", { noremap = true })
 skeymap("n", "<leader>fgb", builtin .. "git_branches()<cr>", { noremap = true })

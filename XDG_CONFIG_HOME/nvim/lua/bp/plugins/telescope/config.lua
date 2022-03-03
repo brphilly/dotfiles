@@ -24,9 +24,6 @@ require("telescope").setup({
 				},
 			},
 		},
-		file_browser = {
-			hidden = true,
-		},
 		help_tags = {
 			mappings = {
 				i = {
