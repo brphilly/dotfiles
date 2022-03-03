@@ -83,14 +83,14 @@ local mappings = {
 	{ "n", "]q", "<cmd>cnext<cr>", { noremap = true } },
 	{ "n", "[Q", "<cmd>cfirst<cr>", { noremap = true } },
 	{ "n", "]Q", "<cmd>clast<cr>", { noremap = true } },
-	{ "n", "<cr>", helpers .. "toggle_qf()<cr>", { noremap = true } },
+	{ "n", [[\]], helpers .. "toggle_qf()<cr>", { noremap = true } },
 	{ "n", "<leader>gc", [[<cmd>execute 'silent grep! "^=======$"' | copen<cr>]], { noremap = true } },
 
 	{ "n", "[l", "<cmd>lprev<cr>", { noremap = true } },
 	{ "n", "]l", "<cmd>lnext<cr>", { noremap = true } },
 	{ "n", "[L", "<cmd>lfirst<cr>", { noremap = true } },
 	{ "n", "]L", "<cmd>llast<cr>", { noremap = true } },
-	{ "n", "<leader><cr>", helpers .. "toggle_ll()<cr>", { noremap = true } },
+	{ "n", "|", helpers .. "toggle_ll()<cr>", { noremap = true } },
 
 	{ "n", "<leader>dk", '<cmd>lua vim.diagnostic.open_float(0, {scope="line"})<CR>', { noremap = true } },
 	{ "n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { noremap = true } },
