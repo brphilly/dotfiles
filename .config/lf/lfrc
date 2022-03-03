@@ -1,2 +1,4 @@
 map <tab> toggle
 map D delete
+set hidden
+map H set hidden!
