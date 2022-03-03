@@ -1,11 +1,8 @@
 require("bqf").setup({
 	func_map = {
-		tab = "<c-t>",
-		stoggleup = "",
-		stoggledown = "s",
-		stogglevm = "s",
-		stogglebuf = "'s",
-		sclear = "zs",
+		tabc = "<leader>=",
+		split = "<leader>-",
+		vsplit = [[<leader>\]],
 	},
 })
 
