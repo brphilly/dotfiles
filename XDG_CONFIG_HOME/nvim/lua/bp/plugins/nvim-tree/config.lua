@@ -1,6 +1,3 @@
-vim.g.nvim_tree_ignore = { ".git", ".DS_Store" }
-
-local tree_cb = require("nvim-tree.config").nvim_tree_callback
 require("nvim-tree").setup({
 	-- closes neovim automatically when the tree is the last **WINDOW** in the view
 	auto_close = true,
@@ -11,15 +8,20 @@ require("nvim-tree").setup({
 	view = {
 		mappings = {
 			list = {
-				{ key = "<CR>", cb = tree_cb("preview") },
-				{ key = "<Tab>", cb = tree_cb("edit") },
-				{ key = "-", cb = tree_cb("close") },
+				{ key = "<CR>", action = "preview" },
+				{ key = "<Tab>", action = "edit" },
+				{ key = "-", action = "close" },
+				{ key = [[<leader>\]], action = "vsplit" },
+				{ key = "<leader>-", action = "split" },
+				{ key = "<leader>=", action = "tabnew" },
+				{ key = "<c-t>", action = "dir_up" },
 			},
 		},
 	},
 	filters = {
-		custom = { ".DS_Store" },
+		custom = { ".git", ".DS_Store" },
 	},
+	update_focused_file = { enable = true }
 })
 
 vim.api.nvim_set_keymap("n", "<leader>cv", '<cmd>NvimTreeClose<cr><cmd>lua require"bp.keymap-funcs".make_session(true)<cr>', { noremap = true })
