@@ -77,7 +77,7 @@ local mappings = {
 	{ "n", "]b", "<cmd>bnext<cr>", { noremap = true } },
 	{ "n", "[B", "<cmd>bfirst<cr>", { noremap = true } },
 	{ "n", "]B", "<cmd>blast<cr>", { noremap = true } },
-	{ "n", "<bs>", helpers .. "switch_prev_buf()<cr>", { noremap = true } },
+	{ "n", "''", helpers .. "switch_prev_buf()<cr>", { noremap = true } },
 
 	{ "n", "[q", "<cmd>cprev<cr>", { noremap = true } },
 	{ "n", "]q", "<cmd>cnext<cr>", { noremap = true } },
