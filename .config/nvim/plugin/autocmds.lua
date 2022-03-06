@@ -11,8 +11,6 @@ vim.cmd([[
 	autocmd TermOpen * setlocal wrap
 	autocmd TermOpen * setlocal nonumber
 	autocmd TermOpen * setlocal norelativenumber
-	autocmd TermOpen * startinsert
-	autocmd BufEnter * if &buftype ==# 'terminal' | startinsert | endif
 	augroup END
 ]])
 
