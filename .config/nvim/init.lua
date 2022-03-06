@@ -1,5 +1,16 @@
 vim.g.mapleader = " "
 
+_G.P = function(arg) print(vim.inspect(arg)) end
+vim.augroup = function(group) return vim.api.nvim_create_augroup(group, {}) end
+vim.autocmd = function(group, event, action, pat)
+	return vim.api.nvim_create_autocmd(event, {
+		callback = type(action) == "function" and action or nil,
+		command = type(action) == "string" and action or nil,
+		pattern = pat,
+		group = group,
+	})
+end
+
 -- Disable builtin plugins:
 vim.g.loaded_gzip = 1
 vim.g.loaded_matchit = 1
