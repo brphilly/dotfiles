@@ -104,18 +104,6 @@ local mappings = {
 	{ "n", "<leader>rt", "<cmd>redrawtabline<cr>", { noremap = true } },
 	{ "n", "<leader>ro", "<cmd>source " .. vim.fn.stdpath("config") .. "/plugin/options.lua<cr>", { noremap = true } },
 
-	{ "n", ":", ";", { noremap = true } },
-	{ "n", ";", ":", { noremap = true } },
-	{ "n", "<leader>;", "q:", { noremap = true } },
-	{ "n", "`", "'", { noremap = true } },
-	{ "o", "`", "'", { noremap = true } },
-	{ "x", "`", "'", { noremap = true } },
-	{ "n", "'", "`", { noremap = true } },
-	{ "o", "'", "`", { noremap = true } },
-	{ "x", "'", "`", { noremap = true } },
-	{ "n", ",", "@", { noremap = true } },
-	{ "n", ",,", "@@", { noremap = true } },
-
 	{ "n", "*", "*" .. helpers .. "start_hl()<cr>", { noremap = true } },
 	{ "n", "#", "#" .. helpers .. "start_hl()<cr>", { noremap = true } },
 	{ "n", "n", "n" .. helpers .. "start_hl()<cr>", { noremap = true } },
