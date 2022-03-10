@@ -64,9 +64,9 @@ cmp.setup({
 		-- this order affects priority
 		{ name = "luasnip" },
 		{ name = "path" },
-		{ name = "nvim_lua", keyword_length = 3 },
-		{ name = "nvim_lsp", keyword_length = 3 },
-		{ name = "buffer", keyword_length = 3 },
+		{ name = "nvim_lua", keyword_length = 2 },
+		{ name = "nvim_lsp", keyword_length = 2 },
+		{ name = "buffer", keyword_length = 2 },
 	},
 })
 
