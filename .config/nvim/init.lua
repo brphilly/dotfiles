@@ -11,6 +11,9 @@ vim.autocmd = function(group, event, action, pat)
 	})
 end
 
+-- New lua-based filetype detection
+vim.g.do_filetype_lua = 1
+
 -- Disable builtin plugins:
 vim.g.loaded_gzip = 1
 vim.g.loaded_matchit = 1
