@@ -56,9 +56,12 @@ function M.make_session(close)
 	session_name = "session__" .. session_name .. ".vim"
 
 	-- save session and quit if close is true
-	vim.cmd(string.format("mksession! %s%s", vim.fn.stdpath("data") .. "/session/", session_name))
+	local session_str = string.format("mksession! %s%s", vim.fn.stdpath("data") .. "/session/", session_name)
 	if close then
+		vim.cmd(session_str)
 		vim.cmd("qall")
+	else
+		vim.api.nvim_feedkeys(':'..session_str, 'n', true)
 	end
 end
 
