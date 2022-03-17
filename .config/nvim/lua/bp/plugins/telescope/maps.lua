@@ -56,6 +56,7 @@ function M.grep_conf()
 	builtin.live_grep({
 		prompt_title = "Grep config",
 		cwd = conf_path(),
+		additional_args = function() return {"--hidden"} end
 	})
 end
 
@@ -101,6 +102,7 @@ function M.grep_todo_conf()
 		cwd = dir,
 		vimgrep_arguments = {
 			"rg",
+			"--hidden",
 			"--color=never",
 			"--no-heading",
 			"--with-filename",
