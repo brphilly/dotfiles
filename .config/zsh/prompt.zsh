@@ -1,3 +1,4 @@
+autoload -Uz add-zsh-hook
 source /usr/share/gitstatus/gitstatus.prompt.zsh
 typeset -F SECONDS
 cmd_start=$SECONDS
@@ -6,92 +7,68 @@ cmd_num_prev=-1
 
 cmd_start() {
 	cmd_start=$SECONDS
-	((cmd_num++))
+	(( cmd_num++ ))
 }
 add-zsh-hook preexec cmd_start
 
-prompt_dir() {
-	print -Pv dir '%~'
-	((gap = gap - ${(m)#dir} - 3)) # -3 is for spaces padding and seperator
-	if [[ $1 -eq 0 ]]; then
-		local dir_sep_bg='#5e81ac'
-	elif [[ $prev_ret_code -ne 0 ]]; then
-		local dir_sep_bg='#bf616a'
-	else
-		local dir_sep_bg='#20242d'
-	fi
-	PROMPT='%F{#20242d}%K{#a093c7} $dir %F{#a093c7}%K{'$dir_sep_bg'}'
-}
-
-prompt_git() {
-	((gap = gap - $GITSTATUS_PROMPT_LEN - 3)) # -3 is for spaces padding and seperator
-	if [[ $prev_ret_code -ne 0 ]]; then
-		local dir_sep_bg='#bf616a'
-	else
-		local dir_sep_bg='#20242d'
-	fi
-	PROMPT+=" %F{#20242d}${${GITSTATUS_PROMPT//\%\%/x}//\%(f|<->F)} %F{#5e81ac}%K{"$dir_sep_bg"}"
-}
-
-prompt_ret() {
-	((gap = gap - $#prev_ret_code - 3)) # -3 is for spaces padding and seperator
-	PROMPT+="%F{#20242d} $prev_ret_code %F{#bf616a}%k"
-}
-
 prompt_elapsed() {
-	elapsed_str=$((cmd_elapsed % 60))'s'
-	local mins=$(((cmd_elapsed % 3600) / 60))
-	if [[ $mins -ne 0 ]]; then
-		elapsed_str="$mins""m $elapsed_str"
-		local hours=$(((cmd_elapsed % 86400) / 3600))
-		if [[ $hours -ne 0 ]]; then
-			elapsed_str="$hours""h $elapsed_str"
-			local days=$((cmd_elapsed / 86400))
-			if [[ $days -ne 0 ]]; then
-				elapsed_str="$days""d $elapsed_str"
-			fi
-		fi
-	fi
+	integer elapsed_sec=$((SECONDS - cmd_start))
+	local elapsed_arr=()
 
-	((gap = gap - $#elapsed_str - 3)) # -3 is for spaces padding and seperator
-	elapsed_str='%F{#ebcb8b}%F{#20242d}%K{#ebcb8b} '"$elapsed_str "
+	local days=$((elapsed_sec / 86400))
+	[[ $days -ne 0 ]] && elapsed_arr+=(${days}d)
+
+	local hours=$(((elapsed_sec % 86400) / 3600))
+	( [[ $#elapsed_arr -ne 0 ]] || [[ $hours -ne 0 ]] ) && elapsed_arr+=(${hours}h)
+
+	local mins=$(((elapsed_sec % 3600) / 60))
+	( [[ $#elapsed_arr -ne 0 ]] || [[ $mins -ne 0 ]] ) && elapsed_arr+=(${mins}m)
+
+	local secs=$((elapsed_sec % 60))
+	( [[ $#elapsed_arr -ne 0 ]] || [[ $secs -ne 0 ]] ) && elapsed_arr+=(${secs}s)
+
+	echo ${(j[ ])elapsed_arr}
 }
 
-prompt_time() {
-	print -Pv pt '%D{%H:%M %b %d}'
-	((gap = gap - $#pt - 3)) # -3 is for spaces padding and seperator
-	if [[ $cmd_elapsed -gt 0 ]]; then
-		local sep_bg='#ebcb8b'
+prompt_gap() {
+	local left_prompt_size=$(( ${(m)#psvar[1]} + ${(m)#psvar[2]} + $#psvar[3] ))
+	(( left_prompt_size += 3 )) # for psvar[1] padding and seperator
+	[[ $#psvar[2] -ne 0 ]] && (( left_prompt_size += 3 ))
+	[[ $#psvar[3] -ne 0 ]] && (( left_prompt_size += 3 ))
+
+	local right_prompt_size=$(( $#psvar[5] + $#psvar[6] ))
+	(( right_prompt_size += 3)) # for psvar[6] padding and seperator
+	[[ $#psvar[5] -ne 0 ]] && (( right_prompt_size += 3 ))
+
+	local prompt_gap
+	if [[ $right_prompt_size -ge $COLUMNS ]]; then
+		prompt_gap=0
+	elif [[ $(( (left_prompt_size % COLUMNS) + right_prompt_size )) -le $COLUMNS ]]; then
+		prompt_gap=$(( COLUMNS - right_prompt_size - (left_prompt_size % COLUMNS) ))
 	else
-		local sep_bg='#20242d'
+		prompt_gap=$(( 2 * COLUMNS - left_prompt_size - right_prompt_size ))
 	fi
-	prompt_full_time='%F{#d8dee9}%K{'"$sep_bg"'}%F{#20242d}%K{#d8dee9}'" $pt "
+
+	psvar[4]=$(printf "%${prompt_gap}c" ' ')
 }
 
 make_prompt() {
-	prev_ret_code=$?
-	local gap=$COLUMNS
-
-	[[ -n $GITSTATUS_PROMPT ]]
-	local is_git=$?
-	prompt_dir $is_git
-	[[ $is_git -eq 0 ]] && prompt_git
-	[[ $prev_ret_code -ne 0 ]] && prompt_ret
-
+	psvar[3]=$(print -P '%(?..%?)')
+	psvar[1]=$(print -P '%~')
+	psvar[2]=${${GITSTATUS_PROMPT//\%\%/x}//\%(f|<->F)}
 	if [[ $cmd_num_prev -ne $cmd_num ]]; then
-		integer -g cmd_elapsed=$((SECONDS - cmd_start))
 		cmd_num_prev=$cmd_num
-		elapsed_str=''
+		psvar[5]=$(prompt_elapsed)
 	fi
-	[[ $cmd_elapsed -gt 0 ]] && prompt_elapsed
-	prompt_time
-	if [[ $gap -ge 0 ]]; then
-		PROMPT+=$(printf '%'$gap'c' ' ')
-		PROMPT+="$elapsed_str""$prompt_full_time"
-	fi
+	psvar[6]=$(print -P '%D{%H:%M %b %d}')
+	prompt_gap # set psvar[4]
 
-	PROMPT+=$'\n''%f%k%(!.#.❯) '
+	PROMPT="%F{#20242d}%K{#a093c7} %1v %F{#a093c7}%2(V.%K{#5e81ac}.%3(V.%K{#bf616a}.%K{#20242d}))"
+	PROMPT+="%2(V.%F{#20242d} %2v %F{#5e81ac}%3(V.%K{#bf616a}.%K{#20242d}).)"
+	PROMPT+="%3(V.%F{#20242d} %3v %F{#bf616a}%K{#20242d}.)"
+	PROMPT+="%k%4v"
+	PROMPT+="%5(V.%F{#ebcb8b}%F{#20242d}%K{#ebcb8b} %5v .)"
+	PROMPT+="%F{#d8dee9}%5(V.%K{#ebcb8b}.)%F{#20242d}%K{#d8dee9} %6v "
+	PROMPT+=$'\n'"%f%k%(!.#.❯) "
 }
 add-zsh-hook precmd make_prompt
-
-NEWLINE=$'\n'
