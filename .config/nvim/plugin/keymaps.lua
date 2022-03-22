@@ -16,6 +16,10 @@ local mappings = {
 	{ "i", "<c-j>", "<c-o>o", { noremap = true } },
 	{ "i", "<c-k>", "<c-o>O", { noremap = true } },
 
+	{ "", "<home>", "^", { noremap = true } },
+	{ "i", "<home>", "<c-o>^", { noremap = true } },
+	{ "n", "~", "g~", { noremap = true } },
+
 	{ "i", ",", ",<c-g>u", { noremap = true } },
 	{ "i", ".", ".<c-g>u", { noremap = true } },
 	{ "i", "!", "!<c-g>u", { noremap = true } },
