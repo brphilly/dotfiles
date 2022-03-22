@@ -19,6 +19,7 @@ vim.opt.cursorlineopt = "number"
 vim.opt.cursorline = true
 vim.opt.colorcolumn = "151"
 vim.opt.ruler = false
+vim.opt.laststatus = 3
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true

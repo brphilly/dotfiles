@@ -73,7 +73,7 @@ require("packer").startup({
 					"j-hui/fidget.nvim",
 					after = "nvim-lspconfig",
 					config = function()
-						require("fidget").setup({ text = { spinner = "dots_negative" }, fmt = { stack_upwards = false } })
+						require("fidget").setup({ text = { spinner = "dots_negative" }, window = {relative = "editor"}, fmt = { stack_upwards = false } })
 						local p = require("nord.colours")
 						vim.cmd(string.format([[
 							augroup my-fidget-hl
