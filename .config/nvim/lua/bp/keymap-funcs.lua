@@ -26,8 +26,10 @@ end
 
 function M.make_session(close)
 	-- close all floating windows as they cause problems when saved in sessions
+	-- also close windows containing buffers with weird types
 	for _, w in ipairs(vim.api.nvim_list_wins()) do
-		if vim.api.nvim_win_get_config(w).relative ~= "" then
+		local bt = vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(w), "buftype")
+		if vim.api.nvim_win_get_config(w).relative ~= "" or (bt ~= "" and bt ~= "help" and bt ~= "terminal") then
 			vim.api.nvim_win_close(w, true)
 		end
 	end

@@ -24,9 +24,6 @@ require("nvim-tree").setup({
 	update_focused_file = { enable = true }
 })
 
-vim.api.nvim_set_keymap("n", "<leader>cv", '<cmd>NvimTreeClose<cr><cmd>lua require"bp.keymap-funcs".make_session(true)<cr>', { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>ss", '<cmd>NvimTreeClose<cr><cmd>lua require"bp.keymap-funcs".make_session(false)<cr>', { noremap = true })
-
 local c = require("nord.colours")
 -- stylua: ignore
 vim.cmd(string.format([[
