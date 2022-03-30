@@ -27,6 +27,7 @@ bindkey -v $terminfo[kRIT5] forward-word
 bindkey -v $terminfo[kLFT5] backward-word
 bindkey -v '^@' menu-expand-or-complete
 bindkey -v '^n' history-beginning-search-backward
+bindkey -v '^p' history-beginning-search-forward
 bindkey -a 'w' forward-word
 bindkey -a 'b' backward-word
 bindkey -a 'Y' vi-yank-eol
