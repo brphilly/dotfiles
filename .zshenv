@@ -6,7 +6,4 @@ export EDITOR="nvim"
 export LESS="-R"
 export BAT_THEME="Nord"
 
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-export HISTFILE="$XDG_CACHE_HOME/zsh/.zsh_history"
-export HISTSIZE=10000 # internal history
-export SAVEHIST=10000 # file history
+ZDOTDIR="$XDG_CONFIG_HOME/zsh"

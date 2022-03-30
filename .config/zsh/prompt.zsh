@@ -46,7 +46,7 @@ prompt_gap() {
 	elif [[ $(( (left_prompt_size % COLUMNS) + right_prompt_size )) -le $COLUMNS ]]; then
 		prompt_gap=$(( COLUMNS - right_prompt_size - (left_prompt_size % COLUMNS) ))
 	else
-		prompt_gap=$(( 2 * COLUMNS - left_prompt_size - right_prompt_size ))
+		prompt_gap=$(( 2 * COLUMNS - right_prompt_size - (left_prompt_size % COLUMNS) ))
 	fi
 
 	psvar[4]=$(printf "%${prompt_gap}c" ' ')
@@ -62,13 +62,13 @@ make_prompt() {
 	fi
 	psvar[6]=$(print -P '%D{%H:%M %b %d}')
 	prompt_gap # set psvar[4]
-
-	PROMPT="%F{#20242d}%K{#a093c7} %1v %F{#a093c7}%2(V.%K{#5e81ac}.%3(V.%K{#bf616a}.%K{#20242d}))"
-	PROMPT+="%2(V.%F{#20242d} %2v %F{#5e81ac}%3(V.%K{#bf616a}.%K{#20242d}).)"
-	PROMPT+="%3(V.%F{#20242d} %3v %F{#bf616a}%K{#20242d}.)"
-	PROMPT+="%k%4v"
-	PROMPT+="%5(V.%F{#ebcb8b}%F{#20242d}%K{#ebcb8b} %5v .)"
-	PROMPT+="%F{#d8dee9}%5(V.%K{#ebcb8b}.)%F{#20242d}%K{#d8dee9} %6v "
-	PROMPT+=$'\n'"%f%k%(!.#.❯) "
 }
 add-zsh-hook precmd make_prompt
+
+PROMPT="%F{#20242d}%K{#a093c7} %1v %F{#a093c7}%2(V.%K{#5e81ac}.%3(V.%K{#bf616a}.%k))"
+PROMPT+="%2(V.%F{#20242d} %2v %F{#5e81ac}%3(V.%K{#bf616a}.%k).)"
+PROMPT+="%3(V.%F{#20242d} %3v %F{#bf616a}%k.)"
+PROMPT+="%4v"
+PROMPT+="%5(V.%F{#ebcb8b}%F{#20242d}%K{#ebcb8b} %5v .)"
+PROMPT+="%F{#d8dee9}%5(V.%K{#ebcb8b}.)%F{#20242d}%K{#d8dee9} %6v "
+PROMPT+=$'\n'"%f%k%(!.#.❯) "
