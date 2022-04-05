@@ -165,10 +165,11 @@ require("packer").startup({
 		use({
 			"hrsh7th/nvim-cmp",
 			config = 'require("bp.plugins.nvim-cmp")',
-			event = "InsertEnter",
+			event = { "InsertEnter", "CmdlineEnter" },
 			requires = {
 				{ "hrsh7th/cmp-path", after = "nvim-cmp", opt = true },
 				{ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp", opt = true },
+				{ "hrsh7th/cmp-cmdline", after = "nvim-cmp", opt = true },
 				{
 					"hrsh7th/cmp-buffer",
 					after = "nvim-cmp",

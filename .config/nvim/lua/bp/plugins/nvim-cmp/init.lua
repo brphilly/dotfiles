@@ -69,6 +69,12 @@ cmp.setup({
 		{ name = "buffer", keyword_length = 2 },
 	},
 })
+cmp.setup.cmdline('/', {
+	sources = { { name = 'buffer' } },
+})
+cmp.setup.cmdline(':', {
+	sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } }),
+})
 
 local c = require("nord.colours")
 -- stylua: ignore
