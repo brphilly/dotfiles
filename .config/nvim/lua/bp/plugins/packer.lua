@@ -88,11 +88,12 @@ require("packer").startup({
 			},
 		})
 
-		local ts_exists, parsers = pcall(function() return require("nvim-treesitter.parsers").maintained_parsers() end)
+		vim.cmd("PackerLoad nvim-treesitter")
+		local parsers = require("nvim-treesitter.parsers").maintained_parsers()
 		use({
 			"nvim-treesitter/nvim-treesitter",
 			config = 'require("bp.plugins.nvim-treesitter")',
-			ft = ts_exists and parsers or nil,
+			ft = parsers,
 			run = ":TSUpdate",
 			requires = {
 				{
