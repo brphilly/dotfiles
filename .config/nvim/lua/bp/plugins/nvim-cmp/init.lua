@@ -32,7 +32,7 @@ cmp.setup({
 	preselect = cmp.PreselectMode.Item,
 
 	experimental = {
-		ghost_text = true,
+		ghost_text = {hl_group = 'NonText'},
 	},
 
 	documentation = {
