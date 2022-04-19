@@ -1,114 +1,99 @@
-local helpers = "<cmd>lua require'bp.keymap-funcs'."
-local mappings = {
-	{ "n", "<c-left>", "<c-w>10<", { noremap = true } },
-	{ "n", "<c-right>", "<c-w>10>", { noremap = true } },
-	{ "n", "<c-down>", "<c-w>6-", { noremap = true } },
-	{ "n", "<c-up>", "<c-w>6+", { noremap = true } },
-	{ "n", "<c-h>", "<c-w>h", { noremap = true } },
-	{ "n", "<c-l>", "<c-w>l", { noremap = true } },
-	{ "n", "<c-j>", "<c-w>j", { noremap = true } },
-	{ "n", "<c-k>", "<c-w>k", { noremap = true } },
-	{ "x", "<c-h>", [[<c-\><c-n><c-w>h]], { noremap = true } },
-	{ "x", "<c-l>", [[<c-\><c-n><c-w>l]], { noremap = true } },
-	{ "x", "<c-j>", [[<c-\><c-n><c-w>j]], { noremap = true } },
-	{ "x", "<c-k>", [[<c-\><c-n><c-w>k]], { noremap = true } },
-	{ "t", "<c-[>", [[<c-\><c-n>]], { noremap = true } },
-	{ "i", "<c-j>", "<c-o>o", { noremap = true } },
-	{ "i", "<c-k>", "<c-o>O", { noremap = true } },
+vim.keymap.set("t", "<c-[>", [[<c-\><c-n>]])
+vim.keymap.set("i", "<c-j>", "<c-o>o")
+vim.keymap.set("i", "<c-k>", "<c-o>O")
 
-	{ "", "<home>", "^", { noremap = true } },
-	{ "i", "<home>", "<c-o>^", { noremap = true } },
-	{ "n", "~", "g~", { noremap = true } },
+vim.keymap.set("", "<home>", "^")
+vim.keymap.set("i", "<home>", "<c-o>^")
+vim.keymap.set("n", "~", "g~")
 
-	{ "i", ",", ",<c-g>u", { noremap = true } },
-	{ "i", ".", ".<c-g>u", { noremap = true } },
-	{ "i", "!", "!<c-g>u", { noremap = true } },
-	{ "i", "?", "?<c-g>u", { noremap = true } },
+vim.keymap.set("i", ",", ",<c-g>u")
+vim.keymap.set("i", ".", ".<c-g>u")
+vim.keymap.set("i", "!", "!<c-g>u")
+vim.keymap.set("i", "?", "?<c-g>u")
 
-	{ "i", "<tab>", [[pumvisible() ? "<c-n>" : "<tab>"]], { noremap = true, expr = true } },
-	{ "i", "<s-tab>", [[pumvisible() ? "<c-p>" : "<tab>"]], { noremap = true, expr = true } },
-	{ "i", "<cr>", [[pumvisible() ? "<c-y>" : "<cr>"]], { noremap = true, expr = true } },
+vim.keymap.set("i", "<tab>", [[pumvisible() ? "<c-n>" : "<tab>"]], { expr = true })
+vim.keymap.set("i", "<s-tab>", [[pumvisible() ? "<c-p>" : "<tab>"]], { expr = true })
+vim.keymap.set("i", "<cr>", [[pumvisible() ? "<c-y>" : "<cr>"]], { expr = true })
 
-	{ "n", "<leader>me", "<c-w>=", { noremap = true } },
-	{ "n", "<leader>mw", "<c-w>|", { noremap = true } },
-	{ "n", "<leader>mh", "<c-w>_", { noremap = true } },
+vim.keymap.set("n", "<leader>me", "<c-w>=")
+vim.keymap.set("n", "<leader>mw", "<c-w>|")
+vim.keymap.set("n", "<leader>mh", "<c-w>_")
 
-	{ "n", "zh", "zH", { noremap = true } },
-	{ "n", "zH", "zh", { noremap = true } },
-	{ "n", "zL", "zl", { noremap = true } },
-	{ "n", "zl", helpers .. "hor_scroll()<cr>", { noremap = true } },
+vim.keymap.set("n", "zh", "zH")
+vim.keymap.set("n", "zH", "zh")
+vim.keymap.set("n", "zL", "zl")
+vim.keymap.set("n", "zl", require("bp.keymap-funcs").hor_scroll)
 
-	{ "x", "p", '"_dP', { noremap = true } },
-	{ "x", "<leader>p", '"_d"+P', { noremap = true } },
-	{ "n", "<leader>p", '"+p', { noremap = true } },
-	{ "n", "<leader>P", '"+P', { noremap = true } },
-	{ "n", "<leader>y", '"+y', { noremap = true } },
-	{ "x", "<leader>y", '"+y', { noremap = true } },
+vim.keymap.set("x", "p", '"_dP')
+vim.keymap.set("x", "<leader>p", '"_d"+P')
+vim.keymap.set("n", "<leader>p", '"+p')
+vim.keymap.set("n", "<leader>P", '"+P')
+vim.keymap.set("n", "<leader>y", '"+y')
+vim.keymap.set("x", "<leader>y", '"+y')
 
-	{ "x", "J", ":move '>+1<cr>gv=gv", { noremap = true } },
-	{ "x", "K", ":move '<-2<cr>gv=gv", { noremap = true } },
-	{ "x", "<", "<gv", { noremap = true } },
-	{ "x", ">", ">gv", { noremap = true } },
+vim.keymap.set("x", "J", ":move '>+1<cr>gv=gv")
+vim.keymap.set("x", "K", ":move '<-2<cr>gv=gv")
+vim.keymap.set("x", "<", "<gv")
+vim.keymap.set("x", ">", ">gv")
 
-	{ "n", "<leader>sa", "<cmd>update<cr>", { noremap = true } },
-	{ "n", "<leader>ss", helpers .. "make_session(false)<cr>", { noremap = true } },
-	{ "n", "<leader>so", "<cmd>source<cr>", { noremap = true } },
-	{ "x", "<leader>so", ":'<,'>source<cr>", { noremap = true } },
+vim.keymap.set("n", "<leader>sa", "<cmd>update<cr>")
+vim.keymap.set("n", "<leader>ss", function() require("bp.keymap-funcs").make_session(false) end)
+vim.keymap.set("n", "<leader>so", "<cmd>source<cr>")
+vim.keymap.set("x", "<leader>so", ":'<,'>source<cr>")
 
-	{ "n", [[<leader>\]], "<cmd>vsplit<cr>", { noremap = true } },
-	{ "n", "<leader>-", "<cmd>split<cr>", { noremap = true } },
-	{ "n", "<leader>=", "<cmd>tab split<cr>", { noremap = true } },
-	{ "n", "[t", "<cmd>tabprevious<cr>", { noremap = true } },
-	{ "n", "]t", "<cmd>tabnext<cr>", { noremap = true } },
-	{ "n", "[T", "<cmd>tabmove -1<cr>", { noremap = true } },
-	{ "n", "]T", "<cmd>tabmove +1<cr>", { noremap = true } },
+vim.keymap.set("n", "<c-w><c-q>", "<c-w>c")
+vim.keymap.set("n", "<c-w><c-t>", "<cmd>tab split<cr>")
+vim.keymap.set("n", "<c-w><c-bs>", "<cmd>tab split<cr>")
+vim.keymap.set("n", "<c-w><c-;>", "<cmd>tabprevious<cr>")
+vim.keymap.set("n", "<c-w><c-'>", "<cmd>tabnext<cr>")
+vim.keymap.set("n", "<c-w><c-:>", "<cmd>tabmove -1<cr>")
+vim.keymap.set("n", '<c-w><c-">', "<cmd>tabmove +1<cr>")
+vim.keymap.set("n", "<c-left>", "<c-w>10<")
+vim.keymap.set("n", "<c-right>", "<c-w>10>")
+vim.keymap.set("n", "<c-down>", "<c-w>6-")
+vim.keymap.set("n", "<c-up>", "<c-w>6+")
 
-	{ "n", "<leader>cv", helpers .. "make_session(true)<cr>", { noremap = true } },
-	{ "n", "<leader>cb", helpers .. "buf_close()<cr>", { noremap = true } },
-	{ "n", "<leader>ch", helpers .. "buf_close_hid()<cr>", { noremap = true } },
-	{ "n", "<leader>cu", helpers .. "buf_close_unlist()<cr>", { noremap = true } },
-	{ "n", "<leader>cw", "<cmd>q<cr>", { noremap = true } },
-	{ "n", "<leader>ct", "<cmd>tabclose<cr>", { noremap = true } },
+vim.keymap.set("n", "<leader>cv", function() require("bp.keymap-funcs").make_session(true) end)
+vim.keymap.set("n", "<leader>cb", require("bp.keymap-funcs").buf_close)
+vim.keymap.set("n", "<leader>ch", require("bp.keymap-funcs").buf_close_hid)
+vim.keymap.set("n", "<leader>cu", require("bp.keymap-funcs").buf_close_unlist)
+vim.keymap.set("n", "<leader>ct", "<cmd>tabclose<cr>")
 
-	{ "n", "[b", "<cmd>bprevious<cr>", { noremap = true } },
-	{ "n", "]b", "<cmd>bnext<cr>", { noremap = true } },
-	{ "n", "[B", "<cmd>bfirst<cr>", { noremap = true } },
-	{ "n", "]B", "<cmd>blast<cr>", { noremap = true } },
-	{ "n", "''", helpers .. "switch_prev_buf()<cr>", { noremap = true } },
+vim.keymap.set("n", "[b", "<cmd>bprevious<cr>")
+vim.keymap.set("n", "]b", "<cmd>bnext<cr>")
+vim.keymap.set("n", "[B", "<cmd>bfirst<cr>")
+vim.keymap.set("n", "]B", "<cmd>blast<cr>")
+vim.keymap.set("n", "''", require("bp.keymap-funcs").switch_prev_buf)
 
-	{ "n", "[q", "<cmd>cprev<cr>", { noremap = true } },
-	{ "n", "]q", "<cmd>cnext<cr>", { noremap = true } },
-	{ "n", "[Q", "<cmd>cfirst<cr>", { noremap = true } },
-	{ "n", "]Q", "<cmd>clast<cr>", { noremap = true } },
-	{ "n", [[\]], helpers .. "toggle_qf()<cr>", { noremap = true } },
-	{ "n", "<leader>gc", [[<cmd>execute 'silent grep! "^=======$"' | copen<cr>]], { noremap = true } },
+vim.keymap.set("n", "[q", "<cmd>cprev<cr>")
+vim.keymap.set("n", "]q", "<cmd>cnext<cr>")
+vim.keymap.set("n", "[Q", "<cmd>cfirst<cr>")
+vim.keymap.set("n", "]Q", "<cmd>clast<cr>")
+vim.keymap.set("n", "<c-w><c-space>", require("bp.keymap-funcs").toggle_qf)
+vim.keymap.set("n", "<leader>gc", [[<cmd>execute 'silent grep! "^=======$"' | copen<cr>]])
 
-	{ "n", "[l", "<cmd>lprev<cr>", { noremap = true } },
-	{ "n", "]l", "<cmd>lnext<cr>", { noremap = true } },
-	{ "n", "[L", "<cmd>lfirst<cr>", { noremap = true } },
-	{ "n", "]L", "<cmd>llast<cr>", { noremap = true } },
-	{ "n", "|", helpers .. "toggle_ll()<cr>", { noremap = true } },
+vim.keymap.set("n", "[l", "<cmd>lprev<cr>")
+vim.keymap.set("n", "]l", "<cmd>lnext<cr>")
+vim.keymap.set("n", "[L", "<cmd>lfirst<cr>")
+vim.keymap.set("n", "]L", "<cmd>llast<cr>")
+vim.keymap.set("n", "<c-w><space>", require("bp.keymap-funcs").toggle_ll)
 
-	{ "n", "<leader>dk", '<cmd>lua vim.diagnostic.open_float(0, {scope="line"})<CR>', { noremap = true } },
-	{ "n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { noremap = true } },
-	{ "n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", { noremap = true } },
-	{ "n", "<leader>dl", "<cmd>lua vim.diagnostic.setloclist()<CR>", { noremap = true } },
-	{ "n", "<leader>dq", "<cmd>lua vim.diagnostic.setqflist()<CR>", { noremap = true } },
+vim.keymap.set("n", "<leader>dk", function() vim.diagnostic.open_float(0, {scope="line"}) end)
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+vim.keymap.set("n", "<leader>dl", vim.diagnostic.setloclist)
+vim.keymap.set("n", "<leader>dq", vim.diagnostic.setqflist)
 
-	{ "n", "<leader>rr", "<cmd>redraw!<cr>", { noremap = true } },
-	{ "n", "<leader>re", "<cmd>echo<cr>", { noremap = true } },
-	{ "n", "<leader>rs", "<cmd>redrawstatus!<cr>", { noremap = true } },
-	{ "n", "<leader>rt", "<cmd>redrawtabline<cr>", { noremap = true } },
-	{ "n", "<leader>ro", "<cmd>source " .. vim.fn.stdpath("config") .. "/plugin/options.lua<cr>", { noremap = true } },
+vim.keymap.set("n", "<leader>rr", "<cmd>redraw!<cr>")
+vim.keymap.set("n", "<leader>re", "<cmd>echo<cr>")
+vim.keymap.set("n", "<leader>rs", "<cmd>redrawstatus!<cr>")
+vim.keymap.set("n", "<leader>rt", "<cmd>redrawtabline<cr>")
+vim.keymap.set("n", "<leader>ro", "<cmd>source " .. vim.fn.stdpath("config") .. "/plugin/options.lua<cr>")
 
-	{ "n", "*", "*" .. helpers .. "start_hl()<cr>", { noremap = true } },
-	{ "n", "#", "#" .. helpers .. "start_hl()<cr>", { noremap = true } },
-	{ "n", "n", "n" .. helpers .. "start_hl()<cr>", { noremap = true } },
-	{ "n", "N", "N" .. helpers .. "start_hl()<cr>", { noremap = true } },
-	{ "", "<plug>NoHL", "<cmd>nohlsearch<cr>", { noremap = true } },
-	{ "!", "<plug>NoHL", "<cmd>nohlsearch<cr>", { noremap = true } },
-	{ "t", "<plug>NoHL", "<cmd>nohlsearch<cr>", { noremap = true } },
-}
-for _, map in ipairs(mappings) do
-	vim.api.nvim_set_keymap(map[1], map[2], map[3], map[4])
-end
+vim.keymap.set("n", "*", "*<cmd>lua require('bp.keymap-funcs').start_hl()<cr>")
+vim.keymap.set("n", "#", "#<cmd>lua require('bp.keymap-funcs').start_hl()<cr>")
+vim.keymap.set("n", "n", "n<cmd>lua require('bp.keymap-funcs').start_hl()<cr>")
+vim.keymap.set("n", "N", "N<cmd>lua require('bp.keymap-funcs').start_hl()<cr>")
+vim.keymap.set("", "<plug>NoHL", "<cmd>nohlsearch<cr>")
+vim.keymap.set("!", "<plug>NoHL", "<cmd>nohlsearch<cr>")
+vim.keymap.set("t", "<plug>NoHL", "<cmd>nohlsearch<cr>")

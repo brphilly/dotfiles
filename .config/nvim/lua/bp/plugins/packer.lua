@@ -225,7 +225,7 @@ require("packer").startup({
 					after = "telescope.nvim",
 					wants = "sqlite.lua",
 					setup = function()
-						vim.api.nvim_set_keymap("n", "<leader>ffo", "<cmd>lua require('telescope').extensions.frecency.frecency()<cr>", { noremap = true })
+						vim.keymap.set("n", "<leader>ffo", function() require('telescope').extensions.frecency.frecency() end)
 					end,
 					config = function()
 						require("telescope").load_extension("frecency")
@@ -238,7 +238,7 @@ require("packer").startup({
 		use({
 			"numToStr/FTerm.nvim",
 			setup = function()
-				vim.api.nvim_set_keymap("n", "<leader>`", "<cmd>lua require('FTerm').toggle()<cr>", { noremap = true })
+				vim.keymap.set("n", "<leader>`", function() require('FTerm').toggle() end)
 			end,
 			config = function()
 				require("FTerm").setup({ hl = "NormalFloat" })
@@ -291,10 +291,10 @@ require("packer").startup({
 			"rlane/pounce.nvim",
 			config = "require('bp.plugins.pounce')",
 			setup = function()
-				vim.api.nvim_set_keymap("n", "s", "<cmd>Pounce<cr>", { noremap = true })
-				vim.api.nvim_set_keymap("n", "S", "<cmd>PounceRepeat<cr>", { noremap = true })
-				vim.api.nvim_set_keymap("x", "s", "<cmd>Pounce<cr>", { noremap = true })
-				vim.api.nvim_set_keymap("o", "z", "<cmd>Pounce<cr>", { noremap = true })
+				vim.keymap.set("n", "s", "<cmd>Pounce<cr>")
+				vim.keymap.set("n", "S", "<cmd>PounceRepeat<cr>")
+				vim.keymap.set("x", "s", "<cmd>Pounce<cr>")
+				vim.keymap.set("o", "z", "<cmd>Pounce<cr>")
 			end,
 			cmd = { "Pounce", "PounceRepeat" },
 		})
@@ -325,7 +325,7 @@ require("packer").startup({
 		use({
 			"kyazdani42/nvim-tree.lua",
 			setup = function()
-				vim.api.nvim_set_keymap("n", "-", "<cmd>NvimTreeToggle<cr>", { noremap = true })
+				vim.keymap.set("n", "-", "<cmd>NvimTreeToggle<cr>")
 			end,
 			config = 'require("bp.plugins.nvim-tree.config")',
 			cmd = "NvimTreeToggle",
@@ -346,7 +346,7 @@ require("packer").startup({
 		use({
 			"mbbill/undotree",
 			setup = function()
-				vim.api.nvim_set_keymap("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { noremap = true })
+				vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>")
 				vim.g.undotree_WindowLayout = 2
 				vim.g.undotree_SetFocusWhenToggle = 1
 			end,

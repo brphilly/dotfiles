@@ -1,1 +1,1 @@
-vim.api.nvim_set_keymap("n", "<leader>gg", '<cmd>lua require"neogit".open()<cr>', { noremap = true })
+vim.keymap.set("n", "<leader>gg", function() require"neogit".open() end)
