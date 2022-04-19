@@ -8,6 +8,8 @@ cmp.setup({
 			behavior = cmp.ConfirmBehavior.Insert,
 			select = false,
 		}),
+		["<c-y>"] = cmp.mapping.confirm({select = false}),
+		["<c-e>"] = cmp.mapping.abort(),
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 	},
@@ -35,8 +37,13 @@ cmp.setup({
 		ghost_text = {hl_group = 'NonText'},
 	},
 
-	documentation = {
-		border = "single",
+	window = {
+		documentation = {
+			border = "rounded",
+		},
+		completion = {
+			border = "single",
+		},
 	},
 
 	formatting = {
@@ -71,9 +78,11 @@ cmp.setup({
 })
 cmp.setup.cmdline('/', {
 	sources = { { name = 'buffer' } },
+	mapping = cmp.mapping.preset.cmdline(),
 })
 cmp.setup.cmdline(':', {
 	sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } }),
+	mapping = cmp.mapping.preset.cmdline(),
 })
 
 local c = require("nord.colours")
