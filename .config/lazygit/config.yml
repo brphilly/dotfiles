@@ -1,0 +1,15 @@
+gui:
+  mouseEvents: false
+  theme:
+    selectedLineBgColor:
+      - '#434c5e' # set to `default` to have no background colour
+      - bold
+    selectedRangeBgColor:
+      - reverse
+os:
+  editCommand: 'nvim'
+  editCommandTemplate: '{{editor}} +{{line}} {{filename}}'
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
