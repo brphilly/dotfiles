@@ -89,8 +89,17 @@ require("packer").startup({
 		})
 
 		vim.cmd("PackerLoad nvim-treesitter")
+		local installed_parsers = require("bp.plugins.nvim-treesitter")
 		local parsers = require("nvim-treesitter.parsers")
-		local parsers_ft = vim.tbl_extend("keep", vim.tbl_keys(parsers.list), vim.tbl_keys(parsers.filetype_to_parsername))
+		local parsers_ft = {}
+		for _,parser in ipairs(installed_parsers) do
+			local ft = parsers.list[parser].filetype or parser
+			table.insert(parsers_ft, ft)
+		end
+		for ft,parser in pairs(parsers.filetype_to_parsername) do
+			if vim.tbl_contains(installed_parsers, parser) then table.insert(parsers_ft, ft) end
+		end
+		P(parsers_ft)
 		use({
 			"nvim-treesitter/nvim-treesitter",
 			config = 'require("bp.plugins.nvim-treesitter")',
