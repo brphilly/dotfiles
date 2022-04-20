@@ -1,4 +1,3 @@
-vim.keymap.set("t", "<c-[>", [[<c-\><c-n>]])
 vim.keymap.set("i", "<c-j>", "<c-o>o")
 vim.keymap.set("i", "<c-k>", "<c-o>O")
 
