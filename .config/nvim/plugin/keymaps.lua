@@ -43,6 +43,7 @@ vim.keymap.set("x", "<leader>so", ":'<,'>source<cr>")
 vim.keymap.set("n", "<c-w><c-q>", "<c-w>c")
 vim.keymap.set("n", "<c-w><c-t>", "<cmd>tab split<cr>")
 vim.keymap.set("n", "<c-w><c-bs>", "<cmd>tab split<cr>")
+vim.keymap.set("n", "<c-w><c-m>", "<c-w>o")
 vim.keymap.set("n", "<c-w><c-;>", "<cmd>tabprevious<cr>")
 vim.keymap.set("n", "<c-w><c-'>", "<cmd>tabnext<cr>")
 vim.keymap.set("n", "<c-w><c-:>", "<cmd>tabmove -1<cr>")
@@ -51,6 +52,17 @@ vim.keymap.set("n", "<c-left>", "<c-w>10<")
 vim.keymap.set("n", "<c-right>", "<c-w>10>")
 vim.keymap.set("n", "<c-down>", "<c-w>6-")
 vim.keymap.set("n", "<c-up>", "<c-w>6+")
+vim.keymap.set("n", "<c-w><c-f>", function()
+	vim.api.nvim_open_win(0, true, {
+		relative = "editor",
+		width = vim.o.columns - 12,
+		height = vim.o.lines - 6,
+		row = 1,
+		col = 6,
+		border = "rounded",
+	})
+end)
+vim.keymap.set("n", "'g", "<cmd>terminal lazygit<cr>i")
 
 vim.keymap.set("n", "<leader>cv", function() require("bp.keymap-funcs").make_session(true) end)
 vim.keymap.set("n", "<leader>cb", require("bp.keymap-funcs").buf_close)
