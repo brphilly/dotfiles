@@ -244,6 +244,16 @@ require("packer").startup({
 		})
 
 		use({
+			"ThePrimeagen/harpoon",
+			setup = 'require("bp.plugins.harpoon.setup")',
+			config = function()
+				vim.api.nvim_set_hl(0, "HarpoonWindow", {link = "NormalFloat"})
+				vim.api.nvim_set_hl(0, "HarpoonBorder", {link = "FloatBorder"})
+			end,
+			module = "harpoon",
+		})
+
+		use({
 			"numToStr/FTerm.nvim",
 			setup = function()
 				vim.keymap.set("n", "<leader>`", function() require('FTerm').toggle() end)
