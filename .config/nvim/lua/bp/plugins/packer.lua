@@ -259,16 +259,6 @@ require("packer").startup({
 		})
 
 		use({
-			"TimUntersberger/neogit",
-			config = 'require("bp.plugins.neogit.config")',
-			setup = 'require("bp.plugins.neogit.setup")',
-			module = "neogit",
-			cmd = "Neogit",
-			wants = { "diffview.nvim", "plenary.nvim" },
-			requires = { { "nvim-lua/plenary.nvim", opt = true } },
-		})
-
-		use({
 			"sindrets/diffview.nvim",
 			config = 'require("bp.plugins.diffview.config")',
 			setup = 'require("bp.plugins.diffview.setup")',
