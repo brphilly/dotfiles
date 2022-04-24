@@ -1,36 +1,33 @@
 require("gitsigns").setup({
-	signs = {
-		add = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-		change = { hl = "GitSignsChange", text = "│", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-		delete = { hl = "GitSignsDelete", text = "_", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-		topdelete = { hl = "GitSignsDelete", text = "‾", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-		changedelete = { hl = "GitSignsChange", text = "~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-	},
-	numhl = false,
-	linehl = false,
-	sign_priority = 6,
-
-	keymaps = {
-		-- Default keymap options
-		noremap = true,
-
-		["n ]c"] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'" },
-		["n [c"] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'" },
-
-		["n <leader>gs"] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
-		["x <leader>gs"] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
-		["n <leader>gS"] = '<cmd>lua require"gitsigns".stage_buffer()<CR>',
-		["n <leader>gu"] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
-		["n <leader>gr"] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
-		["x <leader>hr"] = '<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
-		["n <leader>gR"] = '<cmd>lua require"gitsigns".reset_buffer()<CR>',
-		["n <leader>gp"] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
-		["n <leader>gb"] = '<cmd>lua require"gitsigns".blame_line(true)<CR>',
-
-		-- Text objects
-		["o ih"] = { silent = true, ':<C-U>lua require"gitsigns".select_hunk()<CR>' },
-		["x ih"] = { silent = true, ':<C-U>lua require"gitsigns".select_hunk()<CR>' },
-	},
+	on_attach = function(buf)
+		vim.keymap.set("n", "<leader>ga", require("gitsigns").stage_hunk, {buffer = buf})
+		vim.keymap.set("x", "<leader>ga", function() require("gitsigns").stage_hunk({vim.fn.line("v"), vim.fn.line(".")}) end, {buffer = buf})
+		vim.keymap.set("n", "<leader>gu", require("gitsigns").undo_stage_hunk, {buffer = buf})
+		vim.keymap.set("n", "<leader>gr", require("gitsigns").reset_hunk, {buffer = buf})
+		vim.keymap.set("x", "<leader>gr", function() require("gitsigns").reset_hunk({vim.fn.line("v"), vim.fn.line(".")}) end, {buffer = buf})
+		vim.keymap.set("n", "<leader>gp", require("gitsigns").preview_hunk, {buffer = buf})
+		vim.keymap.set("n", "<leader>gA", require("gitsigns").stage_buffer, {buffer = buf})
+		vim.keymap.set("n", "<leader>gR", require("gitsigns").reset_buffer, {buffer = buf})
+		vim.keymap.set("n", "<leader>gb", function() require("gitsigns").blame_line({full = true}) end, {buffer = buf})
+		vim.keymap.set("o", "ic", require("gitsigns").select_hunk, {buffer = buf})
+		vim.keymap.set("x", "ic", require("gitsigns").select_hunk, {buffer = buf})
+		vim.keymap.set("n", "[c", function()
+			if vim.wo.diff then
+				return "[c"
+			else
+				vim.schedule(require("gitsigns").prev_hunk)
+				return "<ignore>"
+			end
+		end, {expr = true, buffer = buf})
+		vim.keymap.set("n", "]c", function()
+			if vim.wo.diff then
+				return "]c"
+			else
+				vim.schedule(require("gitsigns").next_hunk)
+				return "<ignore>"
+			end
+		end, {expr = true, buffer = buf})
+	end,
 })
 
 local c = require("nord.colours")
