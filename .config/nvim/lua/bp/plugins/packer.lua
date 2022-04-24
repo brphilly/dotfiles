@@ -259,26 +259,6 @@ require("packer").startup({
 		})
 
 		use({
-			"sindrets/diffview.nvim",
-			config = 'require("bp.plugins.diffview.config")',
-			setup = 'require("bp.plugins.diffview.setup")',
-			cmd = "DiffviewOpen",
-			wants = "nvim-web-devicons",
-			requires = {
-				{
-					"kyazdani42/nvim-web-devicons",
-					opt = true,
-					config = function()
-						require("nvim-web-devicons").setup({
-							default = true,
-						})
-					end,
-				},
-				{ "nvim-lua/plenary.nvim", opt = true },
-			},
-		})
-
-		use({
 			"rlane/pounce.nvim",
 			config = "require('bp.plugins.pounce')",
 			setup = function()
