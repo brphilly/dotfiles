@@ -6,18 +6,13 @@ require("nvim-tree").setup({
 	view = {
 		mappings = {
 			list = {
-				{ key = "<CR>", action = "preview" },
-				{ key = "<Tab>", action = "edit" },
 				{ key = "-", action = "close" },
-				{ key = [[<leader>\]], action = "vsplit" },
-				{ key = "<leader>-", action = "split" },
-				{ key = "<leader>=", action = "tabnew" },
-				{ key = "<c-t>", action = "dir_up" },
+				{ key = "<c-s>", action = "split" },
 			},
 		},
 	},
 	filters = {
-		custom = { ".git", ".DS_Store" },
+		custom = { "^\\.git", "^\\.DS_Store" },
 	},
 	update_focused_file = { enable = true }
 })
