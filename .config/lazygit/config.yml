@@ -2,10 +2,11 @@ gui:
   mouseEvents: false
   theme:
     selectedLineBgColor:
-      - '#434c5e' # set to `default` to have no background colour
+      - black # set to `default` to have no background colour
       - bold
     selectedRangeBgColor:
-      - reverse
+      - black
+      - bold
 os:
   editCommand: 'nvim'
   editCommandTemplate: '{{editor}} +{{line}} {{filename}}'
