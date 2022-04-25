@@ -1,212 +1,212 @@
 local c = require("nord.colours")
-return {
+return function()
 	-- Editor Highlights
-	Normal = { fg = c.fg, bg = c.bg },
-	ColorColumn = { bg = c.bg_hl },
-	Conceal = { fg = c.fg_fade },
-	Cursor = { fg = c.bg, bg = c.fg },
-	lCursor = { link = "Cursor" },
-	CursorIM = { link = "Cursor" },
-	CursorColumn = { link = "ColorColumn" },
-	CursorLine = { link = "ColorColumn" },
-	Directory = { fg = c.directory },
-	DiffAdd = { bg = c.diff_add_fade },
-	DiffChange = { bg = c.diff_change_fade },
-	DiffDelete = { bg = c.diff_delete_fade },
-	DiffText = { bg = c.diff_text_fade },
-	EndOfBuffer = { fg = c.fg_fade },
-	TermCursor = { link = "Cursor" },
-	TermCursorNC = { link = "Cursor" },
-	ErrorMsg = { fg = c.error },
-	VertSplit = { fg = c.border },
-	Folded = { fg = c.comment, bg = c.bg_float },
-	FoldColumn = { fg = c.fg_fade },
-	SignColumn = { link = "Normal" },
-	IncSearch = { fg = c.bg, bg = c.incsearch },
-	Substitute = { link = "Search" },
-	LineNr = { fg = c.fg_fade },
-	LineNrAbove = { fg = c.fg_fade },
-	LineNrBelow = { fg = c.fg_fade },
-	CursorLineNr = { fg = c.border },
-	MatchParen = { bg = c.fg_fade },
-	ModeMsg = { link = "Normal" },
-	MsgArea = { link = "Normal" },
-	MsgSeparator = { bg = c.visual },
-	MoreMsg = { fg = c.attention },
-	NonText = { fg = c.fg_fade },
-	NormalFloat = { fg = c.fg, bg = c.bg_float },
-	NormalNC = { link = "Normal" },
-	Pmenu = { fg = c.border, bg = c.bg_float },
-	PmenuSel = { bg = c.selection },
-	PmenuSbar = { fg = c.border, bg = c.bg_float },
-	PmenuThumb = { fg = c.border, bg = c.border },
-	Question = { fg = c.attention },
-	QuickFixLine = { bg = c.visual },
-	Search = { bg = c.search },
-	SpecialKey = { link = "NonText" },
-	SpellBad = { sp = c.error, att = "undercurl" },
-	SpellCap = { sp = c.warning, att = "undercurl" },
-	SpellLocal = { sp = c.hint, att = "undercurl" },
-	SpellRare = { sp = c.note, att = "undercurl" },
-	StatusLine = { fg = c.fg, bg = c.status },
-	StatusLineNC = { fg = c.fg_fade, bg = c.bg_hl },
-	TabLine = { fg = c.fg_fade, bg = c.bg_hl },
-	TabLineFill = { fg = c.fg, bg = c.bg_hl },
-	TabLineSel = { fg = c.fg, bg = c.selection },
-	Title = { fg = c.title, att = "bold" },
-	Visual = { bg = c.visual },
-	VisualNOS = { link = "Visual" },
-	WarningMsg = { fg = c.warning },
-	WhiteSpace = { link = "NonText" },
-	WildMenu = { fg = c.selection, att = "bold" },
-	FloatBorder = { fg = c.border, bg = c.bg_float },
+	vim.api.nvim_set_hl(0, "Normal", {fg = c.fg, bg = c.bg})
+	vim.api.nvim_set_hl(0, "ColorColumn", {bg = c.bg_hl})
+	vim.api.nvim_set_hl(0, "Conceal", {fg = c.fg_fade})
+	vim.api.nvim_set_hl(0, "Cursor", {fg = c.bg, bg = c.fg})
+	vim.api.nvim_set_hl(0, "lCursor", {link = "Cursor"})
+	vim.api.nvim_set_hl(0, "CursorIM", {link = "Cursor"})
+	vim.api.nvim_set_hl(0, "CursorColumn", {link = "ColorColumn"})
+	vim.api.nvim_set_hl(0, "CursorLine", {link = "ColorColumn"})
+	vim.api.nvim_set_hl(0, "Directory", {fg = c.directory})
+	vim.api.nvim_set_hl(0, "DiffAdd", {bg = c.diff_add_fade})
+	vim.api.nvim_set_hl(0, "DiffChange", {bg = c.diff_change_fade})
+	vim.api.nvim_set_hl(0, "DiffDelete", {bg = c.diff_delete_fade})
+	vim.api.nvim_set_hl(0, "DiffText", {bg = c.diff_text_fade})
+	vim.api.nvim_set_hl(0, "EndOfBuffer", {fg = c.fg_fade})
+	vim.api.nvim_set_hl(0, "TermCursor", {link = "Cursor"})
+	vim.api.nvim_set_hl(0, "TermCursorNC", {link = "Cursor"})
+	vim.api.nvim_set_hl(0, "ErrorMsg", {fg = c.error})
+	vim.api.nvim_set_hl(0, "VertSplit", {fg = c.border})
+	vim.api.nvim_set_hl(0, "Folded", {fg = c.comment, bg = c.bg_float})
+	vim.api.nvim_set_hl(0, "FoldColumn", {fg = c.fg_fade})
+	vim.api.nvim_set_hl(0, "SignColumn", {link = "Normal"})
+	vim.api.nvim_set_hl(0, "IncSearch", {fg = c.bg, bg = c.incsearch})
+	vim.api.nvim_set_hl(0, "Substitute", {link = "Search"})
+	vim.api.nvim_set_hl(0, "LineNr", {fg = c.fg_fade})
+	vim.api.nvim_set_hl(0, "LineNrAbove", {fg = c.fg_fade})
+	vim.api.nvim_set_hl(0, "LineNrBelow", {fg = c.fg_fade})
+	vim.api.nvim_set_hl(0, "CursorLineNr", {fg = c.border})
+	vim.api.nvim_set_hl(0, "MatchParen", {bg = c.fg_fade})
+	vim.api.nvim_set_hl(0, "ModeMsg", {link = "Normal"})
+	vim.api.nvim_set_hl(0, "MsgArea", {link = "Normal"})
+	vim.api.nvim_set_hl(0, "MsgSeparator", {bg = c.visual})
+	vim.api.nvim_set_hl(0, "MoreMsg", {fg = c.attention})
+	vim.api.nvim_set_hl(0, "NonText", {fg = c.fg_fade})
+	vim.api.nvim_set_hl(0, "NormalFloat", {fg = c.fg, bg = c.bg_float})
+	vim.api.nvim_set_hl(0, "NormalNC", {link = "Normal"})
+	vim.api.nvim_set_hl(0, "Pmenu", {fg = c.border, bg = c.bg_float})
+	vim.api.nvim_set_hl(0, "PmenuSel", {bg = c.selection})
+	vim.api.nvim_set_hl(0, "PmenuSbar", {fg = c.border, bg = c.bg_float})
+	vim.api.nvim_set_hl(0, "PmenuThumb", {fg = c.border, bg = c.border})
+	vim.api.nvim_set_hl(0, "Question", {fg = c.attention})
+	vim.api.nvim_set_hl(0, "QuickFixLine", {bg = c.visual})
+	vim.api.nvim_set_hl(0, "Search", {bg = c.search})
+	vim.api.nvim_set_hl(0, "SpecialKey", {link = "NonText"})
+	vim.api.nvim_set_hl(0, "SpellBad", {sp = c.error, undercurl = true})
+	vim.api.nvim_set_hl(0, "SpellCap", {sp = c.warning, undercurl = true})
+	vim.api.nvim_set_hl(0, "SpellLocal", {sp = c.hint, undercurl = true})
+	vim.api.nvim_set_hl(0, "SpellRare", {sp = c.note, undercurl = true})
+	vim.api.nvim_set_hl(0, "StatusLine", {fg = c.fg, bg = c.status})
+	vim.api.nvim_set_hl(0, "StatusLineNC", {fg = c.fg_fade, bg = c.bg_hl})
+	vim.api.nvim_set_hl(0, "TabLine", {fg = c.fg_fade, bg = c.bg_hl})
+	vim.api.nvim_set_hl(0, "TabLineFill", {fg = c.fg, bg = c.bg_hl})
+	vim.api.nvim_set_hl(0, "TabLineSel", {fg = c.fg, bg = c.selection})
+	vim.api.nvim_set_hl(0, "Title", {fg = c.title, bold = true})
+	vim.api.nvim_set_hl(0, "Visual", {bg = c.visual})
+	vim.api.nvim_set_hl(0, "VisualNOS", {link = "Visual"})
+	vim.api.nvim_set_hl(0, "WarningMsg", {fg = c.warning})
+	vim.api.nvim_set_hl(0, "WhiteSpace", {link = "NonText"})
+	vim.api.nvim_set_hl(0, "WildMenu", {fg = c.selection, bold = true})
+	vim.api.nvim_set_hl(0, "FloatBorder", {fg = c.border, bg = c.bg_float})
 
 	-- Syntax Highlights
-	Comment = { fg = c.comment, att = "italic" },
-	Constant = { fg = c.fg, att = "bold" },
-	String = { fg = c.string },
-	Character = { link = "String" },
-	Number = { fg = c.number },
-	Boolean = { fg = c.number },
-	Float = { link = "Number" },
-	Identifier = { fg = c.fg },
-	Function = { fg = c.func },
-	Statement = { link = "Keyword" },
-	Conditional = { link = "Keyword" },
-	Repeat = { link = "Keyword" },
-	Label = { link = "Keyword" },
-	Operator = { fg = c.comment },
-	Keyword = { fg = c.keyword },
-	Exception = { link = "Keyword" },
-	PreProc = { link = "Macro" },
-	Include = { link = "Macro" },
-	Define = { link = "Macro" },
-	Macro = { fg = c.macro },
-	PreCondit = { link = "Macro" },
-	Type = { fg = c.type },
-	StorageClass = { link = "Type" },
-	Structure = { link = "Type" },
-	Typedef = { link = "Type" },
-	Special = { fg = c.fg },
-	SpecialChar = { link = "Character" },
-	Tag = { fg = c.tag },
-	Delimiter = { fg = c.comment },
-	SpecialComment = { link = "Comment" },
-	Debug = { fg = c.attention },
-	Underlined = { att = "underline" },
-	Ignore = { fg = c.fg_fade },
-	Error = { fg = c.error },
-	Todo = { fg = c.todo, att = "bold,italic" },
-	helpCommand = { fg = c.func },
-	helpExample = { link = "String" },
-	helpHyperTextEntry = { link = "Title" },
-	helpHyperTextJump = { link = "Tag" },
-	helpOption = { link = "Tag" },
-	healthSuccess = { fg = c.success },
+	vim.api.nvim_set_hl(0, "Comment", {fg = c.comment, italic = true})
+	vim.api.nvim_set_hl(0, "Constant", {fg = c.fg, bold = true})
+	vim.api.nvim_set_hl(0, "String", {fg = c.string})
+	vim.api.nvim_set_hl(0, "Character", {link = "String"})
+	vim.api.nvim_set_hl(0, "Number", {fg = c.number})
+	vim.api.nvim_set_hl(0, "Boolean", {fg = c.number})
+	vim.api.nvim_set_hl(0, "Float", {link = "Number"})
+	vim.api.nvim_set_hl(0, "Identifier", {fg = c.fg})
+	vim.api.nvim_set_hl(0, "Function", {fg = c.func})
+	vim.api.nvim_set_hl(0, "Statement", {link = "Keyword"})
+	vim.api.nvim_set_hl(0, "Conditional", {link = "Keyword"})
+	vim.api.nvim_set_hl(0, "Repeat", {link = "Keyword"})
+	vim.api.nvim_set_hl(0, "Label", {link = "Keyword"})
+	vim.api.nvim_set_hl(0, "Operator", {fg = c.comment})
+	vim.api.nvim_set_hl(0, "Keyword", {fg = c.keyword})
+	vim.api.nvim_set_hl(0, "Exception", {link = "Keyword"})
+	vim.api.nvim_set_hl(0, "PreProc", {link = "Macro"})
+	vim.api.nvim_set_hl(0, "Include", {link = "Macro"})
+	vim.api.nvim_set_hl(0, "Define", {link = "Macro"})
+	vim.api.nvim_set_hl(0, "Macro", {fg = c.macro})
+	vim.api.nvim_set_hl(0, "PreCondit", {link = "Macro"})
+	vim.api.nvim_set_hl(0, "Type", {fg = c.type})
+	vim.api.nvim_set_hl(0, "StorageClass", {link = "Type"})
+	vim.api.nvim_set_hl(0, "Structure", {link = "Type"})
+	vim.api.nvim_set_hl(0, "Typedef", {link = "Type"})
+	vim.api.nvim_set_hl(0, "Special", {fg = c.fg})
+	vim.api.nvim_set_hl(0, "SpecialChar", {link = "Character"})
+	vim.api.nvim_set_hl(0, "Tag", {fg = c.tag})
+	vim.api.nvim_set_hl(0, "Delimiter", {fg = c.comment})
+	vim.api.nvim_set_hl(0, "SpecialComment", {link = "Comment"})
+	vim.api.nvim_set_hl(0, "Debug", {fg = c.attention})
+	vim.api.nvim_set_hl(0, "Underlined", {underline = true})
+	vim.api.nvim_set_hl(0, "Ignore", {fg = c.fg_fade})
+	vim.api.nvim_set_hl(0, "Error", {fg = c.error})
+	vim.api.nvim_set_hl(0, "Todo", {fg = c.todo, bold = true, italic = true})
+	vim.api.nvim_set_hl(0, "helpCommand", {fg = c.func})
+	vim.api.nvim_set_hl(0, "helpExample", {link = "String"})
+	vim.api.nvim_set_hl(0, "helpHyperTextEntry", {link = "Title"})
+	vim.api.nvim_set_hl(0, "helpHyperTextJump", {link = "Tag"})
+	vim.api.nvim_set_hl(0, "helpOption", {link = "Tag"})
+	vim.api.nvim_set_hl(0, "healthSuccess", {fg = c.success})
 
 	-- TreeSitter Highlights
-	TSPunctDelimiter = { link = "Delimiter" },
-	TSPunctBracket = { link = "TSPunctDelimiter" },
-	TSPunctSpecial = { link = "TSPunctDelimiter" },
+	vim.api.nvim_set_hl(0, "TSPunctDelimiter", {link = "Delimiter"})
+	vim.api.nvim_set_hl(0, "TSPunctBracket", {link = "TSPunctDelimiter"})
+	vim.api.nvim_set_hl(0, "TSPunctSpecial", {link = "TSPunctDelimiter"})
 
-	TSConstant = { link = "Constant" },
-	TSConstMacro = { fg = c.macro, att = "bold"},
-	TSConstBuiltin = { fg = c.keyword, att = "bold" },
-	TSString = { link = "String" },
-	TSStringRegex = { link = "TSString" },
-	TSStringEscape = { fg = c.escape },
-	TSStringSpecial = { link = "TSString" },
-	TSCharacter = { link = "Character" },
-	TSNumber = { link = "Number" },
-	TSBoolean = { link = "Boolean" },
-	TSFloat = { link = "Float" },
+	vim.api.nvim_set_hl(0, "TSConstant", {link = "Constant"})
+	vim.api.nvim_set_hl(0, "TSConstMacro", {fg = c.macro, bold = true})
+	vim.api.nvim_set_hl(0, "TSConstBuiltin", {fg = c.keyword, bold = true})
+	vim.api.nvim_set_hl(0, "TSString", {link = "String"})
+	vim.api.nvim_set_hl(0, "TSStringRegex", {link = "TSString"})
+	vim.api.nvim_set_hl(0, "TSStringEscape", {fg = c.escape})
+	vim.api.nvim_set_hl(0, "TSStringSpecial", {link = "TSString"})
+	vim.api.nvim_set_hl(0, "TSCharacter", {link = "Character"})
+	vim.api.nvim_set_hl(0, "TSNumber", {link = "Number"})
+	vim.api.nvim_set_hl(0, "TSBoolean", {link = "Boolean"})
+	vim.api.nvim_set_hl(0, "TSFloat", {link = "Float"})
 
-	TSFunction = { link = "Function" },
-	TSFuncBuiltin = { link = "TSFunction" },
-	TSFuncMacro = { link = "Macro" },
-	TSParameter = { fg = c.fg },
-	TSParameterReference = { link = "TSParameter" },
-	TSMethod = { link = "TSFunction" },
-	TSField = { fg = c.fg },
-	TSProperty = { fg = c.fg },
-	TSConstructor = { link = "TSFunction" },
-	TSAnnotation = { fg = c.attention },
-	TSAttribute = { link = "TSAnnotation" },
-	TSNamespace = { fg = c.fg },
-	TSSymbol = { fg = c.fg },
+	vim.api.nvim_set_hl(0, "TSFunction", {link = "Function"})
+	vim.api.nvim_set_hl(0, "TSFuncBuiltin", {link = "TSFunction"})
+	vim.api.nvim_set_hl(0, "TSFuncMacro", {link = "Macro"})
+	vim.api.nvim_set_hl(0, "TSParameter", {fg = c.fg})
+	vim.api.nvim_set_hl(0, "TSParameterReference", {link = "TSParameter"})
+	vim.api.nvim_set_hl(0, "TSMethod", {link = "TSFunction"})
+	vim.api.nvim_set_hl(0, "TSField", {fg = c.fg})
+	vim.api.nvim_set_hl(0, "TSProperty", {fg = c.fg})
+	vim.api.nvim_set_hl(0, "TSConstructor", {link = "TSFunction"})
+	vim.api.nvim_set_hl(0, "TSAnnotation", {fg = c.attention})
+	vim.api.nvim_set_hl(0, "TSAttribute", {link = "TSAnnotation"})
+	vim.api.nvim_set_hl(0, "TSNamespace", {fg = c.fg})
+	vim.api.nvim_set_hl(0, "TSSymbol", {fg = c.fg})
 
-	TSConditional = { link = "Conditional" },
-	TSRepeat = { link = "Repeat" },
-	TSLabel = { link = "Label" },
-	TSOperator = { link = "Operator" },
-	TSKeyword = { link = "Keyword" },
-	TSKeywordFunction = { link = "TSKeyword" },
-	TSKeywordOperator = { link = "TSKeyword" },
-	TSKeywordReturn = { link = "TSKeyword" },
-	TSException = { link = "Exception" },
+	vim.api.nvim_set_hl(0, "TSConditional", {link = "Conditional"})
+	vim.api.nvim_set_hl(0, "TSRepeat", {link = "Repeat"})
+	vim.api.nvim_set_hl(0, "TSLabel", {link = "Label"})
+	vim.api.nvim_set_hl(0, "TSOperator", {link = "Operator"})
+	vim.api.nvim_set_hl(0, "TSKeyword", {link = "Keyword"})
+	vim.api.nvim_set_hl(0, "TSKeywordFunction", {link = "TSKeyword"})
+	vim.api.nvim_set_hl(0, "TSKeywordOperator", {link = "TSKeyword"})
+	vim.api.nvim_set_hl(0, "TSKeywordReturn", {link = "TSKeyword"})
+	vim.api.nvim_set_hl(0, "TSException", {link = "Exception"})
 
-	TSType = { link = "Type" },
-	TSTypeBuiltin = { link = "Type" },
-	TSInclude = { link = "Include" },
+	vim.api.nvim_set_hl(0, "TSType", {link = "Type"})
+	vim.api.nvim_set_hl(0, "TSTypeBuiltin", {link = "Type"})
+	vim.api.nvim_set_hl(0, "TSInclude", {link = "Include"})
 
-	TSVariable = { link = "Identifier" },
-	TSVariableBuiltin = { link = "TSKeyword" },
+	vim.api.nvim_set_hl(0, "TSVariable", {link = "Identifier"})
+	vim.api.nvim_set_hl(0, "TSVariableBuiltin", {link = "TSKeyword"})
 
-	TSText = { fg = c.fg },
-	TSStrong = { att = "bold" },
-	TSEmphasis = { att = "italic" },
-	TSUnderline = { att = "undercurl" },
-	TSStrike = { att = "strikethrough" },
-	TSMath = { link = "Comment" },
-	TSTextReference = { fg = c.info },
-	TSEnvironment = { link = "TSText" },
-	TSEnvironmentName = { link = "TSType" },
-	TSTitle = { link = "Title" },
-	TSLiteral = { link = "TSText" },
-	TSURI = { link = "Underlined" },
+	vim.api.nvim_set_hl(0, "TSText", {fg = c.fg})
+	vim.api.nvim_set_hl(0, "TSStrong", {bold = true})
+	vim.api.nvim_set_hl(0, "TSEmphasis", {italic = true})
+	vim.api.nvim_set_hl(0, "TSUnderline", {undercurl = true})
+	vim.api.nvim_set_hl(0, "TSStrike", {strikethrough = true})
+	vim.api.nvim_set_hl(0, "TSMath", {link = "Comment"})
+	vim.api.nvim_set_hl(0, "TSTextReference", {fg = c.info})
+	vim.api.nvim_set_hl(0, "TSEnvironment", {link = "TSText"})
+	vim.api.nvim_set_hl(0, "TSEnvironmentName", {link = "TSType"})
+	vim.api.nvim_set_hl(0, "TSTitle", {link = "Title"})
+	vim.api.nvim_set_hl(0, "TSLiteral", {link = "TSText"})
+	vim.api.nvim_set_hl(0, "TSURI", {link = "Underlined"})
 
-	TSComment = { link = "Comment" },
-	TSNote = { fg = c.note },
-	TSWarning = { fg = c.warning },
-	TSDanger = { fg = c.danger },
-	TSError = { sp = c.error, att = "undercurl" },
+	vim.api.nvim_set_hl(0, "TSComment", {link = "Comment"})
+	vim.api.nvim_set_hl(0, "TSNote", {fg = c.note})
+	vim.api.nvim_set_hl(0, "TSWarning", {fg = c.warning})
+	vim.api.nvim_set_hl(0, "TSDanger", {fg = c.danger})
+	vim.api.nvim_set_hl(0, "TSError", {sp = c.error, undercurl = true})
 
-	TSTag = { link = "TSKeyword" },
-	TSTagDelimiter = { link = "TSPunctDelimiter" },
-	TSTagAttribute = { link = "TSProperty" },
+	vim.api.nvim_set_hl(0, "TSTag", {link = "TSKeyword"})
+	vim.api.nvim_set_hl(0, "TSTagDelimiter", {link = "TSPunctDelimiter"})
+	vim.api.nvim_set_hl(0, "TSTagAttribute", {link = "TSProperty"})
 
 	-- LSP Highlights
-	LspReferenceText = { bg = c.visual_fade },
-	LspReferenceRead = { bg = c.visual_fade },
-	LspReferenceWrite = { bg = c.visual_fade },
+	vim.api.nvim_set_hl(0, "LspReferenceText", {bg = c.visual_fade})
+	vim.api.nvim_set_hl(0, "LspReferenceRead", {bg = c.visual_fade})
+	vim.api.nvim_set_hl(0, "LspReferenceWrite", {bg = c.visual_fade})
 
-	DiagnosticError = { fg = c.error },
-	DiagnosticWarn = { fg = c.warning },
-	DiagnosticInfo = { fg = c.info },
-	DiagnosticHint = { fg = c.hint },
+	vim.api.nvim_set_hl(0, "DiagnosticError", {fg = c.error})
+	vim.api.nvim_set_hl(0, "DiagnosticWarn", {fg = c.warning})
+	vim.api.nvim_set_hl(0, "DiagnosticInfo", {fg = c.info})
+	vim.api.nvim_set_hl(0, "DiagnosticHint", {fg = c.hint})
 
-	DiagnosticVirtualTextError = { link = "DiagnosticError" },
-	DiagnosticVirtualTextWarn = { link = "DiagnosticWarn" },
-	DiagnosticVirtualTextInfo = { link = "DiagnosticInfo" },
-	DiagnosticVirtualTextHint = { link = "DiagnosticHint" },
+	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", {link = "DiagnosticError"})
+	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", {link = "DiagnosticWarn"})
+	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", {link = "DiagnosticInfo"})
+	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", {link = "DiagnosticHint"})
 
-	DiagnosticUnderlineError = { sp = c.error, att = "undercurl" },
-	DiagnosticUnderlineWarn = { sp = c.warning, att = "undercurl" },
-	DiagnosticUnderlineInfo = { sp = c.info, att = "undercurl" },
-	DiagnosticUnderlineHint = { sp = c.hint, att = "undercurl" },
+	vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", {sp = c.error, undercurl = true})
+	vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", {sp = c.warning, undercurl = true})
+	vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", {sp = c.info, undercurl = true})
+	vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", {sp = c.hint, undercurl = true})
 
-	DiagnosticFloatingError = { link = "DiagnosticError" },
-	DiagnosticFloatingWarn = { link = "DiagnosticWarn" },
-	DiagnosticFloatingInfo = { link = "DiagnosticInfo" },
-	DiagnosticFloatingHint = { link = "DiagnosticHint" },
+	vim.api.nvim_set_hl(0, "DiagnosticFloatingError", {link = "DiagnosticError"})
+	vim.api.nvim_set_hl(0, "DiagnosticFloatingWarn", {link = "DiagnosticWarn"})
+	vim.api.nvim_set_hl(0, "DiagnosticFloatingInfo", {link = "DiagnosticInfo"})
+	vim.api.nvim_set_hl(0, "DiagnosticFloatingHint", {link = "DiagnosticHint"})
 
-	DiagnosticSignError = { link = "DiagnosticError" },
-	DiagnosticSignWarn = { link = "DiagnosticWarn" },
-	DiagnosticSignInfo = { link = "DiagnosticInfo" },
-	DiagnosticSignHint = { link = "DiagnosticHint" },
+	vim.api.nvim_set_hl(0, "DiagnosticSignError", {link = "DiagnosticError"})
+	vim.api.nvim_set_hl(0, "DiagnosticSignWarn", {link = "DiagnosticWarn"})
+	vim.api.nvim_set_hl(0, "DiagnosticSignInfo", {link = "DiagnosticInfo"})
+	vim.api.nvim_set_hl(0, "DiagnosticSignHint", {link = "DiagnosticHint"})
 
-	LspCodeLens = { fg = c.comment, bg = c.bg_float },
-	LspCodeLensSeparator = { fg = c.fg, bg = c.bg_float },
+	vim.api.nvim_set_hl(0, "LspCodeLens", {fg = c.comment, bg = c.bg_float})
+	vim.api.nvim_set_hl(0, "LspCodeLensSeparator", {fg = c.fg, bg = c.bg_float})
 
-	LspSignatureActiveParameter = { link = "Visual" },
-}
+	vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", {link = "Visual"})
+end
