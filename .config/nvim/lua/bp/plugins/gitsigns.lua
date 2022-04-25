@@ -31,17 +31,10 @@ require("gitsigns").setup({
 })
 
 local c = require("nord.colours")
--- stylua: ignore
-vim.cmd(string.format([[
-augroup gitsigns-hl
-autocmd!
-autocmd ColorScheme nord highlight GitSignsAdd guifg=%s
-autocmd ColorScheme nord highlight GitSignsChange guifg=%s
-autocmd ColorScheme nord highlight GitSignsDelete guifg=%s
-augroup END
-	]],
-	c.diff_add,
-	c.diff_change,
-	c.diff_delete
-))
-vim.cmd(string.format([[doautocmd gitsigns-hl ColorScheme %s]], vim.g.colors_name))
+vim.api.nvim_create_augroup("gitsigns-hl", {})
+vim.api.nvim_create_autocmd("ColorScheme", {group = "gitsigns-hl", pattern = "nord", callback = function()
+	vim.api.nvim_set_hl(0, "GitSignsAdd", {fg = c.diff_add})
+	vim.api.nvim_set_hl(0, "GitSignsChange", {fg = c.diff_change})
+	vim.api.nvim_set_hl(0, "GitSignsDelete", {fg = c.diff_delete})
+end})
+vim.api.nvim_exec_autocmds("ColorScheme", {group = "gitsigns-hl", pattern = vim.g.colors_name})

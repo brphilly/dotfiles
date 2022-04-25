@@ -18,27 +18,15 @@ require("nvim-tree").setup({
 })
 
 local c = require("nord.colours")
--- stylua: ignore
-vim.cmd(string.format([[
-	augroup nvim-tree-hl
-	autocmd!
-	autocmd ColorScheme nord highlight NvimTreeSymlink guifg=%s
-	autocmd ColorScheme nord highlight NvimTreeRootFolder guifg=%s
-	autocmd ColorScheme nord highlight NvimTreeFolderIcon guifg=%s
-	autocmd ColorScheme nord highlight NvimTreeIndentMarker guifg=%s
-	autocmd ColorScheme nord highlight NvimTreeExecFile guifg=%s
-	autocmd ColorScheme nord highlight NvimTreeSpecialFile guifg=%s
-	autocmd ColorScheme nord highlight NvimTreeImageFile guifg=%s
-	autocmd ColorScheme nord highlight NvimTreeOpenedFile guifg=%s
-	augroup END
-]],
-	c.blues[4],
-	c.directory,
-	c.blues[1],
-	c.blues[1],
-	c.danger,
-	c.yellow,
-	c.blues[2],
-	c.blues[3]
-))
-vim.cmd(string.format([[doautocmd nvim-tree-hl ColorScheme %s]], vim.g.colors_name))
+vim.api.nvim_create_augroup("nvim-tree-hl", {})
+vim.api.nvim_create_autocmd("ColorScheme", {group = "nvim-tree-hl", pattern = "nord", callback = function()
+	vim.api.nvim_set_hl(0, "NvimTreeSymlink", {fg = c.blues[4]})
+	vim.api.nvim_set_hl(0, "NvimTreeRootFolder", {fg = c.directory})
+	vim.api.nvim_set_hl(0, "NvimTreeFolderIcon", {fg = c.blues[1]})
+	vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", {fg = c.blues[1]})
+	vim.api.nvim_set_hl(0, "NvimTreeExecFile", {fg = c.danger})
+	vim.api.nvim_set_hl(0, "NvimTreeSpecialFile", {fg = c.yellow})
+	vim.api.nvim_set_hl(0, "NvimTreeImageFile", {fg = c.blues[2]})
+	vim.api.nvim_set_hl(0, "NvimTreeOpenedFile", {fg = c.blues[3]})
+end})
+vim.api.nvim_exec_autocmds("ColorScheme", {group = "nvim-tree-hl", pattern = vim.g.colors_name})

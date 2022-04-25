@@ -2,19 +2,12 @@ require("pounce").setup({
   multi_window = false,
 })
 
-local p = require("nord.colours")
-vim.cmd(string.format([[
-	augroup pounce-hl
-	autocmd!
-	autocmd ColorScheme nord highlight PounceMatch guifg=%s guibg=%s
-	autocmd ColorScheme nord highlight PounceGap guifg=%s guibg=%s
-	autocmd ColorScheme nord highlight PounceAccept guifg=%s guibg=%s
-	autocmd ColorScheme nord highlight PounceAcceptBest guifg=%s guibg=%s
-	augroup END
-]],
-	p.comment, p.search,
-	p.fg_fade, p.search,
-	p.bg, p.attention_alt,
-	p.bg, p.attention
-))
-vim.cmd(string.format([[doautocmd pounce-hl ColorScheme %s]], vim.g.colors_name))
+local c = require("nord.colours")
+vim.api.nvim_create_augroup("pounce-hl", {})
+vim.api.nvim_create_autocmd("ColorScheme", {group = "pounce-hl", pattern = "nord", callback = function()
+	vim.api.nvim_set_hl(0, "PounceMatch", {fg = c.comment, bg = c.search})
+	vim.api.nvim_set_hl(0, "PounceGap", {fg = c.fg_fade, bg = c.search})
+	vim.api.nvim_set_hl(0, "PounceAccept", {fg = c.bg, bg = c.attention_alt})
+	vim.api.nvim_set_hl(0, "PounceAcceptBest", {fg = c.bg, bg = c.attention})
+end})
+vim.api.nvim_exec_autocmds("ColorScheme", {group = "pounce-hl", pattern = vim.g.colors_name})

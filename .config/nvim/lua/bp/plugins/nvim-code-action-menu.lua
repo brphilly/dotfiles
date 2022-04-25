@@ -1,32 +1,20 @@
 local c = require("nord.colours")
-vim.cmd(string.format([[
-	augroup nvim-code-action-menu-hl
-	autocmd!
-	autocmd ColorScheme nord highlight! link CodeActionMenuMenuDisabled NonText
-	autocmd ColorScheme nord highlight! link CodeActionMenuMenuSelection Visual
-	autocmd ColorScheme nord highlight CodeActionMenuMenuIndex guifg=%s
-	autocmd ColorScheme nord highlight CodeActionMenuDetailsPreferred guifg=%s
-	autocmd ColorScheme nord highlight CodeActionMenuDetailsDisabled guifg=%s
-	autocmd ColorScheme nord highlight CodeActionMenuDetailsAddedLinesCount guifg=%s
-	autocmd ColorScheme nord highlight CodeActionMenuDetailsDeletedLinesCount guifg=%s
-	autocmd ColorScheme nord highlight! link CodeActionMenuDetailsAddedSquares CodeActionMenuDetailsAddedLinesCount
-	autocmd ColorScheme nord highlight! link CodeActionMenuDetailsDeletedSquares CodeActionMenuDetailsDeletedLinesCount
-	autocmd ColorScheme nord highlight! link CodeActionMenuDetailsAddedLine CodeActionMenuDetailsAddedLinesCount
-	autocmd ColorScheme nord highlight! link CodeActionMenuDetailsDeletedLine CodeActionMenuDetailsDeletedLinesCount
-	autocmd ColorScheme nord highlight CodeActionMenuDetailsCreatedFile guifg=%s
-	autocmd ColorScheme nord highlight CodeActionMenuDetailsChangedFile guifg=%s
-	autocmd ColorScheme nord highlight CodeActionMenuDetailsRenamedFile guifg=%s
-	autocmd ColorScheme nord highlight CodeActionMenuDetailsDeletedFile guifg=%s
-	augroup END
-]],
-	c.comment,
-	c.success,
-	c.error,
-	c.diff_add,
-	c.diff_delete,
-	c.diff_add,
-	c.diff_text,
-	c.diff_change,
-	c.diff_delete
-))
-vim.cmd(string.format([[doautocmd nvim-code-action-menu-hl ColorScheme %s]], vim.g.colors_name))
+vim.api.nvim_create_augroup("nvim-code-action-menu-hl", {})
+vim.api.nvim_create_autocmd("ColorScheme", {group = "nvim-code-action-menu-hl", pattern = "nord", callback = function()
+	vim.api.nvim_set_hl(0, "CodeActionMenuMenuDisabled", {link = "NonText"})
+	vim.api.nvim_set_hl(0, "CodeActionMenuMenuSelection", {link = "Visual"})
+	vim.api.nvim_set_hl(0, "CodeActionMenuMenuIndex", {fg = c.comment})
+	vim.api.nvim_set_hl(0, "CodeActionMenuDetailsPreferred", {fg = c.success})
+	vim.api.nvim_set_hl(0, "CodeActionMenuDetailsDisabled", {fg = c.error})
+	vim.api.nvim_set_hl(0, "CodeActionMenuDetailsAddedLinesCount", {fg = c.diff_add})
+	vim.api.nvim_set_hl(0, "CodeActionMenuDetailsDeletedLinesCount", {fg = c.diff_delete})
+	vim.api.nvim_set_hl(0, "CodeActionMenuDetailsAddedSquares", {link = "CodeActionMenuDetailsAddedLinesCount"})
+	vim.api.nvim_set_hl(0, "CodeActionMenuDetailsDeletedSquares", {link = "CodeActionMenuDetailsDeletedLinesCount"})
+	vim.api.nvim_set_hl(0, "CodeActionMenuDetailsAddedLine", {link = "CodeActionMenuDetailsAddedLinesCount"})
+	vim.api.nvim_set_hl(0, "CodeActionMenuDetailsDeletedLine", {link = "CodeActionMenuDetailsDeletedLinesCount"})
+	vim.api.nvim_set_hl(0, "CodeActionMenuDetailsCreatedFile", {fg = c.diff_add})
+	vim.api.nvim_set_hl(0, "CodeActionMenuDetailsChangedFile", {fg = c.diff_text})
+	vim.api.nvim_set_hl(0, "CodeActionMenuDetailsRenamedFile", {fg = c.diff_change})
+	vim.api.nvim_set_hl(0, "CodeActionMenuDetailsDeletedFile", {fg = c.diff_delete})
+end})
+vim.api.nvim_exec_autocmds("ColorScheme", {group = "nvim-code-action-menu-hl", pattern = vim.g.colors_name})

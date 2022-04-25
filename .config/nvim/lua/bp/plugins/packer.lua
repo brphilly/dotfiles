@@ -74,15 +74,13 @@ require("packer").startup({
 					after = "nvim-lspconfig",
 					config = function()
 						require("fidget").setup({ text = { spinner = "dots_negative" }, window = {relative = "editor"}, fmt = { stack_upwards = false } })
-						local p = require("nord.colours")
-						vim.cmd(string.format([[
-							augroup my-fidget-hl
-							autocmd!
-							autocmd ColorScheme nord highlight FidgetTitle guifg=%s
-							autocmd ColorScheme nord highlight FidgetTask guifg=%s
-							augroup END
-							doautocmd my-fidget-hl ColorScheme %s
-						]], p.attention_alt, p.comment, vim.g.colors_name))
+						local c = require("nord.colours")
+						vim.api.nvim_create_augroup("fidget-hl", {})
+						vim.api.nvim_create_autocmd("ColorScheme", {group = "fidget-hl", pattern = "nord", callback = function()
+							vim.api.nvim_set_hl(0, "FidgetTitle", {fg = c.attention_alt})
+							vim.api.nvim_set_hl(0, "FidgetTask", {fg = c.comment})
+						end})
+						vim.api.nvim_exec_autocmds("ColorScheme", {group = "fidget-hl", pattern = vim.g.colors_name})
 					end,
 				},
 			},
@@ -247,8 +245,12 @@ require("packer").startup({
 			"ThePrimeagen/harpoon",
 			setup = 'require("bp.plugins.harpoon.setup")',
 			config = function()
-				vim.api.nvim_set_hl(0, "HarpoonWindow", {link = "NormalFloat"})
-				vim.api.nvim_set_hl(0, "HarpoonBorder", {link = "FloatBorder"})
+				vim.api.nvim_create_augroup("harpoon-hl", {})
+				vim.api.nvim_create_autocmd("ColorScheme", {group = "harpoon-hl", pattern = "nord", callback = function()
+					vim.api.nvim_set_hl(0, "HarpoonWindow", {link = "NormalFloat"})
+					vim.api.nvim_set_hl(0, "HarpoonBorder", {link = "FloatBorder"})
+				end})
+				vim.api.nvim_exec_autocmds("ColorScheme", {group = "harpoon-hl", pattern = vim.g.colors_name})
 			end,
 			module = "harpoon",
 		})

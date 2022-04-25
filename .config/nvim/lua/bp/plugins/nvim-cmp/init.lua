@@ -86,23 +86,13 @@ cmp.setup.cmdline(':', {
 })
 
 local c = require("nord.colours")
--- stylua: ignore
-vim.cmd(string.format([[
-	augroup nvim-cmp-hl
-	autocmd!
-	autocmd ColorScheme nord highlight CmpItemAbbrMatch guifg=%s
-	autocmd ColorScheme nord highlight CmpItemAbbrMatchFuzzy guifg=%s
-	autocmd ColorScheme nord highlight CmpItemAbbr guifg=%s
-	autocmd ColorScheme nord highlight CmpItemAbbrDeprecated guifg=%s gui=strikethrough
-	autocmd ColorScheme nord highlight CmpItemKind guifg=%s
-	autocmd ColorScheme nord highlight CmpItemMenu guifg=%s
-	augroup END
-]],
-	c.attention,
-	c.attention_alt,
-	c.fg,
-	c.fg,
-	c.type,
-	c.comment
-))
-vim.cmd(string.format([[doautocmd nvim-cmp-hl ColorScheme %s]], vim.g.colors_name))
+vim.api.nvim_create_augroup("nvim-cmp-hl", {})
+vim.api.nvim_create_autocmd("ColorScheme", {group = "nvim-cmp-hl", pattern = "nord", callback = function()
+	vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", {fg = c.attention})
+	vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", {fg = c.attention_alt})
+	vim.api.nvim_set_hl(0, "CmpItemAbbr", {fg = c.fg})
+	vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", {fg = c.fg, strikethrough = true})
+	vim.api.nvim_set_hl(0, "CmpItemKind", {fg = c.type})
+	vim.api.nvim_set_hl(0, "CmpItemMenu", {fg = c.comment})
+end})
+vim.api.nvim_exec_autocmds("ColorScheme", {group = "nvim-cmp-hl", pattern = vim.g.colors_name})

@@ -35,22 +35,14 @@ require("telescope").setup({
 })
 
 local c = require("nord.colours")
--- stylua: ignore
-vim.cmd(string.format([[
-	augroup telescope-hl
-	autocmd!
-	autocmd ColorScheme nord highlight TelescopeSelection guibg=%s
-	autocmd ColorScheme nord highlight TelescopeSelectionCaret guifg=%s
-	autocmd ColorScheme nord highlight TelescopePromptPrefix guifg=%s
-	autocmd ColorScheme nord highlight TelescopeMatching guifg=%s
-	autocmd ColorScheme nord highlight! link TelescopeNormal NormalFloat
-	autocmd ColorScheme nord highlight! link TelescopePreviewNormal TelescopeNormal
-	autocmd ColorScheme nord highlight! link TelescopeBorder FloatBorder
-	augroup END
-]],
-	c.selection,
-	c.attention,
-	c.attention,
-	c.attention
-))
-vim.cmd(string.format([[doautocmd telescope-hl ColorScheme %s]], vim.g.colors_name))
+vim.api.nvim_create_augroup("telescope-hl", {})
+vim.api.nvim_create_autocmd("ColorScheme", {group = "telescope-hl", pattern = "nord", callback = function()
+	vim.api.nvim_set_hl(0, "TelescopeSelection", {bg = c.selection})
+	vim.api.nvim_set_hl(0, "TelescopeSelectionCaret", {fg = c.attention})
+	vim.api.nvim_set_hl(0, "TelescopePromptPrefix", {fg = c.attention})
+	vim.api.nvim_set_hl(0, "TelescopeMatching", {fg = c.attention})
+	vim.api.nvim_set_hl(0, "TelescopeNormal", {link = "NormalFloat"})
+	vim.api.nvim_set_hl(0, "TelescopePreviewNormal", {link = "TelescopeNormal"})
+	vim.api.nvim_set_hl(0, "TelescopeBorder", {link = "FloatBorder"})
+end})
+vim.api.nvim_exec_autocmds("ColorScheme", {group = "telescope-hl", pattern = vim.g.colors_name})

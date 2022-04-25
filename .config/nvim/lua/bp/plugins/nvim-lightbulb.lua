@@ -4,13 +4,8 @@ vim.api.nvim_create_autocmd("CursorHold", {group = "nvim-lightbulb-update", call
 end})
 
 local c = require("nord.colours")
--- stylua: ignore
-vim.cmd(string.format([[
-	augroup nvim-lightbulb-hl
-	autocmd!
-	autocmd ColorScheme nord highlight LightBulbFloatWin guibg=%s
-	augroup END
-]],
-	c.bg
-))
-vim.cmd(string.format([[doautocmd nvim-lightbulb-hl ColorScheme %s]], vim.g.colors_name))
+vim.api.nvim_create_augroup("nvim-lightbulb-hl", {})
+vim.api.nvim_create_autocmd("ColorScheme", {group = "nvim-lightbulb-hl", pattern = "nord", callback = function()
+	vim.api.nvim_set_hl(0, "LightBulbFloatWin", {bg = c.bg})
+end})
+vim.api.nvim_exec_autocmds("ColorScheme", {group = "nvim-lightbulb-hl", pattern = vim.g.colors_name})

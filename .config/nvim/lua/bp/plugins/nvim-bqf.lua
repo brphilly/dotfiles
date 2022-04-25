@@ -7,15 +7,11 @@ require("bqf").setup({
 })
 
 local c = require("nord.colours")
-vim.cmd(string.format([[
-	augroup bqf-hl
-	autocmd!
-	autocmd ColorScheme nord highlight! link BqfPreviewFloat NormalFloat
-	autocmd ColorScheme nord highlight! link BqfPreviewBorder FloatBorder
-	autocmd ColorScheme nord highlight! link BqfPreviewRange Visual
-	autocmd ColorScheme nord highlight BqfSign guifg=%s
-	augroup END
-]],
-	c.attention
-))
-vim.cmd(string.format([[doautocmd bqf-hl ColorScheme %s]], vim.g.colors_name))
+vim.api.nvim_create_augroup("bqf-hl", {})
+vim.api.nvim_create_autocmd("ColorScheme", {group = "bqf-hl", pattern = "nord", callback = function()
+	vim.api.nvim_set_hl(0, "BqfPreviewFloat", {link = "NormalFloat"})
+	vim.api.nvim_set_hl(0, "BqfPreviewBorder", {link = "FloatBorder"})
+	vim.api.nvim_set_hl(0, "BqfPreviewRange", {link = "Visual"})
+	vim.api.nvim_set_hl(0, "BqfSign", {fg = c.attention})
+end})
+vim.api.nvim_exec_autocmds("ColorScheme", {group = "bqf-hl", pattern = vim.g.colors_name})
