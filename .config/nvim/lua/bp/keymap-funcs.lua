@@ -130,13 +130,9 @@ end
 
 M.start_hl = function()
 	if not vim.v.event.abort then
-		vim.cmd([[
-		augroup SearchHL
-		autocmd!
-		autocmd CursorMoved * lua require'bp.keymap-funcs'.search_hl()
-		autocmd InsertEnter,TermEnter * lua require'bp.keymap-funcs'.stop_hl()
-		augroup END
-		]])
+		vim.api.nvim_create_augroup("SearchHL", {})
+		vim.api.nvim_create_autocmd("CursorMoved", {group = "SearchHL", callback = function() require("bp.keymap-funcs").search_hl() end})
+		vim.api.nvim_create_autocmd({"InsertEnter", "TermEnter"}, {group = "SearchHL", callback = function() require("bp.keymap-funcs").stop_hl() end})
 	end
 end
 
@@ -149,12 +145,12 @@ M.search_hl = function()
 			M.stop_hl()
 		end
 	else
-		vim.cmd("autocmd! SearchHL")
+		vim.api.nvim_clear_autocmds({group = "SearchHL"})
 	end
 end
 
 M.stop_hl = function()
-	vim.cmd("autocmd! SearchHL")
+	vim.api.nvim_clear_autocmds({group = "SearchHL"})
 	if vim.v.hlsearch == 1 then
 		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<plug>NoHL", true, false, true), "m", true)
 		vim.cmd("echo ''")

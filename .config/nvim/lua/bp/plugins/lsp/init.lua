@@ -39,13 +39,11 @@ lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_c
 		-- TODO(brphilly): Change vim.ui.input to make floating rename
 		bsk("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", "textDocument/rename")
 		if client.supports_method("textDocument/documentHighlight") then
-			vim.cmd([[
-					augroup lsp-hl-symbol
-					autocmd! * <buffer>
-					autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-					autocmd CursorMoved,InsertEnter,WinLeave <buffer> lua vim.lsp.buf.clear_references()
-					augroup END
-				]])
+			vim.api.nvim_create_augroup("lsp-hl-symbol", {clear = false})
+			vim.api.nvim_clear_autocmds({group = "lsp-hl-symbol", buffer = bufnr})
+			vim.api.nvim_create_autocmd("CursorHold", {group = "lsp-hl-symbol", buffer = bufnr, callback = vim.lsp.buf.document_highlight})
+			vim.api.nvim_create_autocmd({"CursorMoved", "InsertEnter", "WinLeave"},
+				{group = "lsp-hl-symbol", buffer = bufnr, callback = vim.lsp.buf.clear_references})
 		end
 
 		-- bsk("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", "textDocument/codeAction")
@@ -54,12 +52,10 @@ lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_c
 		bsk("x", "<leader>la", ":CodeActionMenu<CR>", "textDocument/codeAction")
 		bsk("n", "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<CR>", "workspace/executeCommand")
 		if client.supports_method("textDocument/codeLens") then
-			vim.cmd([[
-					augroup lspcodelens
-					autocmd! * <buffer>
-					autocmd CursorHold,CursorHoldI,InsertLeave <buffer> lua vim.lsp.codelens.refresh()
-					augroup END
-				]])
+			vim.api.nvim_create_augroup("lsp-codelens", {clear = false})
+			vim.api.nvim_clear_autocmds({group = "lsp-codelens", buffer = bufnr})
+			vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI", "InsertLeave"},
+				{group = "lsp-codelens", buffer = bufnr, callback = vim.lsp.codelens.refresh})
 		end
 
 		bsk("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", "textDocument/formatting")

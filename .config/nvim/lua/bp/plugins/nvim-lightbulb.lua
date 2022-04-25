@@ -1,12 +1,7 @@
-vim.cmd(string.format(
-	[[
-		augroup nvim-lightbulb-update
-		autocmd!
-		autocmd CursorHold * lua require('nvim-lightbulb').update_lightbulb(%s)
-		augroup END
-	]],
-	[[{ sign = { enabled = false }, status_text = { enabled = true } }]]
-))
+vim.api.nvim_create_augroup("nvim-lightbulb-update", {})
+vim.api.nvim_create_autocmd("CursorHold", {group = "nvim-lightbulb-update", callback = function()
+	require("nvim-lightbulb").update_lightbulb({sign = {enabled = false}, status_text = {enabled = true}})
+end})
 
 local c = require("nord.colours")
 -- stylua: ignore

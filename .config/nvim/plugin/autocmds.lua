@@ -1,50 +1,27 @@
-vim.cmd([[
-	augroup UpdateBuf
-	autocmd!
-	autocmd BufEnter,FocusGained * silent! checktime
-	augroup END
-]])
+vim.api.nvim_create_augroup("UpdateBuf", {})
+vim.api.nvim_create_autocmd({"BufEnter", "FocusGained"}, {group = "UpdateBuf", command = "silent! checktime"})
 
-vim.cmd([[
-	augroup Terminal
-	autocmd!
-	autocmd TermOpen * setlocal wrap
-	autocmd TermOpen * setlocal nonumber
-	autocmd TermOpen * setlocal norelativenumber
-	augroup END
-]])
+vim.api.nvim_create_augroup("MyTerminal", {})
+vim.api.nvim_create_autocmd("TermOpen", {group = "MyTerminal", callback = function()
+	vim.opt_local.wrap = true
+	vim.opt_local.number = false
+	vim.opt_local.relativenumber = false
+end})
 
-vim.cmd([[
-	augroup HighlightYank
-	autocmd!
-	autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup = "Visual", timeout = 1000}
-	augroup END
-]])
+vim.api.nvim_create_augroup("HighlightYank", {})
+vim.api.nvim_create_autocmd("TextYankPost", {group = "HighlightYank", callback = function()
+	vim.highlight.on_yank({higroup = "Visual", timeout = 1000})
+end})
 
-vim.cmd([[
-	augroup StartSearchHL
-	autocmd!
-	autocmd CmdLineLeave [/\?] lua require("bp.keymap-funcs").start_hl()
-	augroup END
-]])
+vim.api.nvim_create_augroup("StartSearchHL", {})
+vim.api.nvim_create_autocmd("CmdLineLeave", {group = "StartSearchHL", pattern = {"/", "?"}, callback = function()
+	require("bp.keymap-funcs").start_hl()
+end})
 
-vim.cmd([[
-	augroup DirectorySave
-	autocmd!
-	autocmd BufWritePre,FileWritePre * silent! call mkdir(expand('<afile>:p:h'), 'p')
-	augroup END
-]])
+vim.api.nvim_create_augroup("DirectorySave", {})
+vim.api.nvim_create_autocmd({"BufWritePre", "FileWritePre"}, {group = "DirectorySave", command = "silent! call mkdir(expand('<afile>:p:h'), 'p')"})
 
-vim.cmd([[
-	augroup SpellFT
-	autocmd!
-	autocmd FileType text,markdown,conf setlocal spell
-	augroup END
-]])
-
-vim.cmd([[
-	augroup CommandWin
-	autocmd!
-	autocmd CmdwinEnter * startinsert
-	augroup END
-]])
+vim.api.nvim_create_augroup("SpellFT", {})
+vim.api.nvim_create_autocmd("FileType", {group = "SpellFT", pattern = {"text", "markdown", "conf"}, callback = function()
+	vim.opt_local.spell = true
+end})
