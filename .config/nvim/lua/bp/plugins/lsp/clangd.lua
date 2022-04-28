@@ -1,1 +1,2 @@
-require("lspconfig").clangd.setup({})
+local setup = require("bp.plugins.lsp.setup")
+require("lspconfig").clangd.setup(setup)

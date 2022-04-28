@@ -67,3 +67,9 @@ vim.diagnostic.config({
 	update_in_insert = false,
 	severity_sort = true,
 })
+vim.fn.sign_define({
+	{ name = "DiagnosticSignError", numhl = "DiagnosticSignError" },
+	{ name = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn" },
+	{ name = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" },
+	{ name = "DiagnosticSignHint", numhl = "DiagnosticSignHint" },
+})
