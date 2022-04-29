@@ -51,6 +51,11 @@ require("packer").startup({
 		})
 
 		use({
+			'akinsho/git-conflict.nvim',
+			config = function() require('git-conflict').setup({default_mappings = false}) end,
+		})
+
+		use({
 			"chaoren/vim-wordmotion",
 			setup = 'require("bp.plugins.vim-wordmotion")',
 		})

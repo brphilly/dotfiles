@@ -81,7 +81,6 @@ vim.keymap.set("n", "]q", "<cmd>cnext<cr>")
 vim.keymap.set("n", "[Q", "<cmd>cfirst<cr>")
 vim.keymap.set("n", "]Q", "<cmd>clast<cr>")
 vim.keymap.set("n", "<c-w><c-space>", require("bp.keymap-funcs").toggle_qf)
-vim.keymap.set("n", "<leader>gc", [[<cmd>execute 'silent grep! "^=======$"' | copen<cr>]])
 
 vim.keymap.set("n", "[l", "<cmd>lprev<cr>")
 vim.keymap.set("n", "]l", "<cmd>lnext<cr>")
