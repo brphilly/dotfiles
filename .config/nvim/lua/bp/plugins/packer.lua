@@ -37,6 +37,15 @@ require("packer").startup({
 		})
 
 		use({
+			"stevearc/dressing.nvim",
+			config = function()
+				vim.api.nvim_create_autocmd("FileType", {pattern = "DressingInput", callback = function(t)
+					vim.keymap.set("i", "<c-[>", "<esc><c-w><c-q>", {buffer = t.buf})
+				end})
+			end,
+		})
+
+		use({
 			"https://gitlab.com/yorickpeterse/nvim-pqf",
 			config = function() require("pqf").setup() end,
 		})
