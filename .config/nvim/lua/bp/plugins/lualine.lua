@@ -1,4 +1,4 @@
--- TODO(brphilly): Investigate leaking file descriptors
+-- TODO(brphilly): Investigate leaking file descriptors when opening multiple projects
 local colours = require("nord.colours")
 
 require("lualine").setup({
