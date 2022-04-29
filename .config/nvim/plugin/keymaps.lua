@@ -14,10 +14,6 @@ vim.keymap.set("i", "<tab>", [[pumvisible() ? "<c-n>" : "<tab>"]], { expr = true
 vim.keymap.set("i", "<s-tab>", [[pumvisible() ? "<c-p>" : "<tab>"]], { expr = true })
 vim.keymap.set("i", "<cr>", [[pumvisible() ? "<c-y>" : "<cr>"]], { expr = true })
 
-vim.keymap.set("n", "<leader>me", "<c-w>=")
-vim.keymap.set("n", "<leader>mw", "<c-w>|")
-vim.keymap.set("n", "<leader>mh", "<c-w>_")
-
 vim.keymap.set("n", "zh", "zH")
 vim.keymap.set("n", "zH", "zh")
 vim.keymap.set("n", "zL", "zl")
@@ -93,12 +89,6 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 vim.api.nvim_create_user_command("DiagnosticBuf", function(_) vim.diagnostic.setloclist() end, {})
 vim.api.nvim_create_user_command("DiagnosticAll", function(_) vim.diagnostic.setqflist() end, {})
-
-vim.keymap.set("n", "<leader>rr", "<cmd>redraw!<cr>")
-vim.keymap.set("n", "<leader>re", "<cmd>echo<cr>")
-vim.keymap.set("n", "<leader>rs", "<cmd>redrawstatus!<cr>")
-vim.keymap.set("n", "<leader>rt", "<cmd>redrawtabline<cr>")
-vim.keymap.set("n", "<leader>ro", "<cmd>source " .. vim.fn.stdpath("config") .. "/plugin/options.lua<cr>")
 
 vim.keymap.set("n", "*", "*<cmd>lua require('bp.keymap-funcs').start_hl()<cr>")
 vim.keymap.set("n", "#", "#<cmd>lua require('bp.keymap-funcs').start_hl()<cr>")
