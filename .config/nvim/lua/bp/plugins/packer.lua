@@ -154,7 +154,6 @@ require("packer").startup({
 		use({
 			"ahmedkhalf/project.nvim",
 			config = function()
-				vim.opt.autochdir = false
 				require("project_nvim").setup({detection_methods = {"pattern", "lsp"}})
 			end,
 			event = { "BufReadPre", "BufNewFile" },
