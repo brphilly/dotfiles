@@ -183,6 +183,12 @@ require("packer").startup({
 		})
 
 		use({
+			"windwp/nvim-autopairs",
+			config = function() require('nvim-autopairs').setup({}) end,
+			event = "InsertEnter",
+		})
+
+		use({
 			"hrsh7th/nvim-cmp",
 			config = 'require("bp.plugins.nvim-cmp")',
 			event = { "InsertEnter", "CmdlineEnter" },
