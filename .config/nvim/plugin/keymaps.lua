@@ -1,6 +1,3 @@
-vim.keymap.set("i", "<c-j>", "<c-o>o")
-vim.keymap.set("i", "<c-k>", "<c-o>O")
-
 vim.keymap.set("", "<home>", "^")
 vim.keymap.set("i", "<home>", "<c-o>^")
 vim.keymap.set("n", "~", "g~")
