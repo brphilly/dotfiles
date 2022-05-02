@@ -152,9 +152,10 @@ require("packer").startup({
 		})
 
 		use({
-			"ahmedkhalf/project.nvim",
-			config = function()
-				require("project_nvim").setup({detection_methods = {"pattern", "lsp"}})
+			"airblade/vim-rooter",
+			setup = function()
+				vim.g.rooter_silent_chdir = 1
+				vim.g.rooter_change_directory_for_non_project_files = "current"
 			end,
 			event = { "BufReadPre", "BufNewFile" },
 		})
