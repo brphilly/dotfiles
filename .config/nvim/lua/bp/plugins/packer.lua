@@ -189,6 +189,12 @@ require("packer").startup({
 		})
 
 		use({
+			"abecodes/tabout.nvim",
+			config = function() require("tabout").setup({completion = false}) end,
+			event = "InsertEnter",
+		})
+
+		use({
 			"hrsh7th/nvim-cmp",
 			config = 'require("bp.plugins.nvim-cmp")',
 			event = { "InsertEnter", "CmdlineEnter" },
