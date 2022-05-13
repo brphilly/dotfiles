@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-_G.P = function(arg) print(vim.inspect(arg)) end
+_G.P = function(...) vim.pretty_print(...) end
 
 -- New lua-based filetype detection
 vim.g.do_filetype_lua = 1
