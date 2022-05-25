@@ -192,6 +192,7 @@ require("packer").startup({
 			"abecodes/tabout.nvim",
 			config = function() require("tabout").setup({completion = false}) end,
 			event = "InsertEnter",
+			wants = "nvim-treesitter",
 		})
 
 		use({
