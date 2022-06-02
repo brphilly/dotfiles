@@ -1,16 +1,12 @@
 [user]
 	name = Brady Phillips
-	email = brady.phillips99@gmail.com
-	signingKey = 236557E50DFDFEC7
+	email = brphilly@protonmail.com
+	signingKey = A761F2AE7570C5D8
 [core]
 	excludesfile = ~/.config/git/gitignore-global
 	editor = nvim
 	autocrlf = input
 	pager = delta
-[credential]
-	helper = cache --timeout=43200
-[credential "https://github.com"]
-	username = brphilly
 [pull]
 	ff = only
 [commit]
