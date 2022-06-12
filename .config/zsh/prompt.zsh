@@ -1,5 +1,6 @@
 autoload -Uz add-zsh-hook
 source /usr/share/gitstatus/gitstatus.prompt.zsh
+VIRTUAL_ENV_DISABLE_PROMPT=1
 typeset -F SECONDS
 cmd_start=$SECONDS
 cmd_num=0
@@ -55,6 +56,7 @@ prompt_gap() {
 make_prompt() {
 	psvar[3]=$(print -P '%(?..%?)')
 	psvar[1]=$(print -P '%~')
+	[[ -n $VIRTUAL_ENV ]] && psvar[1]="(${VIRTUAL_ENV##*/}) $psvar[1]"
 	psvar[2]=${${GITSTATUS_PROMPT//\%\%/x}//\%(f|<->F)}
 	if [[ $cmd_num_prev -ne $cmd_num ]]; then
 		cmd_num_prev=$cmd_num
