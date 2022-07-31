@@ -45,7 +45,6 @@ vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case"
 vim.opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
 
 vim.opt.termguicolors = true
-vim.opt.mouse = "a"
 vim.opt.shortmess:append("cI")
 vim.opt.iskeyword:append("-")
 vim.opt.updatetime = 250
