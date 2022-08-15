@@ -141,9 +141,6 @@ require("packer").startup({
 			"kevinhwang91/nvim-bqf",
 			config = "require('bp.plugins.nvim-bqf')",
 			ft = "qf",
-			requires = {
-				{ "junegunn/fzf", after = "nvim-bqf" },
-			},
 		})
 
 		use({
