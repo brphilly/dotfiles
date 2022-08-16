@@ -25,9 +25,8 @@ bindkey -a '\e[H' vi-beginning-of-line
 bindkey -a '\e[F' vi-end-of-line
 bindkey -v $terminfo[kRIT5] forward-word
 bindkey -v $terminfo[kLFT5] backward-word
-bindkey -v '^@' menu-expand-or-complete
-bindkey -v '^n' history-beginning-search-backward
-bindkey -v '^p' history-beginning-search-forward
+bindkey -v '^k' history-beginning-search-backward
+bindkey -v '^j' history-beginning-search-forward
 bindkey -a 'w' forward-word
 bindkey -a 'b' backward-word
 bindkey -a 'Y' vi-yank-eol
@@ -54,7 +53,6 @@ zstyle ':completion:*' complete-options true
 zstyle ':completion:*' file-sort modification
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*:*:*:*:corrections' format '%F{#bf616a}!- %d (errors: %e) -!%f'
-zstyle ':completion:*:*:*:*:descriptions' format '%F{#a3be8c}-- %D %d --%f'
 zstyle ':completion:*:*:*:*:messages' format '%F{#a3be8c}-- %d --%f'
 zstyle ':completion:*:*:*:*:warnings' format '%F{#ebcb8b}-- no matches found --%f'
 
@@ -63,16 +61,22 @@ compinit -d $XDG_CACHE_HOME/zsh/.zcompdump
 _comp_options+=(globdots) # Complete hidden files
 
 source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+bindkey -v '^n' fzf-cd-widget
+bindkey -v '^h' fzf-history-widget
+bindkey -v '^f' fzf-file-widget
+source /usr/share/zsh/plugins/fzf-tab-bin-git/fzf-tab.plugin.zsh
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+bindkey -v '^@' fzf-tab-complete
+bindkey -v '^i' forward-word
 _fzf_compgen_path() {
   fd --hidden --follow --exclude ".git" . "$1"
 }
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
-export FZF_COMPLETION_TRIGGER=''
-bindkey -v '^t' fzf-completion
-bindkey -v '^i' expand-or-complete
 
 source $XDG_CONFIG_HOME/zsh/prompt.zsh
 
