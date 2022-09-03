@@ -9,6 +9,33 @@ require("packer").startup({
 		})
 
 		use({
+			"nvim-treesitter/nvim-treesitter",
+			config = 'require("bp.plugins.nvim-treesitter")',
+			run = ":TSUpdate",
+			requires = {
+				{
+					"nvim-treesitter/nvim-treesitter-textobjects",
+					config = 'require("bp.plugins.nvim-treesitter-textobjects")',
+					after = "nvim-treesitter",
+				},
+				{
+					"nvim-treesitter/playground",
+					config = 'require("bp.plugins.nvim-treesitter-playground")',
+					cmd = "TSPlaygroundToggle",
+					as = "nvim-treesitter-playground",
+					wants = "nvim-treesitter",
+				},
+				{
+					"lewis6991/spellsitter.nvim",
+					config = function()
+						require("spellsitter").setup()
+					end,
+					after = "nvim-treesitter",
+				},
+			},
+		})
+
+		use({
 			"nvim-lualine/lualine.nvim",
 			config = 'require("bp.plugins.lualine")',
 			wants = { "nvim-web-devicons" },
@@ -94,45 +121,6 @@ require("packer").startup({
 						end})
 						vim.api.nvim_exec_autocmds("ColorScheme", {group = "fidget-hl", pattern = vim.g.colors_name})
 					end,
-				},
-			},
-		})
-
-		vim.cmd("PackerLoad nvim-treesitter")
-		local installed_parsers = require("bp.plugins.nvim-treesitter")
-		local parsers = require("nvim-treesitter.parsers")
-		local parsers_ft = {}
-		for _,parser in ipairs(installed_parsers) do
-			local ft = parsers.list[parser].filetype or parser
-			table.insert(parsers_ft, ft)
-		end
-		for ft,parser in pairs(parsers.filetype_to_parsername) do
-			if vim.tbl_contains(installed_parsers, parser) then table.insert(parsers_ft, ft) end
-		end
-		use({
-			"nvim-treesitter/nvim-treesitter",
-			config = 'require("bp.plugins.nvim-treesitter")',
-			ft = parsers_ft,
-			run = ":TSUpdate",
-			requires = {
-				{
-					"nvim-treesitter/nvim-treesitter-textobjects",
-					config = 'require("bp.plugins.nvim-treesitter-textobjects")',
-					after = "nvim-treesitter",
-				},
-				{
-					"nvim-treesitter/playground",
-					config = 'require("bp.plugins.nvim-treesitter-playground")',
-					cmd = "TSPlaygroundToggle",
-					as = "nvim-treesitter-playground",
-					wants = "nvim-treesitter",
-				},
-				{
-					"lewis6991/spellsitter.nvim",
-					config = function()
-						require("spellsitter").setup()
-					end,
-					after = "nvim-treesitter",
 				},
 			},
 		})
