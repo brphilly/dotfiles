@@ -36,6 +36,39 @@ require("packer").startup({
 		})
 
 		use({
+			"neovim/nvim-lspconfig",
+			config = 'require("bp.plugins.lsp")',
+			wants = "cmp-nvim-lsp",
+			event = "VimEnter", -- wants key requires lazy loading to work properly
+			requires = {
+				{
+					"kosayoda/nvim-lightbulb",
+					after = "nvim-lspconfig",
+					config = "require('bp.plugins.nvim-lightbulb')",
+				},
+				{
+					"weilbith/nvim-code-action-menu",
+					cmd = "CodeActionMenu",
+					config = "require('bp.plugins.nvim-code-action-menu')",
+				},
+				{
+					"j-hui/fidget.nvim",
+					after = "nvim-lspconfig",
+					config = function()
+						require("fidget").setup({ text = { spinner = "dots_negative" }, window = {relative = "editor"}, fmt = { stack_upwards = false } })
+						local c = require("nord.colours")
+						vim.api.nvim_create_augroup("fidget-hl", {})
+						vim.api.nvim_create_autocmd("ColorScheme", {group = "fidget-hl", pattern = "nord", callback = function()
+							vim.api.nvim_set_hl(0, "FidgetTitle", {fg = c.attention_alt})
+							vim.api.nvim_set_hl(0, "FidgetTask", {fg = c.comment})
+						end})
+						vim.api.nvim_exec_autocmds("ColorScheme", {group = "fidget-hl", pattern = vim.g.colors_name})
+					end,
+				},
+			},
+		})
+
+		use({
 			"nvim-lualine/lualine.nvim",
 			config = 'require("bp.plugins.lualine")',
 			wants = { "nvim-web-devicons" },
@@ -92,39 +125,6 @@ require("packer").startup({
 		})
 
 		-- Lazy loaded:
-		use({
-			"neovim/nvim-lspconfig",
-			config = 'require("bp.plugins.lsp")',
-			ft = { "lua", "python", "c", "cpp" },
-			wants = "cmp-nvim-lsp",
-			requires = {
-				{
-					"kosayoda/nvim-lightbulb",
-					after = "nvim-lspconfig",
-					config = "require('bp.plugins.nvim-lightbulb')",
-				},
-				{
-					"weilbith/nvim-code-action-menu",
-					cmd = "CodeActionMenu",
-					config = "require('bp.plugins.nvim-code-action-menu')",
-				},
-				{
-					"j-hui/fidget.nvim",
-					after = "nvim-lspconfig",
-					config = function()
-						require("fidget").setup({ text = { spinner = "dots_negative" }, window = {relative = "editor"}, fmt = { stack_upwards = false } })
-						local c = require("nord.colours")
-						vim.api.nvim_create_augroup("fidget-hl", {})
-						vim.api.nvim_create_autocmd("ColorScheme", {group = "fidget-hl", pattern = "nord", callback = function()
-							vim.api.nvim_set_hl(0, "FidgetTitle", {fg = c.attention_alt})
-							vim.api.nvim_set_hl(0, "FidgetTask", {fg = c.comment})
-						end})
-						vim.api.nvim_exec_autocmds("ColorScheme", {group = "fidget-hl", pattern = vim.g.colors_name})
-					end,
-				},
-			},
-		})
-
 		use({
 			"kevinhwang91/nvim-bqf",
 			config = "require('bp.plugins.nvim-bqf')",
