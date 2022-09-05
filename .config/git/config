@@ -1,7 +1,7 @@
 [user]
 	name = Brady Phillips
-	email = brphilly@protonmail.com
-	signingKey = A761F2AE7570C5D8
+	email = mail@brphilly.dev
+	signingKey = 471B2A2E9A7A54A6A545EBF9149B65036B784D49
 [core]
 	excludesfile = ~/.config/git/gitignore-global
 	editor = nvim
