@@ -25,13 +25,6 @@ require("packer").startup({
 					as = "nvim-treesitter-playground",
 					wants = "nvim-treesitter",
 				},
-				{
-					"lewis6991/spellsitter.nvim",
-					config = function()
-						require("spellsitter").setup()
-					end,
-					after = "nvim-treesitter",
-				},
 			},
 		})
 
