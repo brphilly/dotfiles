@@ -1,3 +1,4 @@
+source $XDG_CONFIG_HOME/zsh/widgets.zsh
 unsetopt beep
 HISTFILE="$XDG_CACHE_HOME/zsh/.zsh_history"
 HISTSIZE=20000 # internal history
@@ -62,8 +63,8 @@ _comp_options+=(globdots) # Complete hidden files
 
 source /usr/share/fzf/key-bindings.zsh
 bindkey -v '^n' fzf-cd-widget
-bindkey -v '^h' fzf-history-widget
-bindkey -v '^f' fzf-file-widget
+bindkey -v '^p' cd-root
+bindkey -v -s '^f' 'nvim $(fzf)^M'
 source /usr/share/zsh/plugins/fzf-tab-bin-git/fzf-tab.plugin.zsh
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*:git-checkout:*' sort false
