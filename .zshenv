@@ -13,4 +13,5 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap"
 export FZF_ALT_C_COMMAND='fd --type d --strip-cwd-prefix --follow --exclude .git'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 export LS_COLORS="$(vivid generate iceberg-dark)"
+export BAT_THEME="Nord"
 ZDOTDIR="$XDG_CONFIG_HOME/zsh"
