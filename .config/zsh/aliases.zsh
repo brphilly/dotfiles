@@ -1,3 +1,4 @@
+alias sudo='sudo '
 alias ls='lsd'
 alias ll='lsd -la'
 alias pacdiff='sudo DIFFPROG="env XDG_CONFIG_HOME=/home/brady/.config XDG_DATA_HOME=/home/brady/.local/share nvim -d" pacdiff'
