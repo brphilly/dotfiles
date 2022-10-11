@@ -31,7 +31,7 @@ vim.keymap.set("n", "<leader>ss", function() require("bp.keymap-funcs").make_ses
 vim.keymap.set("n", "<leader>so", "<cmd>source<cr>")
 vim.keymap.set("x", "<leader>so", ":'<,'>source<cr>")
 
-vim.keymap.set("n", "<c-w><c-q>", "<c-w>c")
+vim.keymap.set("n", "<c-c>", "<c-w>c")
 vim.keymap.set("n", "<c-w><c-t>", "<cmd>tab split<cr>")
 vim.keymap.set("n", "<c-w><c-bs>", "<cmd>tab split<cr>")
 vim.keymap.set("n", "<c-w><c-m>", "<c-w>o")
