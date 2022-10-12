@@ -14,5 +14,5 @@ export FZF_ALT_C_COMMAND='fd --type d --strip-cwd-prefix --follow --exclude .git
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 export LS_COLORS="$(vivid generate iceberg-dark)"
 export BAT_THEME="Nord"
-export ZK_NOTEBOOK_DIR="~/notes"
+export ZK_NOTEBOOK_DIR="$HOME/notes"
 ZDOTDIR="$XDG_CONFIG_HOME/zsh"
