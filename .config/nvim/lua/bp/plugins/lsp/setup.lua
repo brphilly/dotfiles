@@ -1,6 +1,3 @@
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-
 local M = {
 	on_attach = function(client, bufnr)
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer = bufnr})
@@ -68,7 +65,7 @@ local M = {
 		["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
 	},
 
-	capabilities = capabilities,
+	capabilities = require("cmp_nvim_lsp").default_capabilities(),
 	-- on_new_config = function(new_config, new_root_dir) -- run on new root dir, can use to change config
 }
 
