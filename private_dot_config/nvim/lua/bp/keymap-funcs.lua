@@ -39,14 +39,14 @@ function M.make_session(close)
 	for _, b in ipairs(vim.api.nvim_list_bufs()) do
 		if vim.api.nvim_buf_get_option(b, "buflisted") and vim.api.nvim_buf_get_option(b, "buftype") == "" then
 			vim.api.nvim_buf_call(b, function()
-				vim.cmd("doautocmd <nomodeline> BufEnter") -- make sure rooter plugin updates the cwd
+				vim.api.nvim_exec_autocmds("BufEnter", {modeline = false}) -- make sure rooter plugin updates the cwd
 				local cwd = vim.fn.getcwd()
 				local tail = vim.fn.fnamemodify(cwd, ":p:h:t")
 				work_dirs[tail] = true
 			end)
 		end
 	end
-	vim.cmd("doautocmd <nomodeline> BufEnter") -- make sure rooter plugin updates the cwd
+	vim.api.nvim_exec_autocmds("BufEnter", {modeline = false}) -- make sure rooter plugin updates the cwd
 
 	-- concatenate set of work_dirs into one string to use as session name
 	local session_name = {}
