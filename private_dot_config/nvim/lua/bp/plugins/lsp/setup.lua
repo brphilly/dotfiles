@@ -12,8 +12,8 @@ local M = {
 		vim.keymap.set("n", "<leader>lc", "<cmd>CodeActionMenu<CR>", {buffer = bufnr})
 		vim.keymap.set("x", "<leader>lc", ":CodeActionMenu<CR>", {buffer = bufnr})
 		vim.keymap.set("n", "<leader>ll", vim.lsp.codelens.run, {buffer = bufnr})
-		vim.keymap.set("n", "<leader>lf", vim.lsp.buf.formatting, {buffer = bufnr})
-		vim.keymap.set("x", "<leader>lf", ":lua vim.lsp.buf.range_formatting()<cr>", {buffer = bufnr})
+		vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, {buffer = bufnr})
+		vim.keymap.set("x", "<leader>lf", vim.lsp.buf.format, {buffer = bufnr})
 
 		vim.api.nvim_buf_create_user_command(bufnr, "LspImplementations", function(_)
 			vim.lsp.buf.implementation()
