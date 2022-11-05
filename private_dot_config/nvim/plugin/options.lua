@@ -54,6 +54,8 @@ vim.opt.switchbuf = "usetab"
 vim.opt.completeopt = { "menuone", "noselect" }
 vim.opt.pumheight = math.ceil(vim.go.lines / 2)
 
+vim.opt.diffopt:append("linematch:60")
+
 vim.opt.undofile = true
 vim.opt.backup = true
 vim.opt.backupdir = vim.env.XDG_DATA_HOME .. "/nvim/backup//"
