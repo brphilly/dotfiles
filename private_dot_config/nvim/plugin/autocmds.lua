@@ -18,9 +18,6 @@ vim.api.nvim_create_autocmd("CmdLineLeave", {group = "StartSearchHL", pattern = 
 	require("bp.keymap-funcs").start_hl()
 end})
 
-vim.api.nvim_create_augroup("DirectorySave", {})
-vim.api.nvim_create_autocmd({"BufWritePre", "FileWritePre"}, {group = "DirectorySave", command = "silent! call mkdir(expand('<afile>:p:h'), 'p')"})
-
 vim.api.nvim_create_augroup("SpellFT", {})
 vim.api.nvim_create_autocmd("FileType", {group = "SpellFT", pattern = {"text", "markdown", "conf"}, callback = function()
 	vim.opt_local.spell = true
