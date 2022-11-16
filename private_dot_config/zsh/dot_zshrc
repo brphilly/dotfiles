@@ -1,6 +1,6 @@
 source $XDG_CONFIG_HOME/zsh/widgets.zsh
 unsetopt beep
-HISTFILE="$XDG_CACHE_HOME/zsh/.zsh_history"
+HISTFILE="$XDG_DATA_HOME/zsh/zsh_history"
 HISTSIZE=20000 # internal history
 SAVEHIST=10000 # file history
 setopt HIST_IGNORE_DUPS
@@ -43,7 +43,7 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect '^[' send-break
 
 zstyle ':completion:*' completer _extensions _complete _approximate
-zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
+zstyle ':completion:*' cache-path "$XDG_DATA_HOME/zsh/zcompcache"
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
@@ -58,7 +58,7 @@ zstyle ':completion:*:*:*:*:messages' format '%F{#a3be8c}-- %d --%f'
 zstyle ':completion:*:*:*:*:warnings' format '%F{#ebcb8b}-- no matches found --%f'
 
 autoload -Uz compinit
-compinit -d $XDG_CACHE_HOME/zsh/.zcompdump
+compinit -d $XDG_DATA_HOME/zsh/zcompdump
 _comp_options+=(globdots) # Complete hidden files
 
 source /usr/share/fzf/key-bindings.zsh
