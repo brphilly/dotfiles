@@ -4,6 +4,7 @@ HISTFILE="$XDG_DATA_HOME/zsh/zsh_history"
 HISTSIZE=20000 # internal history
 SAVEHIST=10000 # file history
 setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
 KEYTIMEOUT=1
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
