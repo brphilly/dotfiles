@@ -70,8 +70,8 @@ cmp.setup({
 		-- this order affects priority
 		{ name = "luasnip" },
 		{ name = "path" },
-		{ name = "nvim_lsp", keyword_length = 2 },
-		{ name = "buffer", keyword_length = 2 },
+		{ name = "nvim_lsp" },
+		{ name = "buffer" },
 	},
 })
 cmp.setup.cmdline('/', {
