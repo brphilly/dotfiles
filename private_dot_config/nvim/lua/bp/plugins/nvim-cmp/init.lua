@@ -55,7 +55,6 @@ cmp.setup({
 				buffer = "[Buffer]",
 				nvim_lsp = "[LSP]",
 				luasnip = "[LuaSnip]",
-				nvim_lua = "[Nvim-Lua]",
 				path = "[Path]",
 			})[entry.source.name]
 			return vim_item
@@ -71,7 +70,6 @@ cmp.setup({
 		-- this order affects priority
 		{ name = "luasnip" },
 		{ name = "path" },
-		{ name = "nvim_lua", keyword_length = 2 },
 		{ name = "nvim_lsp", keyword_length = 2 },
 		{ name = "buffer", keyword_length = 2 },
 	},

@@ -183,7 +183,6 @@ require("packer").startup({
 			event = { "InsertEnter", "CmdlineEnter" },
 			requires = {
 				{ "hrsh7th/cmp-path", after = "nvim-cmp", opt = true },
-				{ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp", opt = true },
 				{ "hrsh7th/cmp-cmdline", after = "nvim-cmp", opt = true },
 				{
 					"hrsh7th/cmp-buffer",
