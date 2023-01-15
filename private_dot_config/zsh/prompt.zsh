@@ -73,7 +73,7 @@ make_prompt() {
 		cmd_num_prev=$cmd_num
 		psvar[5]=$(prompt_elapsed)
 	fi
-	psvar[6]=$(print -P '%D{%H:%M}')$(prompt_day_suffix)$(print -P '%D{%b}')
+	psvar[6]=$(print -P '%D{%H:%M %a}')$(prompt_day_suffix)$(print -P '%D{%b}')
 	prompt_gap # set psvar[4]
 }
 add-zsh-hook precmd make_prompt
