@@ -14,7 +14,8 @@ vim.opt.sessionoptions:append({ "skiprtp", "terminal" })
 
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.signcolumn = "auto:2"
+vim.opt.signcolumn = "auto:1-2"
+vim.opt.statuscolumn = "%=%{v:relnum?v:relnum:v:lnum}%s%C"
 vim.opt.cursorlineopt = "number"
 vim.opt.cursorline = true
 vim.opt.colorcolumn = "151"
