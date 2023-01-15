@@ -125,15 +125,6 @@ require("packer").startup({
 		})
 
 		use({
-			"editorconfig/editorconfig-vim",
-			event = { "BufReadPre", "BufNewFile" },
-			setup = function()
-				vim.g.EditorConfig_softtabstop_space = {}
-				vim.g.EditorConfig_softtabstop_tab = {}
-			end,
-		})
-
-		use({
 			"airblade/vim-rooter",
 			setup = function()
 				vim.g.rooter_silent_chdir = 1
