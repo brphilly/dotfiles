@@ -31,6 +31,17 @@ prompt_elapsed() {
 	echo ${(j[ ])elapsed_arr}
 }
 
+prompt_day_suffix() {
+	local day=$(print -P "%D{%-d}")
+	local suffix
+	if [[ $day = "1" ]] || [[ $day = "21" ]] || [[ $day = "31" ]]; then suffix="st"
+	elif [[ $day = "2" ]] || [[ $day = "22" ]]; then suffix="nd"
+	elif [[ $day = "3" ]] || [[ $day = "23" ]]; then suffix="rd"
+	else suffix="th"
+	fi
+	echo " $day$suffix "
+}
+
 prompt_gap() {
 	local left_prompt_size=$(( ${(m)#psvar[1]} + ${(m)#psvar[2]} + $#psvar[3] ))
 	(( left_prompt_size += 3 )) # for psvar[1] padding and seperator
@@ -62,7 +73,7 @@ make_prompt() {
 		cmd_num_prev=$cmd_num
 		psvar[5]=$(prompt_elapsed)
 	fi
-	psvar[6]=$(print -P '%D{%H:%M %b %d}')
+	psvar[6]=$(print -P '%D{%H:%M}')$(prompt_day_suffix)$(print -P '%D{%b}')
 	prompt_gap # set psvar[4]
 }
 add-zsh-hook precmd make_prompt
