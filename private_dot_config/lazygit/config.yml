@@ -1,5 +1,4 @@
 gui:
-  mouseEvents: false
   theme:
     selectedLineBgColor:
       - black # set to `default` to have no background colour
@@ -16,3 +15,18 @@ git:
     pager: delta --dark --paging=never
   autoFetch: false
 promptToReturnFromSubprocess: false
+quitOnTopLevelReturn: true
+keybinding:
+  universal:
+    quit-alt1: null
+    return: '<c-c>'
+    nextBlock-alt: '<c-j>'
+    prevBlock-alt: '<c-k>'
+    scrollDownMain-alt1: null
+    scrollUpMain-alt1: null
+  commits:
+    moveDownCommit: 'J'
+    moveUpCommit: 'K'
+  main:
+    toggleSelectHunk: 'V'
+    toggleDragSelect-alt: null
