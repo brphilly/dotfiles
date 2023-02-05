@@ -13,11 +13,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {group = "HighlightYank", callback =
 	vim.highlight.on_yank({higroup = "Visual", timeout = 1000})
 end})
 
-vim.api.nvim_create_augroup("StartSearchHL", {})
-vim.api.nvim_create_autocmd("CmdLineLeave", {group = "StartSearchHL", pattern = {"/", "?"}, callback = function()
-	require("bp.keymap-funcs").start_hl()
-end})
-
 vim.api.nvim_create_augroup("SpellFT", {})
 vim.api.nvim_create_autocmd("FileType", {group = "SpellFT", pattern = {"text", "markdown", "conf"}, callback = function()
 	vim.opt_local.spell = true

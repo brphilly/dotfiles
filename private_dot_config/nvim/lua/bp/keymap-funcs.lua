@@ -128,33 +128,4 @@ M.buf_close_hid = function()
 	end
 end
 
-M.start_hl = function()
-	if not vim.v.event.abort then
-		vim.api.nvim_create_augroup("SearchHL", {})
-		vim.api.nvim_create_autocmd("CursorMoved", {group = "SearchHL", callback = function() require("bp.keymap-funcs").search_hl() end})
-		vim.api.nvim_create_autocmd({"InsertEnter", "TermEnter"}, {group = "SearchHL", callback = function() require("bp.keymap-funcs").stop_hl() end})
-	end
-end
-
-M.search_hl = function()
-	if vim.v.hlsearch == 1 then
-		local cur_line = vim.api.nvim_get_current_line()
-		local col = vim.fn.col(".")
-		local pos = vim.fn.match(cur_line, vim.fn.getreg("/"), col - 1) + 1
-		if pos ~= col then
-			M.stop_hl()
-		end
-	else
-		vim.api.nvim_clear_autocmds({group = "SearchHL"})
-	end
-end
-
-M.stop_hl = function()
-	vim.api.nvim_clear_autocmds({group = "SearchHL"})
-	if vim.v.hlsearch == 1 then
-		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<plug>NoHL", true, false, true), "m", true)
-		vim.cmd("echo ''")
-	end
-end
-
 return M
