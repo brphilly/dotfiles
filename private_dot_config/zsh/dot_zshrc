@@ -90,4 +90,9 @@ autoload -U url-quote-magic bracketed-paste-magic
 zle -N self-insert url-quote-magic
 zle -N bracketed-paste bracketed-paste-magic
 
+if [[ $+command[pyenv] ]]; then
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
+fi
+
 source $XDG_CONFIG_HOME/zsh/highlight.zsh # must be last

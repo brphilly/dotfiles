@@ -16,3 +16,4 @@ export LS_COLORS="$(vivid generate iceberg-dark)"
 export BAT_THEME="Nord"
 export ZK_NOTEBOOK_DIR="$HOME/notes"
 ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
