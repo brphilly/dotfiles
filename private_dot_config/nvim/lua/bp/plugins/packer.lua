@@ -109,15 +109,6 @@ require("packer").startup({
 		})
 
 		use({
-			"airblade/vim-rooter",
-			setup = function()
-				vim.g.rooter_silent_chdir = 1
-				vim.g.rooter_change_directory_for_non_project_files = "current"
-			end,
-			event = { "BufReadPre", "BufNewFile" },
-		})
-
-		use({
 			"lukas-reineke/indent-blankline.nvim",
 			config = 'require("bp.plugins.indent-blankline")',
 			event = { "BufReadPre", "BufNewFile" },
