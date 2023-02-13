@@ -11,7 +11,7 @@ local possible_roots = vim.fs.find(
 local root_dir = vim.fs.dirname(possible_roots[#possible_roots])
 
 vim.lsp.start({
-	name = "sumneko",
+	name = "LuaLS",
 	cmd = {"lua-language-server"},
 	root_dir = local_settings_path or root_dir,
 	workspace_folders = vim.tbl_get(local_settings, "folders") or (root_dir and {{uri = vim.uri_from_fname(root_dir), name = vim.fs.basename(root_dir)}}),
