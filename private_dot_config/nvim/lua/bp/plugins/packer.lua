@@ -76,9 +76,9 @@ require("packer").startup({
 		use({
 			"stevearc/dressing.nvim",
 			config = function()
-				vim.api.nvim_create_autocmd("FileType", {pattern = "DressingInput", callback = function(t)
-					vim.keymap.set("i", "<c-[>", "<esc><c-w><c-q>", {buffer = t.buf})
-				end})
+				require('dressing').setup({
+					input = {insert_only = false, start_in_insert = false, mappings = {n = {["<C-c>"] = "Close"}, i = {["<C-c>"] = false}}}
+				})
 			end,
 		})
 
