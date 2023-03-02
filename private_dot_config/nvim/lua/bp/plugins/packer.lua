@@ -203,7 +203,7 @@ require("packer").startup({
 					after = "telescope.nvim",
 					wants = "sqlite.lua",
 					setup = function()
-						vim.keymap.set("n", "<leader>ffo", function() require('telescope').extensions.frecency.frecency() end)
+						vim.keymap.set("n", "<leader>ffB", function() require('telescope').extensions.frecency.frecency() end)
 					end,
 					config = function()
 						require("telescope").load_extension("frecency")

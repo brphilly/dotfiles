@@ -2,25 +2,29 @@ local actions = require("telescope.actions")
 require("telescope").setup({
 	defaults = {
 		file_ignore_patterns = { "%.DS_Store", "%.git/.*" },
-		layout_strategy = "flex",
-		path_display = { truncate = 1 },
+		layout_strategy = "bottom_pane",
+		path_display = { "smart" },
+		wrap_results = true,
+		sorting_strategy = "ascending",
+    borderchars = {
+      prompt = { "─", "", "─", "", "─", "─", " ", " " },
+      results = { "─", "", "", "", "", "", "", "" },
+      preview = { "─", "", "", "│", "╭", "─", "", "│" },
+    },
+		dynamic_preview_title = true,
+		results_title = false,
 		mappings = {
 			i = {
-				["<C-[>"] = actions.close,
+				["<c-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
 			},
 		},
-		dynamic_preview_title = true,
 	},
 	pickers = {
-		-- Your special builtin config goes in here
 		buffers = {
 			sort_mru = true,
 			mappings = {
 				i = {
-					["<c-c>"] = actions.delete_buffer,
-				},
-				n = {
-					["<c-c>"] = actions.delete_buffer,
+					["<c-w>"] = actions.delete_buffer,
 				},
 			},
 		},
