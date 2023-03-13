@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-_G.P = function(...) vim.pretty_print(...) end
+_G.P = function(...) vim.print(...) end
 
 -- chezmoi filetype detection
 vim.filetype.add({
