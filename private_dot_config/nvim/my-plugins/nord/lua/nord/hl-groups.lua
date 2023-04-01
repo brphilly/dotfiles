@@ -97,11 +97,6 @@ return function()
 	vim.api.nvim_set_hl(0, "Ignore", {fg = c.fg_fade})
 	vim.api.nvim_set_hl(0, "Error", {fg = c.error})
 	vim.api.nvim_set_hl(0, "Todo", {fg = c.todo, bold = true, italic = true})
-	vim.api.nvim_set_hl(0, "helpCommand", {fg = c.func})
-	vim.api.nvim_set_hl(0, "helpExample", {link = "String"})
-	vim.api.nvim_set_hl(0, "helpHyperTextEntry", {link = "Title"})
-	vim.api.nvim_set_hl(0, "helpHyperTextJump", {link = "Tag"})
-	vim.api.nvim_set_hl(0, "helpOption", {link = "Tag"})
 	vim.api.nvim_set_hl(0, "healthSuccess", {fg = c.success})
 
 	-- TreeSitter Highlights
