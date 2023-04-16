@@ -8,30 +8,11 @@ setopt HIST_IGNORE_SPACE
 KEYTIMEOUT=1
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
-zle-keymap-select() {
-	case $KEYMAP in
-		vicmd) printf '\e[2 q';;
-		viins|main) printf '\e[6 q';;
-	esac
-}
-zle-line-init() { printf "\e[6 q" }
-zle -N zle-keymap-select
-zle -N zle-line-init
-bindkey -v
-bindkey -v '^?' backward-delete-char
-bindkey -v '^w' backward-kill-word
-bindkey -v '^u' backward-kill-line
-bindkey -v '\e[H' vi-beginning-of-line
-bindkey -v '\e[F' vi-end-of-line
-bindkey -a '\e[H' vi-beginning-of-line
-bindkey -a '\e[F' vi-end-of-line
-bindkey -v $terminfo[kRIT5] forward-word
-bindkey -v $terminfo[kLFT5] backward-word
-bindkey -v '^k' history-beginning-search-backward
-bindkey -v '^j' history-beginning-search-forward
-bindkey -a 'w' forward-word
-bindkey -a 'b' backward-word
-bindkey -a 'Y' vi-yank-eol
+ZVM_INIT_MODE=sourcing
+source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+bindkey -M viins '^k' history-beginning-search-backward
+bindkey -M viins '^j' history-beginning-search-forward
 
 source $XDG_CONFIG_HOME/zsh/aliases.zsh
 
