@@ -30,6 +30,7 @@ vim.opt.breakindent = true
 vim.opt.breakindentopt = "min:10,shift:1"
 
 vim.opt.virtualedit = { "onemore", "block" }
+vim.opt.smoothscroll = true
 vim.opt.scrolloff = 5
 vim.opt.sidescrolloff = 3
 vim.opt.list = true
