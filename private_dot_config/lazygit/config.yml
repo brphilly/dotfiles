@@ -7,8 +7,7 @@ gui:
       - black
       - bold
 os:
-  editCommand: 'nvim'
-  editCommandTemplate: '{{editor}} +{{line}} {{filename}}'
+  editPreset: 'nvim'
 git:
   paging:
     colorArg: always
