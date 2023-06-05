@@ -165,6 +165,11 @@ require("packer").startup({
 					after = "nvim-cmp",
 					opt = true,
 				},
+				{
+					"hrsh7th/cmp-nvim-lua",
+					after = "nvim-cmp",
+					opt = true,
+				},
 			},
 		})
 		use({
