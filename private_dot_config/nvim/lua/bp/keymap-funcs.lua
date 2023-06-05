@@ -28,7 +28,7 @@ function M.make_session(close)
 	-- close all floating windows as they cause problems when saved in sessions
 	-- also close windows containing buffers with weird types
 	for _, w in ipairs(vim.api.nvim_list_wins()) do
-		local bt = vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(w), "buftype")
+		local bt = vim.api.nvim_get_option_value("buftype", {buf = vim.api.nvim_win_get_buf(w)})
 		if vim.api.nvim_win_get_config(w).relative ~= "" or (bt ~= "" and bt ~= "help" and bt ~= "terminal") then
 			vim.api.nvim_win_close(w, true)
 		end
@@ -37,7 +37,7 @@ function M.make_session(close)
 	-- loop through buffers and get cwd of those I want to save
 	local work_dirs = {} -- set of cwd tails
 	for _, b in ipairs(vim.api.nvim_list_bufs()) do
-		if vim.api.nvim_buf_get_option(b, "buflisted") and vim.api.nvim_buf_get_option(b, "buftype") == "" then
+		if vim.api.nvim_get_option_value("buflisted", {buf = b}) and vim.api.nvim_get_option_value("buftype", {buf = b}) == "" then
 			vim.api.nvim_buf_call(b, function()
 				vim.api.nvim_exec_autocmds("BufEnter", {modeline = false}) -- make sure rooter plugin updates the cwd
 				local cwd = vim.fn.getcwd()
@@ -102,7 +102,7 @@ M.buf_close = function()
 		vim.api.nvim_win_call(w, M.switch_prev_buf)
 	end
 
-	local is_term_buf = (vim.api.nvim_buf_get_option(buf_target, "buftype") == "terminal") and "!" or ""
+	local is_term_buf = (vim.api.nvim_get_option_value("buftype", {buf = buf_target}) == "terminal") and "!" or ""
 	vim.schedule(function()
 		vim.cmd(table.concat({ buf_target, "bdelete", is_term_buf }))
 	end)
