@@ -13,7 +13,7 @@ vim.opt.breakindentopt = "min:10,shift:1"
 vim.opt.sidescrolloff = 3
 vim.opt.fillchars = { eob = " ", fold = " " }
 vim.opt.list = true
-vim.opt.listchars = { extends = "»", precedes = "«", eol = "¬", trail = "∙", tab = "  ", nbsp = "␣" }
+vim.opt.listchars = { extends = "»", precedes = "«", eol = "↲", trail = "∙", tab = "⇥ ", nbsp = "␣" }
 vim.opt.number = true
 vim.opt.relativenumber = true
 
