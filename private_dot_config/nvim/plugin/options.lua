@@ -44,7 +44,7 @@ vim.opt.pumheight = math.ceil(vim.go.lines / 2)
 vim.opt.showmatch = true
 
 -- 13 Tabs and Indenting
-vim.opt.tabstop = 2
+vim.opt.tabstop = 4
 vim.opt.shiftwidth = 0
 vim.opt.shiftround = true
 vim.opt.cindent = true
