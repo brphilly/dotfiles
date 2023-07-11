@@ -1,2 +1,7 @@
 .DS_Store
 .nvim
+.vscode
+*.code-workspace
+.python-version
+__pycache__
+node_modules
