@@ -16,6 +16,7 @@
 	submoduleSummary = true
 [push]
 	recurseSubmodules = check
+	gpgSign = if-asked
 [tag]
 	gpgSign = true
 [url "git@github.com:"]
