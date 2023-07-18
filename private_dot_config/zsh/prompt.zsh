@@ -3,12 +3,11 @@ source /usr/share/gitstatus/gitstatus.prompt.zsh
 VIRTUAL_ENV_DISABLE_PROMPT=1
 typeset -F SECONDS
 cmd_start=$SECONDS
-cmd_num=0
-cmd_num_prev=-1
+new_cmd="false"
 
 cmd_start() {
 	cmd_start=$SECONDS
-	(( cmd_num++ ))
+	new_cmd="true"
 }
 add-zsh-hook preexec cmd_start
 
@@ -65,13 +64,17 @@ prompt_gap() {
 }
 
 make_prompt() {
-	psvar[3]=$(print -P '%(?..%?)')
+	prev_ret=$(print -P '%(?..%?)')
 	psvar[1]=$(print -P '%~')
 	[[ -n $VIRTUAL_ENV ]] && psvar[1]="(${VIRTUAL_ENV##*/}) $psvar[1]"
 	psvar[2]=${${GITSTATUS_PROMPT//\%\%/x}//\%(f|<->F)}
-	if [[ $cmd_num_prev -ne $cmd_num ]]; then
-		cmd_num_prev=$cmd_num
+	if [[ $new_cmd == "true" ]]; then
+		psvar[3]=$prev_ret
 		psvar[5]=$(prompt_elapsed)
+		new_cmd="false"
+	else
+		psvar[3]=""
+		psvar[5]=""
 	fi
 	psvar[6]=$(print -P '%D{%H:%M %a}')$(prompt_day_suffix)$(print -P '%D{%b}')
 	prompt_gap # set psvar[4]
