@@ -6,18 +6,23 @@
 	excludesfile = ~/.config/git/ignore
 	editor = nvim
 	pager = delta
-[pull]
-	ff = only
 [commit]
 	verbose = true
 	gpgSign = true
-[status]
-	submoduleSummary = true
 [push]
 	recurseSubmodules = check
 	gpgSign = if-asked
+	autoSetupRemote = true
+	useForceIfIncludes = true
+[pull]
+	ff = only
+[rebase]
+	rebaseMerges = rebase-cousins
 [tag]
 	gpgSign = true
+[status]
+	submoduleSummary = true
+	showStash = true
 [url "git@github.com:"]
 	insteadOf = gh:
 	pushInsteadOf = gh:
