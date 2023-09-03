@@ -79,8 +79,5 @@ vim.keymap.set("n", "[L", "<cmd>lfirst<cr>")
 vim.keymap.set("n", "]L", "<cmd>llast<cr>")
 vim.keymap.set("n", "<c-w><space>", require("bp.keymap-funcs").toggle_ll)
 
-vim.api.nvim_create_user_command("DiagnosticLine", function(_) vim.diagnostic.open_float(0, {scope = "line"}) end, {})
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-vim.api.nvim_create_user_command("DiagnosticBuf", function(_) vim.diagnostic.setloclist() end, {})
-vim.api.nvim_create_user_command("DiagnosticAll", function(_) vim.diagnostic.setqflist() end, {})
