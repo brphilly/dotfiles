@@ -9,6 +9,9 @@ vim.keymap.set("i", "?", "?<c-g>u")
 
 vim.keymap.set("i", "<cr>", [[pumvisible() ? "<c-y>" : "<cr>"]], { expr = true })
 
+vim.keymap.set("n", "<c-o>", "<c-o>zz")
+vim.keymap.set("n", "<c-i>", "<c-i>zz")
+
 vim.keymap.set("n", "zh", "zH")
 vim.keymap.set("n", "zH", "zh")
 vim.keymap.set("n", "zL", "zl")
