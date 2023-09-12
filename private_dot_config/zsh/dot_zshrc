@@ -45,7 +45,8 @@ compinit -d $XDG_DATA_HOME/zsh/zcompdump
 _comp_options+=(globdots) # Complete hidden files
 
 source /usr/share/fzf/key-bindings.zsh
-bindkey -v '^p' cd-root
+bindkey -v '^n' cd-down
+bindkey -v '^p' cd-up
 bindkey -v -s '^f' 'nvim $(fzf)^M'
 source /usr/share/zsh/plugins/fzf-tab-bin-git/fzf-tab.plugin.zsh
 zstyle ':completion:*:descriptions' format '[%d]'
