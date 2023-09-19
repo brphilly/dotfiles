@@ -110,15 +110,3 @@ cmp.setup.cmdline(':', {
 	sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } }),
 	mapping = cmp.mapping.preset.cmdline(),
 })
-
-local c = require("nord.colours")
-vim.api.nvim_create_augroup("nvim-cmp-hl", {})
-vim.api.nvim_create_autocmd("ColorScheme", {group = "nvim-cmp-hl", pattern = "nord", callback = function()
-	vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", {fg = c.attention})
-	vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", {fg = c.attention_alt})
-	vim.api.nvim_set_hl(0, "CmpItemAbbr", {fg = c.fg})
-	vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", {fg = c.fg, strikethrough = true})
-	vim.api.nvim_set_hl(0, "CmpItemKind", {fg = c.type})
-	vim.api.nvim_set_hl(0, "CmpItemMenu", {fg = c.comment})
-end})
-vim.api.nvim_exec_autocmds("ColorScheme", {group = "nvim-cmp-hl", pattern = vim.g.colors_name})

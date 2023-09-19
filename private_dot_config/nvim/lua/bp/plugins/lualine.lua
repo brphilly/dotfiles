@@ -1,10 +1,8 @@
 -- TODO(brphilly): Investigate leaking file descriptors when opening multiple projects
-local colours = require("nord.colours")
-
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
-		theme = "mynord",
+		theme = "everforest",
 		component_separators = { left = "", right = "" },
 		section_separators = "",
 		disabled_filetypes = {},
@@ -14,7 +12,7 @@ require("lualine").setup({
 		lualine_a = { "mode" },
 		lualine_b = {
 			"branch",
-			{"diff", diff_color = {added = {fg = colours.green}, modified = {fg = colours.blues[1]}, removed = {fg = colours.red}}},
+			"diff",
 			{ "diagnostics", sources = { "nvim_diagnostic" } },
 		},
 		lualine_c = { "require('nvim-lightbulb').get_status_text()" },

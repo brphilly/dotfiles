@@ -29,12 +29,3 @@ require("gitsigns").setup({
 		end, {expr = true, buffer = buf})
 	end,
 })
-
-local c = require("nord.colours")
-vim.api.nvim_create_augroup("gitsigns-hl", {})
-vim.api.nvim_create_autocmd("ColorScheme", {group = "gitsigns-hl", pattern = "nord", callback = function()
-	vim.api.nvim_set_hl(0, "GitSignsAdd", {fg = c.diff_add})
-	vim.api.nvim_set_hl(0, "GitSignsChange", {fg = c.diff_change})
-	vim.api.nvim_set_hl(0, "GitSignsDelete", {fg = c.diff_delete})
-end})
-vim.api.nvim_exec_autocmds("ColorScheme", {group = "gitsigns-hl", pattern = vim.g.colors_name})

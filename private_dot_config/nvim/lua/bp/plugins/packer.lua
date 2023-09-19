@@ -4,8 +4,14 @@ require("packer").startup({
 
 		-- Not lazy loaded:
 		use({
-			vim.fn.stdpath("config") .. "/my-plugins/nord",
-			config = 'require("bp.plugins.nord")',
+			"sainnhe/everforest",
+			config = function()
+				vim.g.everforest_background = "hard"
+				vim.g.everforest_diagnostic_virtual_text = "colored"
+				vim.g.everforest_enable_italic = 1
+				vim.g.everforest_ui_contrast = "high"
+				vim.cmd("colorscheme everforest")
+			end
 		})
 
 		use({
@@ -29,20 +35,14 @@ require("packer").startup({
 		})
 
 		use({"kosayoda/nvim-lightbulb", config = "require('bp.plugins.nvim-lightbulb')"})
-		use({"weilbith/nvim-code-action-menu", cmd = "CodeActionMenu", config = "require('bp.plugins.nvim-code-action-menu')"})
+		use({"weilbith/nvim-code-action-menu", cmd = "CodeActionMenu"})
 		use({
 			"j-hui/fidget.nvim",
 			tag = "legacy",
 			config = function()
 				require("fidget").setup({ text = { spinner = "dots_negative" }, window = { relative = "editor" },
-					fmt = { stack_upwards = false } })
-				local c = require("nord.colours")
-				vim.api.nvim_create_augroup("fidget-hl", {})
-				vim.api.nvim_create_autocmd("ColorScheme", { group = "fidget-hl", pattern = "nord", callback = function()
-					vim.api.nvim_set_hl(0, "FidgetTitle", { fg = c.attention_alt })
-					vim.api.nvim_set_hl(0, "FidgetTask", { fg = c.comment })
-				end })
-				vim.api.nvim_exec_autocmds("ColorScheme", { group = "fidget-hl", pattern = vim.g.colors_name })
+					fmt = { stack_upwards = false } }
+				)
 			end,
 		})
 
@@ -222,14 +222,6 @@ require("packer").startup({
 		use({
 			"ThePrimeagen/harpoon",
 			setup = 'require("bp.plugins.harpoon.setup")',
-			config = function()
-				vim.api.nvim_create_augroup("harpoon-hl", {})
-				vim.api.nvim_create_autocmd("ColorScheme", {group = "harpoon-hl", pattern = "nord", callback = function()
-					vim.api.nvim_set_hl(0, "HarpoonWindow", {link = "NormalFloat"})
-					vim.api.nvim_set_hl(0, "HarpoonBorder", {link = "FloatBorder"})
-				end})
-				vim.api.nvim_exec_autocmds("ColorScheme", {group = "harpoon-hl", pattern = vim.g.colors_name})
-			end,
 			module = "harpoon",
 		})
 

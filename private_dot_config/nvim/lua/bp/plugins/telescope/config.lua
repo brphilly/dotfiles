@@ -37,16 +37,3 @@ require("telescope").setup({
 		},
 	},
 })
-
-local c = require("nord.colours")
-vim.api.nvim_create_augroup("telescope-hl", {})
-vim.api.nvim_create_autocmd("ColorScheme", {group = "telescope-hl", pattern = "nord", callback = function()
-	vim.api.nvim_set_hl(0, "TelescopeSelection", {bg = c.selection})
-	vim.api.nvim_set_hl(0, "TelescopeSelectionCaret", {fg = c.attention})
-	vim.api.nvim_set_hl(0, "TelescopePromptPrefix", {fg = c.attention})
-	vim.api.nvim_set_hl(0, "TelescopeMatching", {fg = c.attention})
-	vim.api.nvim_set_hl(0, "TelescopeNormal", {link = "NormalFloat"})
-	vim.api.nvim_set_hl(0, "TelescopePreviewNormal", {link = "TelescopeNormal"})
-	vim.api.nvim_set_hl(0, "TelescopeBorder", {link = "FloatBorder"})
-end})
-vim.api.nvim_exec_autocmds("ColorScheme", {group = "telescope-hl", pattern = vim.g.colors_name})
