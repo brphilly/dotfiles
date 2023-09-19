@@ -36,9 +36,9 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 zstyle ':completion:*' complete-options true
 zstyle ':completion:*' file-sort modification
 zstyle ':completion:*' squeeze-slashes true
-zstyle ':completion:*:*:*:*:corrections' format '%F{#bf616a}!- %d (errors: %e) -!%f'
-zstyle ':completion:*:*:*:*:messages' format '%F{#a3be8c}-- %d --%f'
-zstyle ':completion:*:*:*:*:warnings' format '%F{#ebcb8b}-- no matches found --%f'
+zstyle ':completion:*:*:*:*:corrections' format '%F{#e67e80}!- %d (errors: %e) -!%f'
+zstyle ':completion:*:*:*:*:messages' format '%F{#a7c080}-- %d --%f'
+zstyle ':completion:*:*:*:*:warnings' format '%F{#dbbc7f}-- no matches found --%f'
 
 autoload -Uz compinit
 compinit -d $XDG_DATA_HOME/zsh/zcompdump
@@ -65,7 +65,7 @@ _fzf_compgen_dir() {
 source $XDG_CONFIG_HOME/zsh/prompt.zsh
 
 ZSH_AUTOSUGGEST_STRATEGY=(completion match_prev_cmd history)
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6c6f75'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#859289'
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 autoload -U url-quote-magic bracketed-paste-magic

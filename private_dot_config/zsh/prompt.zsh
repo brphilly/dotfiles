@@ -81,10 +81,17 @@ make_prompt() {
 }
 add-zsh-hook precmd make_prompt
 
-PROMPT="%F{#20242d}%K{#a093c7} %1v %F{#a093c7}%2(V.%K{#5e81ac}.%3(V.%K{#bf616a}.%k))"
-PROMPT+="%2(V.%F{#20242d} %2v %F{#5e81ac}%3(V.%K{#bf616a}.%k).)"
-PROMPT+="%3(V.%F{#20242d} %3v %F{#bf616a}%k.)"
+BG=#272e33
+FG=#d3c6aa
+DIR=#a7c080
+GIT=#83c092
+RET=#e67e80
+TIME=#dbbc7f
+
+PROMPT="%F{$BG}%K{$DIR} %1v %F{$DIR}%2(V.%K{$GIT}.%3(V.%K{$RET}.%k))"
+PROMPT+="%2(V.%F{$BG} %2v %F{$GIT}%3(V.%K{$RET}.%k).)"
+PROMPT+="%3(V.%F{$BG} %3v %F{$RET}%k.)"
 PROMPT+="%4v"
-PROMPT+="%5(V.%F{#ebcb8b}%F{#20242d}%K{#ebcb8b} %5v .)"
-PROMPT+="%F{#d8dee9}%5(V.%K{#ebcb8b}.)%F{#20242d}%K{#d8dee9} %6v "
+PROMPT+="%5(V.%F{$TIME}%F{$BG}%K{$TIME} %5v .)"
+PROMPT+="%F{$FG}%5(V.%K{$TIME}.)%F{$BG}%K{$FG} %6v "
 PROMPT+=$'\n'"%f%k%(!.#.❯) "
