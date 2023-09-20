@@ -249,18 +249,6 @@ require("packer").startup({
 			cmd = { "SudaRead", "SudaWrite" },
 		})
 
-		use({
-			"rlane/pounce.nvim",
-			config = "require('bp.plugins.pounce')",
-			setup = function()
-				vim.keymap.set("n", "s", "<cmd>Pounce<cr>")
-				vim.keymap.set("n", "S", "<cmd>PounceRepeat<cr>")
-				vim.keymap.set("x", "s", "<cmd>Pounce<cr>")
-				vim.keymap.set("o", "z", "<cmd>Pounce<cr>")
-			end,
-			cmd = { "Pounce", "PounceRepeat" },
-		})
-
 		-- stylua: ignore start
 		use({
 			"numToStr/Comment.nvim",
