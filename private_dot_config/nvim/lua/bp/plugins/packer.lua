@@ -12,6 +12,8 @@ require("packer").startup({
 				vim.g.everforest_ui_contrast = "high"
 				vim.api.nvim_create_autocmd('ColorScheme', {pattern = 'everforest',
 					callback = function()
+						vim.api.nvim_set_hl(0, 'EyelinerPrimary', {fg="#e9e3d5", bold=true})
+						vim.api.nvim_set_hl(0, 'EyelinerSecondary', {fg="#e4bbce", bold=true})
 						vim.api.nvim_set_hl(0, 'IndentBlanklineContextStart', {sp="#859289", underline=true})
 					end,
 				})
@@ -68,6 +70,18 @@ require("packer").startup({
 				},
 			},
 		})
+
+		use {
+			'jinh0/eyeliner.nvim',
+			config = function()
+				require'eyeliner'.setup {
+					highlight_on_key = false, -- show highlights only after keypress
+					dim = true -- dim all other characters (for highlight_on_key = true)
+				}
+				vim.api.nvim_create_autocmd('InsertEnter', {command="EyelinerDisable"})
+				vim.api.nvim_create_autocmd('InsertLeave', {command="EyelinerEnable"})
+			end
+		}
 
 		use({
 			"mhinz/vim-startify",
