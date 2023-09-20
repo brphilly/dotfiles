@@ -10,6 +10,11 @@ require("packer").startup({
 				vim.g.everforest_diagnostic_virtual_text = "colored"
 				vim.g.everforest_enable_italic = 1
 				vim.g.everforest_ui_contrast = "high"
+				vim.api.nvim_create_autocmd('ColorScheme', {pattern = 'everforest',
+					callback = function()
+						vim.api.nvim_set_hl(0, 'IndentBlanklineContextStart', {sp="#859289", underline=true})
+					end,
+				})
 				vim.cmd("colorscheme everforest")
 			end
 		})
