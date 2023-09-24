@@ -14,7 +14,7 @@ cd-cmd() {
 }
 
 cd-down() {
-	local dir="fd --type d --exclude .git --exclude /sys --exclude /proc --exclude /dev --exclude /.btrfs-pool --exclude /run . . | fzf --height ${FZF_TMUX_HEIGHT:-40%} --bind=ctrl-z:ignore $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS +m"
+	local dir="fd --type d --hidden --exclude .git --exclude /sys --exclude /proc --exclude /dev --exclude /.btrfs-pool --exclude /run . . | fzf --height ${FZF_TMUX_HEIGHT:-40%} --bind=ctrl-z:ignore $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS +m"
 	cd-cmd $dir
 }
 zle -N cd-down
