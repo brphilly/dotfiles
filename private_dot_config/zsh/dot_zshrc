@@ -11,6 +11,7 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 ZVM_INIT_MODE=sourcing
 source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 
 bindkey -M viins '^k' history-beginning-search-backward
 bindkey -M viins '^j' history-beginning-search-forward
