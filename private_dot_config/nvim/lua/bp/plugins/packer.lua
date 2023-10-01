@@ -84,6 +84,16 @@ require("packer").startup({
 		}
 
 		use({
+			"lukas-reineke/indent-blankline.nvim",
+			config = function()
+				require("ibl").setup({
+					indent = {tab_char = "▎"},
+					scope = {show_start = false, show_end = false},
+				})
+			end,
+		})
+
+		use({
 			"mhinz/vim-startify",
 			setup = 'require("bp.plugins.vim-startify")',
 		})
@@ -126,12 +136,6 @@ require("packer").startup({
 			"kevinhwang91/nvim-bqf",
 			config = "require('bp.plugins.nvim-bqf')",
 			ft = "qf",
-		})
-
-		use({
-			"lukas-reineke/indent-blankline.nvim",
-			config = 'require("bp.plugins.indent-blankline")',
-			event = { "BufReadPre", "BufNewFile" },
 		})
 
 		use({
