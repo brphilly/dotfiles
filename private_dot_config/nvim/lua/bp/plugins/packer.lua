@@ -31,13 +31,6 @@ require("packer").startup({
 					config = 'require("bp.plugins.nvim-treesitter-textobjects")',
 					after = "nvim-treesitter",
 				},
-				{
-					"nvim-treesitter/playground",
-					config = 'require("bp.plugins.nvim-treesitter-playground")',
-					cmd = "TSPlaygroundToggle",
-					as = "nvim-treesitter-playground",
-					wants = "nvim-treesitter",
-				},
 			},
 		})
 
