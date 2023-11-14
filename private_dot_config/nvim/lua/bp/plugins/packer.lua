@@ -38,12 +38,7 @@ require("packer").startup({
 		use({"weilbith/nvim-code-action-menu", cmd = "CodeActionMenu"})
 		use({
 			"j-hui/fidget.nvim",
-			tag = "legacy",
-			config = function()
-				require("fidget").setup({ text = { spinner = "dots_negative" }, window = { relative = "editor" },
-					fmt = { stack_upwards = false } }
-				)
-			end,
+			config = function() require("fidget").setup() end,
 		})
 
 		use({
