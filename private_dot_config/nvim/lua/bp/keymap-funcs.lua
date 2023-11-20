@@ -24,49 +24,6 @@ function M.hor_scroll()
 	vim.api.nvim_feedkeys("zL", "n", false)
 end
 
-function M.make_session(close)
-	-- close all floating windows as they cause problems when saved in sessions
-	-- also close windows containing buffers with weird types
-	for _, w in ipairs(vim.api.nvim_list_wins()) do
-		local bt = vim.api.nvim_get_option_value("buftype", {buf = vim.api.nvim_win_get_buf(w)})
-		if vim.api.nvim_win_get_config(w).relative ~= "" or (bt ~= "" and bt ~= "help" and bt ~= "terminal") then
-			vim.api.nvim_win_close(w, true)
-		end
-	end
-
-	-- loop through buffers and get cwd of those I want to save
-	local work_dirs = {} -- set of cwd tails
-	for _, b in ipairs(vim.api.nvim_list_bufs()) do
-		if vim.api.nvim_get_option_value("buflisted", {buf = b}) and vim.api.nvim_get_option_value("buftype", {buf = b}) == "" then
-			vim.api.nvim_buf_call(b, function()
-				vim.api.nvim_exec_autocmds("BufEnter", {modeline = false}) -- make sure rooter plugin updates the cwd
-				local cwd = vim.fn.getcwd()
-				local tail = vim.fn.fnamemodify(cwd, ":p:h:t")
-				work_dirs[tail] = true
-			end)
-		end
-	end
-	vim.api.nvim_exec_autocmds("BufEnter", {modeline = false}) -- make sure rooter plugin updates the cwd
-
-	-- concatenate set of work_dirs into one string to use as session name
-	local session_name = {}
-	for name in pairs(work_dirs) do
-		table.insert(session_name, name)
-	end
-	table.sort(session_name)
-	session_name = table.concat(session_name, "__")
-	session_name = "session__" .. session_name .. ".vim"
-
-	-- save session and quit if close is true
-	local session_str = string.format("mksession! %s%s", vim.fn.stdpath("data") .. "/session/", session_name)
-	if close then
-		vim.cmd(session_str)
-		vim.cmd("qall")
-	else
-		vim.api.nvim_feedkeys(':'..session_str, 'n', true)
-	end
-end
-
 M.switch_prev_buf = function()
 	if vim.fn.buflisted(0) == 1 then
 		vim.cmd("buffer #")

@@ -30,7 +30,6 @@ vim.keymap.set("x", "<", "<gv")
 vim.keymap.set("x", ">", ">gv")
 
 vim.keymap.set("n", "<leader>sa", "<cmd>update ++p<cr>")
-vim.keymap.set("n", "<leader>ss", function() require("bp.keymap-funcs").make_session(false) end)
 vim.keymap.set("n", "<leader>so", "<cmd>source<cr>")
 vim.keymap.set("x", "<leader>so", ":'<,'>source<cr>")
 
@@ -58,7 +57,7 @@ vim.keymap.set("n", "<c-w><c-f>", function()
 end)
 vim.keymap.set("n", "'g", "<cmd>terminal lazygit<cr>i")
 
-vim.keymap.set("n", "<leader>cv", function() require("bp.keymap-funcs").make_session(true) end)
+vim.keymap.set("n", "<leader>cv", "<cmd>qall<cr>")
 vim.keymap.set("n", "<leader>cb", require("bp.keymap-funcs").buf_close)
 vim.keymap.set("n", "<leader>ch", require("bp.keymap-funcs").buf_close_hid)
 vim.keymap.set("n", "<leader>cu", require("bp.keymap-funcs").buf_close_unlist)
