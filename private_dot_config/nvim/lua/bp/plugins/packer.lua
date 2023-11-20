@@ -219,16 +219,6 @@ require("packer").startup({
 						require("telescope").load_extension("fzf")
 					end,
 				},
-				{
-					"nvim-telescope/telescope-frecency.nvim",
-					after = "telescope.nvim",
-					setup = function()
-						vim.keymap.set("n", "<leader>ffB", function() require('telescope').extensions.frecency.frecency() end)
-					end,
-					config = function()
-						require("telescope").load_extension("frecency")
-					end,
-				},
 			},
 		})
 
