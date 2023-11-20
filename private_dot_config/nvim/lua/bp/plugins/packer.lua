@@ -22,6 +22,15 @@ require("packer").startup({
 		})
 
 		use({
+			"rmagatti/auto-session",
+			config = function()
+				require("auto-session").setup {
+					auto_session_suppress_dirs = { "~/", "/"},
+				}
+			end
+		})
+
+		use({
 			"nvim-treesitter/nvim-treesitter",
 			config = 'require("bp.plugins.nvim-treesitter")',
 			run = ":TSUpdate",
