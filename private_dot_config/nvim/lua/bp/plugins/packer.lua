@@ -82,11 +82,6 @@ require("packer").startup({
 		})
 
 		use({
-			"mhinz/vim-startify",
-			setup = 'require("bp.plugins.vim-startify")',
-		})
-
-		use({
 			"rcarriga/nvim-notify",
 			config = 'require("bp.plugins.nvim-notify")',
 		})
