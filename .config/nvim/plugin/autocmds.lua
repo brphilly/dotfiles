@@ -17,8 +17,3 @@ vim.api.nvim_create_augroup("SpellFT", {})
 vim.api.nvim_create_autocmd("FileType", {group = "SpellFT", pattern = {"text", "markdown", "conf"}, callback = function()
 	vim.opt_local.spell = true
 end})
-
-vim.api.nvim_create_augroup("ChezmoiApply", {})
-vim.api.nvim_create_autocmd("BufWritePost", {group = "ChezmoiApply", pattern = vim.env.XDG_DATA_HOME.."/chezmoi/*", callback = function(args)
-	vim.fn.jobstart({"chezmoi", "apply", "--source-path", args["file"]})
-end})
