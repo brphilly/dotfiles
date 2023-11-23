@@ -2,8 +2,8 @@ return {
 	{
 		url = "https://github.com/tpope/vim-surround",
 		keys = {
-			{"n","ds"}, {"n","cs"}, {"n","cS"}, {"n","ys"}, {"n","yS"}, {"n","yss"}, {"n","ySs"}, {"n","ySS"},
-			{"x","S"}, {"x","gS"},
+			"ds", "cs", "cS", "ys", "yS", "yss", "ySs", "ySS",
+			{"S", mode = "x"}, {"gS", mode = "x"},
 		},
 		dependencies = {
 			{url = "https://github.com/tpope/vim-repeat"},
