@@ -10,6 +10,8 @@ return {
 			vim.g.everforest_ui_contrast = "high"
 			vim.api.nvim_create_autocmd('ColorScheme', {pattern = 'everforest',
 				callback = function()
+					vim.api.nvim_set_hl(0, 'TelescopeNormal', {link = "NormalFloat"})
+					vim.api.nvim_set_hl(0, 'TelescopeBorder', {link = "FloatBorder"})
 					vim.api.nvim_set_hl(0, 'EyelinerPrimary', {fg="#e9e3d5", bold=true})
 					vim.api.nvim_set_hl(0, 'EyelinerSecondary', {fg="#e4bbce", bold=true})
 					vim.api.nvim_set_hl(0, 'IndentBlanklineContextStart', {sp="#859289", underline=true})
