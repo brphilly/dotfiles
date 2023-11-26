@@ -2,24 +2,23 @@ local cmp_kinds
 local plugspec = {
 	{
 		url = "https://github.com/hrsh7th/cmp-path",
-		event = { "InsertEnter" },
+		lazy = true,
 	},
 	{
 		url = "https://github.com/hrsh7th/cmp-buffer",
-		event = { "InsertEnter" },
+		lazy = true,
 	},
 	{
 		url = "https://github.com/hrsh7th/cmp-nvim-lsp",
-		-- event = { "InsertEnter" },
+		lazy = true,
 	},
 	{
 		url = "https://github.com/hrsh7th/cmp-nvim-lua",
-		event = { "InsertEnter" },
+		lazy = true,
 	},
 	{
 		url = "https://github.com/hrsh7th/cmp-cmdline",
 		event = { "CmdlineEnter" },
-		dependencies = {"cmp-path", "cmp-buffer"},
 		config = function()
 			local cmp = require("cmp")
 			cmp.setup.cmdline(":", {
@@ -35,6 +34,7 @@ local plugspec = {
 	{
 		url = "https://github.com/hrsh7th/nvim-cmp",
 		event = { "InsertEnter" },
+		dependencies = {"cmp-path", "cmp-buffer", "cmp-nvim-lsp", "cmp-nvim-lua"},
 		config = function()
 			local cmp = require("cmp")
 			local compare = require("cmp.config.compare")
