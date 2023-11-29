@@ -1,5 +1,7 @@
 vim.g.mapleader = " "
 
+vim.opt.exrc = true
+
 _G.P = function(...) vim.print(...) end
 
 -- bootstrap lazy.nvim
