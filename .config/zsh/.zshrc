@@ -78,4 +78,6 @@ if [[ $+command[pyenv] ]]; then
 	eval "$(pyenv virtualenv-init -)"
 fi
 
+eval "$(zoxide init zsh)"
+
 source $XDG_CONFIG_HOME/zsh/highlight.zsh # must be last
