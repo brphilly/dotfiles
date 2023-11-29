@@ -1,7 +1,7 @@
 vim.diagnostic.config({
-	virtual_text = { source = "always" },
-	float = { source = "always", border = "single" },
-	update_in_insert = false,
+	underline = false,
+	virtual_text = false,
+	float = { source = "always" },
 	severity_sort = true,
 })
 vim.fn.sign_define({
