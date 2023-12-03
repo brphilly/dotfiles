@@ -11,11 +11,12 @@ vim.opt.linebreak = true
 vim.opt.breakindent = true
 vim.opt.breakindentopt = "min:10,shift:1"
 vim.opt.sidescrolloff = 3
-vim.opt.fillchars = { eob = " ", fold = " " }
+vim.opt.fillchars = { eob = " ", fold = " ", foldopen = "", foldclose = "", foldsep = " " }
 vim.opt.list = true
 vim.opt.listchars = { extends = "»", precedes = "«", eol = "↲", trail = "∙", tab = "⇥ ", nbsp = "␣" }
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.numberwidth = 1
 
 -- 5 Syntax, Highlighting and Spelling
 vim.opt.termguicolors = true
@@ -27,7 +28,6 @@ vim.opt.spelloptions = "camel"
 
 -- 6 Multiple Windows
 vim.opt.laststatus = 3
-vim.opt.statuscolumn = "%=%{v:relnum?v:relnum:v:lnum}%s%C"
 vim.opt.switchbuf = "usetab"
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -51,8 +51,10 @@ vim.opt.cindent = true
 
 -- 14 Folding
 vim.opt.foldlevel = 99
-vim.opt.foldopen:remove({ "block", "hor", "percent" })
-vim.opt.foldmethod = "indent"
+vim.opt.foldcolumn = "auto:1"
+vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
+vim.opt.foldopen:remove({ "block", "hor" })
+-- vim.opt.foldmethod = "indent"
 
 -- 15 Diff Mode
 vim.opt.diffopt:append("linematch:60")
@@ -76,5 +78,4 @@ vim.opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
 -- 24 Various
 vim.opt.virtualedit = { "onemore", "block" }
 vim.opt.sessionoptions:append({ "skiprtp", "terminal" })
-vim.opt.signcolumn = "auto:1-2"
 vim.opt.inccommand = "split"
