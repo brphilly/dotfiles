@@ -9,6 +9,7 @@ end
 
 setup_lang_serv("lua", "lua_ls")
 setup_lang_serv("python", "pyright")
+setup_lang_serv("rust", "rust_analyzer")
 
 
 -- setup keymaps/autocmds
