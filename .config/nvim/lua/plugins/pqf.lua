@@ -1,7 +1,7 @@
 return {
 	{
 		url = "https://github.com/yorickpeterse/nvim-pqf",
-		lazy = false,
+		event = "QuickFixCmdPre",
 		config = true,
 	},
 }
