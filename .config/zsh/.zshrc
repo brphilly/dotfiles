@@ -75,7 +75,6 @@ zle -N bracketed-paste bracketed-paste-magic
 
 if [[ $+command[pyenv] ]]; then
 	eval "$(pyenv init -)"
-	eval "$(pyenv virtualenv-init -)"
 fi
 
 eval "$(zoxide init zsh)"
