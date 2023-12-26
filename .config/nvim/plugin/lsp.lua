@@ -3,7 +3,17 @@ vim.api.nvim_create_augroup("lang_servs", {})
 local function setup_lang_serv(ft, ls)
 	local lsconf = require("lspstart."..ls)
 	vim.api.nvim_create_autocmd("FileType", {group = "lang_servs", pattern = ft, callback = function(args)
-		if vim.bo[args.buf].buftype == "" then vim.lsp.start(lsconf) end
+		if vim.bo[args.buf].buftype ~= "" then return end
+
+		local workspace_folders = lsconf.workspace_folders or {{uri = vim.uri_from_fname(lsconf.root_dir)}}
+		local buf_uri = vim.uri_from_bufnr(args.buf)
+		for wf in ipairs(workspace_folders) do
+			---@diagnostic disable: undefined-field
+			if vim.startswith(buf_uri, wf.uri) then
+				vim.lsp.start(lsconf)
+				return
+			end
+		end
 	end})
 end
 
