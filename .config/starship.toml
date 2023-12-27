@@ -1,0 +1,106 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_metrics\
+$git_state\
+$git_status\
+$nix_shell\
+$docker_context\
+$rust\
+$golang\
+$zig\
+$python\
+$lua\
+$c\
+$haskell\
+$package\
+$fill\
+$cmd_duration\
+$time\
+$line_break\
+$status\
+$character\
+"""
+
+[directory]
+truncation_length = 0
+truncation_symbol = '…/'
+fish_style_pwd_dir_length = 1
+
+[git_branch]
+format = '[$symbol$branch(:$remote_branch)]($style) '
+symbol = ''
+style = "bold white"
+
+[git_commit]
+style = "bold white"
+
+[git_state]
+style = "bold white"
+
+[git_metrics]
+disabled = false
+
+[git_status]
+style = "bold white"
+
+[fill]
+symbol = ' '
+
+[cmd_duration]
+format = '[⏱$duration]($style) '
+style = "yellow"
+min_time = 1000
+
+[time]
+disabled = false
+format = '[$time]($style)'
+style = "bright-white"
+
+[status]
+disabled = false
+format = '[$status]($style)'
+
+[nix_shell]
+format = '[$symbol$state(\($name\))]($style) '
+symbol = '❄️'
+
+[docker_context]
+format = '[$symbol]($style) '
+symbol = '🐳'
+
+[rust]
+format = '[$symbol($version)]($style) '
+symbol = '🦀'
+
+[golang]
+format = '[$symbol($version)]($style) '
+symbol = '🐹'
+
+[zig]
+format = '[$symbol($version)]($style) '
+symbol = '↯'
+
+[python]
+format = '[${symbol}(${version})(\($virtualenv\))]($style) '
+symbol = '🐍'
+pyenv_version_name = true
+
+[lua]
+format = '[$symbol($version)]($style) '
+symbol = '🌙'
+
+[c]
+format = '[$symbol($version(-$name))]($style) '
+symbol = 'C'
+
+[haskell]
+format = '[$symbol($version)]($style) '
+symbol = 'λ'
+
+[package]
+format = '[$symbol$version]($style) '
+symbol = '📦'
