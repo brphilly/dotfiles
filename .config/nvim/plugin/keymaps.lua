@@ -29,7 +29,7 @@ vim.keymap.set("x", "K", ":move '<-2<cr>gv=gv")
 vim.keymap.set("x", "<", "<gv")
 vim.keymap.set("x", ">", ">gv")
 
-vim.keymap.set("n", "<leader>sa", "<cmd>update ++p<cr>")
+vim.keymap.set("n", "<leader>sa", "<cmd>write ++p<cr>")
 vim.keymap.set("n", "<leader>so", "<cmd>source<cr>")
 vim.keymap.set("x", "<leader>so", ":'<,'>source<cr>")
 
