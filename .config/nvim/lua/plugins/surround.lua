@@ -1,13 +1,11 @@
 return {
 	{
-		url = "https://github.com/tpope/vim-surround",
+		url = "https://github.com/kylechui/nvim-surround",
 		keys = {
-			"ds", "cs", "cS", "ys", "yS", "yss", "ySs", "ySS",
+			"ys", "yS", "ds", "cs", "cS",
 			{"S", mode = "x"}, {"gS", mode = "x"},
+			{"<c-g>s", mode = "i"}, {"<c-g>S", mode = "i"},
 		},
-		dependencies = {
-			{url = "https://github.com/tpope/vim-repeat"},
-		},
-		init = function() vim.g.surround_no_insert_mappings = true end,
+		opts = {},
 	},
 }
