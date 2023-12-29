@@ -12,7 +12,6 @@ return {
 				callback = function()
 					vim.api.nvim_set_hl(0, 'TelescopeNormal', {link = "NormalFloat"})
 					vim.api.nvim_set_hl(0, 'TelescopeBorder', {link = "FloatBorder"})
-					vim.api.nvim_set_hl(0, 'IndentBlanklineContextStart', {sp="#859289", underline=true})
 				end,
 			})
 		end,
