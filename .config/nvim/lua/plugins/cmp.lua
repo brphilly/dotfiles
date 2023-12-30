@@ -40,39 +40,29 @@ local plugspec = {
 			local compare = require("cmp.config.compare")
 			cmp.setup({
 				mapping = {
-					["<C-Space>"] = cmp.mapping.complete(),
-					["<c-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-					["<c-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-					["<CR>"] = cmp.mapping.confirm({
-						behavior = cmp.ConfirmBehavior.Insert,
-						select = false,
-					}),
-					["<c-y>"] = cmp.mapping.confirm({select = false}),
-					["<c-e>"] = cmp.mapping.abort(),
+					["<C-Space>"] = function(fallback)
+						if cmp.visible() then
+							cmp.close()
+						else
+							cmp.complete()
+						end
+					end,
+					["<tab>"] = cmp.mapping.select_next_item(),
+					["<s-tab>"] = cmp.mapping.select_prev_item(),
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
 				},
 
-				completion = {
-					completeopt = "menuone,noselect",
-				},
-
 				confirmation = {
 					get_commit_characters = function(commit_characters)
-						commit_characters = {}
-						return commit_characters
+						return {}
 					end,
 				},
 
-				preselect = cmp.PreselectMode.Item,
-
-				window = {
-					documentation = {
-						border = "rounded",
-					},
-					completion = {
-						border = "single",
-					},
+				snippet = {
+					expand = function(args)
+						vim.snippet.expand(args.body)
+					end,
 				},
 
 				formatting = {
