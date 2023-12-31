@@ -7,6 +7,7 @@ return {
 			session_lens = {
 				load_on_setup = false,
 			},
+			pre_save_cmds = {"fclose!"},
 		},
 	},
 }
