@@ -1,16 +1,8 @@
 -- setup language servers
 vim.api.nvim_create_augroup("lang_servs", {})
-local function setup_lang_serv(ft, ls)
-	local lsconf = require("lspstart."..ls)
-	vim.api.nvim_create_autocmd("FileType", {group = "lang_servs", pattern = ft, callback = function(args)
-		if vim.bo[args.buf].buftype == "" then vim.lsp.start(lsconf) end
-	end})
-end
-
-setup_lang_serv("lua", "lua_ls")
-setup_lang_serv("python", "pyright")
-setup_lang_serv("rust", "rust_analyzer")
-
+require("ft.lua.lsp")
+require("ft.python.lsp")
+require("ft.rust.lsp")
 
 -- setup keymaps/autocmds
 vim.api.nvim_create_augroup("lsp", {})
