@@ -49,8 +49,8 @@ local plugspec = {
 					end,
 					["<tab>"] = cmp.mapping.select_next_item(),
 					["<s-tab>"] = cmp.mapping.select_prev_item(),
-					["<C-b>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
+					["<C-j>"] = cmp.mapping.scroll_docs(4),
+					["<C-k>"] = cmp.mapping.scroll_docs(-4),
 				},
 
 				confirmation = {
