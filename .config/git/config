@@ -43,3 +43,5 @@
 	colorMoved = default
 [interactive]
 	diffFilter = delta --color-only
+[rerere]
+	enabled = true
