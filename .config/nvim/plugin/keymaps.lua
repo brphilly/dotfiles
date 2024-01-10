@@ -7,6 +7,8 @@ vim.keymap.set("i", ".", ".<c-g>u")
 vim.keymap.set("i", "!", "!<c-g>u")
 vim.keymap.set("i", "?", "?<c-g>u")
 
+vim.keymap.set("n", "gf", "gF")
+
 vim.keymap.set("i", "<cr>", [[pumvisible() ? "<c-y>" : "<cr>"]], { expr = true })
 
 vim.keymap.set("n", "<c-o>", "<c-o>zz")
