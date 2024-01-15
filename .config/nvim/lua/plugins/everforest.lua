@@ -4,7 +4,7 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			require("everforest").setup({background = "hard", italics = true, ui_contrast = "high"})
+			require("everforest").setup({ background = "hard", italics = true, ui_contrast = "high" })
 			vim.cmd("colorscheme everforest")
 		end,
 	},

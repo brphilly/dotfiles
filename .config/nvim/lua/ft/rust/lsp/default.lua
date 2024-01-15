@@ -7,6 +7,12 @@ rust_analyzer.on_attach = function(client, buf)
 	end
 end
 
-vim.api.nvim_create_autocmd("FileType", {group = "lsp", pattern = "rust", callback = function(args)
-	if vim.bo[args.buf].buftype == "" then vim.lsp.start(rust_analyzer) end
-end})
+vim.api.nvim_create_autocmd("FileType", {
+	group = "lsp",
+	pattern = "rust",
+	callback = function(args)
+		if vim.bo[args.buf].buftype == "" then
+			vim.lsp.start(rust_analyzer)
+		end
+	end,
+})

@@ -2,7 +2,9 @@ vim.g.mapleader = " "
 
 vim.opt.exrc = true
 
-_G.P = function(...) vim.print(...) end
+_G.P = function(...)
+	vim.print(...)
+end
 
 -- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -20,5 +22,5 @@ vim.opt.rtp:prepend(lazypath)
 
 -- load plugins
 require("lazy").setup("plugins", {
-	install = {missing = false},
+	install = { missing = false },
 })

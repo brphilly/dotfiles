@@ -1,6 +1,6 @@
 return {
 	{
 		url = "https://github.com/tpope/vim-rsi",
-		event = {"InsertEnter", "CmdlineEnter"},
+		event = { "InsertEnter", "CmdlineEnter" },
 	},
 }

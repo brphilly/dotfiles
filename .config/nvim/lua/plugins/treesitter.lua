@@ -6,7 +6,9 @@ return {
 		config = function()
 			local parser_names = require("nvim-treesitter.parsers").available_parsers()
 			local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
-			local install_parsers = vim.tbl_filter(function(p) return not parser_configs[p].experimental end, parser_names)
+			local install_parsers = vim.tbl_filter(function(p)
+				return not parser_configs[p].experimental
+			end, parser_names)
 			table.insert(install_parsers, "markdown")
 			table.insert(install_parsers, "markdown_inline")
 			require("nvim-treesitter.configs").setup({

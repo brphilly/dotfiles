@@ -79,4 +79,7 @@ vim.opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
 vim.opt.virtualedit = { "onemore", "block" }
 vim.opt.sessionoptions:append({ "skiprtp", "terminal" })
 vim.opt.inccommand = "split"
-vim.opt.shadafile = vim.fn.stdpath("state").."/shada/"..vim.fs.normalize(vim.fn.getcwd()):gsub("/", "%%")..".shada"
+vim.opt.shadafile = vim.fn.stdpath("state")
+	.. "/shada/"
+	.. vim.fs.normalize(vim.fn.getcwd()):gsub("/", "%%")
+	.. ".shada"

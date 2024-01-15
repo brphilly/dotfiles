@@ -22,11 +22,11 @@ local plugspec = {
 		config = function()
 			local cmp = require("cmp")
 			cmp.setup.cmdline(":", {
-				sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } }),
+				sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
 				mapping = cmp.mapping.preset.cmdline(),
 			})
 			cmp.setup.cmdline("/", {
-				sources = { { name = 'buffer' } },
+				sources = { { name = "buffer" } },
 				mapping = cmp.mapping.preset.cmdline(),
 			})
 		end,
@@ -34,7 +34,7 @@ local plugspec = {
 	{
 		url = "https://github.com/hrsh7th/nvim-cmp",
 		event = { "InsertEnter" },
-		dependencies = {"cmp-path", "cmp-buffer", "cmp-nvim-lsp", "cmp-nvim-lua"},
+		dependencies = { "cmp-path", "cmp-buffer", "cmp-nvim-lsp", "cmp-nvim-lua" },
 		config = function()
 			local cmp = require("cmp")
 			local compare = require("cmp.config.compare")
@@ -78,7 +78,7 @@ local plugspec = {
 						})[entry.source.name]
 						vim_item.dup = entry.source.name == "nvim_lua" and 0 or 1
 						return vim_item
-					end
+					end,
 				},
 
 				sorting = {
@@ -90,8 +90,8 @@ local plugspec = {
 						compare.score,
 						-- copied from cmp-under
 						function(entry1, entry2)
-							local _, entry1_under = entry1.completion_item.label:find "^_+"
-							local _, entry2_under = entry2.completion_item.label:find "^_+"
+							local _, entry1_under = entry1.completion_item.label:find("^_+")
+							local _, entry2_under = entry2.completion_item.label:find("^_+")
 							entry1_under = entry1_under or 0
 							entry2_under = entry2_under or 0
 							if entry1_under > entry2_under then
@@ -121,30 +121,30 @@ local plugspec = {
 	},
 }
 cmp_kinds = {
-	Text = ' ',
-	Method = ' ',
-	Function = ' ',
-	Constructor = ' ',
-	Field = ' ',
-	Variable = ' ',
-	Class = ' ',
-	Interface = ' ',
-	Module = ' ',
-	Property = ' ',
-	Unit = ' ',
-	Value = ' ',
-	Enum = ' ',
-	Keyword = ' ',
-	Snippet = ' ',
-	Color = ' ',
-	File = ' ',
-	Reference = ' ',
-	Folder = ' ',
-	EnumMember = ' ',
-	Constant = ' ',
-	Struct = ' ',
-	Event = ' ',
-	Operator = ' ',
-	TypeParameter = ' ',
+	Text = " ",
+	Method = " ",
+	Function = " ",
+	Constructor = " ",
+	Field = " ",
+	Variable = " ",
+	Class = " ",
+	Interface = " ",
+	Module = " ",
+	Property = " ",
+	Unit = " ",
+	Value = " ",
+	Enum = " ",
+	Keyword = " ",
+	Snippet = " ",
+	Color = " ",
+	File = " ",
+	Reference = " ",
+	Folder = " ",
+	EnumMember = " ",
+	Constant = " ",
+	Struct = " ",
+	Event = " ",
+	Operator = " ",
+	TypeParameter = " ",
 }
 return plugspec

@@ -6,12 +6,12 @@ return {
 		init = function()
 			---@diagnostic disable-next-line: duplicate-set-field
 			vim.notify = function(...)
-				require("lazy").load({plugins = {"nvim-notify"}})
+				require("lazy").load({ plugins = { "nvim-notify" } })
 				return vim.notify(...)
 			end
 			---@diagnostic disable-next-line: duplicate-set-field
 			vim.notify_once = function(...)
-				require("lazy").load({plugins = {"nvim-notify"}})
+				require("lazy").load({ plugins = { "nvim-notify" } })
 				return vim.notify_once(...)
 			end
 		end,

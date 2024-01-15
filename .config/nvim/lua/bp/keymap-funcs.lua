@@ -59,7 +59,7 @@ M.buf_close = function()
 		vim.api.nvim_win_call(w, M.switch_prev_buf)
 	end
 
-	local is_term_buf = (vim.api.nvim_get_option_value("buftype", {buf = buf_target}) == "terminal") and "!" or ""
+	local is_term_buf = (vim.api.nvim_get_option_value("buftype", { buf = buf_target }) == "terminal") and "!" or ""
 	vim.schedule(function()
 		vim.cmd(table.concat({ buf_target, "bdelete", is_term_buf }))
 	end)
@@ -79,7 +79,7 @@ M.buf_close_hid = function()
 	for _, b in ipairs(vim.api.nvim_list_bufs()) do
 		if vim.fn.buflisted(b) == 1 and #vim.fn.win_findbuf(b) == 0 then
 			vim.schedule(function()
-				vim.cmd("bdelete "..b)
+				vim.cmd("bdelete " .. b)
 			end)
 		end
 	end
