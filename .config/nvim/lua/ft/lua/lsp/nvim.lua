@@ -9,10 +9,18 @@ lua_ls_nvim.on_attach = function(client, buf)
 	end
 end
 
+local efm = require("lspstart.efm")
+efm.on_attach = function(client, buf)
+	lsp_methods["textDocument/formatting"](client, buf)
+end
+
 vim.api.nvim_create_autocmd("FileType", {
 	group = "lsp",
 	pattern = "lua",
 	callback = function(args)
-		if vim.bo[args.buf].buftype == "" then vim.lsp.start(lua_ls_nvim) end
-	end
+		if vim.bo[args.buf].buftype == "" then
+			vim.lsp.start(lua_ls_nvim)
+			vim.lsp.start(efm)
+		end
+	end,
 })
