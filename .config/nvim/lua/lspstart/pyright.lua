@@ -10,9 +10,5 @@ return {
 	root_dir = cwd,
 	cmd = lspconfig.cmd,
 	settings = settings,
-	capabilities = vim.tbl_deep_extend(
-		"force",
-		vim.lsp.protocol.make_client_capabilities(),
-		require("cmp_nvim_lsp").default_capabilities()
-	),
+	capabilities = require("lsp.capabilities"),
 }
