@@ -9,7 +9,6 @@ vim.opt.smoothscroll = true
 vim.opt.scrolloff = 5
 vim.opt.linebreak = true
 vim.opt.breakindent = true
-vim.opt.breakindentopt = "min:10,shift:1"
 vim.opt.sidescrolloff = 3
 vim.opt.fillchars = { eob = " ", fold = " ", foldopen = "", foldclose = "", foldsep = " " }
 vim.opt.list = true
