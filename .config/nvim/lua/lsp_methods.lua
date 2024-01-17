@@ -1,3 +1,29 @@
+function _G.lsp_format_expr(client_id, buf)
+	if vim.list_contains({ "i", "R", "ic", "ix" }, vim.fn.mode()) then
+		-- `formatexpr` is also called when exceeding `textwidth` in insert mode
+		-- fall back to internal formatting
+		return 1
+	end
+
+	local start_lnum = vim.v.lnum
+	P(start_lnum)
+	local end_lnum = start_lnum + vim.v.count
+	if start_lnum <= 0 or end_lnum <= 0 then
+		return 0
+	end
+
+	vim.lsp.buf.format({
+		bufnr = buf,
+		id = client_id,
+		range = {
+			start = { line = start_lnum - 1, character = 0 },
+			["end"] = { line = end_lnum - 1, character = 0 },
+		},
+	})
+	-- do not run builtin formatter.
+	return 0
+end
+
 return {
 	["textDocument/definition"] = function(client, buf)
 		vim.keymap.set("n", "gd", function()
@@ -120,5 +146,11 @@ return {
 				vim.lsp.buf.format({ id = client.id, bufnr = buf })
 			end,
 		})
+
+		if client.supports_method("textDocument/rangeFormatting") then
+			vim.bo[buf].formatexpr = string.format("v:lua.lsp_format_expr(%s, %s)", client.id, buf)
+		else
+			vim.bo[buf].formatexpr = ""
+		end
 	end,
 }
