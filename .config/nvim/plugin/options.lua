@@ -50,10 +50,9 @@ vim.opt.cindent = true
 
 -- 14 Folding
 vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
 vim.opt.foldcolumn = "auto:1"
-vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
 vim.opt.foldopen:remove({ "block", "hor" })
--- vim.opt.foldmethod = "indent"
 
 -- 15 Diff Mode
 vim.opt.diffopt:append("linematch:60")
