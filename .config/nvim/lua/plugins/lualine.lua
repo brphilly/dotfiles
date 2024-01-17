@@ -23,7 +23,7 @@ return {
 				lualine_y = { { "filename", path = 1 }, "filetype" },
 				lualine_z = { "%v", "%l/%L" },
 			},
-			extensions = { "lazy", "quickfix" },
+			extensions = { "lazy", "quickfix", "oil" },
 		},
 	},
 }
