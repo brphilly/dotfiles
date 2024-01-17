@@ -1,4 +1,4 @@
-local lsp_methods = require("lsp_methods")
+local lsp_methods = require("lsp.methods")
 
 local rust_analyzer = require("lspstart.rust_analyzer")
 rust_analyzer.on_attach = function(client, buf)

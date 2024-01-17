@@ -1,4 +1,4 @@
-local lsp_methods = require("lsp_methods")
+local lsp_methods = require("lsp.methods")
 
 local lua_ls_nvim = require("lspstart.lua_ls_nvim")
 lua_ls_nvim.on_attach = function(client, buf)

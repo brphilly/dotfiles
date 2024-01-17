@@ -1,4 +1,4 @@
-local lsp_methods = require("lsp_methods")
+local lsp_methods = require("lsp.methods")
 
 local on_attach = function(client, buf)
 	for method, f in pairs(lsp_methods) do

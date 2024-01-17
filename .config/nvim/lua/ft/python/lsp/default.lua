@@ -1,4 +1,4 @@
-local lsp_methods = require("lsp_methods")
+local lsp_methods = require("lsp.methods")
 
 local pyright = require("lspstart.pyright")
 local skip = { ["textDocument/formatting"] = true, ["textDocument/codeLens"] = true }
