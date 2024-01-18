@@ -60,12 +60,9 @@ return {
 
 	["textDocument/references"] = function(client, buf)
 		vim.keymap.set("n", "gr", function()
-			client.request(
-				"textDocument/references",
-				vim.lsp.util.make_position_params(0, client.offset_encoding),
-				nil,
-				buf
-			)
+			local params = vim.lsp.util.make_position_params(0, client.offset_encoding)
+			params.context = { includeDeclaration = true }
+			client.request("textDocument/references", params, nil, buf)
 		end, { buffer = buf })
 	end,
 
@@ -136,7 +133,7 @@ return {
 	end,
 
 	["textDocument/formatting"] = function(client, buf)
-		vim.keymap.set("n", "gF", function()
+		vim.keymap.set("n", "gQ", function()
 			vim.lsp.buf.format({ id = client.id, bufnr = buf })
 		end, { buffer = buf })
 		vim.api.nvim_create_autocmd("BufWritePre", {
