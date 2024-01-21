@@ -1,4 +1,4 @@
-function _G.lsp_format_expr(client_id, buf)
+function _G.lsp_format_expr(client_ids, buf)
 	if vim.list_contains({ "i", "R", "ic", "ix" }, vim.fn.mode()) then
 		-- `formatexpr` is also called when exceeding `textwidth` in insert mode
 		-- fall back to internal formatting
@@ -6,20 +6,21 @@ function _G.lsp_format_expr(client_id, buf)
 	end
 
 	local start_lnum = vim.v.lnum
-	P(start_lnum)
 	local end_lnum = start_lnum + vim.v.count
 	if start_lnum <= 0 or end_lnum <= 0 then
 		return 0
 	end
 
-	vim.lsp.buf.format({
-		bufnr = buf,
-		id = client_id,
-		range = {
-			start = { line = start_lnum - 1, character = 0 },
-			["end"] = { line = end_lnum - 1, character = 0 },
-		},
-	})
+	for client_id in vim.iter(client_ids) do
+		vim.lsp.buf.format({
+			bufnr = buf,
+			id = client_id,
+			range = {
+				start = { line = start_lnum - 1, character = 0 },
+				["end"] = { line = end_lnum - 1, character = 0 },
+			},
+		})
+	end
 	-- do not run builtin formatter.
 	return 0
 end
@@ -132,22 +133,36 @@ return {
 		})
 	end,
 
-	["textDocument/formatting"] = function(client, buf)
+	["textDocument/formatting"] = function(clients, buf)
+		if not vim.tbl_islist(clients) then
+			clients = { clients }
+		end
+
 		vim.keymap.set("n", "gQ", function()
-			vim.lsp.buf.format({ id = client.id, bufnr = buf })
+			for client in vim.iter(clients) do
+				vim.lsp.buf.format({ id = client.id, bufnr = buf })
+			end
 		end, { buffer = buf })
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = "lsp",
 			buffer = buf,
 			callback = function(_)
-				vim.lsp.buf.format({ id = client.id, bufnr = buf })
+				for client in vim.iter(clients) do
+					vim.lsp.buf.format({ id = client.id, bufnr = buf })
+				end
 			end,
 		})
 
-		if client.supports_method("textDocument/rangeFormatting") then
-			vim.bo[buf].formatexpr = string.format("v:lua.lsp_format_expr(%s, %s)", client.id, buf)
-		else
-			vim.bo[buf].formatexpr = ""
+		local client_ids = vim.iter(clients)
+			:filter(function(client)
+				return client.supports_method("textDocument/rangeFormatting")
+			end)
+			:map(function(client)
+				return client.id
+			end)
+			:totable()
+		if vim.tbl_count(client_ids) > 0 then
+			vim.bo[buf].formatexpr = string.format("v:lua.lsp_format_expr(%s, %s)", vim.inspect(client_ids), buf)
 		end
 	end,
 }
