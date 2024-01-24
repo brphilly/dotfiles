@@ -94,6 +94,10 @@ return {
 		end, { buffer = buf })
 	end,
 
+	["textDocument/documentSymbol"] = function(client, buf)
+		vim.b[buf].neotree_doc_symbol_lsp_name = client.name
+	end,
+
 	["textDocument/signatureHelp"] = function(client, buf)
 		vim.keymap.set({ "n", "i" }, "<c-s>", function()
 			client.request(
