@@ -47,8 +47,9 @@ local plugspec = {
 							cmp.complete()
 						end
 					end,
-					["<tab>"] = cmp.mapping.select_next_item(),
-					["<s-tab>"] = cmp.mapping.select_prev_item(),
+					["<c-n>"] = cmp.mapping.select_next_item(),
+					["<c-p>"] = cmp.mapping.select_prev_item(),
+					["<tab>"] = cmp.mapping.confirm({ select = true }),
 					["<C-j>"] = cmp.mapping.scroll_docs(4),
 					["<C-k>"] = cmp.mapping.scroll_docs(-4),
 				},

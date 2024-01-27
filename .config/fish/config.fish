@@ -3,6 +3,9 @@ source $XDG_CONFIG_HOME/fish/env.fish
 if status is-interactive
 	set -g fish_greeting
 
+	bind \t accept-autosuggestion
+	bind -k nul complete
+
 	abbr -a ls --position anywhere lsd
 	abbr -a ll --position anywhere 'lsd -la'
 	abbr -a cat --position anywhere bat

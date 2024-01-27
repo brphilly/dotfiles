@@ -38,7 +38,7 @@ vim.opt.ruler = false
 
 -- 12 Editing Text
 vim.opt.undofile = true
-vim.opt.completeopt = { "menuone", "noselect" }
+vim.opt.completeopt = { "menuone", "noinsert" }
 vim.opt.pumheight = math.ceil(vim.go.lines / 2)
 vim.opt.showmatch = true
 
