@@ -12,13 +12,13 @@ return {
 		lazy = true,
 		dependencies = { "telescope-fzf-native.nvim" },
 		init = function()
-			vim.keymap.set("n", "<leader>ff", function()
+			vim.keymap.set("n", "<c-p>", function()
 				require("telescope.builtin").find_files({
 					prompt_title = "Files: " .. vim.fn.getcwd(),
 					hidden = true,
 				})
 			end)
-			vim.keymap.set("n", "<leader>fF", function()
+			vim.keymap.set("n", "<leader>fb", function()
 				require("telescope.builtin").buffers()
 			end)
 			vim.api.nvim_create_user_command("FuzzyFindRuntime", function()
