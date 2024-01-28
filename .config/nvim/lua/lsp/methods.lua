@@ -110,7 +110,7 @@ return {
 	end,
 
 	["textDocument/codeLens"] = function(client, buf)
-		vim.keymap.set("n", "gL", vim.lsp.codelens.run, { buffer = buf })
+		vim.keymap.set("n", "gA", vim.lsp.codelens.run, { buffer = buf })
 		vim.api.nvim_create_autocmd({ "CursorHold", "InsertLeave" }, {
 			group = "lsp",
 			buffer = buf,
