@@ -1,0 +1,5 @@
+[font]
+size = 15
+normal = ["JetBrains Mono", "Symbols Nerd Font"]
+italic = {family = "Cascadia Mono PL", style = "Italic"}
+bold_italic = {family = "Cascadia Mono PL", style = "Bold Italic"}
