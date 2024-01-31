@@ -45,3 +45,5 @@
 	diffFilter = delta --color-only
 [rerere]
 	enabled = true
+[sendemail]
+	annotate = true
