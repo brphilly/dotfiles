@@ -17,7 +17,7 @@
 [pull]
 	ff = only
 [rebase]
-	rebaseMerges = rebase-cousins
+	rebaseMerges = no-rebase-cousins
 [tag]
 	gpgSign = true
 [status]
