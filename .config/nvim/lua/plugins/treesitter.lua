@@ -85,4 +85,11 @@ return {
 			})
 		end,
 	},
+	{
+		url = "https://github.com/nvim-treesitter/nvim-treesitter-context",
+		lazy = false,
+		config = function()
+			vim.keymap.set("n", "<bs>", "<cmd>TSContextToggle<cr>")
+		end,
+	},
 }
