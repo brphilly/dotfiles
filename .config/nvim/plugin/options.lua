@@ -41,6 +41,7 @@ vim.opt.undofile = true
 vim.opt.completeopt = { "menuone", "noinsert" }
 vim.opt.pumheight = math.ceil(vim.go.lines / 2)
 vim.opt.showmatch = true
+vim.opt.nrformats:append("alpha")
 
 -- 13 Tabs and Indenting
 vim.opt.tabstop = 4
