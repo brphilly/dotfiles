@@ -9,6 +9,9 @@ return {
 				italics = true,
 				ui_contrast = "high",
 				diagnostic_line_highlight = true,
+				on_highlights = function(hl, palette)
+					hl.DiagnosticUnnecessary = { link = "Conceal" }
+				end,
 			})
 			vim.cmd("colorscheme everforest")
 		end,
