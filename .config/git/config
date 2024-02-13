@@ -6,6 +6,8 @@
 	excludesfile = ~/.config/git/ignore
 	editor = nvim
 	pager = delta
+	fsmonitor = true
+	untrackedCache = true
 [commit]
 	verbose = true
 	gpgSign = true
@@ -47,3 +49,5 @@
 	enabled = true
 [sendemail]
 	annotate = true
+[fetch]
+	writeCommitGraph = true
