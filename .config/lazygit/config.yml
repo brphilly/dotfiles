@@ -1,17 +1,13 @@
 gui:
   theme:
     selectedLineBgColor:
-      - black # set to `default` to have no background colour
-      - bold
-    selectedRangeBgColor:
-      - black
+      - '#414b50' # set to `default` to have no background colour
       - bold
 os:
   editPreset: 'nvim'
 git:
   autoFetch: false
 promptToReturnFromSubprocess: false
-quitOnTopLevelReturn: true
 keybinding:
   universal:
     quit: null
