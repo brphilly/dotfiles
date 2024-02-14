@@ -1,7 +1,7 @@
 [manager]
 keymap = [
-	{ on = [ "<Esc>" ], exec = "escape",             desc = "Exit visual mode, clear selected, or cancel search" },
-	{ on = [ "<C-[>" ], exec = "escape",             desc = "Exit visual mode, clear selected, or cancel search" },
+	{ on = [ "<Esc>" ], exec = ["escape", "unyank"],             desc = "Exit visual mode, clear selected, or cancel search" },
+	{ on = [ "<C-[>" ], exec = ["escape", "unyank"],             desc = "Exit visual mode, clear selected, or cancel search" },
 	{ on = [ "q" ],     exec = "quit",               desc = "Exit the process" },
 	{ on = [ "Q" ],     exec = "quit --no-cwd-file", desc = "Exit the process without writing cwd-file" },
 	{ on = [ "<C-c>" ], exec = "close",              desc = "Close the current tab, or quit if it is last tab" },
