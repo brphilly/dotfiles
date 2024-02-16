@@ -6,6 +6,8 @@ if status is-interactive
 	bind \t accept-autosuggestion
 	bind -k nul complete
 
+	abbr -a cd z
+	abbr -a cdi zi
 	abbr -a ls --position anywhere lsd
 	abbr -a ll --position anywhere 'lsd -la'
 	abbr -a cat --position anywhere bat
