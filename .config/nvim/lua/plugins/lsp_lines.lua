@@ -4,7 +4,7 @@ return {
 		event = "DiagnosticChanged",
 		config = function()
 			require("lsp_lines").setup()
-			vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
+			vim.diagnostic.config({ virtual_lines = false })
 			vim.keymap.set("n", "gl", function()
 				local diag_conf = vim.diagnostic.config()
 				if diag_conf.virtual_lines then
