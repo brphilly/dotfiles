@@ -12,7 +12,7 @@ return {
 		},
 		init = function()
 			vim.keymap.set("n", "-", "<cmd>Neotree filesystem toggle reveal_force_cwd<cr>")
-			vim.keymap.set("n", "gs", "<cmd>Neotree show document_symbols toggle<cr>")
+			-- vim.keymap.set("n", "gs", "<cmd>Neotree show document_symbols toggle<cr>")
 		end,
 		opts = {
 			auto_clean_after_session_restore = true,
