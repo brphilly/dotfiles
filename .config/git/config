@@ -51,3 +51,5 @@
 	annotate = true
 [fetch]
 	writeCommitGraph = true
+[init]
+	defaultBranch = main
