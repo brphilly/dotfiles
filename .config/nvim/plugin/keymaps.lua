@@ -55,7 +55,21 @@ end)
 vim.keymap.set("n", "'g", "<cmd>terminal lazygit<cr>i")
 
 vim.keymap.set("n", "<leader>cv", "<cmd>qall<cr>")
-vim.keymap.set("n", "<leader>cb", "<cmd>bd<cr>")
+vim.keymap.set("n", "<leader>cb", function()
+	local target_buf = vim.api.nvim_get_current_buf()
+	local target_wins = vim.fn.win_findbuf(target_buf)
+	for _, w in ipairs(target_wins) do
+		vim.api.nvim_win_call(w, function()
+			if vim.fn.buflisted(0) == 1 then
+				vim.cmd("buffer #")
+			else
+				vim.cmd("bprevious")
+			end
+		end)
+	end
+
+	vim.cmd("bdelete " .. target_buf)
+end)
 vim.keymap.set("n", "<leader>ct", "<cmd>tabclose<cr>")
 
 vim.keymap.set("n", "[b", "<cmd>bprevious<cr>")
