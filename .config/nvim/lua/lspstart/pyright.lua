@@ -10,5 +10,6 @@ return {
 	root_dir = cwd,
 	cmd = lspconfig.cmd,
 	settings = settings,
+	init_options = lspconfig.init_options,
 	capabilities = require("lsp.capabilities"),
 }

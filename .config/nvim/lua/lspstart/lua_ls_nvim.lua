@@ -14,5 +14,6 @@ return {
 			},
 		},
 	}),
+	init_options = lspconfig.init_options,
 	capabilities = require("lsp.capabilities"),
 }
