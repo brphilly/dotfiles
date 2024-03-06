@@ -15,6 +15,7 @@ return {
 			-- vim.keymap.set("n", "gs", "<cmd>Neotree show document_symbols toggle<cr>")
 		end,
 		opts = {
+			close_if_last_window = true,
 			auto_clean_after_session_restore = true,
 			window = {
 				width = 50,
