@@ -1,4 +1,20 @@
-function _G.lsp_format_expr(client_ids, buf)
+local format_buf_clients = setmetatable({}, {
+	__index = function(tbl, key)
+		local default = {}
+		rawset(tbl, key, default)
+		return default
+	end,
+})
+
+local hover_buf_clients = setmetatable({}, {
+	__index = function(tbl, key)
+		local default = {}
+		rawset(tbl, key, default)
+		return default
+	end,
+})
+
+function _G.lsp_format_expr(buf)
 	if vim.list_contains({ "i", "R", "ic", "ix" }, vim.fn.mode()) then
 		-- `formatexpr` is also called when exceeding `textwidth` in insert mode
 		-- fall back to internal formatting
@@ -11,7 +27,15 @@ function _G.lsp_format_expr(client_ids, buf)
 		return 0
 	end
 
-	for client_id in vim.iter(client_ids) do
+	for client_id in
+		vim.iter(format_buf_clients[buf])
+			:filter(function(client)
+				return client.supports_method("textDocument/rangeFormatting")
+			end)
+			:map(function(client)
+				return client.id
+			end)
+	do
 		vim.lsp.buf.format({
 			bufnr = buf,
 			id = client_id,
@@ -89,8 +113,16 @@ return {
 	end,
 
 	["textDocument/hover"] = function(client, buf)
+		table.insert(hover_buf_clients[buf], client)
 		vim.keymap.set("n", "K", function()
-			client.request("textDocument/hover", vim.lsp.util.make_position_params(0, client.offset_encoding), nil, buf)
+			for _, stored_client in ipairs(hover_buf_clients[buf]) do
+				stored_client.request(
+					"textDocument/hover",
+					vim.lsp.util.make_position_params(0, client.offset_encoding),
+					vim.lsp.with(vim.lsp.handlers.hover, { silent = true }),
+					buf
+				)
+			end
 		end, { buffer = buf })
 	end,
 
@@ -115,7 +147,9 @@ return {
 			group = "lsp",
 			buffer = buf,
 			callback = function(_)
-				vim.lsp.codelens.refresh()
+				if client.supports_method("textDocument/codeLens") then
+					vim.lsp.codelens.refresh({ bufnr = buf })
+				end
 			end,
 		})
 	end,
@@ -125,48 +159,40 @@ return {
 			group = "lsp",
 			buffer = buf,
 			callback = function(_)
-				vim.lsp.buf.document_highlight()
+				if client.supports_method("textDocument/documentHighlight") then
+					vim.lsp.buf.document_highlight()
+				end
 			end,
 		})
 		vim.api.nvim_create_autocmd({ "CursorMoved", "InsertEnter", "WinLeave" }, {
 			group = "lsp",
 			buffer = buf,
 			callback = function(_)
-				vim.lsp.buf.clear_references()
+				if client.supports_method("textDocument/documentHighlight") then
+					vim.lsp.buf.clear_references()
+				end
 			end,
 		})
 	end,
 
-	["textDocument/formatting"] = function(clients, buf)
-		if not vim.tbl_islist(clients) then
-			clients = { clients }
-		end
-
-		vim.keymap.set("n", "gQ", function()
-			for client in vim.iter(clients) do
-				vim.lsp.buf.format({ id = client.id, bufnr = buf })
+	["textDocument/formatting"] = function(client, buf)
+		table.insert(format_buf_clients[buf], client)
+		local format = function()
+			for _, stored_client in ipairs(format_buf_clients[buf]) do
+				vim.lsp.buf.format({ id = stored_client.id, bufnr = buf })
 			end
-		end, { buffer = buf })
+		end
+		vim.keymap.set("n", "gQ", format, { buffer = buf })
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = "lsp",
 			buffer = buf,
-			callback = function(_)
-				for client in vim.iter(clients) do
-					vim.lsp.buf.format({ id = client.id, bufnr = buf })
+			callback = function()
+				if Format_on_save then
+					format()
 				end
 			end,
 		})
 
-		local client_ids = vim.iter(clients)
-			:filter(function(client)
-				return client.supports_method("textDocument/rangeFormatting")
-			end)
-			:map(function(client)
-				return client.id
-			end)
-			:totable()
-		if vim.tbl_count(client_ids) > 0 then
-			vim.bo[buf].formatexpr = string.format("v:lua.lsp_format_expr(%s, %s)", vim.inspect(client_ids), buf)
-		end
+		vim.bo[buf].formatexpr = string.format("v:lua.lsp_format_expr(%s)", buf)
 	end,
 }

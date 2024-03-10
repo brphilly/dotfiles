@@ -6,6 +6,8 @@ _G.P = function(...)
 	vim.print(...)
 end
 
+Format_on_save = true
+
 -- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

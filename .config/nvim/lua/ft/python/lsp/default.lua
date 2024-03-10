@@ -1,10 +1,9 @@
 local lsp_methods = require("lsp.methods")
 
 local pyright = require("lspstart.pyright")
-local skip = { ["textDocument/formatting"] = true, ["textDocument/codeLens"] = true }
 pyright.on_attach = function(client, buf)
 	for method, f in pairs(lsp_methods) do
-		if not skip[method] then
+		if method ~= "textDocument/formatting" then
 			f(client, buf)
 		end
 	end
