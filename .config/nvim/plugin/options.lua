@@ -73,6 +73,7 @@ vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case"
 vim.opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
 
 -- 22 Language Specific
+vim.opt.iskeyword:append("-")
 
 -- 24 Various
 vim.opt.virtualedit = { "onemore", "block" }
