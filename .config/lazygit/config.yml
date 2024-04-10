@@ -1,16 +1,16 @@
 gui:
-  theme:
-    selectedLineBgColor:
-      - '#414b50' # set to `default` to have no background colour
-      - bold
+    theme:
+        selectedLineBgColor:
+            - '#414b50' # set to `default` to have no background colour
+            - bold
 os:
-  editPreset: 'nvim'
+    editPreset: 'nvim'
 git:
-  autoFetch: false
+    autoFetch: false
 promptToReturnFromSubprocess: false
 keybinding:
-  universal:
-    quit: null
-  main:
-    toggleSelectHunk: 'V'
-    toggleDragSelect-alt: null
+    universal:
+        quit: <disabled>
+    main:
+        toggleSelectHunk: 'V'
+        toggleDragSelect-alt: <disabled>
