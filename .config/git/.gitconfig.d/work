@@ -1,0 +1,9 @@
+[user]
+	email = BPhillips@red-scientific.co.uk
+	signingKey =
+[commit]
+	gpgSign = false
+[push]
+	gpgSign = false
+[tag]
+	gpgSign = false

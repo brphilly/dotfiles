@@ -9,7 +9,6 @@
 	fsmonitor = true
 	untrackedCache = true
 [commit]
-	verbose = true
 	gpgSign = true
 [push]
 	recurseSubmodules = check
@@ -53,3 +52,6 @@
 	writeCommitGraph = true
 [init]
 	defaultBranch = main
+
+[includeIf "gitdir:~/projects/work/"]
+	path = .gitconfig.d/work
