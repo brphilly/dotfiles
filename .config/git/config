@@ -1,13 +1,15 @@
 [user]
 	name = Brady Phillips
 	email = mail@brphilly.dev
-	signingKey = 471B2A2E9A7A54A6A545EBF9149B65036B784D49
+	signingKey = ~/.ssh/id_ed25519_sk_yubikey5c
 [core]
 	excludesfile = ~/.config/git/ignore
 	editor = nvim
 	pager = delta
 	fsmonitor = true
 	untrackedCache = true
+[gpg]
+	format = ssh
 [commit]
 	gpgSign = true
 [push]
