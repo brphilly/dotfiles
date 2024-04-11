@@ -5,6 +5,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export EDITOR="nvim"
 export LESS="-R"
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+export SSH_ASKPASS="lxqt-openssh-askpass"
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 export FZF_DEFAULT_OPTS='--color=bg+:#3c4841,gutter:-1,info:#859289,header:#859289 --reverse --bind ctrl-y:preview-up,ctrl-e:preview-down,ctrl-b:preview-page-up,ctrl-f:preview-page-down,ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
