@@ -18,7 +18,10 @@ vim.api.nvim_create_autocmd("FileType", {
 	group = "lsp",
 	pattern = { "typescript", "javascript" },
 	callback = function(args)
-		if vim.bo[args.buf].buftype == "" then
+		if
+			vim.bo[args.buf].buftype == ""
+			and not (vim.endswith(args.file, ".svelte.ts") or vim.endswith(args.file, ".svelte.js"))
+		then
 			vim.lsp.start(tsserver)
 			vim.lsp.start(efm)
 		end
