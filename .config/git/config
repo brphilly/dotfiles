@@ -44,6 +44,9 @@
 	navigate = true
 [diff]
 	colorMoved = default
+[diff "lockb"]
+	binary = true
+	textconv = bun
 [interactive]
 	diffFilter = delta --color-only
 [rerere]
