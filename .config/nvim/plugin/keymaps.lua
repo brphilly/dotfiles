@@ -52,7 +52,10 @@ vim.keymap.set("n", "<c-w><c-f>", function()
 		border = "rounded",
 	})
 end)
-vim.keymap.set("n", "'g", "<cmd>terminal lazygit<cr>i")
+vim.api.nvim_create_user_command("Scratch", function()
+	local buf = vim.api.nvim_create_buf(true, true)
+	vim.api.nvim_set_current_buf(buf)
+end, { desc = "Create a new scratch buffer and switch to it" })
 
 vim.keymap.set("n", "<leader>cv", "<cmd>qall<cr>")
 vim.keymap.set("n", "<leader>cb", function()
