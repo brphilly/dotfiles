@@ -21,24 +21,15 @@ end
 
 vim.api.nvim_create_autocmd("FileType", {
 	group = "lsp",
-	pattern = { "svelte", "typescript", "javascript" },
+	pattern = "svelte",
 	callback = function(args)
-		if
-			vim.bo[args.buf].buftype == ""
-			and (
-				args.match == "svelte"
-				or vim.endswith(args.file, ".svelte.ts")
-				or vim.endswith(args.file, ".svelte.js")
-			)
-		then
+		if vim.bo[args.buf].buftype == "" then
 			vim.lsp.start(svelte)
 			if
-				args.match == "svelte"
-				and #vim.fs.find(
-						{ "tailwind.config.ts", "tailwind.config.js" },
-						{ upward = true, type = "file", path = vim.fs.dirname(vim.api.nvim_buf_get_name(args.buf)) }
-					)
-					> 0
+				#vim.fs.find(
+					{ "tailwind.config.ts", "tailwind.config.js" },
+					{ upward = true, type = "file", path = vim.fs.dirname(vim.api.nvim_buf_get_name(args.buf)) }
+				) > 0
 			then
 				vim.lsp.start(tailwindcss)
 			end
