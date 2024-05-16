@@ -1,5 +1,4 @@
 {
-  "Comment.nvim": { "branch": "master", "commit": "0236521ea582747b58869cb72f70ccfa967d2e89" },
   "actions-preview.nvim": { "branch": "master", "commit": "e8d41b608e24319548637685c7cfa66fadaff2b2" },
   "aerial.nvim": { "branch": "master", "commit": "228fad11393322537d9662c0347f75549a3d6c0a" },
   "auto-session": { "branch": "main", "commit": "9e0a169b6fce8791278abbd110717b921afe634d" },
