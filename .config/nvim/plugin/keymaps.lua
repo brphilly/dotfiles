@@ -112,6 +112,3 @@ vim.keymap.set("n", "<c-w><space>", function()
 		vim.cmd("lopen")
 	end
 end, { desc = "Toggle location list window" })
-
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next)

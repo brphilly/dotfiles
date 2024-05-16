@@ -18,7 +18,6 @@ vim.opt.relativenumber = true
 vim.opt.numberwidth = 1
 
 -- 5 Syntax, Highlighting and Spelling
-vim.opt.termguicolors = true
 vim.opt.cursorline = true
 vim.opt.colorcolumn = "121"
 vim.opt.cursorlineopt = "number"

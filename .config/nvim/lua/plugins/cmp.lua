@@ -60,12 +60,6 @@ local plugspec = {
 					end,
 				},
 
-				snippet = {
-					expand = function(args)
-						vim.snippet.expand(args.body)
-					end,
-				},
-
 				formatting = {
 					format = function(entry, vim_item)
 						-- Kind icons
