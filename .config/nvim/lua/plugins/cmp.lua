@@ -1,5 +1,4 @@
-local cmp_kinds
-local plugspec = {
+return {
 	{
 		url = "https://github.com/hrsh7th/cmp-path",
 		lazy = true,
@@ -61,20 +60,16 @@ local plugspec = {
 				},
 
 				formatting = {
-					format = function(entry, vim_item)
-						-- Kind icons
-						vim_item.kind = string.format("%s%s", cmp_kinds[vim_item.kind], vim_item.kind)
-						-- Source
-						vim_item.menu = ({
+					format = require("lspkind").cmp_format({
+						with_text = true,
+						menu = {
 							buffer = "[Buffer]",
 							nvim_lsp = "[LSP]",
 							nvim_lua = "[NVIM]",
 							path = "[Path]",
 							cody = "[Cody]",
-						})[entry.source.name]
-						vim_item.dup = entry.source.name == "nvim_lua" and 0 or 1
-						return vim_item
-					end,
+						},
+					}),
 				},
 
 				sorting = {
@@ -117,31 +112,3 @@ local plugspec = {
 		end,
 	},
 }
-cmp_kinds = {
-	Text = " ",
-	Method = " ",
-	Function = " ",
-	Constructor = " ",
-	Field = " ",
-	Variable = " ",
-	Class = " ",
-	Interface = " ",
-	Module = " ",
-	Property = " ",
-	Unit = " ",
-	Value = " ",
-	Enum = " ",
-	Keyword = " ",
-	Snippet = " ",
-	Color = " ",
-	File = " ",
-	Reference = " ",
-	Folder = " ",
-	EnumMember = " ",
-	Constant = " ",
-	Struct = " ",
-	Event = " ",
-	Operator = " ",
-	TypeParameter = " ",
-}
-return plugspec

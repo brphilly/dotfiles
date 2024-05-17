@@ -4,6 +4,10 @@ return {
 		lazy = true,
 	},
 	{
+		url = "https://github.com/onsails/lspkind.nvim",
+		lazy = true,
+	},
+	{
 		url = "https://github.com/creativenull/efmls-configs-nvim",
 		version = "^1",
 		lazy = true,
