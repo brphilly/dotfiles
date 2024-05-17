@@ -7,6 +7,7 @@ _G.P = function(...)
 end
 
 Format_on_save = true
+Enable_ai = true
 
 -- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
