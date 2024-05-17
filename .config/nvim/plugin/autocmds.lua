@@ -1,9 +1,10 @@
-vim.api.nvim_create_augroup("UpdateBuf", {})
-vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained" }, { group = "UpdateBuf", command = "silent! checktime" })
+vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained" }, {
+	group = vim.api.nvim_create_augroup("UpdateBuf", { clear = true }),
+	command = "silent! checktime",
+})
 
-vim.api.nvim_create_augroup("MyTerminal", {})
 vim.api.nvim_create_autocmd("TermOpen", {
-	group = "MyTerminal",
+	group = vim.api.nvim_create_augroup("MyTerminal", { clear = true }),
 	callback = function()
 		vim.opt_local.wrap = true
 		vim.opt_local.number = false
@@ -11,19 +12,26 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	end,
 })
 
-vim.api.nvim_create_augroup("HighlightYank", {})
 vim.api.nvim_create_autocmd("TextYankPost", {
-	group = "HighlightYank",
+	group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
 	callback = function()
 		vim.highlight.on_yank({ higroup = "Visual", timeout = 1000 })
 	end,
 })
 
-vim.api.nvim_create_augroup("SpellFT", {})
 vim.api.nvim_create_autocmd("FileType", {
-	group = "SpellFT",
+	group = vim.api.nvim_create_augroup("SpellFt", { clear = true }),
 	pattern = { "text", "markdown", "conf" },
 	callback = function()
 		vim.opt_local.spell = true
+	end,
+})
+
+vim.api.nvim_create_autocmd("CursorMoved", {
+	group = vim.api.nvim_create_augroup("AutoHlSearch", { clear = true }),
+	callback = function()
+		if vim.v.hlsearch == 1 and vim.fn.searchcount().exact_match == 0 then
+			vim.api.nvim_input("<c-l>")
+		end
 	end,
 })
