@@ -70,6 +70,7 @@ local plugspec = {
 							nvim_lsp = "[LSP]",
 							nvim_lua = "[NVIM]",
 							path = "[Path]",
+							cody = "[Cody]",
 						})[entry.source.name]
 						vim_item.dup = entry.source.name == "nvim_lua" and 0 or 1
 						return vim_item
@@ -107,6 +108,7 @@ local plugspec = {
 				sources = {
 					-- this order affects priority
 					{ name = "path" },
+					{ name = "cody" },
 					{ name = "nvim_lsp" },
 					{ name = "nvim_lua" },
 					{ name = "buffer" },
