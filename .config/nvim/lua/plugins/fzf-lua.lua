@@ -6,6 +6,9 @@ return {
 		opts = {
 			"default-title",
 			defaults = { formatter = "path.filename_first" },
+			winopts = {
+				preview = { delay = 10 },
+			},
 			fzf_opts = { ["--cycle"] = "" },
 			grep = {
 				rg_opts = "--line-number --no-heading --color=always --smart-case --max-columns=4096 --trim",
