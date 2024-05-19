@@ -14,6 +14,24 @@ return {
 				rg_opts = "--line-number --no-heading --color=always --smart-case --max-columns=4096 --trim",
 				path_shorten = true,
 			},
+			keymap = {
+				builtin = {
+					-- neovim `:tmap` mappings for the fzf win
+					["<F1>"] = "toggle-help",
+					["<F2>"] = "toggle-fullscreen",
+					-- Only valid with the 'builtin' previewer
+					["<F3>"] = "toggle-preview-wrap",
+					["<F4>"] = "toggle-preview",
+					-- Rotate preview clockwise/counter-clockwise
+					["<F5>"] = "toggle-preview-ccw",
+					["<F6>"] = "toggle-preview-cw",
+					["<S-down>"] = "preview-page-down",
+					["<C-d>"] = "preview-page-down",
+					["<S-up>"] = "preview-page-up",
+					["<C-u>"] = "preview-page-up",
+					["<S-left>"] = "preview-page-reset",
+				},
+			},
 		},
 		init = function()
 			vim.keymap.set("n", "<c-p>", function()
