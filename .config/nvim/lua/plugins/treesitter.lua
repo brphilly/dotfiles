@@ -92,4 +92,8 @@ return {
 			vim.keymap.set("n", "<bs>", "<cmd>TSContextToggle<cr>")
 		end,
 	},
+	{
+		url = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring",
+		lazy = false,
+	},
 }
