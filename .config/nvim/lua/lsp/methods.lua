@@ -84,7 +84,7 @@ return {
 	end,
 
 	["textDocument/references"] = function(client, buf)
-		vim.keymap.set("n", "gr", function()
+		vim.keymap.set("n", "grr", function()
 			local params = vim.lsp.util.make_position_params(0, client.offset_encoding)
 			params.context = { includeDeclaration = true }
 			client.request("textDocument/references", params, nil, buf)
@@ -103,7 +103,7 @@ return {
 	end,
 
 	["textDocument/rename"] = function(client, buf)
-		vim.keymap.set("n", "<F2>", function()
+		vim.keymap.set("n", "grn", function()
 			vim.lsp.buf.rename(nil, {
 				filter = function(filter_client)
 					return filter_client.id == client.id
@@ -142,7 +142,7 @@ return {
 	end,
 
 	["textDocument/codeLens"] = function(client, buf)
-		vim.keymap.set("n", "gA", vim.lsp.codelens.run, { buffer = buf })
+		vim.keymap.set("n", "grA", vim.lsp.codelens.run, { buffer = buf })
 		vim.api.nvim_create_autocmd({ "CursorHold", "InsertLeave" }, {
 			group = "lsp",
 			buffer = buf,
