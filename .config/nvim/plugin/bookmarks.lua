@@ -21,7 +21,7 @@ local function place_bookmark_extmarks(buf)
 	vim.api.nvim_buf_clear_namespace(buf, ns, 0, -1)
 	local fname = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ":.")
 	local extmrks = vim.tbl_keys(Bookmarks[fname] or {})
-	for extmrk in vim.iter(extmrks) do
+	for _, extmrk in ipairs(extmrks) do
 		local row, col = table.unpack(vim.iter(vim.gsplit(extmrk, ",", { plain = true })):map(tonumber):totable())
 		vim.api.nvim_buf_set_extmark(buf, ns, row, col, {
 			sign_text = "⚑",
@@ -79,7 +79,7 @@ vim.api.nvim_create_autocmd({ "TextChanged", "InsertLeave" }, {
 	group = aug,
 	callback = function(args)
 		local bkmrk_locs = {}
-		for extmrk in vim.iter(vim.api.nvim_buf_get_extmarks(args.buf, ns, 0, -1, {})) do
+		for _, extmrk in ipairs(vim.api.nvim_buf_get_extmarks(args.buf, ns, 0, -1, {})) do
 			local _, row, col = table.unpack(extmrk)
 			bkmrk_locs[table.concat({ row, col }, ",")] = true
 		end
@@ -100,7 +100,7 @@ local function toggle_bookmark()
 	row = row - 1
 	local extmrks = vim.api.nvim_buf_get_extmarks(0, ns, { row, 0 }, { row, -1 }, {})
 	if vim.tbl_count(extmrks) > 0 then
-		for extmrk in vim.iter(extmrks) do
+		for _, extmrk in ipairs(extmrks) do
 			local extmrk_id, row, col = table.unpack(extmrk)
 			vim.api.nvim_buf_del_extmark(0, ns, extmrk_id)
 
