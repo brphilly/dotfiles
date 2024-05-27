@@ -59,6 +59,10 @@ return {
 					end,
 				},
 
+				experimental = {
+					ghost_text = true,
+				},
+
 				formatting = {
 					format = require("lspkind").cmp_format({
 						with_text = true,
