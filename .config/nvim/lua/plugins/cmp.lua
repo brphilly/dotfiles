@@ -63,6 +63,12 @@ return {
 					ghost_text = true,
 				},
 
+				snippet = {
+					expand = function(args)
+						vim.snippet.expand(args.body)
+					end,
+				},
+
 				formatting = {
 					format = require("lspkind").cmp_format({
 						with_text = true,
