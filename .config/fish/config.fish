@@ -17,7 +17,7 @@ if status is-interactive
 	abbr -a paca 'paru --color always -Sl | sed -E \'s: :/:; s/ unknown-version//\' | fzf --multi --ansi --nth 1 --tiebreak index --preview \'paru -Si {1}\' | cut -d \' \' -f 1 | xargs -rot paru -S'
 	abbr -a pacr 'paru --color always -Q | fzf --multi --ansi --nth 1 --preview \'paru -Qi {1}\' | cut -d \' \' -f 1 | xargs -rot paru -Rs'
 
-	pyenv init - | source
+	fish_add_path -gP ~/.rye/shims
 	starship init fish | source
 	zoxide init fish | source
 end
