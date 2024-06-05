@@ -2,6 +2,6 @@
 .nvim.lua
 .vscode
 *.code-workspace
-.python-version
 __pycache__
 node_modules
+.venv
