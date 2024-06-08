@@ -5,14 +5,13 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {
 			"default-title",
-			defaults = { formatter = "path.filename_first" },
+			defaults = { formatter = "path.filename_first", multiline = 1 },
 			winopts = {
 				preview = { delay = 10 },
 			},
 			fzf_opts = { ["--cycle"] = "" },
 			grep = {
 				rg_opts = "--line-number --no-heading --color=always --smart-case --max-columns=4096 --trim",
-				path_shorten = true,
 			},
 			keymap = {
 				builtin = {
