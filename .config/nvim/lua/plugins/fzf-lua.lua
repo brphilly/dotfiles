@@ -5,7 +5,7 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {
 			"default-title",
-			defaults = { multiline = 1 },
+			defaults = { multiline = 1, formatter = { "path.filename_first", 2 } },
 			winopts = {
 				preview = { delay = 10 },
 			},
