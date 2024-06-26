@@ -64,7 +64,7 @@ require("lspconfig").basedpyright.setup({
 	end,
 	capabilities = require("lsp.capabilities"),
 })
-require("lspconfig").ruff_lsp.setup({
+require("lspconfig").ruff.setup({
 	on_attach = lsp_methods["textDocument/formatting"],
 	capabilities = require("lsp.capabilities"),
 })
