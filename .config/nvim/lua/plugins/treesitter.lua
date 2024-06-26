@@ -9,6 +9,7 @@ return {
 			local install_parsers = vim.tbl_filter(function(p)
 				return not parser_configs[p].experimental
 			end, parser_names)
+			table.insert(install_parsers, "htmldjango")
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = install_parsers,
 				highlight = {

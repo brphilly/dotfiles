@@ -29,7 +29,11 @@ return {
 			require("ufo").setup({
 				provider_selector = function(bufnr, filetype, buftype)
 					local ts_lang = vim.treesitter.language.get_lang(filetype)
-					local has_ts_folds = ts_lang and vim.treesitter.query.get(ts_lang, "folds")
+					if ts_lang == nil then
+						return
+					end
+					local has_parser = require("nvim-treesitter.parsers").has_parser(ts_lang)
+					local has_ts_folds = has_parser and vim.treesitter.query.get(ts_lang, "folds")
 					if buftype == "" and has_ts_folds then
 						return { "lsp", "treesitter" }
 					elseif has_ts_folds then
