@@ -55,6 +55,13 @@ require("lspconfig").lua_ls.setup({
 })
 
 require("lspconfig").basedpyright.setup({
+	on_new_config = function(config)
+		config.settings = vim.tbl_deep_extend("force", config.settings, {
+			python = {
+				pythonPath = vim.get.cwd() .. "/.venv/bin/python",
+			},
+		})
+	end,
 	on_attach = function(client, buf)
 		for method, f in pairs(lsp_methods) do
 			if method ~= "textDocument/formatting" then
