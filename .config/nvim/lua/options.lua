@@ -82,3 +82,6 @@ vim.opt.shadafile = vim.fn.stdpath("state")
 	.. "/shada/"
 	.. vim.fs.normalize(vim.fn.getcwd()):gsub("/", "%%")
 	.. ".shada"
+
+vim.g.neovide_cursor_animation_length = 0.05
+vim.g.neovide_scroll_animation_length = 0.05
