@@ -29,6 +29,10 @@ return {
 					["<C-u>"] = "preview-page-up",
 					["<S-left>"] = "preview-page-reset",
 				},
+				fzf = {
+					["ctrl-u"] = "preview-half-page-up",
+					["ctrl-d"] = "preview-half-page-down",
+				},
 			},
 		},
 		init = function()
