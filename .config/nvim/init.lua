@@ -9,6 +9,11 @@ end
 Format_on_save = true
 Enable_ai = true
 
+require("options")
+require("keymaps")
+require("autocmds")
+require("diagnostics")
+
 -- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -28,8 +33,4 @@ require("lazy").setup("plugins", {
 	install = { missing = false },
 })
 
-require("options")
-require("keymaps")
-require("autocmds")
-require("diagnostics")
 require("lsp")
