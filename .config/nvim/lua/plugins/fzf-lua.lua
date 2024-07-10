@@ -32,6 +32,7 @@ return {
 				fzf = {
 					["ctrl-u"] = "preview-half-page-up",
 					["ctrl-d"] = "preview-half-page-down",
+					["ctrl-q"] = "select-all+accept",
 				},
 			},
 		},
