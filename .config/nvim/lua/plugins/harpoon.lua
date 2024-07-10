@@ -4,7 +4,12 @@ return {
 		branch = "harpoon2",
 		lazy = true,
 		dependencies = { "nvim-lua/plenary.nvim" },
-		config = true,
+		opts = {
+			settings = {
+				save_on_toggle = true,
+				sync_on_ui_close = true,
+			},
+		},
 		init = function()
 			vim.keymap.set("n", "<leader>m", function()
 				local harpoon = require("harpoon")
