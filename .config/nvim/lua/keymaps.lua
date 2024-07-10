@@ -87,11 +87,7 @@ vim.keymap.set("n", "''", function()
 	end
 end, { desc = "Switch to previous buffer" })
 
-vim.keymap.set("n", "[q", "<cmd>cprev<cr>")
-vim.keymap.set("n", "]q", "<cmd>cnext<cr>")
-vim.keymap.set("n", "[Q", "<cmd>cfirst<cr>")
-vim.keymap.set("n", "]Q", "<cmd>clast<cr>")
-vim.keymap.set("n", "<c-w><c-space>", function()
+vim.keymap.set("n", "<leader>q", function()
 	local winid = vim.fn.getqflist({ winid = 0 }).winid
 	if winid ~= 0 then
 		vim.cmd("cclose")
@@ -99,16 +95,3 @@ vim.keymap.set("n", "<c-w><c-space>", function()
 		vim.cmd("copen")
 	end
 end, { desc = "Toggle quickfix list window" })
-
-vim.keymap.set("n", "[l", "<cmd>lprev<cr>")
-vim.keymap.set("n", "]l", "<cmd>lnext<cr>")
-vim.keymap.set("n", "[L", "<cmd>lfirst<cr>")
-vim.keymap.set("n", "]L", "<cmd>llast<cr>")
-vim.keymap.set("n", "<c-w><space>", function()
-	local winid = vim.fn.getloclist(0, { winid = 0 }).winid
-	if winid ~= 0 then
-		vim.cmd("lclose")
-	elseif not vim.tbl_isempty(vim.fn.getloclist(0)) then
-		vim.cmd("lopen")
-	end
-end, { desc = "Toggle location list window" })
