@@ -7,7 +7,7 @@ return {
 			delete_to_trash = true,
 		},
 		init = function()
-			vim.keymap.set("n", "-", "<cmd>Oil --float<cr>")
+			vim.keymap.set("n", "-", "<cmd>Oil --float<cr>", { desc = "Open oil in float" })
 		end,
 	},
 }

@@ -58,7 +58,7 @@ return {
 				nil,
 				buf
 			)
-		end, { buffer = buf })
+		end, { buffer = buf, desc = "Go to definition" })
 	end,
 
 	["textDocument/declaration"] = function(client, buf)
@@ -69,7 +69,7 @@ return {
 				nil,
 				buf
 			)
-		end, { buffer = buf })
+		end, { buffer = buf, desc = "Go to declaration" })
 	end,
 
 	["textDocument/typeDefinition"] = function(client, buf)
@@ -80,7 +80,7 @@ return {
 				nil,
 				buf
 			)
-		end, { buffer = buf })
+		end, { buffer = buf, desc = "Go to type definition" })
 	end,
 
 	["textDocument/references"] = function(client, buf)
@@ -88,7 +88,7 @@ return {
 			local params = vim.lsp.util.make_position_params(0, client.offset_encoding)
 			params.context = { includeDeclaration = true }
 			client.request("textDocument/references", params, nil, buf)
-		end, { buffer = buf })
+		end, { buffer = buf, desc = "Show references" })
 	end,
 
 	["textDocument/implementation"] = function(client, buf)
@@ -99,7 +99,7 @@ return {
 				nil,
 				buf
 			)
-		end, { buffer = buf })
+		end, { buffer = buf, desc = "Go to implementation" })
 	end,
 
 	["textDocument/rename"] = function(client, buf)
@@ -109,7 +109,7 @@ return {
 					return filter_client.id == client.id
 				end,
 			})
-		end, { buffer = buf })
+		end, { buffer = buf, desc = "Rename" })
 	end,
 
 	["textDocument/hover"] = function(client, buf)
@@ -123,7 +123,7 @@ return {
 					buf
 				)
 			end
-		end, { buffer = buf })
+		end, { buffer = buf, desc = "Hover" })
 	end,
 
 	["textDocument/documentSymbol"] = function(client, buf)
@@ -138,11 +138,11 @@ return {
 				nil,
 				buf
 			)
-		end, { buffer = buf })
+		end, { buffer = buf, desc = "Signature help" })
 	end,
 
 	["textDocument/codeLens"] = function(client, buf)
-		vim.keymap.set("n", "grA", vim.lsp.codelens.run, { buffer = buf })
+		vim.keymap.set("n", "grA", vim.lsp.codelens.run, { buffer = buf, desc = "Run code lens" })
 		vim.api.nvim_create_autocmd({ "CursorHold", "InsertLeave" }, {
 			group = "lsp",
 			buffer = buf,
@@ -182,7 +182,7 @@ return {
 				vim.lsp.buf.format({ id = stored_client.id, bufnr = buf })
 			end
 		end
-		vim.keymap.set("n", "gQ", format, { buffer = buf })
+		vim.keymap.set("n", "gQ", format, { buffer = buf, desc = "Format whole buffer" })
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = "lsp",
 			buffer = buf,

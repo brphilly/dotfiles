@@ -20,7 +20,7 @@ return {
 				stages = "slide",
 			})
 			vim.notify = require("notify")
-			vim.keymap.set("n", "<leader>$", "<cmd>Notifications<cr>")
+			vim.keymap.set("n", "<leader>$", "<cmd>Notifications<cr>", { desc = "Show notification history" })
 		end,
 	},
 }

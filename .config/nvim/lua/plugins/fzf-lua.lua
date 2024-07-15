@@ -39,7 +39,7 @@ return {
 		init = function()
 			vim.keymap.set("n", "<c-p>", function()
 				require("fzf-lua").files()
-			end)
+			end, { desc = "Files" })
 			vim.keymap.set("n", "<leader>fs", function()
 				require("fzf-lua").live_grep({
 					rg_glob = true,
@@ -49,41 +49,41 @@ return {
 						return (regex or query), flags
 					end,
 				})
-			end)
+			end, { desc = "Live grep" })
 			vim.keymap.set("n", "<leader>fb", function()
 				require("fzf-lua").buffers()
-			end)
+			end, { desc = "Buffers" })
 			vim.keymap.set("n", "<leader>fd", function()
 				require("fzf-lua").diagnostics_document()
-			end)
+			end, { desc = "Buffer diagnostics" })
 			vim.keymap.set("n", "<leader>fD", function()
 				require("fzf-lua").diagnostics_workspace()
-			end)
+			end, { desc = "Workspace diagnostics" })
 			vim.keymap.set("n", "<leader>fg", function()
 				require("fzf-lua").git_commits()
-			end)
+			end, { desc = "Git commits" })
 			vim.keymap.set("n", "<leader>fc", function()
 				require("fzf-lua").commands()
-			end)
+			end, { desc = "Commands" })
 			vim.keymap.set("n", "<leader>fh", function()
 				require("fzf-lua").helptags({
 					actions = {
 						["enter"] = require("fzf-lua").actions.help_vert,
 					},
 				})
-			end)
+			end, { desc = "Help tags" })
 			vim.keymap.set("n", "<leader>fH", function()
 				require("fzf-lua").manpages()
-			end)
+			end, { desc = "Man pages" })
 			vim.keymap.set("n", "<leader>fq", function()
 				require("fzf-lua").quickfix()
-			end)
+			end, { desc = "Quickfix" })
 			vim.keymap.set("n", "<leader>fQ", function()
 				require("fzf-lua").quickfix_stack()
-			end)
+			end, { desc = "Quickfix stack" })
 			vim.keymap.set("n", "<leader>F", function()
 				require("fzf-lua").resume()
-			end)
+			end, { desc = "Resume" })
 		end,
 	},
 }

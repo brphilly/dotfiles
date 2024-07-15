@@ -7,7 +7,7 @@ return {
 		url = "https://github.com/aznhe21/actions-preview.nvim",
 		lazy = true,
 		init = function()
-			vim.keymap.set({ "n", "x" }, "gra", require("actions-preview").code_actions)
+			vim.keymap.set({ "n", "x" }, "gra", require("actions-preview").code_actions, { desc = "Show code actions" })
 		end,
 	},
 	{

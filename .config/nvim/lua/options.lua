@@ -39,6 +39,7 @@ vim.opt.ruler = false
 vim.opt.undofile = true
 vim.opt.completeopt = { "menuone", "noinsert" }
 vim.opt.pumheight = math.ceil(vim.go.lines / 2)
+vim.opt.tildeop = true
 vim.opt.showmatch = true
 vim.opt.nrformats:append("alpha")
 

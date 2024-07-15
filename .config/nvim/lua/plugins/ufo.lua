@@ -12,19 +12,19 @@ return {
 			vim.keymap.set("n", "zR", function()
 				vim.b.ufo_foldlevel = 99
 				require("ufo").openAllFolds()
-			end)
+			end, { desc = "Open all folds" })
 			vim.keymap.set("n", "zM", function()
 				vim.b.ufo_foldlevel = 0
 				require("ufo").closeAllFolds()
-			end)
+			end, { desc = "Close all folds" })
 			vim.keymap.set("n", "zr", function()
 				vim.b.ufo_foldlevel = (vim.b.ufo_foldlevel or 99) + vim.v.count1
 				require("ufo").closeFoldsWith(vim.b.ufo_foldlevel)
-			end)
+			end, { desc = "Increase fold level" })
 			vim.keymap.set("n", "zm", function()
 				vim.b.ufo_foldlevel = math.max((vim.b.ufo_foldlevel or 99) - vim.v.count1, 0)
 				require("ufo").closeFoldsWith(vim.b.ufo_foldlevel)
-			end)
+			end, { desc = "Decrease fold level" })
 
 			require("ufo").setup({
 				provider_selector = function(bufnr, filetype, buftype)
