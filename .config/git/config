@@ -1,7 +1,7 @@
 [user]
 	name = Brady Phillips
 	email = mail@brphilly.dev
-	signingKey = ~/.ssh/id_ed25519_sk_yubikey5c
+	signingKey = ~/.ssh/id_ed25519_sk_yk5c_no_touch
 [core]
 	excludesfile = ~/.config/git/ignore
 	editor = nvim
