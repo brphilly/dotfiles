@@ -8,6 +8,9 @@ return {
 				signcolumn = "yes:2",
 				statuscolumn = "",
 			},
+			view_options = {
+				show_hidden = true,
+			},
 		},
 		init = function()
 			vim.keymap.set("n", "-", "<cmd>Oil --float<cr>", { desc = "Open oil in float" })
