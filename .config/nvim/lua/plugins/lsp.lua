@@ -4,6 +4,11 @@ return {
 		lazy = true,
 	},
 	{
+		url = "https://github.com/mrcjkb/rustaceanvim",
+		lazy = false,
+		version = "^4",
+	},
+	{
 		url = "https://github.com/aznhe21/actions-preview.nvim",
 		lazy = true,
 		dependencies = { "MunifTanjim/nui.nvim" },

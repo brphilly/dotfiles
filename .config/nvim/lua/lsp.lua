@@ -76,14 +76,24 @@ require("lspconfig").ruff.setup({
 	capabilities = require("lsp.capabilities"),
 })
 
-require("lspconfig").rust_analyzer.setup({
-	on_attach = function(client, buf)
-		for _, f in pairs(lsp_methods) do
-			f(client, buf)
-		end
-	end,
-	capabilities = require("lsp.capabilities"),
-})
+-- require("lspconfig").rust_analyzer.setup({
+-- 	on_attach = function(client, buf)
+-- 		for _, f in pairs(lsp_methods) do
+-- 			f(client, buf)
+-- 		end
+-- 	end,
+-- 	capabilities = require("lsp.capabilities"),
+-- })
+vim.g.rustaceanvim = {
+	server = {
+		on_attach = function(client, buf)
+			for _, f in pairs(lsp_methods) do
+				f(client, buf)
+			end
+		end,
+		capabilities = require("lsp.capabilities"),
+	},
+}
 
 require("lspconfig").tsserver.setup({
 	on_attach = function(client, buf)
