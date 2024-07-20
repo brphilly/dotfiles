@@ -77,7 +77,7 @@ vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Switch to previous buf
 vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Switch to next buffer" })
 vim.keymap.set("n", "[B", "<cmd>bfirst<cr>", { desc = "Switch to first buffer" })
 vim.keymap.set("n", "]B", "<cmd>blast<cr>", { desc = "Switch to last buffer" })
-vim.keymap.set("n", "''", function()
+vim.keymap.set("n", "<c-space>", function()
 	if vim.fn.buflisted(0) == 1 then
 		vim.cmd("buffer #")
 	else
