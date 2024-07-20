@@ -20,4 +20,5 @@ if status is-interactive
 	fish_add_path -gP ~/.rye/shims
 	starship init fish | source
 	zoxide init fish | source
+	atuin init fish | source
 end
