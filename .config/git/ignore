@@ -1,8 +1,6 @@
-.git
 .DS_Store
 .nvim.lua
-.vscode
+.vscode/
 *.code-workspace
-__pycache__
-node_modules
-.venv
+__pycache__/
+node_modules/
