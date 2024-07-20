@@ -7,6 +7,9 @@ vim.keymap.set("i", "!", "!<c-g>u", { desc = "Close undo sequence" })
 vim.keymap.set("i", "?", "?<c-g>u", { desc = "Close undo sequence" })
 
 vim.keymap.set("n", "gf", "gF", { desc = "Go to file and line" })
+vim.keymap.set("n", "gh", function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = "Toggle inlay hints" })
 
 vim.keymap.set("n", "<c-o>", "<c-o>zz", { desc = "Go to older postion in jump list and centre screen" })
 vim.keymap.set("n", "<c-i>", "<c-i>zz", { desc = "Go to newer postion in jump list and centre screen" })
