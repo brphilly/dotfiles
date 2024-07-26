@@ -7,6 +7,9 @@ return {
 		config = function()
 			require("sg").setup({
 				enable_cody = Enable_ai,
+				chat = {
+					default_model = "anthropic/claude-3-5-sonnet-20240620",
+				},
 			})
 		end,
 	},
