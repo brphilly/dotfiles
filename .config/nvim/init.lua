@@ -29,6 +29,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- load plugins
+require("lazy.view.config").keys.close = "<c-c>"
+require("lazy.view.config").keys.abort = "<c-a>"
 require("lazy").setup("plugins", {
 	install = { missing = false },
 })
