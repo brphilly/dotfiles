@@ -95,7 +95,7 @@ vim.g.rustaceanvim = {
 	},
 }
 
-require("lspconfig").tsserver.setup({
+require("lspconfig").ts_ls.setup({
 	on_attach = function(client, buf)
 		for method, f in pairs(lsp_methods) do
 			if method ~= "textDocument/formatting" then
