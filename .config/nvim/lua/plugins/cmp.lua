@@ -73,7 +73,6 @@ return {
 							nvim_lsp = "[LSP]",
 							nvim_lua = "[NVIM]",
 							path = "[Path]",
-							cody = "[Cody]",
 						},
 					}),
 				},
@@ -109,7 +108,6 @@ return {
 				sources = {
 					-- this order affects priority
 					{ name = "path" },
-					{ name = "cody" },
 					{ name = "nvim_lsp" },
 					{ name = "nvim_lua" },
 					{ name = "buffer" },
