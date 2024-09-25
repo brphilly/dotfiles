@@ -44,6 +44,7 @@
   "rustaceanvim": { "branch": "master", "commit": "3fd3e5c187ad7155d8bf1a689fa5b651407ab22e" },
   "statuscol.nvim": { "branch": "main", "commit": "1022f922b77b44c36f8057ac29adbfd89ce86958" },
   "suda.vim": { "branch": "master", "commit": "b97fab52f9cdeabe2bbb5eb98d82356899f30829" },
+  "supermaven-nvim": { "branch": "main", "commit": "40bde487fe31723cdd180843b182f70c6a991226" },
   "targets.vim": { "branch": "master", "commit": "6325416da8f89992b005db3e4517aaef0242602e" },
   "trouble.nvim": { "branch": "main", "commit": "6efc446226679fda0547c0fd6a7892fd5f5b15d8" },
   "undotree": { "branch": "master", "commit": "56c684a805fe948936cda0d1b19505b84ad7e065" },

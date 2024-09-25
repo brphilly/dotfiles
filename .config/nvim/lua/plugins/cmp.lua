@@ -67,13 +67,14 @@ return {
 
 				formatting = {
 					format = require("lspkind").cmp_format({
-						with_text = true,
+						mode = "symbol_text",
 						menu = {
 							buffer = "[Buffer]",
 							nvim_lsp = "[LSP]",
 							nvim_lua = "[NVIM]",
 							path = "[Path]",
 						},
+						symbol_map = { Supermaven = "" },
 					}),
 				},
 
@@ -108,6 +109,7 @@ return {
 				sources = {
 					-- this order affects priority
 					{ name = "path" },
+					{ name = "supermaven" },
 					{ name = "nvim_lsp" },
 					{ name = "nvim_lua" },
 					{ name = "buffer" },
