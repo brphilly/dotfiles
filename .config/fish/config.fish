@@ -1,4 +1,4 @@
-source $XDG_CONFIG_HOME/fish/env.fish
+source ~/.config/fish/env.fish
 
 if status is-interactive
 	set -g fish_greeting
