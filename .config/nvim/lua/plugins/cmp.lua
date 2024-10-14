@@ -59,6 +59,8 @@ return {
 					end,
 				},
 
+				preselect = cmp.PreselectMode.None,
+
 				snippet = {
 					expand = function(args)
 						vim.snippet.expand(args.body)
