@@ -66,5 +66,5 @@
 [includeIf "hasconfig:remote.*.url:https://gitlab.red-scientific.co.uk/**"]
 	path = .gitconfig.d/work
 
-[includeIf "hasconfig:remote.*.url:git@gitlab.red-scientific.co.uk/**"]
+[includeIf "hasconfig:remote.*.url:git@gitlab.red-scientific.co.uk:*/**"]
 	path = .gitconfig.d/work
