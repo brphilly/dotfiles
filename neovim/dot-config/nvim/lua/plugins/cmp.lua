@@ -49,8 +49,6 @@ return {
 					["<c-n>"] = cmp.mapping.select_next_item(),
 					["<c-p>"] = cmp.mapping.select_prev_item(),
 					["<tab>"] = cmp.mapping.confirm({ select = true }),
-					["<C-j>"] = cmp.mapping.scroll_docs(4),
-					["<C-k>"] = cmp.mapping.scroll_docs(-4),
 				},
 
 				confirmation = {
@@ -76,7 +74,6 @@ return {
 							nvim_lua = "[NVIM]",
 							path = "[Path]",
 						},
-						symbol_map = { Supermaven = "" },
 					}),
 				},
 
@@ -111,7 +108,6 @@ return {
 				sources = {
 					-- this order affects priority
 					{ name = "path" },
-					{ name = "supermaven" },
 					{ name = "nvim_lsp" },
 					{ name = "nvim_lua" },
 					{ name = "buffer" },
