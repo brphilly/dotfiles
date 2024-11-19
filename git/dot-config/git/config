@@ -68,3 +68,5 @@
 
 [includeIf "hasconfig:remote.*.url:git@gitlab.red-scientific.co.uk:*/**"]
 	path = .gitconfig.d/work
+[stash]
+	showIncludeUntracked = true
