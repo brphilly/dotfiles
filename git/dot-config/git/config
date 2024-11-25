@@ -55,6 +55,7 @@
 	annotate = true
 [fetch]
 	writeCommitGraph = true
+	prune = true
 [init]
 	defaultBranch = main
 [filter "lfs"]
