@@ -1,8 +1,13 @@
 vim.diagnostic.config({
-	signs = {
-		numhl = { "DiagnosticSignError", "DiagnosticSignWarn", "DiagnosticSignInfo", "DiagnosticSignHint" },
-	},
 	virtual_text = false,
-	float = { source = "always" },
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "●",
+			[vim.diagnostic.severity.WARN] = "●",
+			[vim.diagnostic.severity.INFO] = "●",
+			[vim.diagnostic.severity.HINT] = "●",
+		},
+	},
+	float = { source = true },
 	severity_sort = true,
 })

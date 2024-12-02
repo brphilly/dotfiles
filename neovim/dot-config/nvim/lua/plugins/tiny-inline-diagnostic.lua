@@ -4,6 +4,9 @@ return {
 		priority = 1000, -- needs to be loaded in first
 		opts = {
 			preset = "ghost",
+			options = {
+				multilines = true,
+			},
 		},
 	},
 }

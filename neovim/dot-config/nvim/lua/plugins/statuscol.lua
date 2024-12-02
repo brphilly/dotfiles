@@ -6,21 +6,30 @@ return {
 			require("statuscol").setup({
 				relculright = true,
 				segments = {
+					{
+						sign = { text = { ".*" }, maxwidth = 2, colwidth = 1, auto = true, wrap = false },
+						click = "v:lua.ScSa",
+					},
+					{
+						sign = {
+							namespace = { "diagnostic" },
+							maxwidth = 1,
+							colwidth = 1,
+							auto = true,
+							wrap = true,
+							click = "v:lua.ScSa",
+						},
+					},
 					{ text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
 					{ text = { builtin.lnumfunc }, click = "v:lua.ScLa" },
 					{
 						sign = {
-							namespace = { "^gitsigns_extmark_signs_$" },
+							namespace = { "gitsigns" },
 							maxwidth = 1,
 							colwidth = 1,
 							auto = true,
 							wrap = true,
 						},
-						click = "v:lua.ScSa",
-					},
-					{ sign = { namespace = { "/diagnostic/signs$" }, maxwidth = 0 } },
-					{
-						sign = { namespace = { ".*" }, maxwidth = 2, colwidth = 1, auto = true, wrap = false },
 						click = "v:lua.ScSa",
 					},
 					{ text = { " " }, click = "v:lua.ScSa" },
