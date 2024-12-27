@@ -51,7 +51,7 @@ style = "bold white"
 symbol = ' '
 
 [cmd_duration]
-format = '[⏱$duration]($style) '
+format = '[⏱️$duration]($style) '
 style = "yellow"
 min_time = 1000
 
