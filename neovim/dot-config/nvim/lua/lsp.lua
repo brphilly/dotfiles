@@ -76,14 +76,6 @@ require("lspconfig").ruff.setup({
 	capabilities = require("lsp.capabilities"),
 })
 
--- require("lspconfig").rust_analyzer.setup({
--- 	on_attach = function(client, buf)
--- 		for _, f in pairs(lsp_methods) do
--- 			f(client, buf)
--- 		end
--- 	end,
--- 	capabilities = require("lsp.capabilities"),
--- })
 vim.g.rustaceanvim = {
 	server = {
 		on_attach = function(client, buf)
@@ -96,11 +88,23 @@ vim.g.rustaceanvim = {
 }
 
 require("lspconfig").ts_ls.setup({
+	root_dir = require("lspconfig.util").root_pattern("tsconfig.json", "package.json", "jsconfig.json"),
 	on_attach = function(client, buf)
 		for method, f in pairs(lsp_methods) do
 			if method ~= "textDocument/formatting" then
 				f(client, buf)
 			end
+		end
+	end,
+	capabilities = require("lsp.capabilities"),
+	single_file_support = false,
+})
+
+require("lspconfig").denols.setup({
+	root_dir = require("lspconfig.util").root_pattern("deno.json", "deno.jsonc"),
+	on_attach = function(client, buf)
+		for _, f in pairs(lsp_methods) do
+			f(client, buf)
 		end
 	end,
 	capabilities = require("lsp.capabilities"),
