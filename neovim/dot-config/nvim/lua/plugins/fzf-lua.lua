@@ -10,7 +10,7 @@ return {
 				preview = { delay = 10 },
 			},
 			grep = {
-				rg_opts = "--line-number --no-heading --color=always --smart-case --max-columns=4096 --trim",
+				rg_opts = "--line-number --column --no-heading --color=always --smart-case --max-columns=4096 --trim",
 			},
 			keymap = {
 				builtin = {
