@@ -3,9 +3,6 @@ return {
 		"yetone/avante.nvim",
 		version = false, -- set this if you want to always pull the latest change
 		opts = {
-			file_selector = {
-				provider = "fzf",
-			},
 			provider = "claude",
 			claude = {
 				api_key_name = "cmd:secret-tool lookup api anthropic",
