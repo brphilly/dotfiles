@@ -10,7 +10,7 @@ vim.opt.scrolloff = 5
 vim.opt.linebreak = true
 vim.opt.breakindent = true
 vim.opt.sidescrolloff = 3
-vim.opt.fillchars = { eob = " ", fold = " ", foldopen = "", foldclose = "", foldsep = " " }
+vim.opt.fillchars = { eob = " ", fold = " ", foldopen = "", foldclose = "", foldsep = " ", diff = "╱" }
 vim.opt.list = true
 vim.opt.listchars = { extends = "»", precedes = "«", eol = "↲", trail = "∙", tab = "⇥ ", nbsp = "␣" }
 vim.opt.number = true
