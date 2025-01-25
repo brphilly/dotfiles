@@ -14,11 +14,18 @@ return {
 					"buffer",
 					"snippets",
 					"avante_commands",
+					"avante_files",
 					"avante_mentions",
 				},
 				providers = {
 					avante_commands = {
 						name = "avante_commands",
+						module = "blink.compat.source",
+						score_offset = 90, -- show at a higher priority than lsp
+						opts = {},
+					},
+					avante_files = {
+						name = "avante_files",
 						module = "blink.compat.source",
 						score_offset = 100, -- show at a higher priority than lsp
 						opts = {},
