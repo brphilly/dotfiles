@@ -23,7 +23,6 @@ return {
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
 			--- The below dependencies are optional,
-			"MeanderingProgrammer/render-markdown.nvim",
 			{
 				-- support for image pasting
 				"HakonHarnes/img-clip.nvim",
