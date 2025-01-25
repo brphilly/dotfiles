@@ -19,6 +19,9 @@ return {
 					"avante_commands",
 					"avante_files",
 					"avante_mentions",
+					"obsidian",
+					"obsidian_new",
+					"obsidian_tags",
 				},
 				providers = {
 					avante_commands = {
@@ -38,6 +41,18 @@ return {
 						module = "blink.compat.source",
 						score_offset = 1000, -- show at a higher priority than lsp
 						opts = {},
+					},
+					obsidian = {
+						name = "obsidian",
+						module = "blink.compat.source",
+					},
+					obsidian_new = {
+						name = "obsidian_new",
+						module = "blink.compat.source",
+					},
+					obsidian_tags = {
+						name = "obsidian_tags",
+						module = "blink.compat.source",
 					},
 				},
 			},
