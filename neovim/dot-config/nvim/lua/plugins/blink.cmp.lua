@@ -7,6 +7,9 @@ return {
 		---@type blink.cmp.Config
 		opts = {
 			keymap = { preset = "super-tab" },
+			completion = {
+				list = { selection = { preselect = false } },
+			},
 			sources = {
 				default = {
 					"lsp",
