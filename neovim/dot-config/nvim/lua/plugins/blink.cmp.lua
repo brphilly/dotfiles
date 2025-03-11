@@ -10,6 +10,9 @@ return {
 			completion = {
 				list = { selection = { preselect = false } },
 			},
+			cmdline = {
+				completion = { menu = { auto_show = true } },
+			},
 			sources = {
 				default = {
 					"lsp",
