@@ -154,27 +154,6 @@ return {
 		})
 	end,
 
-	["textDocument/documentHighlight"] = function(client, buf)
-		vim.api.nvim_create_autocmd("CursorHold", {
-			group = "lsp",
-			buffer = buf,
-			callback = function(_)
-				if client.supports_method("textDocument/documentHighlight") then
-					vim.lsp.buf.document_highlight()
-				end
-			end,
-		})
-		vim.api.nvim_create_autocmd({ "CursorMoved", "InsertEnter", "WinLeave" }, {
-			group = "lsp",
-			buffer = buf,
-			callback = function(_)
-				if client.supports_method("textDocument/documentHighlight") then
-					vim.lsp.buf.clear_references()
-				end
-			end,
-		})
-	end,
-
 	["textDocument/formatting"] = function(client, buf)
 		table.insert(format_buf_clients[buf], client)
 		local format = function()
