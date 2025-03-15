@@ -3,7 +3,6 @@ return {
 		url = "https://github.com/folke/trouble.nvim",
 		config = function()
 			require("trouble").setup({})
-			require("fzf-lua.config").defaults.actions.files["ctrl-t"] = require("trouble.sources.fzf").actions.open
 		end,
 		init = function()
 			vim.keymap.set(
@@ -23,12 +22,6 @@ return {
 				"<leader>tq",
 				"<cmd>Trouble quickfix toggle<cr>",
 				{ desc = "Toggle quickfix in trouble" }
-			)
-			vim.keymap.set(
-				"n",
-				"<leader>tf",
-				"<cmd>Trouble fzf toggle<cr>",
-				{ desc = "Toggle fzf-lua results in trouble" }
 			)
 			vim.keymap.set(
 				"n",
