@@ -1,5 +1,55 @@
-vim.api.nvim_create_augroup("lsp", {})
-local lsp_methods = require("lsp.methods")
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("my.lsp", {}),
+	callback = function(args)
+		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+
+		if client:supports_method("textDocument/definition") then
+			vim.keymap.set("n", "gd", function()
+				vim.lsp.buf.definition({ buf = args.buf })
+			end, { buffer = args.buf, desc = "Go to definition" })
+		end
+
+		if client:supports_method("textDocument/declaration") then
+			vim.keymap.set("n", "gD", function()
+				vim.lsp.buf.declaration({ buf = args.buf })
+			end, { buffer = args.buf, desc = "Go to declaration" })
+		end
+
+		if client:supports_method("textDocument/typeDefinition") then
+			vim.keymap.set("n", "gy", function()
+				vim.lsp.buf.type_definition({ buf = args.buf })
+			end, { buffer = args.buf, desc = "Go to type definition" })
+		end
+
+		if client:supports_method("textDocument/codeLens") then
+			vim.keymap.set("n", "grA", vim.lsp.codelens.run, { buffer = args.buf, desc = "Run code lens" })
+
+			vim.api.nvim_create_autocmd({ "CursorHold", "InsertLeave" }, {
+				group = vim.api.nvim_create_augroup("my.lsp", { clear = false }),
+				buffer = args.buf,
+				callback = function(_)
+					vim.lsp.codelens.refresh({ bufnr = args.buf })
+				end,
+			})
+		end
+
+		-- Auto-format ("lint") on save.
+		-- Usually not needed if server supports "textDocument/willSaveWaitUntil".
+		if
+			not client:supports_method("textDocument/willSaveWaitUntil")
+			and client:supports_method("textDocument/formatting")
+			and not Disable_format_on_save
+		then
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				group = vim.api.nvim_create_augroup("my.lsp", { clear = false }),
+				buffer = args.buf,
+				callback = function()
+					vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+				end,
+			})
+		end
+	end,
+})
 
 require("lspconfig").efm.setup({
 	filetypes = { "lua", "typescript", "javascript", "json", "jsonc", "html", "css", "svelte" },
@@ -23,18 +73,10 @@ require("lspconfig").efm.setup({
 		codeAction = true,
 		completion = true,
 	},
-	on_attach = lsp_methods["textDocument/formatting"],
 	capabilities = require("lsp.capabilities"),
 })
 
 require("lspconfig").lua_ls.setup({
-	on_attach = function(client, buf)
-		for method, f in pairs(lsp_methods) do
-			if method ~= "textDocument/formatting" then
-				f(client, buf)
-			end
-		end
-	end,
 	on_new_config = function(config)
 		if vim.fn.expand("<afile>:p") == vim.fn.getcwd() .. "/.nvim.lua" then
 			config.name = "lua_ls_nvim"
@@ -62,99 +104,45 @@ require("lspconfig").basedpyright.setup({
 			},
 		})
 	end,
-	on_attach = function(client, buf)
-		for method, f in pairs(lsp_methods) do
-			if method ~= "textDocument/formatting" then
-				f(client, buf)
-			end
-		end
-	end,
 	capabilities = require("lsp.capabilities"),
 })
 require("lspconfig").ruff.setup({
-	on_attach = lsp_methods["textDocument/formatting"],
 	capabilities = require("lsp.capabilities"),
 })
 
 vim.g.rustaceanvim = {
 	server = {
-		on_attach = function(client, buf)
-			for _, f in pairs(lsp_methods) do
-				f(client, buf)
-			end
-		end,
 		capabilities = require("lsp.capabilities"),
 	},
 }
 
 require("lspconfig").ts_ls.setup({
 	root_dir = require("lspconfig.util").root_pattern("tsconfig.json", "package.json", "jsconfig.json"),
-	on_attach = function(client, buf)
-		for method, f in pairs(lsp_methods) do
-			if method ~= "textDocument/formatting" then
-				f(client, buf)
-			end
-		end
-	end,
 	capabilities = require("lsp.capabilities"),
 	single_file_support = false,
 })
 
 require("lspconfig").denols.setup({
 	root_dir = require("lspconfig.util").root_pattern("deno.json", "deno.jsonc"),
-	on_attach = function(client, buf)
-		for _, f in pairs(lsp_methods) do
-			f(client, buf)
-		end
-	end,
 	capabilities = require("lsp.capabilities"),
 })
 
 require("lspconfig").jsonls.setup({
-	on_attach = function(client, buf)
-		for method, f in pairs(lsp_methods) do
-			if method ~= "textDocument/formatting" then
-				f(client, buf)
-			end
-		end
-	end,
 	capabilities = require("lsp.capabilities"),
 })
 
 require("lspconfig").html.setup({
-	on_attach = function(client, buf)
-		for method, f in pairs(lsp_methods) do
-			if method ~= "textDocument/formatting" then
-				f(client, buf)
-			end
-		end
-	end,
 	capabilities = require("lsp.capabilities"),
 })
 
 require("lspconfig").cssls.setup({
-	on_attach = function(client, buf)
-		for method, f in pairs(lsp_methods) do
-			if method ~= "textDocument/formatting" then
-				f(client, buf)
-			end
-		end
-	end,
 	capabilities = require("lsp.capabilities"),
 })
 
 require("lspconfig").tailwindcss.setup({
-	on_attach = lsp_methods["textDocument/hover"],
 	capabilities = require("lsp.capabilities"),
 })
 
 require("lspconfig").svelte.setup({
-	on_attach = function(client, buf)
-		for method, f in pairs(lsp_methods) do
-			if method ~= "textDocument/formatting" then
-				f(client, buf)
-			end
-		end
-	end,
 	capabilities = require("lsp.capabilities"),
 })

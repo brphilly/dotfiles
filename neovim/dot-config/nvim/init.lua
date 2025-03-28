@@ -2,13 +2,6 @@ vim.g.mapleader = " "
 
 vim.opt.exrc = true
 
-_G.P = function(...)
-	vim.print(...)
-end
-
-Format_on_save = true
-Enable_ai = true
-
 require("options")
 require("keymaps")
 require("autocmds")
@@ -22,7 +15,7 @@ if not vim.uv.fs_stat(lazypath) then
 	if vim.v.shell_error ~= 0 then
 		vim.api.nvim_echo({
 			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out, "WarningMsg" },
+			{ out,                            "WarningMsg" },
 			{ "\nPress any key to exit..." },
 		}, true, {})
 		vim.fn.getchar()

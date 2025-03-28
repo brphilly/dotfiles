@@ -1,3 +1,5 @@
+vim.o.winborder = "rounded"
+
 -- 2 Moving, Searching and Patters
 vim.opt.cdhome = true
 vim.opt.ignorecase = true
