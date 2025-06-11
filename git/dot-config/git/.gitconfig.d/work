@@ -1,5 +1,5 @@
 [user]
-	email = BPhillips@red-scientific.co.uk
+	email = bphillips@red-scientific.co.uk
 	signingKey =
 [commit]
 	gpgSign = false
