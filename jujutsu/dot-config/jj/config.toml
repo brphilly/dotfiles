@@ -1,0 +1,13 @@
+"$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
+
+[user]
+email = "mail@brphilly.dev"
+name = "Brady Phillips"
+
+[signing]
+behaviour = "drop"
+backend = "ssh"
+key = "~/.ssh/id_ed25519_sk_yk5c_no_touch.pub"
+
+[git]
+sign-on-push = true
