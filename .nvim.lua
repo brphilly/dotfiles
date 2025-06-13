@@ -1,18 +1,19 @@
 -- Override lua lsp
-require("lspconfig").lua_ls.setup({
+vim.lsp.config("lua_ls", {
 	name = "lua_ls_nvim",
-	on_new_config = function(config)
-		config.settings = vim.tbl_deep_extend("force", config.settings, {
-			Lua = {
-				runtime = {
-					version = "LuaJIT",
-				},
-				workspace = {
-					checkThirdParty = false,
-					library = { vim.env.VIMRUNTIME },
+	settings = {
+		Lua = {
+			runtime = {
+				version = "LuaJIT",
+				path = {
+					"lua/?.lua",
+					"lua/?/init.lua",
 				},
 			},
-		})
-	end,
-	capabilities = require("lsp.capabilities"),
+			workspace = {
+				checkThirdParty = false,
+				library = { vim.env.VIMRUNTIME },
+			},
+		},
+	},
 })

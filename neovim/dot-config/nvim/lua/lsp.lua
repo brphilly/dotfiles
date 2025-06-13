@@ -1,5 +1,7 @@
+local augroup = "my.lsp"
+
 vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("my.lsp", {}),
+	group = vim.api.nvim_create_augroup(augroup, {}),
 	callback = function(args)
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
@@ -25,7 +27,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.keymap.set("n", "grA", vim.lsp.codelens.run, { buffer = args.buf, desc = "Run code lens" })
 
 			vim.api.nvim_create_autocmd({ "CursorHold", "InsertLeave" }, {
-				group = vim.api.nvim_create_augroup("my.lsp", { clear = false }),
+				group = vim.api.nvim_create_augroup(augroup, { clear = false }),
 				buffer = args.buf,
 				callback = function(_)
 					vim.lsp.codelens.refresh({ bufnr = args.buf })
@@ -40,7 +42,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			and client:supports_method("textDocument/formatting")
 		then
 			vim.api.nvim_create_autocmd("BufWritePre", {
-				group = vim.api.nvim_create_augroup("my.lsp", { clear = false }),
+				group = vim.api.nvim_create_augroup(augroup, { clear = false }),
 				buffer = args.buf,
 				callback = function()
 					if not Disable_format_on_save then
@@ -52,7 +54,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-require("lspconfig").efm.setup({
+vim.lsp.config("efm", {
 	filetypes = { "lua", "typescript", "javascript", "json", "jsonc", "html", "css", "svelte" },
 	settings = {
 		languages = {
@@ -74,76 +76,43 @@ require("lspconfig").efm.setup({
 		codeAction = true,
 		completion = true,
 	},
-	capabilities = require("lsp.capabilities"),
 })
 
-require("lspconfig").lua_ls.setup({
-	on_new_config = function(config)
+vim.lsp.config("lua_ls", {
+	on_init = function(client)
 		if vim.fn.expand("<afile>:p") == vim.fn.getcwd() .. "/.nvim.lua" then
-			config.name = "lua_ls_nvim"
-			config.settings = vim.tbl_deep_extend("force", config.settings, {
-				Lua = {
-					runtime = {
-						version = "LuaJIT",
+			client.config.name = "lua_ls_nvim"
+			client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+				runtime = {
+					version = "LuaJIT",
+					path = {
+						"lua/?.lua",
+						"lua/?/init.lua",
 					},
-					workspace = {
-						checkThirdParty = false,
-						library = { vim.env.VIMRUNTIME },
-					},
+				},
+				workspace = {
+					checkThirdParty = false,
+					library = { vim.env.VIMRUNTIME },
 				},
 			})
 		end
 	end,
-	capabilities = require("lsp.capabilities"),
+	settings = { Lua = {} },
 })
 
-require("lspconfig").basedpyright.setup({
-	on_new_config = function(config)
-		config.settings = vim.tbl_deep_extend("force", config.settings, {
-			python = {
-				pythonPath = vim.get.cwd() .. "/.venv/bin/python",
-			},
-		})
-	end,
-	capabilities = require("lsp.capabilities"),
-})
-require("lspconfig").ruff.setup({
-	capabilities = require("lsp.capabilities"),
-})
+vim.lsp.config("ts_ls", { root_markers = { "tsconfig.json", "jsconfig.json", "package.json" } })
+vim.lsp.config("denols", { root_markers = { "deno.json", "deno.jsonc" } })
 
-vim.g.rustaceanvim = {
-	server = {
-		capabilities = require("lsp.capabilities"),
-	},
-}
-
-require("lspconfig").ts_ls.setup({
-	root_dir = require("lspconfig.util").root_pattern("tsconfig.json", "package.json", "jsconfig.json"),
-	capabilities = require("lsp.capabilities"),
-	single_file_support = false,
-})
-
-require("lspconfig").denols.setup({
-	root_dir = require("lspconfig.util").root_pattern("deno.json", "deno.jsonc"),
-	capabilities = require("lsp.capabilities"),
-})
-
-require("lspconfig").jsonls.setup({
-	capabilities = require("lsp.capabilities"),
-})
-
-require("lspconfig").html.setup({
-	capabilities = require("lsp.capabilities"),
-})
-
-require("lspconfig").cssls.setup({
-	capabilities = require("lsp.capabilities"),
-})
-
-require("lspconfig").tailwindcss.setup({
-	capabilities = require("lsp.capabilities"),
-})
-
-require("lspconfig").svelte.setup({
-	capabilities = require("lsp.capabilities"),
+vim.lsp.enable({
+	"efm",
+	"lua_ls",
+	"basedpyright",
+	"ruff",
+	"ts_ls",
+	"denols",
+	"jsonls",
+	"html",
+	"cssls",
+	"tailwindcss",
+	"svelte",
 })
