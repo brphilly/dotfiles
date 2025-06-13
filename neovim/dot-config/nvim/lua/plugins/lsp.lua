@@ -6,7 +6,7 @@ return {
 	{
 		url = "https://github.com/mrcjkb/rustaceanvim",
 		lazy = false,
-		version = "^5",
+		version = "^6",
 	},
 	{
 		url = "https://github.com/aznhe21/actions-preview.nvim",
