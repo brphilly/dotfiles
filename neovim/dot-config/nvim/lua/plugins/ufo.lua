@@ -27,16 +27,17 @@ return {
 			end, { desc = "Decrease fold level" })
 
 			require("ufo").setup({
-				provider_selector = function(bufnr, filetype, buftype)
-					local ts_lang = vim.treesitter.language.get_lang(filetype)
-					if ts_lang == nil then
+				provider_selector = function(_, filetype, buftype)
+					local language = vim.treesitter.language.get_lang(filetype)
+					if language == nil then
 						return
 					end
-					local has_parser = require("nvim-treesitter.parsers").has_parser(ts_lang)
-					local has_ts_folds = has_parser and vim.treesitter.query.get(ts_lang, "folds")
-					if buftype == "" and has_ts_folds then
+
+					local has_treesitter_folds = #vim.treesitter.query.get_files(language, "folds") > 0
+
+					if buftype == "" and has_treesitter_folds then
 						return { "lsp", "treesitter" }
-					elseif has_ts_folds then
+					elseif has_treesitter_folds then
 						return { "treesitter", "indent" }
 					else
 						return "indent"
