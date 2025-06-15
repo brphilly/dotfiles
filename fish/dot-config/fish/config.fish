@@ -18,6 +18,7 @@ if status is-interactive
 	abbr -a pacr 'paru --color always -Q | fzf --multi --ansi --nth 1 --preview \'paru -Qi {1}\' | cut -d \' \' -f 1 | xargs -rot paru -Rs'
 
 	fish_add_path -gP ~/.rye/shims
+	fish_add_path -gP ~/.cargo/bin
 	starship init fish | source
 	zoxide init fish | source
 	atuin init fish --disable-up-arrow | source
