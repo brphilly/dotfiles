@@ -100,8 +100,26 @@ vim.lsp.config("lua_ls", {
 	settings = { Lua = {} },
 })
 
-vim.lsp.config("ts_ls", { root_markers = { "tsconfig.json", "jsconfig.json", "package.json" } })
-vim.lsp.config("denols", { root_markers = { "deno.json", "deno.jsonc" } })
+vim.lsp.config("ts_ls", {
+	root_dir = function(bufnr, on_dir)
+		local deno_root = vim.fs.root(bufnr, { "deno.json", "deno.jsonc" })
+
+		if deno_root == nil then
+			local root = vim.fs.root(bufnr, vim.lsp.config.ts_ls.root_markers)
+			on_dir(root)
+		end
+	end,
+})
+vim.lsp.config("denols", {
+	root_dir = function(bufnr, on_dir)
+		local deno_root = vim.fs.root(bufnr, { "deno.json", "deno.jsonc" })
+
+		if deno_root ~= nil then
+			local root = vim.fs.root(bufnr, vim.lsp.config.denols.root_markers)
+			on_dir(root)
+		end
+	end,
+})
 
 vim.lsp.enable({
 	"efm",
