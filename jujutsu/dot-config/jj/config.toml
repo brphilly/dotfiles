@@ -4,6 +4,9 @@
 email = "mail@brphilly.dev"
 name = "Brady Phillips"
 
+[ui]
+diff-editor = "meld-3"
+
 [signing]
 behaviour = "drop"
 backend = "ssh"
