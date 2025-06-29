@@ -55,12 +55,25 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 vim.lsp.config("efm", {
-	filetypes = { "lua", "typescript", "javascript", "json", "jsonc", "html", "css", "svelte" },
+	filetypes = {
+		"lua",
+		"typescript",
+		"typescriptreact",
+		"javascript",
+		"javascriptreact",
+		"json",
+		"jsonc",
+		"html",
+		"css",
+		"svelte",
+	},
 	settings = {
 		languages = {
 			lua = { require("efmls-configs.formatters.stylua") },
 			typescript = { require("efmls-configs.formatters.prettier"), require("efmls-configs.linters.eslint") },
+			typescriptreact = { require("efmls-configs.formatters.prettier"), require("efmls-configs.linters.eslint") },
 			javascript = { require("efmls-configs.formatters.prettier"), require("efmls-configs.linters.eslint") },
+			javascriptreact = { require("efmls-configs.formatters.prettier"), require("efmls-configs.linters.eslint") },
 			json = { require("efmls-configs.formatters.prettier") },
 			jsonc = { require("efmls-configs.formatters.prettier") },
 			html = { require("efmls-configs.formatters.prettier") },
