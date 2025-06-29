@@ -6,6 +6,9 @@ name = "Brady Phillips"
 
 [ui]
 diff-editor = "meld-3"
+bookmark-list-sort-keys = ["committer-date-", "author-date-", "name"]
+pager = "less -FR"
+default-command = ["log", "-r", "(visible_heads() ~ remote_bookmarks()) | bookmarks() | tags()"]
 
 [signing]
 behaviour = "drop"
@@ -14,3 +17,6 @@ key = "~/.ssh/id_ed25519_sk_yk5c_no_touch.pub"
 
 [git]
 sign-on-push = true
+
+[revsets]
+log = "(trunk()..@):: | @..trunk() | fork_point(@ | trunk()) | ancestors(@, 5)"
