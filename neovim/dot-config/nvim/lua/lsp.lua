@@ -146,4 +146,5 @@ vim.lsp.enable({
 	"cssls",
 	"tailwindcss",
 	"svelte",
+	"gopls",
 })
