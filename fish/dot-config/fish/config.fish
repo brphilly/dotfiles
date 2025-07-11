@@ -4,7 +4,7 @@ if status is-interactive
 	set -g fish_greeting
 
 	bind \t accept-autosuggestion
-	bind -k nul complete
+	bind ctrl-space complete
 
 	abbr -a cd z
 	abbr -a cdi zi
