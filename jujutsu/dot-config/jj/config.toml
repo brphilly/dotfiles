@@ -5,7 +5,7 @@ email = "mail@brphilly.dev"
 name = "Brady Phillips"
 
 [ui]
-diff-editor = "meld-3"
+diff-editor = ["nvim", "--cmd", "let g:auto_session_enabled = v:false", "-c", "DiffEditor $left $right $output"]
 bookmark-list-sort-keys = ["committer-date-", "author-date-", "name"]
 pager = "less -FR"
 default-command = ["log", "--no-graph", "-T", "heads_branches", "-r", "(visible_heads() ~ remote_bookmarks() ~ tags()) | bookmarks()"]
