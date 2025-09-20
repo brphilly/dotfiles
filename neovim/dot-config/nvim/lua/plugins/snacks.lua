@@ -12,6 +12,9 @@ return {
 			indent = { enabled = true },
 			input = { enabled = true },
 			picker = {
+				formatters = {
+					file = { truncate = 1000 },
+				},
 				win = {
 					input = {
 						keys = {
