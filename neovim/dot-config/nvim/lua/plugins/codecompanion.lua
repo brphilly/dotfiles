@@ -15,29 +15,31 @@ return {
 				},
 			},
 			adapters = {
-				gemini = function()
-					return require("codecompanion.adapters").extend("gemini", {
-						env = {
-							api_key = "cmd:secret-tool lookup api gemini",
-						},
-					})
-				end,
-				anthropic = function()
-					return require("codecompanion.adapters").extend("anthropic", {
-						env = {
-							api_key = "cmd:secret-tool lookup api anthropic",
-						},
-					})
-				end,
-				ollama = function()
-					return require("codecompanion.adapters").extend("ollama", {
-						schema = {
-							model = {
-								default = "qwen2.5-coder:7b",
+				http = {
+					gemini = function()
+						return require("codecompanion.adapters").extend("gemini", {
+							env = {
+								api_key = "cmd:secret-tool lookup api gemini",
 							},
-						},
-					})
-				end,
+						})
+					end,
+					anthropic = function()
+						return require("codecompanion.adapters").extend("anthropic", {
+							env = {
+								api_key = "cmd:secret-tool lookup api anthropic",
+							},
+						})
+					end,
+					ollama = function()
+						return require("codecompanion.adapters").extend("ollama", {
+							schema = {
+								model = {
+									default = "qwen2.5-coder:7b",
+								},
+							},
+						})
+					end,
+				},
 			},
 		},
 	},
