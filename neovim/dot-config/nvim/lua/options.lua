@@ -65,7 +65,7 @@ vim.opt.timeoutlen = 3000
 
 -- 17 Reading and Writing Files
 vim.opt.backup = true
-vim.opt.backupdir = vim.env.XDG_DATA_HOME .. "/nvim/backup//"
+vim.opt.backupdir = vim.fn.stdpath("data") .. "/backup//"
 
 -- 18 Swap File
 vim.opt.updatetime = 250
