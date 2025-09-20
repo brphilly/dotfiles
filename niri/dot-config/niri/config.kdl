@@ -1,0 +1,337 @@
+// Clipboard history integration
+spawn-sh-at-startup "wl-paste --watch cliphist -db-path '/tmp/cliphist/db' store &"
+
+// Polkit
+spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
+
+// Starts DankShell
+spawn-at-startup "dms" "run"
+
+input {
+    focus-follows-mouse max-scroll-amount="0%"
+
+    keyboard {
+        repeat-delay 250
+        repeat-rate 40
+        numlock
+    }
+
+    mouse {
+        accel-speed 0.3
+        accel-profile "flat"
+        scroll-factor 1.0
+    }
+
+    touchpad {
+        tap
+        dwt
+        dwtp
+        drag false
+        natural-scroll
+        accel-speed 0.0
+        accel-profile "adaptive"
+        scroll-method "two-finger"
+        scroll-factor 1.0
+    }
+}
+
+output "GIGA-BYTE TECHNOLOGY CO., LTD. G27Q 21132B001704" {
+    mode "2560x1440@143.972"
+    variable-refresh-rate
+    position x=0 y=0
+    focus-at-startup
+}
+
+output "PNP(BNQ) BenQ GW2765 W6H01065019" {
+    mode "2560x1440@59.951"
+    position x=-2560 y=0
+    focus-at-startup
+}
+
+output "Microstep MSI G241 0x00000778" {
+    mode "1920x1080@119.982"
+    variable-refresh-rate
+    position x=2560 y=0
+    transform "270"
+
+    // layout {
+    //     default-column-width { proportion 1.0; }
+    // }
+}
+
+layout {
+    gaps 10
+
+    center-focused-column "never"
+    default-column-display "normal"
+    tab-indicator {
+        hide-when-single-tab
+        active-color   "#9dcbfb"
+        inactive-color "#8c9199"
+        urgent-color   "#ffb4ab"
+    }
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        width 2
+        active-color   "#9dcbfb"
+        inactive-color "#8c9199"
+        urgent-color   "#ffb4ab"
+    }
+
+    border {
+        off
+        width 2
+        active-color   "#9dcbfb"
+        inactive-color "#8c9199"
+        urgent-color   "#ffb4ab"
+    }
+
+    shadow {
+        on
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#00000070"
+    }
+
+    insert-hint {
+        color "#9dcbfb80"
+    }
+}
+
+// Rounded corners
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+    draw-border-with-background false
+}
+
+workspace "personal" {
+    open-on-output "GIGA-BYTE TECHNOLOGY CO., LTD. G27Q 21132B001704"
+}
+workspace "dev" {
+    open-on-output "GIGA-BYTE TECHNOLOGY CO., LTD. G27Q 21132B001704"
+}
+workspace "email" {
+    open-on-output "GIGA-BYTE TECHNOLOGY CO., LTD. G27Q 21132B001704"
+}
+workspace "music" {
+    open-on-output "Microstep MSI G241 0x00000778"
+}
+window-rule {
+    match app-id="^thunderbird$"
+    default-column-width { proportion 1.0; }
+    open-on-workspace "email"
+}
+window-rule {
+    match app-id="^Spotify$"
+    open-on-workspace "music"
+}
+
+window-rule {
+    // This app-id regular expression will work for both:
+    // - host Firefox (app-id is "firefox")
+    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    match app-id=r#"firefox"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    block-out-from "screencast"
+}
+
+prefer-no-csd
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+animations {
+    slowdown 0.6
+}
+
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+// Disable built in config load errors since dank shell provides this
+config-notification {
+    disable-failed
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+clipboard {
+    disable-primary
+}
+
+binds {
+    // Shows a list of important hotkeys.
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // Application hotkeys
+    Mod+Space hotkey-overlay-title="Application Launcher" {
+        spawn "dms" "ipc" "call" "spotlight" "toggle";
+    }
+    Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty" "--gtk-single-instance=true"; }
+    Mod+E hotkey-overlay-title="Open a File Manager: yazi" { spawn "ghostty" "-e" "yazi"; }
+    Mod+B hotkey-overlay-title="Open a Browser: firefox-developer-edition" { spawn "firefox-developer-edition"; }
+    Mod+Q repeat=false { close-window; }
+
+    Mod+Ctrl+L hotkey-overlay-title="Lock Screen" {
+        spawn "dms" "ipc" "call" "lock" "lock";
+    }
+    Mod+X hotkey-overlay-title="Power Menu" {
+        spawn "dms" "ipc" "call" "powermenu" "toggle";
+    }
+    Mod+Shift+X hotkey-overlay-title="Settings" {
+        spawn "dms" "ipc" "call" "settings" "toggle";
+    }
+    Mod+Z hotkey-overlay-title="Notification Center" {
+        spawn "dms" "ipc" "call" "notifications" "toggle";
+    }
+    Mod+Shift+Z hotkey-overlay-title="Task Manager" {
+        spawn "dms" "ipc" "call" "processlist" "toggle";
+    }
+    Mod+V hotkey-overlay-title="Clipboard Manager" {
+        spawn "dms" "ipc" "call" "clipboard" "toggle";
+    }
+
+    // Audio hotkeys
+    XF86AudioRaiseVolume allow-when-locked=true {
+        spawn "dms" "ipc" "call" "audio" "increment" "5";
+    }
+    XF86AudioLowerVolume allow-when-locked=true {
+        spawn "dms" "ipc" "call" "audio" "decrement" "5";
+    }
+    XF86AudioMute allow-when-locked=true {
+        spawn "dms" "ipc" "call" "audio" "mute";
+    }
+    XF86AudioMicMute allow-when-locked=true {
+        spawn "dms" "ipc" "call" "audio" "micmute";
+    }
+    XF86AudioPlay {
+        spawn "playerctl" "--player" "spotify" "play-pause";
+    }
+    XF86AudioNext {
+        spawn "playerctl" "--player" "spotify" "next";
+    }
+    XF86AudioPrev {
+        spawn "playerctl" "--player" "spotify" "previous";
+    }
+
+    // Brightness hotkeys
+    XF86MonBrightnessUp allow-when-locked=true {
+        spawn "dms" "ipc" "call" "brightness" "increment" "5" "";
+    }
+    XF86MonBrightnessDown allow-when-locked=true {
+        spawn "dms" "ipc" "call" "brightness" "decrement" "5" "";
+    }
+
+    Mod+U repeat=false { toggle-overview; }
+
+    // Movement hotkeys
+    Mod+H     { focus-column-left; }
+    Mod+J     { focus-window-down; }
+    Mod+K     { focus-window-up; }
+    Mod+L     { focus-column-right; }
+
+    Mod+N              { focus-workspace-down; }
+    Mod+P              { focus-workspace-up; }
+
+    Mod+I              { focus-monitor-previous; }
+    Mod+O              { focus-monitor-next; }
+
+    Mod+Shift+H     { move-column-left; }
+    Mod+Shift+J     { move-window-down; }
+    Mod+Shift+K     { move-window-up; }
+    Mod+Shift+L     { move-column-right; }
+
+    Mod+Shift+N         { move-column-to-workspace-down; }
+    Mod+Shift+P         { move-column-to-workspace-up; }
+
+    Mod+Shift+I         { move-column-to-monitor-previous; }
+    Mod+Shift+O         { move-column-to-monitor-next; }
+
+    Mod+Ctrl+N         { move-workspace-down; }
+    Mod+Ctrl+P         { move-workspace-up; }
+
+    Mod+Ctrl+I         { move-workspace-to-monitor-previous; }
+    Mod+Ctrl+O         { move-workspace-to-monitor-next; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+0 { focus-workspace 255; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+    Mod+Shift+0 { move-column-to-workspace 255; }
+
+    Mod+Tab { focus-workspace-previous; }
+
+    // Column hotkeys
+    Mod+SemiColon  { consume-or-expel-window-left; }
+    Mod+Apostrophe { consume-or-expel-window-right; }
+    Mod+Comma  { consume-window-into-column; }
+    Mod+Period { expel-window-from-column; }
+    Mod+C { center-column; }
+    Mod+Shift+C { center-visible-columns; }
+
+    // Size hotkeys
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+M { maximize-column; }
+    Mod+Shift+M { fullscreen-window; }
+    Mod+Ctrl+M { expand-column-to-available-width; }
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    Mod+F       { toggle-window-floating; }
+    Mod+Shift+F { switch-focus-between-floating-and-tiling; }
+
+    Mod+W { toggle-column-tabbed-display; }
+
+    Mod+S { set-dynamic-cast-window; }
+    Mod+Shift+S { set-dynamic-cast-monitor; }
+    Mod+Ctrl+S { clear-dynamic-cast-target; }
+
+    Print { screenshot; }
+    Shift+Print { screenshot-window; }
+    Ctrl+Print { screenshot-screen; }
+
+    // Applications such as remote-desktop clients and software KVM switches may
+    // request that niri stops processing the keyboard shortcuts defined here
+    // so they may, for example, forward the key presses as-is to a remote machine.
+    // It's a good idea to bind an escape hatch to toggle the inhibitor,
+    // so a buggy application can't hold your session hostage.
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    Mod+Shift+E { quit; }
+    Ctrl+Alt+Delete { quit; }
+}
