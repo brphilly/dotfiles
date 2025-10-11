@@ -184,7 +184,7 @@ binds {
         spawn "dms" "ipc" "call" "spotlight" "toggle";
     }
     Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty" "--gtk-single-instance=true"; }
-    Mod+E hotkey-overlay-title="Open a File Manager: yazi" { spawn "ghostty" "-e" "yazi"; }
+    Mod+E hotkey-overlay-title="Open a File Manager: yazi" { spawn "ghostty" "--confirm-close-surface=false" "-e" "yazi"; }
     Mod+B hotkey-overlay-title="Open a Browser: firefox-developer-edition" { spawn "firefox-developer-edition"; }
     Mod+Q repeat=false { close-window; }
 
