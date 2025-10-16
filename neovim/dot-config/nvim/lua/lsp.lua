@@ -110,4 +110,5 @@ vim.lsp.enable({
 	"tailwindcss",
 	"svelte",
 	"gopls",
+	"taplo",
 })
