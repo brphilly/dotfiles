@@ -57,20 +57,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.lsp.config("efm", {
 	filetypes = {
 		"lua",
-		"typescript",
-		"typescriptreact",
-		"javascript",
-		"javascriptreact",
 		"html",
 		"svelte",
 	},
 	settings = {
 		languages = {
 			lua = { require("efmls-configs.formatters.stylua") },
-			typescript = { require("efmls-configs.formatters.prettier"), require("efmls-configs.linters.eslint") },
-			typescriptreact = { require("efmls-configs.formatters.prettier"), require("efmls-configs.linters.eslint") },
-			javascript = { require("efmls-configs.formatters.prettier"), require("efmls-configs.linters.eslint") },
-			javascriptreact = { require("efmls-configs.formatters.prettier"), require("efmls-configs.linters.eslint") },
 			html = { require("efmls-configs.formatters.prettier") },
 			svelte = { require("efmls-configs.formatters.prettier"), require("efmls-configs.linters.eslint") },
 		},
@@ -113,6 +105,7 @@ vim.lsp.enable({
 	"basedpyright",
 	"ruff",
 	"ts_ls",
+	"biome",
 	"html",
 	"tailwindcss",
 	"svelte",
