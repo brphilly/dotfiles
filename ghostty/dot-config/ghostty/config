@@ -8,7 +8,7 @@ font-family-bold-italic = "Cascadia Mono PL"
 
 font-codepoint-map = "U+EA60-U+EBEA=codicon"
 
-theme = "Everforest Dark   Hard"
+theme = "Everforest Dark Hard"
 cursor-color = "#D3C6AA"
 
 window-width = 1000000
