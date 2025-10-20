@@ -201,7 +201,7 @@ binds {
         spawn "dms" "ipc" "call" "notifications" "toggle";
     }
     Mod+Shift+Z hotkey-overlay-title="Task Manager" {
-        spawn "dms" "ipc" "call" "processlist" "toggle";
+        spawn "ghostty" "--confirm-close-surface=false" "-e" "btop"
     }
     Mod+V hotkey-overlay-title="Clipboard Manager" {
         spawn "dms" "ipc" "call" "clipboard" "toggle";
