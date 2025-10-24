@@ -1,5 +1,5 @@
 // Clipboard history integration
-spawn-sh-at-startup "wl-paste --watch cliphist -db-path '/tmp/cliphist/db' store &"
+spawn-sh-at-startup "wl-paste --watch cliphist store &"
 
 // Polkit
 spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
