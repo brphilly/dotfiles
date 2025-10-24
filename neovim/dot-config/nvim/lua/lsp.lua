@@ -99,6 +99,10 @@ vim.lsp.config("lua_ls", {
 	settings = { Lua = {} },
 })
 
+vim.lsp.config("nixd", {
+	settings = { nixd = { formatting = { command = { "alejandra" } } } },
+})
+
 vim.lsp.enable({
 	"efm",
 	"lua_ls",
@@ -111,4 +115,5 @@ vim.lsp.enable({
 	"svelte",
 	"gopls",
 	"taplo",
+	"nixd",
 })
