@@ -54,9 +54,9 @@ output "Microstep MSI G241 0x00000778" {
     position x=2560 y=0
     transform "270"
 
-    // layout {
-    //     default-column-width { proportion 1.0; }
-    // }
+    layout {
+        default-column-width { proportion 1.0; }
+    }
 }
 
 layout {
@@ -127,7 +127,7 @@ workspace "music" {
     open-on-output "Microstep MSI G241 0x00000778"
 }
 window-rule {
-    match app-id="^thunderbird$"
+    match app-id="^org.mozilla.Thunderbird$"
     default-column-width { proportion 1.0; }
     open-on-workspace "email"
 }
