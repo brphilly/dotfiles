@@ -13,7 +13,7 @@ default-command = ["log", "--no-graph", "-T", "heads_branches", "-r", "(visible_
 [signing]
 behaviour = "drop"
 backend = "ssh"
-key = "~/.ssh/id_ed25519_sk_yk5c_no_touch.pub"
+key = "~/.ssh/id_ed25519_sk_token2_purple.pub"
 
 [git]
 sign-on-push = true
