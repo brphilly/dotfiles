@@ -57,14 +57,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.lsp.config("efm", {
 	filetypes = {
 		"lua",
-		"html",
-		"svelte",
 	},
 	settings = {
 		languages = {
 			lua = { require("efmls-configs.formatters.stylua") },
-			html = { require("efmls-configs.formatters.prettier") },
-			svelte = { require("efmls-configs.formatters.prettier"), require("efmls-configs.linters.eslint") },
 		},
 	},
 	init_options = {
@@ -110,7 +106,6 @@ vim.lsp.enable({
 	"ruff",
 	"ts_ls",
 	"biome",
-	"html",
 	"tailwindcss",
 	"svelte",
 	"gopls",
