@@ -7,6 +7,21 @@ return {
 		url = "https://github.com/mrcjkb/rustaceanvim",
 		lazy = false,
 		version = "^6",
+		init = function()
+			vim.g.rustaceanvim = {
+				server = {
+					capabilities = {
+						textDocument = {
+							completion = {
+								completionItem = {
+									insertReplaceSupport = true,
+								},
+							},
+						},
+					},
+				},
+			}
+		end,
 	},
 	{
 		url = "https://github.com/aznhe21/actions-preview.nvim",
