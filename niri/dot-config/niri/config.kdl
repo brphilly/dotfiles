@@ -1,6 +1,3 @@
-// Clipboard history integration
-spawn-sh-at-startup "wl-paste --watch cliphist store &"
-
 input {
     focus-follows-mouse max-scroll-amount="0%"
 
