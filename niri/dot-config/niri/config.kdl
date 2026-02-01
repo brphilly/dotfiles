@@ -296,8 +296,10 @@ binds {
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
     Mod+M { maximize-column; }
+    Mod+Ctrl+M { maximize-window-to-edges; }
+    Mod+Alt+M { toggle-windowed-fullscreen; }
     Mod+Shift+M { fullscreen-window; }
-    Mod+Ctrl+M { expand-column-to-available-width; }
+    Mod+Ctrl+Equal { expand-column-to-available-width; }
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
     Mod+Shift+Minus { set-window-height "-10%"; }
