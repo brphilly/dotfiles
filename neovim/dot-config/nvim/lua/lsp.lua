@@ -102,7 +102,7 @@ vim.lsp.config("nixd", {
 vim.lsp.enable({
 	"efm",
 	"lua_ls",
-	"basedpyright",
+	"ty",
 	"ruff",
 	"ts_ls",
 	"biome",
