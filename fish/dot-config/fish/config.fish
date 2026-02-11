@@ -3,8 +3,7 @@ source ~/.config/fish/env.fish
 if status is-interactive
 	set -g fish_greeting
 
-	bind \t accept-autosuggestion
-	bind ctrl-space complete
+	fish_vi_key_bindings insert
 
 	abbr -a cd z
 	abbr -a cdi zi
@@ -22,6 +21,12 @@ if status is-interactive
 	starship init fish | source
 	zoxide init fish | source
 	atuin init fish --disable-up-arrow | source
+end
+
+
+function fish_user_key_bindings
+    bind -M insert tab accept-autosuggestion
+    bind -M insert ctrl-space complete
 end
 
 function storePathForWindowsTerminal --on-variable PWD
