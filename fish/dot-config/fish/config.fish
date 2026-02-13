@@ -3,8 +3,6 @@ source ~/.config/fish/env.fish
 if status is-interactive
 	set -g fish_greeting
 
-	fish_vi_key_bindings insert
-
 	abbr -a cd z
 	abbr -a cdi zi
 	abbr -a ls --position anywhere lsd
@@ -25,6 +23,9 @@ end
 
 
 function fish_user_key_bindings
+	fish_default_key_bindings -M insert
+	fish_vi_key_bindings --no-erase insert
+	bind -M insert ctrl-n history-search-forward
     bind -M insert tab accept-autosuggestion
     bind -M insert ctrl-space complete
 end
