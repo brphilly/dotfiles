@@ -6,7 +6,7 @@ return {
 	{
 		url = "https://github.com/mrcjkb/rustaceanvim",
 		lazy = false,
-		version = "^6",
+		version = "^8",
 		init = function()
 			vim.g.rustaceanvim = {
 				server = {
