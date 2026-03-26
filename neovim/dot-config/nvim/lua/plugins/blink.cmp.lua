@@ -1,7 +1,7 @@
 return {
 	{
 		url = "https://github.com/saghen/blink.cmp",
-		version = "*",
+		version = "1.*",
 
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
@@ -23,11 +23,5 @@ return {
 				},
 			},
 		},
-	},
-	{
-		"saghen/blink.compat",
-		version = "*",
-		lazy = true,
-		opts = {},
 	},
 }
