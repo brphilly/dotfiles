@@ -1,6 +1,7 @@
 return {
 	{
 		"OXY2DEV/markview.nvim",
+		enabled = false,
 		lazy = false,
 		-- Force markview.nvim to be placed before treesitter in the rtp
 		priority = 49,
