@@ -11,6 +11,8 @@ font-codepoint-map = "U+EA60-U+EBEA=codicon"
 theme = "Everforest Dark Hard"
 cursor-color = "#D3C6AA"
 
+custom-shader = "./shaders/cursor_warp.glsl"
+
 window-width = 1000000
 window-height = 1000000
 
