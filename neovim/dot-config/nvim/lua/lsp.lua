@@ -24,15 +24,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 
 		if client:supports_method("textDocument/codeLens") then
+			vim.lsp.codelens.enable(true, { bufnr = args.buf })
 			vim.keymap.set("n", "grA", vim.lsp.codelens.run, { buffer = args.buf, desc = "Run code lens" })
-
-			vim.api.nvim_create_autocmd({ "CursorHold", "InsertLeave" }, {
-				group = vim.api.nvim_create_augroup(augroup, { clear = false }),
-				buffer = args.buf,
-				callback = function(_)
-					vim.lsp.codelens.refresh({ bufnr = args.buf })
-				end,
-			})
 		end
 
 		-- Auto-format ("lint") on save.
