@@ -7,6 +7,15 @@ return {
 		url = "https://github.com/mrcjkb/rustaceanvim",
 		lazy = false,
 		version = "^8",
+		init = function()
+			vim.g.rustaceanvim = {
+				server = {
+					default_settings = {
+						["rust-analyzer"] = { lens = { location = "above_whole_item" } },
+					},
+				},
+			}
+		end,
 	},
 	{
 		url = "https://github.com/aznhe21/actions-preview.nvim",
