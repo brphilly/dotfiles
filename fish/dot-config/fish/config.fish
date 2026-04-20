@@ -18,14 +18,15 @@ if status is-interactive
 	fish_add_path -gP ~/.cargo/bin
 	starship init fish | source
 	zoxide init fish | source
-	atuin init fish --disable-up-arrow | source
+	atuin init fish | source
 end
 
 
 function fish_user_key_bindings
 	fish_default_key_bindings -M insert
 	fish_vi_key_bindings --no-erase insert
-	bind -M insert ctrl-n history-search-forward
+	bind -M insert ctrl-p _atuin_bind_up
+	bind -M insert ctrl-n _atuin_bind_up
     bind -M insert tab accept-autosuggestion
     bind -M insert ctrl-space complete
 end
