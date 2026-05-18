@@ -89,7 +89,7 @@ vim.lsp.config("lua_ls", {
 })
 
 vim.lsp.config("nixd", {
-	settings = { nixd = { formatting = { command = { "alejandra" } } } },
+	settings = { nixd = { formatting = { command = { "nixfmt" } } } },
 })
 
 vim.lsp.enable({
