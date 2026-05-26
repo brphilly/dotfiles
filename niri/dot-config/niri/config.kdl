@@ -328,3 +328,7 @@ binds {
     Mod+Shift+E { quit; }
     Ctrl+Alt+Delete { quit; }
 }
+
+debug {
+    honor-xdg-activation-with-invalid-serial
+}
