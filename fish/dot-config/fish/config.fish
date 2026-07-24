@@ -5,8 +5,7 @@ if status is-interactive
 
 	abbr -a cd z
 	abbr -a cdi zi
-	abbr -a ls --position anywhere lsd
-	abbr -a ll --position anywhere 'lsd -la'
+	abbr -a ls --position anywhere eza -l --icons=auto
 	abbr -a cat --position anywhere bat
 	abbr -a lg lazygit
 	abbr -a ljj lazyjj
