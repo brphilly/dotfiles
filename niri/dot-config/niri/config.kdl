@@ -233,23 +233,23 @@ binds {
 
     // Movement hotkeys
     Mod+H     { focus-column-left; }
-    Mod+J     { focus-window-down; }
-    Mod+K     { focus-window-up; }
+    Mod+N     { focus-window-down; }
+    Mod+P     { focus-window-up; }
     Mod+L     { focus-column-right; }
 
-    Mod+N              { focus-workspace-down; }
-    Mod+P              { focus-workspace-up; }
+    Mod+J              { focus-workspace-down; }
+    Mod+K              { focus-workspace-up; }
 
     Mod+I              { focus-monitor-previous; }
     Mod+O              { focus-monitor-next; }
 
     Mod+Shift+H     { move-column-left; }
-    Mod+Shift+J     { move-window-down; }
-    Mod+Shift+K     { move-window-up; }
+    Mod+Shift+N     { move-window-down; }
+    Mod+Shift+P     { move-window-up; }
     Mod+Shift+L     { move-column-right; }
 
-    Mod+Shift+N         { move-column-to-workspace-down; }
-    Mod+Shift+P         { move-column-to-workspace-up; }
+    Mod+Shift+J         { move-column-to-workspace-down; }
+    Mod+Shift+K         { move-column-to-workspace-up; }
 
     Mod+Shift+I         { move-column-to-monitor-previous; }
     Mod+Shift+O         { move-column-to-monitor-next; }
