@@ -13,6 +13,10 @@ cursor-color = "#D3C6AA"
 
 custom-shader = "./shaders/cursor_warp.glsl"
 
+background-opacity = 0.9
+background-opacity-cells = true
+background-blur = true
+
 window-width = 1000000
 window-height = 1000000
 
