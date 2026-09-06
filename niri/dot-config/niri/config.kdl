@@ -118,13 +118,25 @@ workspace "music" {
     open-on-output "Microstep MSI G241 0x00000778"
 }
 window-rule {
-    match app-id="^org.mozilla.Thunderbird$"
+    match app-id="^Proton Mail$"
     default-column-width { proportion 1.0; }
     open-on-workspace "email"
 }
 window-rule {
-    match app-id="^Spotify$"
+    match app-id="^spotify$"
+    default-column-width { proportion 1.0; }
     open-on-workspace "music"
+    opacity 0.8
+    background-effect {
+        blur true
+    }
+}
+window-rule {
+    match app-id=r#"^com\.mitchellh\.ghostty$"#
+    opacity 0.9
+    background-effect {
+        blur true
+    }
 }
 
 window-rule {
@@ -137,6 +149,7 @@ window-rule {
 
 window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id="Proton Pass"
     block-out-from "screencast"
 }
 
