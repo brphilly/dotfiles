@@ -26,7 +26,7 @@ default-command = [
 [signing]
 behaviour = "drop"
 backend = "ssh"
-key = "~/.ssh/id_ed25519_sk_token2_purple.pub"
+key = "~/.ssh/forge_sign.pub"
 
 [revsets]
 git-sign-on-push = "~signed() & mine()"
