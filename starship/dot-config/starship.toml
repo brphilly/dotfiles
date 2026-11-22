@@ -2,12 +2,7 @@ format = """
 $username\
 $hostname\
 $directory\
-${custom.git_branch}\
-${custom.git_commit}\
-${custom.git_metrics}\
-${custom.git_state}\
-${custom.git_status}\
-${custom.jj}\
+$vcs\
 $nix_shell\
 $docker_context\
 $rust\
@@ -30,92 +25,18 @@ truncation_length = 0
 truncation_symbol = '…/'
 fish_style_pwd_dir_length = 1
 
-[git_branch]
-format = '[$symbol$branch(:$remote_branch)]($style) '
-symbol = ''
-style = "bold white"
-
-[git_commit]
-style = "bold white"
-
-[git_state]
-style = "bold white"
-
 [git_metrics]
 disabled = false
 
-[git_status]
-style = "bold white"
-
-# re-enable git_branch as long as we're not in a jj repo
-[custom.git_branch]
-when = "! jj root --ignore-working-copy"
-command = "starship module git_branch"
-description = "Only show git_branch if we're not in a jj repo"
-
-# re-enable git_commit as long as we're not in a jj repo
-[custom.git_commit]
-when = "! jj root --ignore-working-copy"
-command = "starship module git_commit"
-description = "Only show git_commit if we're not in a jj repo"
-
-# re-enable git_metrics as long as we're not in a jj repo
-[custom.git_metrics]
-when = "! jj root --ignore-working-copy"
-command = "starship module git_metrics"
-description = "Only show git_metrics if we're not in a jj repo"
-
-# re-enable git_state as long as we're not in a jj repo
-[custom.git_state]
-when = "! jj root --ignore-working-copy"
-command = "starship module git_state"
-description = "Only show git_state if we're not in a jj repo"
-
-# re-enable git_status as long as we're not in a jj repo
-[custom.git_status]
-when = "! jj root --ignore-working-copy"
-command = "starship module git_status"
-description = "Only show git_status if we're not in a jj repo"
-
-# custom module for jj status
-[custom.jj]
-style = "purple bold"
-symbol = "󱗆 "
-description = "The current jj status"
-detect_folders = [".jj"]
-command = '''
-jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 --template '
-  separate(" ",
-    change_id.shortest(4),
-    bookmarks,
-    "|",
-    concat(
-      if(conflict, "💥"),
-      if(divergent, "🚧"),
-      if(hidden, "👻"),
-      if(immutable, "🔒"),
-    ),
-    if(empty, "(empty)"),
-    coalesce(
-      truncate_end(29, description.first_line(), "…"),
-      "(no description set)",
-    )
-  )
-'
-'''
+[vcs]
+order = ["jj", "git"]
 
 [fill]
 symbol = ' '
 
 [cmd_duration]
-format = '[⏱️$duration]($style) '
-style = "yellow"
+format = '[⏱️$duration]($style)'
 min_time = 1000
-
-[time]
-disabled = false
-format = '[$time]($style)'
-style = "bright-white"
 
 [status]
 disabled = false
@@ -126,7 +47,7 @@ format = '[$symbol$state(\($name\))]($style) '
 symbol = '❄️'
 
 [docker_context]
-format = '[$symbol]($style) '
+format = '[$symbol$context]($style) '
 symbol = '🐳'
 
 [rust]
